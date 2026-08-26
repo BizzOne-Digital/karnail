@@ -8,6 +8,10 @@ function getApiBaseUrl(): string {
     return `${siteUrl}/api`;
   }
 
+  if (process.env.VERCEL_URL) {
+    return `https://${process.env.VERCEL_URL}/api`;
+  }
+
   return process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000/api';
 }
 

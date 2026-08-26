@@ -1,10 +1,6 @@
+import 'dotenv/config';
 import bcrypt from 'bcryptjs';
 import mongoose from 'mongoose';
-import dotenv from 'dotenv';
-import path from 'path';
-
-dotenv.config({ path: path.resolve(process.cwd(), '.env') });
-
 import { connectDB } from '@/lib/mongodb';
 import { config } from '@/server/config';
 import { createSection } from '../utils/sectionBuilder';
