@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
-import { publicApi } from '@/services/api';
+import { serverPublicApi } from '@/services/server-public-api';
 import { SectionHero } from '@/components/public/SectionHero';
 import { GalleryLightbox } from '@/components/public/GalleryLightbox';
 import { getImageUrl } from '@/lib/utils';
@@ -15,7 +15,7 @@ interface Props {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   try {
     const { category } = await params;
-    const cat = await publicApi.getGalleryCategory(category);
+    const cat = await serverPublicApi.getGalleryCategory(category);
     return { title: `${cat.name} | Gallery`, description: cat.description };
   } catch {
     return { title: 'Gallery Category' };
@@ -26,12 +26,12 @@ export default async function GalleryCategoryPage({ params }: Props) {
   const { category: slug } = await params;
   let cat;
   try {
-    cat = await publicApi.getGalleryCategory(slug);
+    cat = await serverPublicApi.getGalleryCategory(slug);
   } catch {
     notFound();
   }
 
-  const allImages = await publicApi.getGalleryImages().catch(() => []);
+  const allImages = await serverPublicApi.getGalleryImages().catch(() => []);
   const images = allImages.filter((img) => {
     const catId = typeof img.categoryId === 'object' ? img.categoryId._id : img.categoryId;
     return catId === cat._id;

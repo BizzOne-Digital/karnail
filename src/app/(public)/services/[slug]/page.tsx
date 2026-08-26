@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
-import { publicApi } from '@/services/api';
+import { serverPublicApi } from '@/services/server-public-api';
 import { SectionHero } from '@/components/public/SectionHero';
 import { Button } from '@/components/ui/Button';
 import { getImageUrl } from '@/lib/utils';
@@ -13,7 +13,7 @@ interface Props {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   try {
     const { slug } = await params;
-    const service = await publicApi.getService(slug);
+    const service = await serverPublicApi.getService(slug);
     return {
       title: service.seoTitle || service.title,
       description: service.seoDescription || service.shortDescription,
@@ -27,7 +27,7 @@ export default async function ServiceDetailPage({ params }: Props) {
   const { slug } = await params;
   let service;
   try {
-    service = await publicApi.getService(slug);
+    service = await serverPublicApi.getService(slug);
   } catch {
     notFound();
   }

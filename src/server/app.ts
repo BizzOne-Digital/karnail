@@ -18,6 +18,7 @@ let app: express.Express | null = null;
 function createApp(): express.Express {
   const server = express();
 
+  server.set('trust proxy', 1);
   server.use(helmet({ crossOriginResourcePolicy: { policy: 'cross-origin' } }));
   server.use(mongoSanitize());
   server.use(cookieParser(config.cookieSecret));

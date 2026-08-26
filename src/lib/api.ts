@@ -3,16 +3,20 @@ function getApiBaseUrl(): string {
     return '/api';
   }
 
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '');
-  if (siteUrl) {
-    return `${siteUrl}/api`;
+  if (process.env.PORT) {
+    return `http://127.0.0.1:${process.env.PORT}/api`;
   }
 
   if (process.env.VERCEL_URL) {
     return `https://${process.env.VERCEL_URL}/api`;
   }
 
-  return process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000/api';
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '');
+  if (siteUrl) {
+    return `${siteUrl}/api`;
+  }
+
+  return 'http://127.0.0.1:3000/api';
 }
 
 interface FetchOptions extends RequestInit {

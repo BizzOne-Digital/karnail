@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { publicApi } from '@/services/api';
+import { serverPublicApi } from '@/services/server-public-api';
 import { SectionHero } from '@/components/public/SectionHero';
 import { Button } from '@/components/ui/Button';
 import Image from 'next/image';
@@ -8,7 +8,7 @@ import type { PageSection } from '@/types';
 
 export async function generateMetadata(): Promise<Metadata> {
   try {
-    const page = await publicApi.getPage('about');
+    const page = await serverPublicApi.getPage('about');
     return { title: page.seoTitle, description: page.seoDescription };
   } catch {
     return { title: 'About' };
@@ -54,7 +54,7 @@ function ContentSection({ section }: { section: PageSection }) {
 export default async function AboutPage() {
   let page;
   try {
-    page = await publicApi.getPage('about');
+    page = await serverPublicApi.getPage('about');
   } catch {
     page = null;
   }

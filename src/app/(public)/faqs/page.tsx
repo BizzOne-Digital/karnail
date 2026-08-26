@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { publicApi } from '@/services/api';
+import { serverPublicApi } from '@/services/server-public-api';
 import { SectionHero } from '@/components/public/SectionHero';
 import { FAQAccordion } from '@/components/public/FAQAccordion';
 import { Button } from '@/components/ui/Button';
@@ -10,8 +10,8 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function FAQsPage() {
   const [page, faqs] = await Promise.all([
-    publicApi.getPage('faqs').catch(() => null),
-    publicApi.getFAQs(),
+    serverPublicApi.getPage('faqs').catch(() => null),
+    serverPublicApi.getFAQs(),
   ]);
 
   const hero = page?.sections?.find((s) => s.sectionKey === 'hero');

@@ -1,14 +1,14 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import { publicApi } from '@/services/api';
+import { serverPublicApi } from '@/services/server-public-api';
 import { SectionHero } from '@/components/public/SectionHero';
 import { Button } from '@/components/ui/Button';
 import { getImageUrl } from '@/lib/utils';
 
 export async function generateMetadata(): Promise<Metadata> {
   try {
-    const page = await publicApi.getPage('services');
+    const page = await serverPublicApi.getPage('services');
     return { title: page.seoTitle, description: page.seoDescription };
   } catch {
     return { title: 'Services' };
@@ -17,8 +17,8 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function ServicesPage() {
   const [page, servicesRes] = await Promise.all([
-    publicApi.getPage('services').catch(() => null),
-    publicApi.getServices({ limit: 20 }),
+    serverPublicApi.getPage('services').catch(() => null),
+    serverPublicApi.getServices({ limit: 20 }),
   ]);
 
   const hero = page?.sections?.find((s) => s.sectionKey === 'hero');

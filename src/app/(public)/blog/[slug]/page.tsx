@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
-import { publicApi } from '@/services/api';
+import { serverPublicApi } from '@/services/server-public-api';
 import { formatDate, getImageUrl } from '@/lib/utils';
 
 interface Props {
@@ -12,7 +12,7 @@ interface Props {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   try {
     const { slug } = await params;
-    const blog = await publicApi.getBlog(slug);
+    const blog = await serverPublicApi.getBlog(slug);
     return { title: blog.seoTitle || blog.title, description: blog.seoDescription || blog.excerpt };
   } catch {
     return { title: 'Journal' };
@@ -23,7 +23,7 @@ export default async function BlogDetailPage({ params }: Props) {
   const { slug } = await params;
   let blog;
   try {
-    blog = await publicApi.getBlog(slug);
+    blog = await serverPublicApi.getBlog(slug);
   } catch {
     notFound();
   }

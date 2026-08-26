@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import { publicApi } from '@/services/api';
+import { serverPublicApi } from '@/services/server-public-api';
 import { SectionHero } from '@/components/public/SectionHero';
 import { getImageUrl, getAvailabilityLabel, getPurchaseModeLabel } from '@/lib/utils';
 
@@ -11,8 +11,8 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function ShopPage() {
   const [page, productsRes] = await Promise.all([
-    publicApi.getPage('shop').catch(() => null),
-    publicApi.getProducts({ limit: 50 }),
+    serverPublicApi.getPage('shop').catch(() => null),
+    serverPublicApi.getProducts({ limit: 50 }),
   ]);
 
   const hero = page?.sections?.find((s) => s.sectionKey === 'hero');
