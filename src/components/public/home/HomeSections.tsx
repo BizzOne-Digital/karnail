@@ -13,7 +13,7 @@ export function HomeHero({ section }: { section: PageSection }) {
   const bgImage = section.backgroundImage || HERO_BACKGROUND;
 
   return (
-    <section className="relative w-full max-w-full min-h-[100svh] flex items-center overflow-hidden">
+    <section className="relative w-full max-w-full min-h-[100svh] flex items-start overflow-hidden">
       <div className="absolute inset-0 overflow-hidden">
         <Image
           src={getImageUrl(bgImage)}
@@ -33,7 +33,7 @@ export function HomeHero({ section }: { section: PageSection }) {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,transparent_0%,rgba(9,8,7,0.4)_100%)]" />
 
       {/* Hero content — left aligned like reference */}
-      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 pt-24 sm:pt-28 md:pt-36 pb-16 md:pb-20">
+      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 pt-36 sm:pt-40 md:pt-48 lg:pt-52 pb-16 md:pb-20">
         <div className="max-w-xl lg:max-w-2xl">
           {section.eyebrow && (
             <RevealOnScroll direction="down" delay={0.1}>
