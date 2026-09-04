@@ -6,6 +6,9 @@ export const BRAND_LOGO = '/logo.png';
 /** Default homepage hero background */
 export const HERO_BACKGROUND = '/hero-background.jpg';
 
+/** Default artist portrait for Meet the Artist section */
+export const ARTIST_PORTRAIT = '/artist-portrait.png';
+
 /** Fallback header navigation when CMS settings are unavailable */
 export const DEFAULT_HEADER_NAV: NavItem[] = [
   { label: 'Home', url: '/', isVisible: true, order: 0 },

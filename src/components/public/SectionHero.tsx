@@ -10,6 +10,7 @@ interface SectionHeroProps {
   heading: string;
   description?: string;
   backgroundImage?: string;
+  bannerVerse?: string[];
   className?: string;
   children?: React.ReactNode;
   variant?: 'default' | 'dramatic' | 'cinematic';
@@ -20,6 +21,7 @@ export function SectionHero({
   heading,
   description,
   backgroundImage,
+  bannerVerse,
   className,
   children,
 }: SectionHeroProps) {
@@ -78,6 +80,22 @@ export function SectionHero({
           </RevealOnScroll>
         )}
       </div>
+
+      {bannerVerse && bannerVerse.length > 0 && (
+        <div className="absolute bottom-20 sm:bottom-24 left-0 right-0 z-10 px-4 sm:px-6 pointer-events-none">
+          <div className="max-w-2xl mx-auto text-center space-y-1 sm:space-y-1.5">
+            {bannerVerse.map((line, index) => (
+              <p
+                key={line}
+                className="hero-verse-line font-display text-sm sm:text-base md:text-lg text-warm-cream/90 italic leading-relaxed"
+                style={{ animationDelay: `${index * 0.75}s` }}
+              >
+                {line}
+              </p>
+            ))}
+          </div>
+        </div>
+      )}
 
       <div className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-warm-gray/50 hidden sm:flex">
         <span className="text-[10px] tracking-[0.3em] uppercase">Scroll</span>

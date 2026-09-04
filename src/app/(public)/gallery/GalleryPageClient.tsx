@@ -8,6 +8,7 @@ import { GalleryLightbox } from '@/components/public/GalleryLightbox';
 import { GlowButton } from '@/components/animations/InteractiveElements';
 import { StaggerChildren, StaggerItem } from '@/components/animations/MotionPrimitives';
 import { TiltFrame } from '@/components/animations/InteractiveElements';
+import { GalleryScrollRows } from '@/components/public/gallery/GalleryScrollRows';
 import { getImageUrl } from '@/lib/utils';
 import type { GalleryCategory, GalleryImage, Page } from '@/types';
 
@@ -40,6 +41,8 @@ export default function GalleryPageClient({ page, categories, images }: GalleryP
         description={hero?.description}
         backgroundImage={hero?.backgroundImage}
       />
+
+      <GalleryScrollRows categories={categories} images={images} />
 
       <section className="py-12 sm:py-16 bg-gallery-black border-b border-warm-gray/10 overflow-hidden w-full max-w-full">
         <div className="max-w-7xl mx-auto px-4 w-full">

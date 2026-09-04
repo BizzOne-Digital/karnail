@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { getImageUrl, formatDate } from '@/lib/utils';
-import { HERO_BACKGROUND } from '@/lib/brand';
+import { HERO_BACKGROUND, ARTIST_PORTRAIT } from '@/lib/brand';
 import { SplitText, RevealOnScroll, StaggerChildren, StaggerItem, PaintStrokeReveal } from '@/components/animations/MotionPrimitives';
 import { TiltFrame, Magnetic, GlowButton } from '@/components/animations/InteractiveElements';
 import { HorizontalScrollSection, AutoScrollMarquee } from '@/components/animations/ScrollEffects';
@@ -256,21 +256,35 @@ export function CTASection({ section }: { section: PageSection }) {
 }
 
 export function MeetArtist({ section }: { section: PageSection }) {
+  const portrait = section.mainImage || ARTIST_PORTRAIT;
+  const extras = section.additionalImages?.map((i) => i.url).filter(Boolean) || [];
+  const images = [portrait, ...extras].slice(0, 4);
+
   return (
     <section className="py-16 sm:py-24 md:py-32 bg-gallery-black overflow-hidden w-full max-w-full">
       <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-16 items-center">
         <RevealOnScroll direction="up">
-          <div className="grid grid-cols-2 gap-4">
-            {[section.mainImage, ...(section.additionalImages?.map((i) => i.url) || [])].slice(0, 4).map((img, i) => (
-              <TiltFrame key={i} className={i === 0 ? 'col-span-2' : ''}>
-                <div className="gallery-frame">
-                  <div className={`gallery-frame-inner relative bg-soft-black ${i === 0 ? 'aspect-[16/10]' : 'aspect-square'}`}>
-                    {img ? <Image src={getImageUrl(img)} alt="" fill className="object-cover" /> : <div className="w-full h-full bg-gradient-to-br from-deep-oxblood/30 to-soft-black" />}
-                  </div>
+          {images.length === 1 ? (
+            <TiltFrame>
+              <div className="gallery-frame max-w-md mx-auto lg:mx-0 lg:max-w-none">
+                <div className="gallery-frame-inner relative bg-soft-black aspect-[4/5]">
+                  <Image src={getImageUrl(images[0])} alt="Sukh D. H. Khokhar" fill className="object-cover object-top" />
                 </div>
-              </TiltFrame>
-            ))}
-          </div>
+              </div>
+            </TiltFrame>
+          ) : (
+            <div className="grid grid-cols-2 gap-4">
+              {images.map((img, i) => (
+                <TiltFrame key={i} className={i === 0 ? 'col-span-2' : ''}>
+                  <div className="gallery-frame">
+                    <div className={`gallery-frame-inner relative bg-soft-black ${i === 0 ? 'aspect-[16/10]' : 'aspect-square'}`}>
+                      <Image src={getImageUrl(img)} alt="" fill className="object-cover" />
+                    </div>
+                  </div>
+                </TiltFrame>
+              ))}
+            </div>
+          )}
         </RevealOnScroll>
         <RevealOnScroll direction="up">
           <p className="font-dramatic text-aged-gold text-xs tracking-[0.25em] sm:tracking-[0.3em] uppercase mb-4">The Artist</p>
