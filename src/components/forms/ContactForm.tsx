@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -19,6 +20,8 @@ const schema = z.object({
 type FormData = z.infer<typeof schema>;
 
 export function ContactForm() {
+  const searchParams = useSearchParams();
+  const subjectParam = searchParams.get('subject');
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [refNumber, setRefNumber] = useState('');
 
@@ -26,11 +29,22 @@ export function ContactForm() {
     register,
     handleSubmit,
     reset,
+    setValue,
     formState: { errors },
   } = useForm<FormData>({
     resolver: zodResolver(schema),
-    defaultValues: { enquiryType: 'general' },
+    defaultValues: {
+      enquiryType: subjectParam ? 'book' : 'general',
+      artworkOrService: subjectParam || '',
+    },
   });
+
+  useEffect(() => {
+    if (subjectParam) {
+      setValue('enquiryType', 'book');
+      setValue('artworkOrService', subjectParam);
+    }
+  }, [subjectParam, setValue]);
 
   const onSubmit = async (data: FormData) => {
     setStatus('loading');
@@ -94,6 +108,7 @@ export function ContactForm() {
             className="w-full bg-gallery-black border border-warm-gray/30 text-warm-cream px-4 py-3 focus:outline-none focus:border-aged-gold"
           >
             <option value="general">General Enquiry</option>
+            <option value="book">Book Enquiry</option>
             <option value="artwork">Artwork Enquiry</option>
             <option value="mural">Mural Enquiry</option>
             <option value="commission">Commission Enquiry</option>
@@ -105,7 +120,7 @@ export function ContactForm() {
         <label className="block text-sm text-muted-beige mb-2">Artwork or Service</label>
         <input
           {...register('artworkOrService')}
-          placeholder="e.g. Whispers of the Ancient Forest"
+          placeholder="e.g. The Mystery of the Rose"
           className="w-full bg-gallery-black border border-warm-gray/30 text-warm-cream px-4 py-3 focus:outline-none focus:border-aged-gold"
         />
       </div>

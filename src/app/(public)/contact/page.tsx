@@ -1,8 +1,10 @@
 import { Metadata } from 'next';
+import { Suspense } from 'react';
 import { serverPublicApi } from '@/services/server-public-api';
 import { SectionHero } from '@/components/public/SectionHero';
 import { ContactForm } from '@/components/forms/ContactForm';
 import { FAQAccordion } from '@/components/public/FAQAccordion';
+import { CONTACT_EMAIL, CONTACT_LINKS } from '@/lib/contact-info';
 
 export async function generateMetadata(): Promise<Metadata> {
   return { title: 'Contact' };
@@ -18,6 +20,10 @@ export default async function ContactPage() {
   const hero = page?.sections?.find((s) => s.sectionKey === 'hero');
   const general = settings?.general;
 
+  const email = general?.email || CONTACT_EMAIL;
+  const artPalUrl = general?.artPalUrl || CONTACT_LINKS.artPal;
+  const authorWebsite = CONTACT_LINKS.mysteryOfTheRose;
+
   return (
     <>
       <SectionHero
@@ -31,38 +37,50 @@ export default async function ContactPage() {
         <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-16">
           <div>
             <h2 className="font-display text-3xl text-warm-cream mb-6">Start a Conversation</h2>
-            <ContactForm />
+            <Suspense fallback={<div className="text-muted-beige">Loading form...</div>}>
+              <ContactForm />
+            </Suspense>
           </div>
 
           <div>
             <h2 className="font-display text-3xl text-warm-cream mb-6">Contact Information</h2>
-            <div className="space-y-4 text-muted-beige">
+            <div className="space-y-6 text-muted-beige">
               <div>
-                <p className="text-aged-gold text-sm mb-1">Email</p>
-                <a href={`mailto:${general?.email}`} className="hover:text-warm-cream transition-colors">{general?.email}</a>
-              </div>
-              <div>
-                <p className="text-aged-gold text-sm mb-1">Phone</p>
-                <p>{general?.phone}</p>
-              </div>
-              <div>
-                <p className="text-aged-gold text-sm mb-1">Website</p>
-                <p>{general?.website}</p>
-              </div>
-              <div>
-                <p className="text-aged-gold text-sm mb-1">ArtPal</p>
-                <a href={general?.artPalUrl} target="_blank" rel="noopener noreferrer" className="hover:text-warm-cream transition-colors">
-                  View ArtPal Collection
+                <p className="text-aged-gold text-sm mb-1 tracking-wide uppercase">Email</p>
+                <a href={`mailto:${email}`} className="text-lg hover:text-warm-cream transition-colors">
+                  {email}
                 </a>
               </div>
-              {general?.socialLinks?.map((link) => (
-                <div key={link.platform}>
-                  <p className="text-aged-gold text-sm mb-1">{link.platform}</p>
-                  <a href={link.url} target="_blank" rel="noopener noreferrer" className="hover:text-warm-cream transition-colors">
-                    {link.username || link.url}
+              <div>
+                <p className="text-aged-gold text-sm mb-1 tracking-wide uppercase">Art Gallery</p>
+                <a
+                  href={artPalUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-lg hover:text-warm-cream transition-colors"
+                >
+                  {CONTACT_LINKS.artPalLabel}
+                </a>
+              </div>
+              <div>
+                <p className="text-aged-gold text-sm mb-1 tracking-wide uppercase">Author Website</p>
+                <a
+                  href={authorWebsite}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-lg hover:text-warm-cream transition-colors"
+                >
+                  {CONTACT_LINKS.mysteryOfTheRoseLabel}
+                </a>
+              </div>
+              {general?.phone && (
+                <div>
+                  <p className="text-aged-gold text-sm mb-1 tracking-wide uppercase">Phone</p>
+                  <a href={`tel:${general.phone.replace(/\D/g, '')}`} className="hover:text-warm-cream transition-colors">
+                    {general.phone}
                   </a>
                 </div>
-              ))}
+              )}
             </div>
           </div>
         </div>

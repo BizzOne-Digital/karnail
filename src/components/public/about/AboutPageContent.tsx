@@ -2,14 +2,17 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   ABOUT_AUTHOR_PARAGRAPHS,
   ARTIST_STATEMENT,
   BOOK_REVIEWS,
   FAMILY_BACKGROUND_INSERTS,
   GALLERY_PROMO,
+  MULTICULTURAL_PUBLICATIONS,
   UPCOMING_2027_EDITIONS,
 } from '@/lib/about-content';
+import { DARK_MYSTERY_SPELLBOUND } from '@/lib/book-content';
 
 const TABS = [
   { id: 'author', label: 'About the Author' },
@@ -120,31 +123,113 @@ export function AboutPageContent() {
       </section>
 
       <section className="py-16 sm:py-24 bg-soft-black">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <p className="font-dramatic text-aged-gold text-xs tracking-[0.3em] uppercase mb-2 text-center">
             Heritage
           </p>
-          <h2 className="font-display text-3xl sm:text-4xl text-warm-cream mb-12 text-center">
+          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl text-warm-cream mb-14 sm:mb-16 text-center uppercase tracking-wide">
             Historical Family Background
           </h2>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10">
-            {FAMILY_BACKGROUND_INSERTS.map((insert, i) => (
-              <div
-                key={insert.heading}
-                className="border border-warm-gray/10 bg-gallery-black p-8 sm:p-10 relative overflow-hidden"
-              >
-                <span className="absolute top-4 right-6 font-display text-6xl text-artist-crimson/10 leading-none">
-                  {i + 1}
-                </span>
-                <h3 className="font-display text-xl sm:text-2xl text-warm-cream mb-4 pr-12">{insert.heading}</h3>
-                <p className="text-muted-beige leading-relaxed">{insert.body}</p>
-              </div>
+
+          <div className="space-y-20 sm:space-y-28">
+            {FAMILY_BACKGROUND_INSERTS.map((insert) => (
+              <article key={insert.heading} className="border border-warm-gray/10 bg-gallery-black p-6 sm:p-10 md:p-12">
+                <h3 className="font-display text-xl sm:text-2xl text-warm-cream mb-6 sm:mb-8 uppercase tracking-wide text-center">
+                  {insert.heading}
+                </h3>
+
+                {insert.portraitStrip && (
+                  <div className="mb-8 sm:mb-10">
+                    <div className="gallery-frame max-w-4xl mx-auto">
+                      <div className="gallery-frame-inner relative aspect-[16/9] sm:aspect-[2/1] bg-soft-black">
+                        <Image
+                          src={insert.portraitStrip.image}
+                          alt={insert.portraitStrip.alt}
+                          fill
+                          className="object-contain object-center p-2 sm:p-4"
+                          sizes="(max-width: 896px) 100vw, 896px"
+                        />
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4 max-w-4xl mx-auto text-center">
+                      {insert.portraitStrip.captions.map((caption) => (
+                        <p key={caption} className="text-artist-crimson text-sm sm:text-base font-medium">
+                          {caption}
+                        </p>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {insert.intro && (
+                  <p className="text-muted-beige leading-relaxed text-base sm:text-lg mb-8 text-center max-w-3xl mx-auto">
+                    {insert.intro}
+                  </p>
+                )}
+
+                {insert.portrait && (
+                  <div className="mb-8 sm:mb-10 max-w-md mx-auto">
+                    <div className="gallery-frame">
+                      <div className="gallery-frame-inner relative aspect-[3/4] bg-soft-black">
+                        <Image
+                          src={insert.portrait.image}
+                          alt={insert.portrait.alt}
+                          fill
+                          className="object-contain object-center p-2"
+                          sizes="(max-width: 448px) 100vw, 448px"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                <div className="prose-content text-base sm:text-lg space-y-4 max-w-3xl mx-auto">
+                  {insert.paragraphs.map((p) => (
+                    <p key={p.slice(0, 48)}>
+                      {insert.heading === 'Sardar Natha Singh'
+                        ? p.split('Koh-i-Noor Diamond').map((part, idx, arr) => (
+                            <span key={idx}>
+                              {part}
+                              {idx < arr.length - 1 && <strong>Koh-i-Noor Diamond</strong>}
+                            </span>
+                          ))
+                        : p}
+                    </p>
+                  ))}
+                </div>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
       <section className="py-16 sm:py-24 bg-gallery-black">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6">
+          <p className="font-dramatic text-aged-gold text-xs tracking-[0.3em] uppercase mb-2 text-center">
+            Publications
+          </p>
+          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl text-warm-cream mb-10 text-center uppercase tracking-wide">
+            {MULTICULTURAL_PUBLICATIONS.title}
+          </h2>
+          <ul className="space-y-4 border border-warm-gray/10 bg-soft-black/40 p-6 sm:p-10">
+            {MULTICULTURAL_PUBLICATIONS.works.map((work) => (
+              <li
+                key={work.title}
+                className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 sm:gap-6 py-3 border-b border-warm-gray/10 last:border-0 text-muted-beige"
+              >
+                <span className="text-warm-cream font-display text-lg sm:text-xl">{work.title}</span>
+                <span className="text-aged-gold text-sm tracking-wider shrink-0">({work.year})</span>
+              </li>
+            ))}
+          </ul>
+          <p className="text-muted-beige text-sm text-center mt-8 leading-relaxed">
+            Author and compiler of a series of multicultural education resource books, alongside poetry and lyrical
+            anthologies spanning decades of community leadership and creative work.
+          </p>
+        </div>
+      </section>
+
+      <section className="py-16 sm:py-24 bg-soft-black">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <p className="font-dramatic text-aged-gold text-xs tracking-[0.3em] uppercase mb-2 text-center">
             Online Gallery
@@ -187,7 +272,7 @@ export function AboutPageContent() {
             {UPCOMING_2027_EDITIONS.map((edition) => (
               <Link
                 key={edition.slug}
-                href={`/blog/${edition.slug}`}
+                href="/books"
                 className="group block bg-gallery-black border border-warm-gray/10 hover:border-artist-crimson/40 p-8 sm:p-10 transition-all duration-300"
               >
                 <span className="inline-block text-xs tracking-[0.2em] uppercase text-aged-gold mb-3">
@@ -204,8 +289,28 @@ export function AboutPageContent() {
             ))}
           </div>
           <div className="text-center mt-10">
-            <Link href="/blog" className="text-aged-gold text-sm tracking-widest uppercase hover:text-warm-cream transition-colors">
-              View All Journal Entries →
+            <Link href="/books" className="text-aged-gold text-sm tracking-widest uppercase hover:text-warm-cream transition-colors">
+              Read Full Book Descriptions →
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 sm:py-24 bg-soft-black border-y border-warm-gray/10">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6">
+          <p className="font-dramatic text-artist-crimson text-xs sm:text-sm tracking-[0.25em] uppercase mb-3 text-center">
+            {DARK_MYSTERY_SPELLBOUND.tagline}
+          </p>
+          <h2 className="font-display text-2xl sm:text-3xl text-warm-cream mb-6 text-center">
+            {DARK_MYSTERY_SPELLBOUND.title}
+          </h2>
+          <p className="prose-content text-base sm:text-lg text-center">{DARK_MYSTERY_SPELLBOUND.paragraphs[0]}</p>
+          <div className="text-center mt-8">
+            <Link
+              href="/books"
+              className="inline-flex items-center justify-center border border-warm-cream/50 text-warm-cream px-6 py-3 text-[11px] tracking-[0.16em] uppercase hover:bg-warm-cream/10 transition-colors"
+            >
+              Buy the Books
             </Link>
           </div>
         </div>

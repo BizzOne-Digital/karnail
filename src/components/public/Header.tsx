@@ -36,13 +36,13 @@ export default function Header({ settings }: HeaderProps) {
     <>
       <header
         className={cn(
-          'fixed top-0 left-0 right-0 z-50 w-full max-w-full transition-all duration-500',
+          'fixed top-0 left-0 right-0 z-50 w-full max-w-full transition-all duration-500 pt-[env(safe-area-inset-top,0px)]',
           scrolled
-            ? 'bg-gallery-black/95 backdrop-blur-md border-b border-aged-gold/20 py-3'
-            : 'bg-transparent py-5 md:py-6'
+            ? 'bg-gallery-black/95 backdrop-blur-md border-b border-aged-gold/20 py-2.5 sm:py-3'
+            : 'max-lg:bg-gallery-black/80 max-lg:backdrop-blur-md max-lg:border-b max-lg:border-aged-gold/10 py-2.5 sm:py-3 lg:bg-transparent lg:py-5 xl:py-6'
         )}
       >
-        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10">
+        <div className="max-w-[1400px] mx-auto px-3 sm:px-6 lg:px-10">
           {/* Desktop: logo | centered nav | CTA */}
           <div className="hidden lg:grid lg:grid-cols-[1fr_auto_1fr] items-center gap-4">
             <Link href="/" className="flex items-center justify-self-start group shrink-0" data-cursor aria-label={logoText}>
@@ -90,29 +90,36 @@ export default function Header({ settings }: HeaderProps) {
             </div>
           </div>
 
-          {/* Mobile */}
-          <div className="flex lg:hidden items-center justify-between">
-            <Link href="/" className="shrink-0" aria-label={logoText}>
-              <Image
-                src={getImageUrl(logoImage)}
-                alt={logoText}
-                width={200}
-                height={56}
-                priority
-                className="h-12 w-auto object-contain"
-              />
+          {/* Mobile — crop wide banner logo to icon + name only */}
+          <div className="flex lg:hidden items-center justify-between gap-3 min-h-[44px] overflow-hidden">
+            <Link href="/" className="min-w-0 shrink" aria-label={logoText}>
+              <div className="relative h-9 w-[8.25rem] sm:h-10 sm:w-[9.5rem] overflow-hidden">
+                <Image
+                  src={getImageUrl(logoImage)}
+                  alt={logoText}
+                  width={320}
+                  height={80}
+                  priority
+                  className="h-full w-auto max-w-none object-left object-contain"
+                />
+              </div>
             </Link>
-            <div className="flex items-center gap-3">
-              <Link href="/cart" className="relative text-warm-cream p-1">
-                <ShoppingBag size={20} />
+            <div className="flex items-center shrink-0 gap-1.5 sm:gap-2">
+              <Link href="/cart" className="relative text-warm-cream p-2 -mr-0.5" aria-label="Cart">
+                <ShoppingBag size={20} strokeWidth={1.5} />
                 {totalItems > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-artist-crimson text-warm-cream text-xs w-4 h-4 rounded-full flex items-center justify-center">
+                  <span className="absolute top-0.5 right-0.5 bg-artist-crimson text-warm-cream text-[10px] w-4 h-4 rounded-full flex items-center justify-center">
                     {totalItems}
                   </span>
                 )}
               </Link>
-              <button onClick={() => setMobileOpen(true)} className="text-warm-cream p-1" aria-label="Open menu">
-                <Menu size={26} />
+              <button
+                type="button"
+                onClick={() => setMobileOpen(true)}
+                className="text-warm-cream p-2 -mr-1"
+                aria-label="Open menu"
+              >
+                <Menu size={24} strokeWidth={1.75} />
               </button>
             </div>
           </div>

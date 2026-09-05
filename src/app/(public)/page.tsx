@@ -1,3 +1,4 @@
+import { loadGalleryImagesFromDisk } from '@/lib/load-gallery-images';
 import { serverPublicApi } from '@/services/server-public-api';
 import {
   HomeHero,
@@ -14,14 +15,14 @@ import type { PageSection } from '@/types';
 
 async function getHomeData() {
   try {
-    const [page, productsRes, servicesRes, blogsRes, testimonials, galleryImages] = await Promise.all([
+    const [page, productsRes, servicesRes, blogsRes, testimonials] = await Promise.all([
       serverPublicApi.getPage('home'),
       serverPublicApi.getProducts({ featured: true, limit: 6 }),
       serverPublicApi.getServices({ featured: true, limit: 6 }),
       serverPublicApi.getBlogs({ limit: 3 }),
       serverPublicApi.getTestimonials({ featured: true }),
-      serverPublicApi.getGalleryImages({ featured: true }),
     ]);
+    const galleryImages = loadGalleryImagesFromDisk().filter((img) => img.isFeatured);
 
     return {
       page,
@@ -32,7 +33,14 @@ async function getHomeData() {
       galleryImages,
     };
   } catch {
-    return { page: null, products: [], services: [], blogs: [], testimonials: [], galleryImages: [] };
+    return {
+      page: null,
+      products: [],
+      services: [],
+      blogs: [],
+      testimonials: [],
+      galleryImages: loadGalleryImagesFromDisk().filter((img) => img.isFeatured),
+    };
   }
 }
 

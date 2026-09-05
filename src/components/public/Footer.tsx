@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { RevealOnScroll } from '@/components/animations/MotionPrimitives';
 import { getImageUrl } from '@/lib/utils';
-import { BRAND_LOGO, DEFAULT_HEADER_NAV } from '@/lib/brand';
+import { BRAND_LOGO, DEFAULT_HEADER_NAV, CONTACT_EMAIL, CONTACT_LINKS } from '@/lib/brand';
 import type { SiteSettings } from '@/types';
 
 interface FooterProps {
@@ -73,16 +73,23 @@ export default function Footer({ settings }: FooterProps) {
               <h4 className="font-dramatic text-sm text-aged-gold tracking-[0.2em] uppercase mb-6">Contact</h4>
               <ul className="space-y-3 text-sm text-muted-beige">
                 <li>
-                  <a href={`mailto:${footer?.contactInfo?.email || general?.email}`} className="hover:text-warm-cream transition-colors">
-                    {footer?.contactInfo?.email || general?.email}
+                  <a href={`mailto:${footer?.contactInfo?.email || general?.email || CONTACT_EMAIL}`} className="hover:text-warm-cream transition-colors">
+                    {footer?.contactInfo?.email || general?.email || CONTACT_EMAIL}
                   </a>
                 </li>
-                <li>{footer?.contactInfo?.phone || general?.phone}</li>
                 <li>
-                  <a href={general?.artPalUrl || 'https://www.artpal.com/sukh2'} target="_blank" rel="noopener noreferrer" className="hover:text-aged-gold transition-colors">
-                    ArtPal Collection →
+                  <a href={general?.artPalUrl || CONTACT_LINKS.artPal} target="_blank" rel="noopener noreferrer" className="hover:text-warm-cream transition-colors">
+                    {CONTACT_LINKS.artPalLabel}
                   </a>
                 </li>
+                <li>
+                  <a href={CONTACT_LINKS.mysteryOfTheRose} target="_blank" rel="noopener noreferrer" className="hover:text-warm-cream transition-colors">
+                    {CONTACT_LINKS.mysteryOfTheRoseLabel}
+                  </a>
+                </li>
+                {(footer?.contactInfo?.phone || general?.phone) && (
+                  <li>{footer?.contactInfo?.phone || general?.phone}</li>
+                )}
               </ul>
               <div className="flex flex-wrap gap-4 mt-6">
                 {(footer?.socialLinks || general?.socialLinks || []).map((link) => (

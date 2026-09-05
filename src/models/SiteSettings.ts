@@ -99,9 +99,9 @@ const siteSettingsSchema = new Schema<ISiteSettings>(
         default:
           'Mystery writer, mural artist, and visual storyteller creating captivating art that blends imagination, colour, and narrative.',
       },
-      email: { type: String, default: 'Sukh2@live.com' },
+      email: { type: String, default: 'khokharsukh@gmail.com' },
       phone: { type: String, default: '(403) 991-5694' },
-      website: { type: String, default: 'www.sukhkhokharmysteryart.com' },
+      website: { type: String, default: 'www.mysteryoftherose.com' },
       address: { type: String, default: '' },
       socialLinks: [socialLinkSchema],
       artPalUrl: { type: String, default: 'https://www.artpal.com/sukh2' },
@@ -155,9 +155,9 @@ const siteSettingsSchema = new Schema<ISiteSettings>(
           'Captivating mystical art by Sukh D. H. Khokhar — mystery writer, mural artist, and visual storyteller.',
       },
       contactInfo: {
-        email: { type: String, default: 'Sukh2@live.com' },
+        email: { type: String, default: 'khokharsukh@gmail.com' },
         phone: { type: String, default: '(403) 991-5694' },
-        website: { type: String, default: 'www.sukhkhokharmysteryart.com' },
+        website: { type: String, default: 'www.mysteryoftherose.com' },
       },
       socialLinks: [socialLinkSchema],
       copyright: {
@@ -194,7 +194,7 @@ const siteSettingsSchema = new Schema<ISiteSettings>(
       },
     },
     email: {
-      adminNotificationEmail: { type: String, default: 'Sukh2@live.com' },
+      adminNotificationEmail: { type: String, default: 'khokharsukh@gmail.com' },
       senderName: { type: String, default: 'Sukh D. H. Khokhar' },
       customerConfirmationMessage: {
         type: String,

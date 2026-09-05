@@ -20,7 +20,7 @@ export default function PrivacyPage() {
           <h2 className="font-display text-2xl text-warm-cream">Data Security</h2>
           <p>We take reasonable measures to protect your personal information. We do not sell or share your data with third parties for marketing purposes.</p>
           <h2 className="font-display text-2xl text-warm-cream">Contact</h2>
-          <p>For privacy-related questions, contact us at Sukh2@live.com.</p>
+          <p>For privacy-related questions, contact us at khokharsukh@gmail.com.</p>
         </div>
       </section>
     </>

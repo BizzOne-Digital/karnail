@@ -85,16 +85,65 @@ export const BOOK_REVIEWS: BookReview[] = [
   },
 ];
 
-export const FAMILY_BACKGROUND_INSERTS = [
+export interface FamilyBackgroundInsert {
+  heading: string;
+  intro?: string;
+  paragraphs: string[];
+  /** Side-by-side portrait strip (e.g. Captain Ram Singh) */
+  portraitStrip?: {
+    image: string;
+    alt: string;
+    captions: [string, string];
+  };
+  /** Single centred portrait (e.g. Sardar Natha Singh) */
+  portrait?: {
+    image: string;
+    alt: string;
+  };
+}
+
+export const FAMILY_BACKGROUND_INSERTS: FamilyBackgroundInsert[] = [
   {
-    heading: 'Historical Roots & Heritage',
-    body: 'Drawing from rich historical and familial narratives, Sukh D. H. Khokhar\'s work is deeply informed by the cultural tapestry of India under British rule—the political intrigue, the struggle for independence, and the intimate stories of families caught between worlds. Her debut novel, The Mystery of the Rose, weaves the love story of Pearly Ruby Boone with the fate of a nation, portraying India from the 1880s through the 1940s with vivid historical authenticity.',
+    heading: 'Captain Ram Singh',
+    portraitStrip: {
+      image: '/family/captain-ram-singh-portraits.png',
+      alt: 'Captain Ram Singh — ADC to Lord Curzon and Maharaja Bhupindra of Patiala',
+      captions: [
+        'ADC to Lord Curzon, Viceroy of India',
+        'ADC to Maharaja Bhupindra of Patiala',
+      ],
+    },
+    paragraphs: [
+      'The inspiration and historical background for the novel, The Mystery of the Rose: The Return of the Prince, came from the life and times of my great-grandfather, Captain Ram Singh, who served as the aide-de-camp (ADC) to Lord Curzon, the British Viceroy of India. He led a contingent of 100 Sikh soldiers to England in 1903 to participate in the coronation of Edward VII. He had the distinct honor of being a royal guest for 22 days in London and at the State Durbar in Delhi in 1903; and was awarded the Order of the British India (OBI). The proceedings of the event are recorded at the Victoria and Albert Museum in England.',
+      'His contributions to India included bringing fame to the Indian Army by fighting meritoriously in the Sudan Campaigns of 1884–85 and on the North-West Frontier of India in 1897–98 as part of the 15th Sikh Battalion. He was awarded the title of ‘Sardar Bahadur,’ meaning \'Brave Heart,\' for his courage. Following his retirement as ADC to Lord Curzon in 1908, he was appointed aide-de-camp to His Highness, Maharaja Bhupindra of the Patiala State. He later joined the Akali Agitations of the 1920s to fight for India\'s freedom and relinquished his OBI. He was jailed with fellow freedom fighters from 1923 to 1926. He displayed enormous courage in standing up for the cause of recovering the keys to the Golden Temple treasury from the British in 1920, following the 1919 Jallianwala Bagh massacre in Amritsar, Punjab.',
+    ],
   },
   {
-    heading: 'A Legacy of Story & Spirit',
-    body: 'Raised with exposure to Vedic poetry from her native India alongside English poetry from the Elizabethan Era through the Classical period, Sukh carries forward a dual literary heritage. This fusion of Eastern spiritual tradition and Western literary form shapes her unique voice—one that explores the connection between the visible and invisible, matter and spirit, and the eternal continuum from Source to creation and back again.',
+    heading: 'Sardar Natha Singh',
+    intro:
+      'My great-great-grandfather, Natha Singh, was an ADC to Prince Nau Nihal Singh, the grandson of Maharaja Ranjit Singh at Shahpur Kandi Fort.',
+    portrait: {
+      image: '/family/natha-singh.png',
+      alt: 'Sardar Natha Singh — digital archival portrait by Sukh D. H. Khokhar',
+    },
+    paragraphs: [
+      'Sardar Natha Singh served as an ADC to Prince Nau Nihal Singh at the Court of Maharaja Ranjit Singh; later, as Killadar of Shahpur Kandi Fort, he fulfilled the tough assignment of safekeeping and ferrying the famous Koh-i-Noor Diamond to Bombay en route to London with his four confidants. According to the family archives, the Koh-i-Noor Diamond was stored in our ancestral mansion in Sunam for one week for safekeeping before its planned departure to London.',
+    ],
   },
 ];
+
+export const MULTICULTURAL_PUBLICATIONS = {
+  title: 'Author of Multicultural Resource Books and Poetry',
+  works: [
+    { title: 'The Changing Face of the RCMP', year: 1996 },
+    { title: 'Discovering Faces of Discrimination', year: 2001 },
+    { title: 'Integrating Diversity into the Workforce', year: 2003 },
+    { title: 'A Study of East Indian and Aboriginal Cultures', year: 2004 },
+    { title: 'Removing Barriers to Equal Opportunities', year: 2005 },
+    { title: "Newcomers' Guide to Thompson", year: 2008 },
+    { title: 'Walking in Dreams — Anthology of Lyrics', year: 1984 },
+  ],
+} as const;
 
 export const GALLERY_PROMO = {
   title: 'Discover the Captivating Art of Sukh D. H. Khokhar',
@@ -110,14 +159,14 @@ export const UPCOMING_2027_EDITIONS = [
     slug: 'dark-mystery-2027-spellbound',
     title: 'Dark Mystery 2027 Edition: Spellbound — Arose from the Ashes',
     excerpt:
-      'An illustrated mystical adventure eBook featuring 84 full-color paintings. The story of an angel, disguised as a prince, transformed into a ghost by a jealous demon—trapped in time until faith empowers him to reunite with his true love, Princessa.',
+      'An illustrated mystical adventure across 67 episodes, 6 poetic chapters, and 181 pages — an angel prince transformed into a ghost, seeking reunion with Princessa through darkness into light.',
     year: '2027',
   },
   {
     slug: 'mystery-of-the-rose-2027-edition',
     title: 'The Mystery of the Rose — 2027 Edition',
     excerpt:
-      'The return of Sukh D. H. Khokhar\'s critically acclaimed debut novel—longlisted for the 2013 Crossword Book Award—reimagined for a new generation with enhanced illustrations, poetry, and mystical adventure.',
+      'A mystical adventure of a British family under the spell of India from 1880–1945 — the magical love story of Pearly Ruby Princessa and the rebirth of a nation.',
     year: '2027',
   },
 ];

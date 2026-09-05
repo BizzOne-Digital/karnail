@@ -1,4 +1,5 @@
 import type { NavItem } from '@/types';
+import { CONTACT_EMAIL, CONTACT_LINKS } from '@/lib/contact-info';
 
 /** Default brand logo shipped with the site */
 export const BRAND_LOGO = '/logo.png';
@@ -15,6 +16,9 @@ export const DEFAULT_HEADER_NAV: NavItem[] = [
   { label: 'About', url: '/about', isVisible: true, order: 1 },
   { label: 'Services', url: '/services', isVisible: true, order: 2 },
   { label: 'Gallery', url: '/gallery', isVisible: true, order: 3 },
-  { label: 'Shop', url: '/shop', isVisible: true, order: 4 },
-  { label: 'Contact', url: '/contact', isVisible: true, order: 5 },
+  { label: 'Buy the Books', url: '/books', isVisible: true, order: 4 },
+  { label: 'Shop', url: '/shop', isVisible: true, order: 5 },
+  { label: 'Contact', url: '/contact', isVisible: true, order: 6 },
 ];
+
+export { CONTACT_EMAIL, CONTACT_LINKS };

@@ -20,7 +20,7 @@ export default function TermsPage() {
           <h2 className="font-display text-2xl text-warm-cream">Intellectual Property</h2>
           <p>All paintings, murals, writings, and visual content remain the copyright of the artist. Reproduction without permission is prohibited.</p>
           <h2 className="font-display text-2xl text-warm-cream">Contact</h2>
-          <p>Questions about these terms? Contact Sukh2@live.com.</p>
+          <p>Questions about these terms? Contact khokharsukh@gmail.com.</p>
         </div>
       </section>
     </>

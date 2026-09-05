@@ -4,7 +4,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
 
   const staticPages = [
-    '', '/about', '/services', '/gallery', '/shop', '/testimonials',
+    '', '/about', '/gallery', '/books', '/shop', '/testimonials',
     '/faqs', '/pricing', '/blog', '/contact', '/cart',
   ];
 

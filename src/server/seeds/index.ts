@@ -41,20 +41,38 @@ async function seedSettings() {
     { label: 'About', url: '/about', isVisible: true, order: 1 },
     { label: 'Services', url: '/services', isVisible: true, order: 2 },
     { label: 'Gallery', url: '/gallery', isVisible: true, order: 3 },
-    { label: 'Shop', url: '/shop', isVisible: true, order: 4 },
-    { label: 'Contact', url: '/contact', isVisible: true, order: 5 },
+    { label: 'Buy the Books', url: '/books', isVisible: true, order: 4 },
+    { label: 'Shop', url: '/shop', isVisible: true, order: 5 },
+    { label: 'Contact', url: '/contact', isVisible: true, order: 6 },
   ];
+
+  const contactDefaults = {
+    email: 'khokharsukh@gmail.com',
+    phone: '(403) 991-5694',
+    website: 'www.mysteryoftherose.com',
+    artPalUrl: 'https://www.artpal.com/sukh2',
+  };
 
   const existing = await SiteSettings.findOne();
   if (existing) {
     existing.header.navigation = headerNav;
+    existing.general.email = contactDefaults.email;
+    existing.general.website = contactDefaults.website;
+    existing.general.artPalUrl = contactDefaults.artPalUrl;
+    existing.footer.contactInfo.email = contactDefaults.email;
+    existing.footer.contactInfo.website = contactDefaults.website;
+    existing.email.adminNotificationEmail = contactDefaults.email;
     await existing.save();
-    console.log('Header navigation updated');
+    console.log('Site settings updated');
     return;
   }
 
   await SiteSettings.create({
     general: {
+      email: contactDefaults.email,
+      phone: contactDefaults.phone,
+      website: contactDefaults.website,
+      artPalUrl: contactDefaults.artPalUrl,
       socialLinks: [
         { platform: 'Instagram', url: 'https://instagram.com/Sukhkhokhar47', username: 'Sukhkhokhar47' },
         { platform: 'Facebook', url: 'https://facebook.com/Sukhkhokhar47', username: 'Sukhkhokhar47' },
@@ -62,6 +80,7 @@ async function seedSettings() {
     },
     header: { navigation: headerNav },
     footer: {
+      contactInfo: contactDefaults,
       socialLinks: [
         { platform: 'Instagram', url: 'https://instagram.com/Sukhkhokhar47', username: 'Sukhkhokhar47' },
         { platform: 'Facebook', url: 'https://facebook.com/Sukhkhokhar47', username: 'Sukhkhokhar47' },
