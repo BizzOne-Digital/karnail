@@ -9,6 +9,7 @@ const nextConfig: NextConfig = {
       { pathname: '/hero-background.jpg' },
       { pathname: '/artist-portrait.png' },
       { pathname: '/family/**' },
+      { pathname: '/books/**' },
       { pathname: '/favicon.png' },
       { pathname: '/placeholder-artwork.svg' },
     ],

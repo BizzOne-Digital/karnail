@@ -1,5 +1,86 @@
 /** Extended book descriptions and author narrative */
 
+export interface BookCoverAsset {
+  src: string;
+  alt: string;
+  label?: string;
+}
+
+export interface BookCatalogEntry {
+  id: string;
+  title: string;
+  subtitle?: string;
+  edition?: string;
+  tagline?: string;
+  coverImage: string;
+  coverAlt: string;
+  additionalCovers?: BookCoverAsset[];
+  pdfUrl?: string;
+  status: 'available' | 'upcoming';
+  award?: string;
+}
+
+export const BOOK_CATALOG: BookCatalogEntry[] = [
+  {
+    id: 'spellbound-2027',
+    title: 'Dark Mystery: Spellbound — Arose from the Ashes',
+    subtitle: 'Illustrated Mystical Adventure',
+    edition: '2027 Edition',
+    tagline: 'Story of a Ghost Prince Trapped in Time',
+    coverImage: '/books/dark-mystery-spellbound-2027.jpg',
+    coverAlt: 'Dark Mystery Spellbound 2027 edition book cover',
+    status: 'upcoming',
+  },
+  {
+    id: 'mystery-rose-2027',
+    title: 'The Mystery of the Rose: Return of the Prince',
+    subtitle: 'A Magical Love Story from India under British Rule',
+    edition: '2027 Edition',
+    coverImage: '/books/mystery-rose-return-prince-2027.jpg',
+    coverAlt: 'The Mystery of the Rose Return of the Prince 2027 edition cover',
+    additionalCovers: [
+      {
+        src: '/books/mystery-rose-return-prince-2027-alt.jpg',
+        alt: 'The Mystery of the Rose 2027 alternate cover',
+        label: 'Alternate Cover',
+      },
+      {
+        src: '/books/mystery-rose-return-prince-2027-wrap.jpg',
+        alt: 'The Mystery of the Rose 2027 wraparound cover',
+        label: 'Wraparound Cover',
+      },
+      {
+        src: '/books/mystery-rose-double-cover-2027.jpg',
+        alt: 'The Mystery of the Rose 2027 double cover spread',
+        label: 'Full Cover Spread',
+      },
+    ],
+    award: 'Nominated for the 2013 Crossword Book Award',
+    status: 'upcoming',
+  },
+  {
+    id: 'mystery-rose-2013',
+    title: 'The Mystery of the Rose: The Return of the Prince',
+    subtitle: 'Debut Historical Novel',
+    edition: '2013 Edition',
+    tagline: 'Witness the Rebirth of India in a Magical Love Story of Princessa',
+    coverImage: '/books/mystery-rose-2013-edition.jpg',
+    coverAlt: 'The Mystery of the Rose 2013 edition book cover',
+    award: 'Nominated for the 2013 Crossword Book Award',
+    status: 'available',
+  },
+  {
+    id: 'dark-mystery-demon',
+    title: 'Dark Mystery: I am a Demon, I\'m a Ghost',
+    subtitle: 'Poetry eBook with Illustrations',
+    edition: '2013 Edition',
+    tagline: 'I\'m a demon. I\'m a ghost…',
+    coverImage: '/books/dark-mystery-i-am-a-demon-2013.jpg',
+    coverAlt: 'Dark Mystery I am a Demon I am a Ghost book cover',
+    status: 'available',
+  },
+];
+
 export const DARK_MYSTERY_SPELLBOUND = {
   tagline: 'Into the Realm of Darkness and Light…',
   title: 'Dark Mystery: Spellbound—Arose from the Ashes',
