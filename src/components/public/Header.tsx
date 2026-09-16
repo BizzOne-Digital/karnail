@@ -38,8 +38,8 @@ export default function Header({ settings }: HeaderProps) {
         className={cn(
           'fixed top-0 left-0 right-0 z-50 w-full max-w-full transition-all duration-500 pt-[env(safe-area-inset-top,0px)]',
           scrolled
-            ? 'bg-gallery-black/95 backdrop-blur-md border-b border-aged-gold/20 py-2.5 sm:py-3'
-            : 'max-lg:bg-gallery-black/80 max-lg:backdrop-blur-md max-lg:border-b max-lg:border-aged-gold/10 py-2.5 sm:py-3 lg:bg-transparent lg:py-5 xl:py-6'
+            ? 'bg-light-canvas/95 backdrop-blur-md border-b border-warm-gray/30 py-2.5 sm:py-3 shadow-sm'
+            : 'bg-light-canvas/90 backdrop-blur-sm border-b border-warm-gray/20 py-2.5 sm:py-3 lg:bg-light-canvas/80 lg:py-4 xl:py-5'
         )}
       >
         <div className="max-w-[1400px] mx-auto px-3 sm:px-6 lg:px-10">
@@ -64,7 +64,7 @@ export default function Header({ settings }: HeaderProps) {
                 <Link
                   key={item.url}
                   href={item.url}
-                  className="text-[13px] text-warm-cream/90 hover:text-warm-cream transition-colors tracking-wide font-body whitespace-nowrap"
+                  className="text-[13px] text-deep-oxblood/85 hover:text-artist-crimson transition-colors tracking-wide font-body whitespace-nowrap"
                 >
                   {item.label}
                 </Link>
@@ -72,7 +72,7 @@ export default function Header({ settings }: HeaderProps) {
             </nav>
 
             <div className="flex items-center justify-self-end gap-4">
-              <Link href="/cart" className="relative p-1.5 text-warm-cream/80 hover:text-warm-cream transition-colors" data-cursor aria-label="Cart">
+              <Link href="/cart" className="relative p-1.5 text-deep-oxblood/80 hover:text-artist-crimson transition-colors" data-cursor aria-label="Cart">
                 <ShoppingBag size={18} strokeWidth={1.5} />
                 {totalItems > 0 && (
                   <span className="absolute -top-1 -right-1 bg-artist-crimson text-warm-cream text-[10px] w-4 h-4 rounded-full flex items-center justify-center">
@@ -82,7 +82,7 @@ export default function Header({ settings }: HeaderProps) {
               </Link>
               <Link
                 href={ctaUrl}
-                className="border border-warm-cream/60 text-warm-cream px-5 py-2 text-[11px] tracking-[0.2em] uppercase font-body hover:bg-warm-cream/10 hover:border-warm-cream transition-all duration-300"
+                className="border border-deep-oxblood/50 text-deep-oxblood px-5 py-2 text-[11px] tracking-[0.2em] uppercase font-body hover:bg-deep-oxblood/5 hover:border-artist-crimson transition-all duration-300"
                 data-cursor
               >
                 {ctaText}
@@ -105,7 +105,7 @@ export default function Header({ settings }: HeaderProps) {
               </div>
             </Link>
             <div className="flex items-center shrink-0 gap-1.5 sm:gap-2">
-              <Link href="/cart" className="relative text-warm-cream p-2 -mr-0.5" aria-label="Cart">
+              <Link href="/cart" className="relative text-deep-oxblood p-2 -mr-0.5" aria-label="Cart">
                 <ShoppingBag size={20} strokeWidth={1.5} />
                 {totalItems > 0 && (
                   <span className="absolute top-0.5 right-0.5 bg-artist-crimson text-warm-cream text-[10px] w-4 h-4 rounded-full flex items-center justify-center">
@@ -116,7 +116,7 @@ export default function Header({ settings }: HeaderProps) {
               <button
                 type="button"
                 onClick={() => setMobileOpen(true)}
-                className="text-warm-cream p-2 -mr-1"
+                className="text-deep-oxblood p-2 -mr-1"
                 aria-label="Open menu"
               >
                 <Menu size={24} strokeWidth={1.75} />

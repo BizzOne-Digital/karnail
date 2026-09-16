@@ -55,7 +55,7 @@ export function AboutPageContent() {
 
   return (
     <>
-      <section className="py-12 sm:py-16 bg-gallery-black border-b border-warm-gray/10">
+      <section className="py-12 sm:py-16 bg-light-canvas border-b border-warm-gray/20 text-gallery-black">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <div className="flex flex-wrap gap-2 sm:gap-3 justify-center mb-10">
             {TABS.map((tab) => (
@@ -66,7 +66,7 @@ export function AboutPageContent() {
                 className={`px-4 sm:px-6 py-2.5 text-[10px] sm:text-xs tracking-[0.15em] sm:tracking-[0.18em] uppercase transition-all duration-300 ${
                   activeTab === tab.id
                     ? 'bg-artist-crimson text-warm-cream border border-artist-crimson'
-                    : 'text-muted-beige border border-warm-gray/20 hover:border-aged-gold/40 hover:text-warm-cream'
+                    : 'text-deep-oxblood/80 border border-warm-gray/40 hover:border-aged-gold/60 hover:text-deep-oxblood bg-warm-cream/40'
                 }`}
               >
                 {tab.label}

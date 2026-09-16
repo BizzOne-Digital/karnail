@@ -29,9 +29,9 @@ export default function GalleryPageClient({ page, images }: GalleryPageClientPro
         backgroundImage={hero?.backgroundImage}
       />
 
-      <section className="py-12 sm:py-16 bg-gallery-black overflow-hidden w-full max-w-full">
+      <section className="py-12 sm:py-16 bg-light-canvas text-gallery-black overflow-hidden w-full max-w-full">
         <div className="max-w-7xl mx-auto px-4 w-full">
-          <p className="text-center text-muted-beige mb-10">
+          <p className="text-center text-gallery-black/70 mb-10">
             {images.length} artworks in the collection
           </p>
 
@@ -56,7 +56,7 @@ export default function GalleryPageClient({ page, images }: GalleryPageClientPro
                     </div>
                   </TiltFrame>
                   {img.title && (
-                    <p className="text-warm-cream text-sm mt-3 text-left font-display">{img.title}</p>
+                    <p className="text-deep-oxblood text-sm mt-3 text-left font-display">{img.title}</p>
                   )}
                 </button>
               </StaggerItem>

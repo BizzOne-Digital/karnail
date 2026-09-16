@@ -29,7 +29,7 @@ export default function Footer({ settings }: FooterProps) {
   };
 
   return (
-    <footer className="relative w-full max-w-full bg-soft-black border-t border-deep-oxblood/40 overflow-hidden shrink-0">
+    <footer className="relative w-full max-w-full bg-warm-cream border-t border-warm-gray/30 overflow-hidden shrink-0 text-gallery-black">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(158,37,49,0.08)_0%,transparent_60%)]" />
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-aged-gold/40 to-transparent" />
 
@@ -46,7 +46,7 @@ export default function Footer({ settings }: FooterProps) {
                   className="w-auto h-20 md:h-24 lg:h-28 object-contain object-left"
                 />
               </Link>
-              <p className="text-muted-beige text-sm leading-relaxed">
+              <p className="text-gallery-black/75 text-sm leading-relaxed">
                 {footer?.description || general?.shortBio}
               </p>
             </div>
@@ -58,7 +58,7 @@ export default function Footer({ settings }: FooterProps) {
               <ul className="space-y-3">
                 {nav.map((item) => (
                   <li key={item.url}>
-                    <Link href={item.url} className="text-muted-beige text-sm hover:text-warm-cream hover:pl-2 transition-all duration-300 flex items-center gap-2 group">
+                    <Link href={item.url} className="text-gallery-black/75 text-sm hover:text-artist-crimson hover:pl-2 transition-all duration-300 flex items-center gap-2 group">
                       <span className="w-0 group-hover:w-2 h-px bg-artist-crimson transition-all duration-300" />
                       {item.label}
                     </Link>

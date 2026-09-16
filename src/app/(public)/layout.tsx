@@ -36,14 +36,14 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
 
   if (!introChecked) {
     return (
-      <div className="min-h-screen bg-gallery-black flex items-center justify-center">
+      <div className="min-h-screen bg-light-canvas flex items-center justify-center">
         <div className="w-12 h-12 border-2 border-artist-crimson border-t-transparent rounded-full animate-spin" />
       </div>
     );
   }
 
   return (
-    <div className="site-shell flex flex-col min-h-screen bg-gallery-black overflow-x-clip w-full max-w-full">
+    <div className="site-shell theme-cream flex flex-col min-h-screen bg-light-canvas overflow-x-clip w-full max-w-full text-gallery-black">
       <CustomCursor />
       {showIntro && <CinematicIntro onComplete={handleIntroComplete} />}
       <Header settings={settings} />

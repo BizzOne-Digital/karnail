@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { getImageUrl, formatDate } from '@/lib/utils';
 import { HERO_BACKGROUND, ARTIST_PORTRAIT } from '@/lib/brand';
+import { BANNER_VERSE } from '@/lib/about-content';
 import { SplitText, RevealOnScroll, StaggerChildren, StaggerItem, PaintStrokeReveal } from '@/components/animations/MotionPrimitives';
 import { TiltFrame, Magnetic, GlowButton } from '@/components/animations/InteractiveElements';
 import { HorizontalScrollSection, AutoScrollMarquee } from '@/components/animations/ScrollEffects';
@@ -13,80 +14,45 @@ export function HomeHero({ section }: { section: PageSection }) {
   const bgImage = section.backgroundImage || HERO_BACKGROUND;
 
   return (
-    <section className="relative w-full max-w-full min-h-[100svh] flex items-start overflow-hidden">
+    <section className="relative w-full max-w-full min-h-[min(88svh,820px)] flex flex-col justify-end overflow-hidden bg-light-canvas">
       <div className="absolute inset-0 overflow-hidden">
         <Image
           src={getImageUrl(bgImage)}
           alt=""
           fill
           priority
-          className="object-cover object-center md:scale-105"
+          className="object-cover object-center brightness-[1.08] contrast-[1.03] saturate-[1.05]"
           sizes="100vw"
         />
       </div>
 
-      {/* Left-side gradient for text readability */}
-      <div className="absolute inset-0 bg-gradient-to-r from-gallery-black/95 via-gallery-black/70 to-transparent" />
-      <div className="absolute inset-0 bg-gradient-to-t from-gallery-black/80 via-transparent to-gallery-black/40" />
+      {/* Light wash only — keeps banner bright per client design */}
+      <div className="absolute inset-0 bg-gradient-to-t from-light-canvas/55 via-white/10 to-white/5 pointer-events-none" />
 
-      {/* Subtle vignette */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,transparent_0%,rgba(9,8,7,0.4)_100%)]" />
-
-      {/* Hero content — left aligned like reference */}
-      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 pt-28 sm:pt-32 md:pt-48 lg:pt-52 pb-16 md:pb-20">
-        <div className="max-w-xl lg:max-w-2xl">
-          {section.eyebrow && (
-            <RevealOnScroll direction="down" delay={0.1}>
-              <p className="font-body text-[10px] sm:text-[11px] md:text-xs text-artist-crimson tracking-[0.18em] sm:tracking-[0.25em] uppercase mb-4 sm:mb-6 break-words">
-                {section.eyebrow}
-              </p>
-            </RevealOnScroll>
-          )}
-
-          <SplitText
-            text={section.heading}
-            as="h1"
-            className="font-display text-3xl sm:text-4xl md:text-6xl lg:text-[4.25rem] xl:text-7xl text-warm-cream leading-[1.1] sm:leading-[1.08] mb-5 sm:mb-8 font-medium"
-            delay={0.2}
-          />
-
-          <RevealOnScroll delay={0.45}>
-            <p className="text-muted-beige/95 text-base md:text-lg leading-relaxed mb-8 md:mb-10 max-w-md font-body font-light">
-              {section.description}
+      {/* Blinking verse embedded in the banner */}
+      <div className="relative z-10 w-full px-4 sm:px-6 pb-10 sm:pb-14 pt-28 sm:pt-32">
+        <div className="max-w-3xl mx-auto text-center space-y-1.5 sm:space-y-2">
+          {BANNER_VERSE.map((line, index) => (
+            <p
+              key={line}
+              className="hero-verse-line font-display text-base sm:text-lg md:text-xl lg:text-2xl text-deep-oxblood italic leading-snug drop-shadow-[0_1px_2px_rgba(255,248,234,0.85)]"
+              style={{ animationDelay: `${index * 0.75}s` }}
+            >
+              {line}
             </p>
-          </RevealOnScroll>
-
-          <RevealOnScroll delay={0.6}>
-            <div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3 sm:gap-4">
-              <Link
-                href={section.buttonUrl || '/gallery'}
-                className="inline-flex items-center justify-center bg-deep-oxblood hover:bg-artist-crimson text-warm-cream px-6 sm:px-7 py-3 sm:py-3.5 text-[10px] sm:text-[11px] tracking-[0.16em] sm:tracking-[0.18em] uppercase font-body transition-colors duration-300 border border-deep-oxblood text-center"
-                data-cursor
-              >
-                {section.buttonText || 'Explore the Collection'}
-              </Link>
-              <Link
-                href="/about"
-                className="inline-flex items-center justify-center border border-warm-cream/50 text-warm-cream px-6 sm:px-7 py-3 sm:py-3.5 text-[10px] sm:text-[11px] tracking-[0.16em] sm:tracking-[0.18em] uppercase font-body hover:bg-warm-cream/10 hover:border-warm-cream transition-all duration-300 text-center"
-                data-cursor
-              >
-                Discover the Artist
-              </Link>
-            </div>
-          </RevealOnScroll>
+          ))}
         </div>
       </div>
 
-      {/* Bottom fade into next section */}
-      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-gallery-black to-transparent pointer-events-none" />
+      <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-light-canvas to-transparent pointer-events-none" />
     </section>
   );
 }
 
 export function CollectionStatement({ section }: { section: PageSection }) {
   return (
-    <section className="relative py-16 sm:py-24 md:py-48 bg-soft-black overflow-hidden w-full max-w-full">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(158,37,49,0.12)_0%,transparent_70%)]" />
+    <section className="relative py-16 sm:py-24 md:py-48 bg-light-canvas overflow-hidden w-full max-w-full border-y border-warm-gray/20">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(158,37,49,0.06)_0%,transparent_70%)]" />
       <PinnedStatement heading={section.heading} />
     </section>
   );
@@ -95,7 +61,7 @@ export function CollectionStatement({ section }: { section: PageSection }) {
 function PinnedStatement({ heading }: { heading: string }) {
   return (
     <div className="max-w-6xl mx-auto px-4 text-center relative z-10">
-      <SplitText text={heading} as="h2" className="font-display text-3xl sm:text-4xl md:text-6xl lg:text-7xl text-warm-cream leading-[1.08] px-2" mode="words" />
+      <SplitText text={heading} as="h2" className="font-display text-3xl sm:text-4xl md:text-6xl lg:text-7xl text-deep-oxblood leading-[1.08] px-2" mode="words" />
       <PaintStrokeReveal className="max-w-lg mx-auto mt-8" />
     </div>
   );

@@ -1,10 +1,10 @@
 import { loadGalleryImagesFromDisk } from '@/lib/load-gallery-images';
 import { serverPublicApi } from '@/services/server-public-api';
+import { HomeWelcomeTabs } from '@/components/public/home/HomeWelcomeTabs';
 import {
   HomeHero,
   CollectionStatement,
   FeaturedArtwork,
-  MeetArtist,
   ServicesPreview,
   GalleryPreview,
   JournalPreview,
@@ -54,12 +54,19 @@ export default async function HomePage() {
 
   return (
     <>
-      {getSection(sections, 'hero') && <HomeHero section={getSection(sections, 'hero')!} />}
+      {getSection(sections, 'hero') && (
+        <>
+          <HomeHero section={getSection(sections, 'hero')!} />
+          <HomeWelcomeTabs
+            hero={getSection(sections, 'hero')!}
+            meet={getSection(sections, 'meet-artist')}
+          />
+        </>
+      )}
       {getSection(sections, 'collection-statement') && (
         <CollectionStatement section={getSection(sections, 'collection-statement')!} />
       )}
       {getSection(sections, 'featured-artwork') && <FeaturedArtwork products={products} />}
-      {getSection(sections, 'meet-artist') && <MeetArtist section={getSection(sections, 'meet-artist')!} />}
       {getSection(sections, 'services-preview') && <ServicesPreview services={services} />}
       {getSection(sections, 'gallery-preview') && <GalleryPreview images={galleryImages} />}
       {getSection(sections, 'journal-preview') && <JournalPreview blogs={blogs} />}
