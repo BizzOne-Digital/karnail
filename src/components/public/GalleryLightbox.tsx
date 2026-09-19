@@ -39,6 +39,7 @@ export function GalleryLightbox({ images, initialIndex = 0, onClose }: LightboxP
                 src={getImageUrl(image.imageUrl)}
                 alt={image.altText || image.title}
                 fill
+                unoptimized
                 className="object-contain"
               />
             </div>

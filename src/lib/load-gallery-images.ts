@@ -35,10 +35,11 @@ function titleFromFilename(filename: string): string {
   return withoutIndex.replace(/-/g, ' ').replace(/\s+/g, ' ').trim() || base;
 }
 
-function encodeGalleryPath(urlPath: string): string {
+function publicUrlPath(urlPath: string): string {
   return urlPath
+    .replace(/\\/g, '/')
     .split('/')
-    .map((segment, index) => (index === 0 ? segment : encodeURIComponent(segment)))
+    .map((segment, index) => (index === 0 || !segment ? segment : encodeURIComponent(segment)))
     .join('/');
 }
 
@@ -61,7 +62,7 @@ function walkGalleryDir(
       if (seenContentHashes.has(contentHash)) continue;
       seenContentHashes.add(contentHash);
 
-      const imageUrl = encodeGalleryPath(urlPath);
+      const imageUrl = publicUrlPath(urlPath);
       const title = titleFromFilename(entry.name);
       results.push({
         _id: galleryIdFromUrl(imageUrl),
@@ -87,8 +88,8 @@ export function loadGalleryImagesFromDisk(): GalleryImage[] {
   return loadGalleryCollectionsFromDisk().flatMap((c) => c.images);
 }
 
-/** Client galleries 1–4 under public/New gallery/{1..4} */
-const NEW_GALLERY_PUBLIC_DIR = 'New gallery';
+/** Client galleries 1–4 under public/new-gallery/{1..4} */
+const NEW_GALLERY_PUBLIC_DIR = 'new-gallery';
 
 const GALLERY_COLLECTION_DIRS: { num: number; folder: string; title: string }[] = [
   { num: 1, folder: '1', title: 'Gallery 1' },
@@ -103,17 +104,28 @@ export interface GalleryDiskCollection {
   images: GalleryImage[];
 }
 
-/** Four gallery sections for side-scroll layout (New gallery/1–4 on disk). */
+function resolveNewGalleryDiskRoot(): { diskRoot: string; publicDir: string } | null {
+  const publicBase = path.join(process.cwd(), 'public');
+  for (const name of [NEW_GALLERY_PUBLIC_DIR, 'New gallery']) {
+    const diskRoot = path.join(publicBase, name);
+    if (fs.existsSync(diskRoot)) return { diskRoot, publicDir: name };
+  }
+  return null;
+}
+
+/** Four gallery sections for side-scroll layout (new-gallery/1–4 on disk). */
 export function loadGalleryCollectionsFromDisk(): GalleryDiskCollection[] {
-  const galleryRoot = path.join(process.cwd(), 'public', NEW_GALLERY_PUBLIC_DIR);
-  if (!fs.existsSync(galleryRoot)) return [];
+  const resolved = resolveNewGalleryDiskRoot();
+  if (!resolved) return [];
+
+  const { diskRoot: galleryRoot, publicDir } = resolved;
 
   return GALLERY_COLLECTION_DIRS.map(({ num, folder, title }) => {
     const dir = path.join(galleryRoot, folder);
     const results: GalleryImage[] = [];
     const seenInCollection = new Set<string>();
     if (fs.existsSync(dir)) {
-      const urlPrefix = `/${NEW_GALLERY_PUBLIC_DIR}/${folder}`;
+      const urlPrefix = `/${publicDir}/${folder}`;
       walkGalleryDir(dir, urlPrefix, results, seenInCollection);
     }
     return {

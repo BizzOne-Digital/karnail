@@ -44,6 +44,7 @@ export function GalleryScrollRows({ collections, onImageClick }: GalleryScrollRo
                       src={getImageUrl(img.imageUrl)}
                       alt={img.altText || img.title}
                       fill
+                      unoptimized
                       className="object-cover group-hover:scale-105 transition-transform duration-700"
                       sizes="320px"
                     />
