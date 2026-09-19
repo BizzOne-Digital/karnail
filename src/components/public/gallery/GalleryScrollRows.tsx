@@ -33,7 +33,7 @@ export function GalleryScrollRows({ collections, onImageClick }: GalleryScrollRo
             <HorizontalScrollSection className="py-2">
               {collection.images.map((img, imageIndex) => (
                 <button
-                  key={img._id}
+                  key={img.imageUrl}
                   type="button"
                   onClick={() => onImageClick?.(collectionIndex, imageIndex)}
                   className="gallery-frame w-52 sm:w-60 md:w-72 lg:w-80 flex-shrink-0 snap-center block group text-left"

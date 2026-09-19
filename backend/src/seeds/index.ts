@@ -101,7 +101,7 @@ async function seedPages() {
           description: 'Enter a world where mystery, imagination, colour, and storytelling meet across canvas, murals, and the written word.',
           buttonText: 'Explore the Collection',
           buttonUrl: '/gallery',
-          backgroundImage: '/hero-background.jpg',
+          backgroundImage: '/banner/home-banner-wrapper.jpg',
           layout: 'cinematic-fullbleed',
           theme: 'dark',
           order: 0,

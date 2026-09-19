@@ -4,8 +4,21 @@ import { CONTACT_EMAIL, CONTACT_LINKS } from '@/lib/contact-info';
 /** Default brand logo shipped with the site */
 export const BRAND_LOGO = '/logo.png';
 
-/** Default homepage hero background */
-export const HERO_BACKGROUND = '/hero-background.jpg';
+/** Client banner wrapper — two figures on top + expanded verse area (1056×480 design) */
+export const HOME_BANNER_WRAPPER = '/banner/home-banner-wrapper.jpg';
+
+/** @deprecated Old full-bleed hero; use {@link HOME_BANNER_WRAPPER} */
+export const HERO_BACKGROUND = HOME_BANNER_WRAPPER;
+
+const DEPRECATED_HERO_IMAGES = new Set(['/hero-background.jpg']);
+
+/** Prefer client banner; ignore outdated CMS hero paths */
+export function resolveHomeBannerImage(cmsImage?: string | null): string {
+  if (cmsImage && !DEPRECATED_HERO_IMAGES.has(cmsImage)) {
+    return cmsImage;
+  }
+  return HOME_BANNER_WRAPPER;
+}
 
 /** Default artist portrait for Meet the Artist section */
 export const ARTIST_PORTRAIT = '/artist-portrait.png';

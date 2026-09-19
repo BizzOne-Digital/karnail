@@ -407,8 +407,8 @@ svg {
   color: #5c534c !important;
 }
 
-.theme-cream section .text-warm-cream,
-.theme-cream article .text-warm-cream,
+.theme-cream section .text-warm-cream:not(.bg-artist-crimson):not(.bg-deep-oxblood),
+.theme-cream article .text-warm-cream:not(.bg-artist-crimson):not(.bg-deep-oxblood),
 .theme-cream .font-display.text-warm-cream {
   color: var(--deep-oxblood) !important;
 }
@@ -417,6 +417,12 @@ svg {
 .theme-cream a.bg-artist-crimson,
 .theme-cream button.bg-deep-oxblood,
 .theme-cream button.bg-artist-crimson,
+.theme-cream a .bg-artist-crimson,
+.theme-cream a .bg-deep-oxblood,
+.theme-cream button .bg-artist-crimson,
+.theme-cream button .bg-deep-oxblood,
+.theme-cream .bg-artist-crimson.text-warm-cream,
+.theme-cream .bg-deep-oxblood.text-warm-cream,
 .theme-cream .bg-artist-crimson .text-warm-cream,
 .theme-cream .bg-deep-oxblood .text-warm-cream {
   color: var(--warm-cream) !important;

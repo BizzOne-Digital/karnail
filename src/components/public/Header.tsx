@@ -37,22 +37,22 @@ export default function Header({ settings }: HeaderProps) {
       <header
         className={cn(
           'fixed top-0 left-0 right-0 z-50 w-full max-w-full transition-all duration-500 pt-[env(safe-area-inset-top,0px)]',
-          'bg-light-canvas/95 backdrop-blur-md border-b border-warm-gray/25 py-2 shadow-sm',
+          'bg-light-canvas/95 backdrop-blur-md border-b border-warm-gray/25 py-3 shadow-sm',
           scrolled && 'shadow-md'
         )}
       >
         <div className="max-w-[1400px] mx-auto px-3 sm:px-6 lg:px-8">
           {/* Desktop: logo | centered nav | CTA */}
-          <div className="hidden lg:grid lg:grid-cols-[auto_1fr_auto] items-center gap-3 xl:gap-5 min-h-[2.75rem]">
+          <div className="hidden lg:grid lg:grid-cols-[auto_1fr_auto] items-center gap-3 xl:gap-5 min-h-[3.25rem]">
             <Link href="/" className="flex items-center justify-self-start shrink-0" data-cursor aria-label={logoText}>
-              <div className="relative h-9 w-[9.5rem] xl:w-[10.5rem] overflow-hidden">
+              <div className="relative h-11 w-[10.5rem] xl:w-[11.5rem]">
                 <Image
                   src={getImageUrl(logoImage)}
                   alt={logoText}
                   width={280}
                   height={72}
                   priority
-                  className="h-10 w-auto max-w-none object-left object-contain -mt-0.5"
+                  className="h-11 w-auto max-w-none object-left object-contain"
                 />
               </div>
             </Link>
@@ -89,9 +89,9 @@ export default function Header({ settings }: HeaderProps) {
           </div>
 
           {/* Mobile — crop wide banner logo to icon + name only */}
-          <div className="flex lg:hidden items-center justify-between gap-2 min-h-[2.75rem] overflow-hidden">
+          <div className="flex lg:hidden items-center justify-between gap-2 min-h-[3.25rem]">
             <Link href="/" className="min-w-0 shrink" aria-label={logoText}>
-              <div className="relative h-8 w-[7.5rem] sm:h-9 sm:w-[8.25rem] overflow-hidden">
+              <div className="relative h-10 w-[8.5rem] sm:h-11 sm:w-[9.5rem]">
                 <Image
                   src={getImageUrl(logoImage)}
                   alt={logoText}

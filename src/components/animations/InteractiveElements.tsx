@@ -108,7 +108,7 @@ export function GlowButton({
       data-cursor
     >
       <span className="absolute inset-0 bg-gradient-to-r from-deep-oxblood via-artist-crimson to-aged-gold opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-      <span className="relative z-10">{children}</span>
+      <span className="relative z-10 text-inherit">{children}</span>
       <motion.span
         className="absolute inset-0 border border-warm-cream/20"
         animate={{ opacity: [0.3, 0.8, 0.3] }}

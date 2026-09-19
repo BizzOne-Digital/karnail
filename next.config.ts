@@ -5,8 +5,10 @@ const nextConfig: NextConfig = {
     localPatterns: [
       { pathname: '/api/uploads/**' },
       { pathname: '/gallery/**' },
+      { pathname: '/New gallery/**' },
       { pathname: '/logo.png' },
       { pathname: '/hero-background.jpg' },
+      { pathname: '/banner/**' },
       { pathname: '/artist-portrait.png' },
       { pathname: '/family/**' },
       { pathname: '/books/**' },

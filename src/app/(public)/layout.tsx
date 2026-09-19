@@ -49,9 +49,9 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
       {showIntro && <CinematicIntro onComplete={handleIntroComplete} />}
       <Header settings={settings} />
       {/* Offset for fixed header so tabs + hero are not covered */}
-      <div className="h-[3.25rem] sm:h-14 shrink-0" aria-hidden />
+      <div className="h-[4.25rem] sm:h-[4.5rem] shrink-0" aria-hidden />
       <Suspense fallback={null}>
-        <SiteDesignTabs className="sticky top-[3.25rem] sm:top-14 z-40 shadow-sm" />
+        <SiteDesignTabs className="sticky top-[4.25rem] sm:top-[4.5rem] z-40 shadow-sm" />
       </Suspense>
       <main className="site-main flex-1 relative w-full max-w-full overflow-x-clip">{children}</main>
       <Footer settings={settings} />

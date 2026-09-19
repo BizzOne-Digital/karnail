@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { getImageUrl, formatDate } from '@/lib/utils';
-import { HERO_BACKGROUND, ARTIST_PORTRAIT } from '@/lib/brand';
+import { ARTIST_PORTRAIT, resolveHomeBannerImage } from '@/lib/brand';
 import { BANNER_VERSE } from '@/lib/about-content';
 import { SplitText, RevealOnScroll, StaggerChildren, StaggerItem, PaintStrokeReveal } from '@/components/animations/MotionPrimitives';
 import { TiltFrame, Magnetic, GlowButton } from '@/components/animations/InteractiveElements';
@@ -11,34 +11,36 @@ import { HorizontalScrollSection, AutoScrollMarquee } from '@/components/animati
 import type { PageSection, Product, Service, BlogPost, Testimonial, GalleryImage } from '@/types';
 
 export function HomeHero({ section }: { section: PageSection }) {
-  const bgImage = section.backgroundImage || HERO_BACKGROUND;
+  const bannerImage = resolveHomeBannerImage(section.backgroundImage);
 
   return (
-    <section className="relative w-full max-w-full overflow-hidden bg-light-canvas">
-      <div className="relative w-full aspect-[16/10] sm:aspect-[16/9] min-h-[280px] sm:min-h-[360px] md:min-h-[420px] max-h-[min(72vh,720px)]">
-        <Image
-          src={getImageUrl(bgImage)}
-          alt=""
-          fill
-          priority
-          className="object-cover object-[center_35%] brightness-[1.06] contrast-[1.02]"
-          sizes="100vw"
-        />
+    <section className="relative w-full max-w-full overflow-hidden bg-light-canvas py-4 sm:py-6 md:py-8">
+      <div className="max-w-[1056px] mx-auto px-3 sm:px-4 md:px-6">
+        <div className="relative w-full aspect-[1056/480] min-h-[200px] max-h-[min(72vh,520px)] shadow-[0_12px_40px_rgba(9,8,7,0.12)] border border-warm-gray/20 bg-soft-black/5">
+          <Image
+            src={getImageUrl(bannerImage)}
+            alt="Sukh D. H. Khokhar — mystical art banner"
+            fill
+            priority
+            className="object-contain object-center"
+            sizes="(max-width: 1056px) 100vw, 1056px"
+          />
 
-        <div className="absolute inset-0 bg-gradient-to-b from-light-canvas/20 via-transparent to-light-canvas/70 pointer-events-none" />
-
-        {/* Verse on banner — readable panel over artwork */}
-        <div className="absolute inset-0 flex items-center justify-center px-4 sm:px-6 py-6">
-          <div className="max-w-2xl w-full text-center bg-light-canvas/90 backdrop-blur-[2px] border border-warm-cream/80 px-5 py-6 sm:px-8 sm:py-8 shadow-[0_8px_32px_rgba(9,8,7,0.08)]">
-            {BANNER_VERSE.map((line, index) => (
-              <p
-                key={line}
-                className="hero-verse-line font-display text-sm sm:text-base md:text-lg lg:text-xl text-deep-oxblood italic leading-relaxed"
-                style={{ animationDelay: `${index * 0.75}s`, paddingLeft: `${index * 0.75}rem` }}
-              >
-                {line}
-              </p>
-            ))}
+          <div
+            className="absolute inset-x-[6%] sm:inset-x-[8%] top-[40%] sm:top-[41%] bottom-[14%] sm:bottom-[16%] flex items-center justify-center px-2 sm:px-4 pointer-events-none"
+            aria-label="Banner verse"
+          >
+            <div className="max-w-[92%] w-full text-center">
+              {BANNER_VERSE.map((line, index) => (
+                <p
+                  key={line}
+                  className="hero-verse-line font-display text-[11px] sm:text-sm md:text-base lg:text-lg text-warm-cream/95 italic leading-snug sm:leading-relaxed drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)]"
+                  style={{ animationDelay: `${index * 0.75}s`, paddingLeft: `${index * 0.5}rem` }}
+                >
+                  {line}
+                </p>
+              ))}
+            </div>
           </div>
         </div>
       </div>
