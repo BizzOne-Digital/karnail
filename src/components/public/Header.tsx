@@ -37,41 +37,39 @@ export default function Header({ settings }: HeaderProps) {
       <header
         className={cn(
           'fixed top-0 left-0 right-0 z-50 w-full max-w-full transition-all duration-500 pt-[env(safe-area-inset-top,0px)]',
-          scrolled
-            ? 'bg-light-canvas/95 backdrop-blur-md border-b border-warm-gray/30 py-2.5 sm:py-3 shadow-sm'
-            : 'bg-light-canvas/90 backdrop-blur-sm border-b border-warm-gray/20 py-2.5 sm:py-3 lg:bg-light-canvas/80 lg:py-4 xl:py-5'
+          'bg-light-canvas/95 backdrop-blur-md border-b border-warm-gray/25 py-2 shadow-sm',
+          scrolled && 'shadow-md'
         )}
       >
-        <div className="max-w-[1400px] mx-auto px-3 sm:px-6 lg:px-10">
+        <div className="max-w-[1400px] mx-auto px-3 sm:px-6 lg:px-8">
           {/* Desktop: logo | centered nav | CTA */}
-          <div className="hidden lg:grid lg:grid-cols-[1fr_auto_1fr] items-center gap-4">
-            <Link href="/" className="flex items-center justify-self-start group shrink-0" data-cursor aria-label={logoText}>
-              <Image
-                src={getImageUrl(logoImage)}
-                alt={logoText}
-                width={280}
-                height={72}
-                priority
-                className={cn(
-                  'w-auto object-contain object-left transition-all duration-500',
-                  scrolled ? 'h-14' : 'h-16 xl:h-[4.5rem]'
-                )}
-              />
+          <div className="hidden lg:grid lg:grid-cols-[auto_1fr_auto] items-center gap-3 xl:gap-5 min-h-[2.75rem]">
+            <Link href="/" className="flex items-center justify-self-start shrink-0" data-cursor aria-label={logoText}>
+              <div className="relative h-9 w-[9.5rem] xl:w-[10.5rem] overflow-hidden">
+                <Image
+                  src={getImageUrl(logoImage)}
+                  alt={logoText}
+                  width={280}
+                  height={72}
+                  priority
+                  className="h-10 w-auto max-w-none object-left object-contain -mt-0.5"
+                />
+              </div>
             </Link>
 
-            <nav className="flex items-center justify-center gap-6 xl:gap-8">
+            <nav className="flex items-center justify-center gap-3 xl:gap-5 flex-wrap">
               {nav.map((item) => (
                 <Link
                   key={item.url}
                   href={item.url}
-                  className="text-[13px] text-deep-oxblood/85 hover:text-artist-crimson transition-colors tracking-wide font-body whitespace-nowrap"
+                  className="text-[12px] text-deep-oxblood/85 hover:text-artist-crimson transition-colors tracking-wide font-body whitespace-nowrap"
                 >
                   {item.label}
                 </Link>
               ))}
             </nav>
 
-            <div className="flex items-center justify-self-end gap-4">
+            <div className="flex items-center justify-self-end gap-2 xl:gap-3 shrink-0">
               <Link href="/cart" className="relative p-1.5 text-deep-oxblood/80 hover:text-artist-crimson transition-colors" data-cursor aria-label="Cart">
                 <ShoppingBag size={18} strokeWidth={1.5} />
                 {totalItems > 0 && (
@@ -82,7 +80,7 @@ export default function Header({ settings }: HeaderProps) {
               </Link>
               <Link
                 href={ctaUrl}
-                className="border border-deep-oxblood/50 text-deep-oxblood px-5 py-2 text-[11px] tracking-[0.2em] uppercase font-body hover:bg-deep-oxblood/5 hover:border-artist-crimson transition-all duration-300"
+                className="border border-deep-oxblood/50 text-deep-oxblood px-3 xl:px-4 py-1.5 text-[10px] tracking-[0.16em] uppercase font-body hover:bg-deep-oxblood/5 hover:border-artist-crimson transition-all duration-300"
                 data-cursor
               >
                 {ctaText}
@@ -91,9 +89,9 @@ export default function Header({ settings }: HeaderProps) {
           </div>
 
           {/* Mobile — crop wide banner logo to icon + name only */}
-          <div className="flex lg:hidden items-center justify-between gap-3 min-h-[44px] overflow-hidden">
+          <div className="flex lg:hidden items-center justify-between gap-2 min-h-[2.75rem] overflow-hidden">
             <Link href="/" className="min-w-0 shrink" aria-label={logoText}>
-              <div className="relative h-9 w-[8.25rem] sm:h-10 sm:w-[9.5rem] overflow-hidden">
+              <div className="relative h-8 w-[7.5rem] sm:h-9 sm:w-[8.25rem] overflow-hidden">
                 <Image
                   src={getImageUrl(logoImage)}
                   alt={logoText}

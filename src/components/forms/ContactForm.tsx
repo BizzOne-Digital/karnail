@@ -60,10 +60,10 @@ export function ContactForm() {
 
   if (status === 'success') {
     return (
-      <div className="bg-soft-black border border-aged-gold/30 p-8 text-center">
-        <h3 className="font-display text-2xl text-warm-cream mb-4">Thank You</h3>
-        <p className="text-muted-beige mb-2">Your enquiry has been received.</p>
-        {refNumber && <p className="text-aged-gold">Reference: {refNumber}</p>}
+      <div className="bg-warm-cream/60 border border-warm-gray/30 p-8 text-center">
+        <h3 className="font-display text-2xl text-deep-oxblood mb-4">Thank You</h3>
+        <p className="text-gallery-black/75 mb-2">Your enquiry has been received.</p>
+        {refNumber && <p className="text-gold-text font-medium">Reference: {refNumber}</p>}
         <Button onClick={() => setStatus('idle')} variant="outline" className="mt-6">
           Send Another Enquiry
         </Button>
@@ -75,19 +75,19 @@ export function ContactForm() {
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
-          <label className="block text-sm text-muted-beige mb-2">Name *</label>
+          <label className="block text-sm text-gallery-black/80 mb-2">Name *</label>
           <input
             {...register('name')}
-            className="w-full bg-gallery-black border border-warm-gray/30 text-warm-cream px-4 py-3 focus:outline-none focus:border-aged-gold"
+            className="w-full bg-light-canvas border border-warm-gray/40 text-gallery-black px-4 py-3 focus:outline-none focus:border-artist-crimson"
           />
           {errors.name && <p className="text-artist-crimson text-xs mt-1">{errors.name.message}</p>}
         </div>
         <div>
-          <label className="block text-sm text-muted-beige mb-2">Email *</label>
+          <label className="block text-sm text-gallery-black/80 mb-2">Email *</label>
           <input
             {...register('email')}
             type="email"
-            className="w-full bg-gallery-black border border-warm-gray/30 text-warm-cream px-4 py-3 focus:outline-none focus:border-aged-gold"
+            className="w-full bg-light-canvas border border-warm-gray/40 text-gallery-black px-4 py-3 focus:outline-none focus:border-aged-gold"
           />
           {errors.email && <p className="text-artist-crimson text-xs mt-1">{errors.email.message}</p>}
         </div>
@@ -95,17 +95,17 @@ export function ContactForm() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
-          <label className="block text-sm text-muted-beige mb-2">Phone</label>
+          <label className="block text-sm text-gallery-black/80 mb-2">Phone</label>
           <input
             {...register('phone')}
-            className="w-full bg-gallery-black border border-warm-gray/30 text-warm-cream px-4 py-3 focus:outline-none focus:border-aged-gold"
+            className="w-full bg-light-canvas border border-warm-gray/40 text-gallery-black px-4 py-3 focus:outline-none focus:border-aged-gold"
           />
         </div>
         <div>
-          <label className="block text-sm text-muted-beige mb-2">Enquiry Type *</label>
+          <label className="block text-sm text-gallery-black/80 mb-2">Enquiry Type *</label>
           <select
             {...register('enquiryType')}
-            className="w-full bg-gallery-black border border-warm-gray/30 text-warm-cream px-4 py-3 focus:outline-none focus:border-aged-gold"
+            className="w-full bg-light-canvas border border-warm-gray/40 text-gallery-black px-4 py-3 focus:outline-none focus:border-aged-gold"
           >
             <option value="general">General Enquiry</option>
             <option value="book">Book Enquiry</option>
@@ -117,20 +117,20 @@ export function ContactForm() {
       </div>
 
       <div>
-        <label className="block text-sm text-muted-beige mb-2">Artwork or Service</label>
+        <label className="block text-sm text-gallery-black/80 mb-2">Artwork or Service</label>
         <input
           {...register('artworkOrService')}
           placeholder="e.g. The Mystery of the Rose"
-          className="w-full bg-gallery-black border border-warm-gray/30 text-warm-cream px-4 py-3 focus:outline-none focus:border-aged-gold"
+          className="w-full bg-light-canvas border border-warm-gray/40 text-gallery-black px-4 py-3 focus:outline-none focus:border-aged-gold"
         />
       </div>
 
       <div>
-        <label className="block text-sm text-muted-beige mb-2">Message *</label>
+        <label className="block text-sm text-gallery-black/80 mb-2">Message *</label>
         <textarea
           {...register('message')}
           rows={5}
-          className="w-full bg-gallery-black border border-warm-gray/30 text-warm-cream px-4 py-3 focus:outline-none focus:border-aged-gold resize-none"
+          className="w-full bg-light-canvas border border-warm-gray/40 text-gallery-black px-4 py-3 focus:outline-none focus:border-aged-gold resize-none"
         />
         {errors.message && <p className="text-artist-crimson text-xs mt-1">{errors.message.message}</p>}
       </div>

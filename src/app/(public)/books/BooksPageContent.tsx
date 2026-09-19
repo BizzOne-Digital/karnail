@@ -1,8 +1,8 @@
 import type { ReactNode } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { SectionHero } from '@/components/public/SectionHero';
 import { Button } from '@/components/ui/Button';
+import { RoseThemeClose } from '@/components/public/RoseThemeClose';
 import { BOOK_LISTINGS, CONTACT_EMAIL, CONTACT_LINKS } from '@/lib/contact-info';
 import { CROSSWORD_BOOK_AWARD_2013, MULTICULTURAL_RESOURCE_BOOKS } from '@/lib/book-resources';
 import {
@@ -28,7 +28,7 @@ function BookCoverImage({
 }) {
   return (
     <figure className={`group ${className}`}>
-      <div className="relative aspect-[2/3] w-full max-w-[280px] mx-auto overflow-hidden border border-warm-gray/20 bg-soft-black shadow-[0_20px_60px_rgba(0,0,0,0.45)]">
+      <div className="relative aspect-[2/3] w-full max-w-[280px] mx-auto overflow-hidden border border-warm-gray/30 bg-warm-cream shadow-[0_16px_40px_rgba(104,25,35,0.12)]">
         <Image
           src={src}
           alt={alt}
@@ -39,7 +39,7 @@ function BookCoverImage({
         />
       </div>
       {label && (
-        <figcaption className="text-center text-warm-gray text-[10px] tracking-[0.18em] uppercase mt-3">
+        <figcaption className="text-center text-gallery-black/60 text-[10px] tracking-[0.18em] uppercase mt-3">
           {label}
         </figcaption>
       )}
@@ -68,7 +68,7 @@ function ProseSection({
   additionalCovers,
   pdfUrl,
   actions,
-  className = 'bg-gallery-black',
+  className = 'bg-light-canvas',
 }: {
   tagline?: string;
   title: string;
@@ -96,7 +96,7 @@ function ProseSection({
                 {tagline}
               </p>
             )}
-            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl text-warm-cream mb-2 leading-tight">
+            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl text-deep-oxblood mb-2 leading-tight">
               {title}
             </h2>
             {subtitle && (
@@ -159,25 +159,31 @@ export default function BooksPageContent() {
 
   return (
     <>
-      <SectionHero
-        eyebrow="Publications"
-        heading="Buy the Books"
-        description="Discover mystical novels, illustrated poetry, and upcoming 2027 editions by Sukh D. H. Khokhar."
-      />
+      <section className="bg-light-canvas pt-28 sm:pt-32 pb-6 text-center px-4">
+        <p className="font-dramatic text-artist-crimson text-xs tracking-[0.3em] uppercase mb-3">Publications</p>
+        <h1 className="font-display text-3xl sm:text-4xl md:text-5xl text-deep-oxblood">Buy the Books</h1>
+        <p className="text-gallery-black/75 mt-4 max-w-2xl mx-auto text-sm sm:text-base">
+          Mystical novels, illustrated poetry, and 2027 editions — covers displayed as in the author&apos;s layout.
+        </p>
+      </section>
 
-      <section className="py-12 sm:py-16 bg-soft-black border-b border-warm-gray/10">
+      <section className="py-10 sm:py-14 bg-light-canvas border-b border-warm-gray/20 overflow-hidden">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <h2 className="font-display text-2xl sm:text-3xl text-warm-cream mb-8 text-center">Featured Covers</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 items-end">
             {BOOK_CATALOG.map((book, index) => (
-              <Link key={book.id} href={`#${book.id}`} className="group block">
+              <Link
+                key={book.id}
+                href={`#${book.id}`}
+                className={`group block ${index % 2 === 1 ? 'md:translate-y-6' : ''} ${index === 2 ? 'md:-translate-y-2' : ''}`}
+              >
                 <BookCoverImage
                   src={book.coverImage}
                   alt={book.coverAlt}
                   priority={index < 2}
                   label={book.edition}
+                  className="md:max-w-[240px]"
                 />
-                <p className="mt-4 text-center text-warm-cream text-sm font-display leading-snug group-hover:text-aged-gold transition-colors">
+                <p className="mt-4 text-center text-deep-oxblood text-sm font-display leading-snug group-hover:text-artist-crimson transition-colors px-1">
                   {book.title}
                 </p>
               </Link>
@@ -199,7 +205,7 @@ export default function BooksPageContent() {
           actions={
             <Link
               href={`/contact?subject=${encodeURIComponent('Dark Mystery 2027 Edition: Spellbound')}`}
-              className="inline-flex items-center justify-center border border-warm-cream/50 text-warm-cream px-6 py-3 text-[11px] tracking-[0.16em] uppercase hover:bg-warm-cream/10 transition-colors"
+              className="inline-flex items-center justify-center border border-warm-cream/50 text-deep-oxblood px-6 py-3 text-[11px] tracking-[0.16em] uppercase hover:bg-warm-cream/10 transition-colors"
             >
               Enquire About 2027 Edition
             </Link>
@@ -219,7 +225,7 @@ export default function BooksPageContent() {
           coverAlt={mysteryRose2027?.coverAlt}
           additionalCovers={mysteryRose2027?.additionalCovers}
           pdfUrl={mysteryRose2027?.pdfUrl}
-          className="bg-soft-black border-y border-warm-gray/10"
+          className="bg-warm-cream/50 border-y border-warm-gray/10"
           actions={
             <>
               <a
@@ -232,7 +238,7 @@ export default function BooksPageContent() {
               </a>
               <Link
                 href="/contact?subject=The%20Mystery%20of%20the%20Rose"
-                className="inline-flex items-center justify-center border border-warm-cream/50 text-warm-cream px-6 py-3 text-[11px] tracking-[0.16em] uppercase hover:bg-warm-cream/10 transition-colors"
+                className="inline-flex items-center justify-center border border-warm-cream/50 text-deep-oxblood px-6 py-3 text-[11px] tracking-[0.16em] uppercase hover:bg-warm-cream/10 transition-colors"
               >
                 Enquire to Buy
               </Link>
@@ -254,7 +260,7 @@ export default function BooksPageContent() {
           actions={
             <Link
               href="/contact?subject=The%20Mystery%20of%20the%20Rose%202013%20Edition"
-              className="inline-flex items-center justify-center border border-warm-cream/50 text-warm-cream px-6 py-3 text-[11px] tracking-[0.16em] uppercase hover:bg-warm-cream/10 transition-colors"
+              className="inline-flex items-center justify-center border border-warm-cream/50 text-deep-oxblood px-6 py-3 text-[11px] tracking-[0.16em] uppercase hover:bg-warm-cream/10 transition-colors"
             >
               Enquire to Buy
             </Link>
@@ -274,11 +280,11 @@ export default function BooksPageContent() {
           coverImage={darkMysteryDemon?.coverImage}
           coverAlt={darkMysteryDemon?.coverAlt}
           pdfUrl={darkMysteryDemon?.pdfUrl}
-          className="bg-soft-black border-y border-warm-gray/10"
+          className="bg-warm-cream/50 border-y border-warm-gray/10"
           actions={
             <Link
               href="/contact?subject=Dark%20Mystery%20eBook"
-              className="inline-flex items-center justify-center border border-warm-cream/50 text-warm-cream px-6 py-3 text-[11px] tracking-[0.16em] uppercase hover:bg-warm-cream/10 transition-colors"
+              className="inline-flex items-center justify-center border border-warm-cream/50 text-deep-oxblood px-6 py-3 text-[11px] tracking-[0.16em] uppercase hover:bg-warm-cream/10 transition-colors"
             >
               Enquire to Buy
             </Link>
@@ -286,9 +292,9 @@ export default function BooksPageContent() {
         />
       </div>
 
-      <section className="py-16 sm:py-24 bg-gallery-black">
+      <section className="py-16 sm:py-24 bg-light-canvas">
         <div className="max-w-3xl mx-auto px-4 sm:px-6">
-          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl text-warm-cream mb-8 text-center italic">
+          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl text-deep-oxblood mb-8 text-center italic">
             {MYSTERIES_OF_MY_LIFE.title}
           </h2>
           <div className="prose-content text-base sm:text-lg space-y-4">
@@ -296,22 +302,22 @@ export default function BooksPageContent() {
               <p key={p.slice(0, 50)}>{p}</p>
             ))}
           </div>
-          <div className="mt-10 p-6 sm:p-8 border border-warm-gray/10 bg-soft-black/50 text-center">
+          <div className="mt-10 p-6 sm:p-8 border border-warm-gray/10 bg-warm-cream/50/50 text-center">
             <p className="text-aged-gold text-xs tracking-[0.2em] uppercase mb-3">
               {MYSTERIES_OF_MY_LIFE.urduTranslation.label}
             </p>
-            <p className="font-display text-lg sm:text-xl text-warm-cream italic leading-relaxed mb-6">
+            <p className="font-display text-lg sm:text-xl text-deep-oxblood italic leading-relaxed mb-6">
               {MYSTERIES_OF_MY_LIFE.urduTranslation.text}
             </p>
-            <p className="text-muted-beige font-display text-lg">{MYSTERIES_OF_MY_LIFE.signature.name}</p>
+            <p className="text-gallery-black/75 font-display text-lg">{MYSTERIES_OF_MY_LIFE.signature.name}</p>
             <p className="text-warm-gray text-sm mt-1">{MYSTERIES_OF_MY_LIFE.signature.date}</p>
           </div>
         </div>
       </section>
 
-      <section className="py-16 sm:py-24 bg-soft-black">
+      <section className="py-16 sm:py-24 bg-warm-cream/50">
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
-          <h2 className="font-display text-2xl sm:text-3xl text-warm-cream mb-10 text-center">All Publications</h2>
+          <h2 className="font-display text-2xl sm:text-3xl text-deep-oxblood mb-10 text-center">All Publications</h2>
           <div className="space-y-6">
             {BOOK_LISTINGS.map((book) => {
               const catalogMatch = BOOK_CATALOG.find(
@@ -323,11 +329,11 @@ export default function BooksPageContent() {
               return (
                 <article
                   key={book.title}
-                  className="border border-warm-gray/10 bg-gallery-black p-6 sm:p-8"
+                  className="border border-warm-gray/10 bg-light-canvas p-6 sm:p-8"
                 >
                   <div className="grid gap-6 sm:grid-cols-[140px_1fr] items-start">
                     {catalogMatch && (
-                      <div className="relative aspect-[2/3] w-[140px] overflow-hidden border border-warm-gray/20 bg-soft-black">
+                      <div className="relative aspect-[2/3] w-[140px] overflow-hidden border border-warm-gray/20 bg-warm-cream/50">
                         <Image
                           src={catalogMatch.coverImage}
                           alt={catalogMatch.coverAlt}
@@ -343,7 +349,7 @@ export default function BooksPageContent() {
                           {book.subtitle && (
                             <p className="text-artist-crimson text-[10px] tracking-[0.2em] uppercase mb-1">{book.subtitle}</p>
                           )}
-                          <h3 className="font-display text-xl sm:text-2xl text-warm-cream">{book.title}</h3>
+                          <h3 className="font-display text-xl sm:text-2xl text-deep-oxblood">{book.title}</h3>
                         </div>
                         <span
                           className={`text-[10px] tracking-[0.18em] uppercase px-3 py-1 border ${
@@ -355,21 +361,21 @@ export default function BooksPageContent() {
                           {book.status === 'upcoming' ? 'Coming 2027' : 'Available'}
                         </span>
                       </div>
-                      <p className="text-muted-beige text-sm leading-relaxed mb-4">{book.description}</p>
+                      <p className="text-gallery-black/75 text-sm leading-relaxed mb-4">{book.description}</p>
                       <div className="flex flex-wrap gap-3">
                         {book.buyUrl && (
                           <a
                             href={book.buyUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-aged-gold text-xs tracking-widest uppercase hover:text-warm-cream transition-colors"
+                            className="text-aged-gold text-xs tracking-widest uppercase hover:text-deep-oxblood transition-colors"
                           >
                             Visit Website →
                           </a>
                         )}
                         <Link
                           href={`/contact?subject=${encodeURIComponent(book.contactSubject || book.title)}`}
-                          className="text-artist-crimson text-xs tracking-widest uppercase hover:text-warm-cream transition-colors"
+                          className="text-artist-crimson text-xs tracking-widest uppercase hover:text-deep-oxblood transition-colors"
                         >
                           Enquire →
                         </Link>
@@ -383,21 +389,21 @@ export default function BooksPageContent() {
         </div>
       </section>
 
-      <section id="multicultural-resource-books" className="py-16 sm:py-24 bg-gallery-black border-t border-warm-gray/10">
+      <section id="multicultural-resource-books" className="py-16 sm:py-24 bg-light-canvas border-t border-warm-gray/10">
         <div className="max-w-3xl mx-auto px-4 sm:px-6">
-          <h2 className="font-display text-2xl sm:text-3xl text-warm-cream mb-4 text-center uppercase tracking-wide">
+          <h2 className="font-display text-2xl sm:text-3xl text-deep-oxblood mb-4 text-center uppercase tracking-wide">
             {MULTICULTURAL_RESOURCE_BOOKS.title}
           </h2>
-          <p className="text-muted-beige text-center mb-8 text-sm">
+          <p className="text-gallery-black/75 text-center mb-8 text-sm">
             A series of multicultural education resource books and poetry by Sukh D. H. Khokhar.
           </p>
           <ul className="space-y-3 mb-8">
             {MULTICULTURAL_RESOURCE_BOOKS.works.map((work) => (
               <li
                 key={work.title}
-                className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 py-4 px-5 border border-warm-gray/10 bg-soft-black/40 text-muted-beige"
+                className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 py-4 px-5 border border-warm-gray/10 bg-warm-cream/50/40 text-gallery-black/75"
               >
-                <span className="text-warm-cream font-display text-lg">{work.title}</span>
+                <span className="text-deep-oxblood font-display text-lg">{work.title}</span>
                 <span className="text-aged-gold text-sm">({work.year})</span>
               </li>
             ))}
@@ -415,9 +421,9 @@ export default function BooksPageContent() {
         </div>
       </section>
 
-      <section id="crossword-book-award" className="py-16 sm:py-24 bg-soft-black border-t border-warm-gray/10">
+      <section id="crossword-book-award" className="py-16 sm:py-24 bg-warm-cream/50 border-t border-warm-gray/10">
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
-          <h2 className="font-display text-2xl sm:text-3xl text-warm-cream mb-3 text-center">
+          <h2 className="font-display text-2xl sm:text-3xl text-deep-oxblood mb-3 text-center">
             {CROSSWORD_BOOK_AWARD_2013.title}
           </h2>
           <p className="text-center text-warm-gray text-sm mb-10">
@@ -436,21 +442,21 @@ export default function BooksPageContent() {
             </div>
 
             <div>
-              <p className="text-muted-beige leading-relaxed mb-6">{CROSSWORD_BOOK_AWARD_2013.intro}</p>
+              <p className="text-gallery-black/75 leading-relaxed mb-6">{CROSSWORD_BOOK_AWARD_2013.intro}</p>
 
-              <div className="p-5 sm:p-6 border border-artist-crimson/40 bg-gallery-black mb-6">
+              <div className="p-5 sm:p-6 border border-artist-crimson/40 bg-light-canvas mb-6">
                 <p className="text-artist-crimson text-[10px] tracking-[0.2em] uppercase mb-2">
                   {CROSSWORD_BOOK_AWARD_2013.highlight.category} · Featured Title
                 </p>
-                <h3 className="font-display text-xl sm:text-2xl text-warm-cream mb-2">
+                <h3 className="font-display text-xl sm:text-2xl text-deep-oxblood mb-2">
                   {CROSSWORD_BOOK_AWARD_2013.highlight.title}
                 </h3>
-                <p className="text-muted-beige text-sm">
+                <p className="text-gallery-black/75 text-sm">
                   by {CROSSWORD_BOOK_AWARD_2013.highlight.author}, {CROSSWORD_BOOK_AWARD_2013.highlight.publisher}
                 </p>
               </div>
 
-              <ul className="space-y-2 text-sm text-muted-beige mb-8 max-h-64 overflow-y-auto pr-2">
+              <ul className="space-y-2 text-sm text-gallery-black/75 mb-8 max-h-64 overflow-y-auto pr-2">
                 {CROSSWORD_BOOK_AWARD_2013.excerpt.map((entry) => {
                   const isHighlight = entry.includes('Sukh Khokhar');
                   return (
@@ -458,7 +464,7 @@ export default function BooksPageContent() {
                       key={entry}
                       className={`py-2 px-3 border-l-2 ${
                         isHighlight
-                          ? 'border-artist-crimson bg-artist-crimson/10 text-warm-cream'
+                          ? 'border-artist-crimson bg-artist-crimson/10 text-deep-oxblood'
                           : 'border-warm-gray/20'
                       }`}
                     >
@@ -481,28 +487,28 @@ export default function BooksPageContent() {
         </div>
       </section>
 
-      <section className="py-16 bg-soft-black text-center">
+      <section className="py-16 bg-light-canvas text-center border-t border-warm-gray/20">
         <div className="max-w-3xl mx-auto px-4">
-          <h2 className="font-display text-2xl sm:text-3xl text-warm-cream mb-4">Where to Buy</h2>
-          <p className="text-muted-beige mb-8 leading-relaxed">
+          <h2 className="font-display text-2xl sm:text-3xl text-deep-oxblood mb-4">Where to Buy</h2>
+          <p className="text-gallery-black/75 mb-8 leading-relaxed">
             Books are available through Amazon, Chapters-Indigo, Kindle, Kobo, and many retail stores worldwide.
           </p>
-          <div className="space-y-3 text-muted-beige mb-10">
+          <div className="space-y-3 text-gallery-black/80 mb-10">
             <p>
               <span className="text-aged-gold">Email: </span>
-              <a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-warm-cream transition-colors">
+              <a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-deep-oxblood transition-colors">
                 {CONTACT_EMAIL}
               </a>
             </p>
             <p>
               <span className="text-aged-gold">Art Gallery: </span>
-              <a href={CONTACT_LINKS.artPal} target="_blank" rel="noopener noreferrer" className="hover:text-warm-cream transition-colors">
+              <a href={CONTACT_LINKS.artPal} target="_blank" rel="noopener noreferrer" className="hover:text-deep-oxblood transition-colors">
                 {CONTACT_LINKS.artPalLabel}
               </a>
             </p>
             <p>
               <span className="text-aged-gold">Author Website: </span>
-              <a href={CONTACT_LINKS.mysteryOfTheRose} target="_blank" rel="noopener noreferrer" className="hover:text-warm-cream transition-colors">
+              <a href={CONTACT_LINKS.mysteryOfTheRose} target="_blank" rel="noopener noreferrer" className="hover:text-deep-oxblood transition-colors">
                 {CONTACT_LINKS.mysteryOfTheRoseLabel}
               </a>
             </p>
@@ -512,6 +518,8 @@ export default function BooksPageContent() {
           </Button>
         </div>
       </section>
+
+      <RoseThemeClose />
     </>
   );
 }

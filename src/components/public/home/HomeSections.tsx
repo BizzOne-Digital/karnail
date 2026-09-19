@@ -14,37 +14,34 @@ export function HomeHero({ section }: { section: PageSection }) {
   const bgImage = section.backgroundImage || HERO_BACKGROUND;
 
   return (
-    <section className="relative w-full max-w-full min-h-[min(88svh,820px)] flex flex-col justify-end overflow-hidden bg-light-canvas">
-      <div className="absolute inset-0 overflow-hidden">
+    <section className="relative w-full max-w-full overflow-hidden bg-light-canvas">
+      <div className="relative w-full aspect-[16/10] sm:aspect-[16/9] min-h-[280px] sm:min-h-[360px] md:min-h-[420px] max-h-[min(72vh,720px)]">
         <Image
           src={getImageUrl(bgImage)}
           alt=""
           fill
           priority
-          className="object-cover object-center brightness-[1.08] contrast-[1.03] saturate-[1.05]"
+          className="object-cover object-[center_35%] brightness-[1.06] contrast-[1.02]"
           sizes="100vw"
         />
-      </div>
 
-      {/* Light wash only — keeps banner bright per client design */}
-      <div className="absolute inset-0 bg-gradient-to-t from-light-canvas/55 via-white/10 to-white/5 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-b from-light-canvas/20 via-transparent to-light-canvas/70 pointer-events-none" />
 
-      {/* Blinking verse embedded in the banner */}
-      <div className="relative z-10 w-full px-4 sm:px-6 pb-10 sm:pb-14 pt-28 sm:pt-32">
-        <div className="max-w-3xl mx-auto text-center space-y-1.5 sm:space-y-2">
-          {BANNER_VERSE.map((line, index) => (
-            <p
-              key={line}
-              className="hero-verse-line font-display text-base sm:text-lg md:text-xl lg:text-2xl text-deep-oxblood italic leading-snug drop-shadow-[0_1px_2px_rgba(255,248,234,0.85)]"
-              style={{ animationDelay: `${index * 0.75}s` }}
-            >
-              {line}
-            </p>
-          ))}
+        {/* Verse on banner — readable panel over artwork */}
+        <div className="absolute inset-0 flex items-center justify-center px-4 sm:px-6 py-6">
+          <div className="max-w-2xl w-full text-center bg-light-canvas/90 backdrop-blur-[2px] border border-warm-cream/80 px-5 py-6 sm:px-8 sm:py-8 shadow-[0_8px_32px_rgba(9,8,7,0.08)]">
+            {BANNER_VERSE.map((line, index) => (
+              <p
+                key={line}
+                className="hero-verse-line font-display text-sm sm:text-base md:text-lg lg:text-xl text-deep-oxblood italic leading-relaxed"
+                style={{ animationDelay: `${index * 0.75}s`, paddingLeft: `${index * 0.75}rem` }}
+              >
+                {line}
+              </p>
+            ))}
+          </div>
         </div>
       </div>
-
-      <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-light-canvas to-transparent pointer-events-none" />
     </section>
   );
 }
@@ -70,7 +67,7 @@ function PinnedStatement({ heading }: { heading: string }) {
 export function FeaturedArtwork({ products }: { products: Product[] }) {
   if (!products.length) return null;
   return (
-    <section className="py-16 sm:py-24 md:py-32 bg-gallery-black relative canvas-texture overflow-hidden w-full max-w-full">
+    <section className="py-16 sm:py-24 md:py-32 bg-light-canvas relative overflow-hidden w-full max-w-full border-y border-warm-gray/20">
       <div className="max-w-7xl mx-auto px-4 relative">
         <RevealOnScroll className="text-center mb-16">
           <p className="font-dramatic text-aged-gold text-xs tracking-[0.3em] uppercase mb-4">Curated Selection</p>
@@ -102,7 +99,7 @@ export function FeaturedArtwork({ products }: { products: Product[] }) {
 
 export function ServicesPreview({ services }: { services: Service[] }) {
   return (
-    <section className="py-16 sm:py-24 md:py-32 bg-soft-black overflow-hidden w-full max-w-full">
+    <section className="py-16 sm:py-24 md:py-32 bg-warm-cream/40 overflow-hidden w-full max-w-full border-y border-warm-gray/15">
       <div className="max-w-7xl mx-auto px-4">
         <RevealOnScroll className="text-center mb-16">
           <h2 className="font-display text-4xl md:text-6xl text-warm-cream">Creative Services</h2>
@@ -111,7 +108,7 @@ export function ServicesPreview({ services }: { services: Service[] }) {
         <StaggerChildren className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service) => (
             <StaggerItem key={service._id}>
-              <Link href={`/services/${service.slug}`} className="group block h-full bg-gallery-black border border-warm-gray/10 hover:border-artist-crimson/40 transition-all duration-500 overflow-hidden" data-cursor>
+              <Link href={`/services/${service.slug}`} className="group block h-full bg-light-canvas border border-warm-gray/25 hover:border-artist-crimson/40 transition-all duration-500 overflow-hidden shadow-sm" data-cursor>
                 <div className="aspect-[16/10] relative overflow-hidden">
                   {service.mainImage ? (
                     <Image src={getImageUrl(service.mainImage)} alt={service.title} fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
@@ -140,7 +137,7 @@ export function TestimonialSlider({ testimonials }: { testimonials: Testimonial[
   const cards = testimonials.map((t) => (
     <article
       key={t._id}
-      className="w-[min(85vw,300px)] sm:w-[320px] md:w-[380px] lg:w-[420px] flex-shrink-0 mx-2 sm:mx-3 bg-soft-black/70 border border-warm-gray/10 p-6 sm:p-8 md:p-10 relative"
+      className="w-[min(85vw,300px)] sm:w-[320px] md:w-[380px] lg:w-[420px] flex-shrink-0 mx-2 sm:mx-3 bg-light-canvas border border-warm-gray/25 p-6 sm:p-8 md:p-10 relative shadow-sm"
     >
       <span className="absolute top-5 left-6 font-display text-5xl text-artist-crimson/25 leading-none">&ldquo;</span>
       <div className="flex gap-1 mb-4">
@@ -157,15 +154,15 @@ export function TestimonialSlider({ testimonials }: { testimonials: Testimonial[
   ));
 
   return (
-    <section className="py-16 sm:py-24 md:py-32 bg-gallery-black relative overflow-hidden w-full max-w-full">
+    <section className="py-16 sm:py-24 md:py-32 bg-light-canvas relative overflow-hidden w-full max-w-full border-y border-warm-gray/20">
       <div className="absolute inset-0 spotlight" />
       <RevealOnScroll className="max-w-7xl mx-auto px-4 mb-12 md:mb-16 relative text-center">
         <h2 className="font-display text-4xl md:text-6xl text-warm-cream">What Collectors Say</h2>
       </RevealOnScroll>
 
       <div className="relative">
-        <div className="pointer-events-none absolute inset-y-0 left-0 w-8 sm:w-16 md:w-32 bg-gradient-to-r from-gallery-black to-transparent z-10" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 w-8 sm:w-16 md:w-32 bg-gradient-to-l from-gallery-black to-transparent z-10" />
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-8 sm:w-16 md:w-32 bg-gradient-to-r from-light-canvas to-transparent z-10" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-8 sm:w-16 md:w-32 bg-gradient-to-l from-light-canvas to-transparent z-10" />
         <AutoScrollMarquee duration={50} className="py-2">
           {cards}
         </AutoScrollMarquee>
@@ -205,7 +202,7 @@ export function JournalPreview({ blogs }: { blogs: BlogPost[] }) {
 export function CTASection({ section }: { section: PageSection }) {
   const isRed = section.theme === 'red-accent';
   return (
-    <section className={`py-16 sm:py-24 md:py-32 relative overflow-hidden w-full max-w-full ${isRed ? 'bg-deep-oxblood' : 'bg-soft-black'}`}>
+    <section className={`py-16 sm:py-24 md:py-32 relative overflow-hidden w-full max-w-full border-y border-warm-gray/20 ${isRed ? 'bg-warm-cream/60' : 'bg-light-canvas'}`}>
       <div className="absolute inset-0 spotlight" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(183,138,77,0.1)_0%,transparent_60%)]" />
       <RevealOnScroll className="relative z-10 max-w-3xl mx-auto px-4 text-center">
@@ -227,13 +224,13 @@ export function MeetArtist({ section }: { section: PageSection }) {
   const images = [portrait, ...extras].slice(0, 4);
 
   return (
-    <section className="py-16 sm:py-24 md:py-32 bg-gallery-black overflow-hidden w-full max-w-full">
+    <section className="py-16 sm:py-24 md:py-32 bg-warm-cream/30 overflow-hidden w-full max-w-full border-y border-warm-gray/15">
       <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-16 items-center">
         <RevealOnScroll direction="up">
           {images.length === 1 ? (
             <TiltFrame>
               <div className="gallery-frame max-w-md mx-auto lg:mx-0 lg:max-w-none">
-                <div className="gallery-frame-inner relative bg-soft-black aspect-[4/5]">
+                <div className="gallery-frame-inner relative bg-warm-cream aspect-[4/5]">
                   <Image src={getImageUrl(images[0])} alt="Sukh D. H. Khokhar" fill className="object-cover object-top" />
                 </div>
               </div>
@@ -243,7 +240,7 @@ export function MeetArtist({ section }: { section: PageSection }) {
               {images.map((img, i) => (
                 <TiltFrame key={i} className={i === 0 ? 'col-span-2' : ''}>
                   <div className="gallery-frame">
-                    <div className={`gallery-frame-inner relative bg-soft-black ${i === 0 ? 'aspect-[16/10]' : 'aspect-square'}`}>
+                    <div className={`gallery-frame-inner relative bg-warm-cream ${i === 0 ? 'aspect-[16/10]' : 'aspect-square'}`}>
                       <Image src={getImageUrl(img)} alt="" fill className="object-cover" />
                     </div>
                   </div>
@@ -265,7 +262,7 @@ export function MeetArtist({ section }: { section: PageSection }) {
 
 export function GalleryPreview({ images }: { images: GalleryImage[] }) {
   return (
-    <section className="py-16 sm:py-24 md:py-32 bg-soft-black overflow-hidden w-full max-w-full">
+    <section className="py-16 sm:py-24 md:py-32 bg-warm-cream/40 overflow-hidden w-full max-w-full border-y border-warm-gray/15">
       <RevealOnScroll className="max-w-7xl mx-auto px-4 mb-8 sm:mb-12 text-center">
         <h2 className="font-display text-3xl sm:text-4xl md:text-6xl text-warm-cream">Immersive Gallery</h2>
       </RevealOnScroll>

@@ -54,3 +54,46 @@ export function loadGalleryImagesFromDisk(): GalleryImage[] {
   walkGalleryDir(galleryRoot, '/gallery', results);
   return results.sort((a, b) => a.title.localeCompare(b.title, undefined, { sensitivity: 'base' }));
 }
+
+/** Top-level gallery folders mapped to client Galleries 1–4 (horizontal scroll rows). */
+const GALLERY_COLLECTION_DIRS: { num: number; folder: string; title: string }[] = [
+  { num: 1, folder: 'Website Gallery - 1-1-001', title: 'Gallery 1' },
+  { num: 2, folder: 'Website Art Gallery -  2-1-001', title: 'Gallery 2' },
+  { num: 3, folder: 'Website Gallery-3-1-001', title: 'Gallery 3' },
+  { num: 4, folder: 'Website Gallery-4-1-001', title: 'Gallery 4' },
+];
+
+export interface GalleryDiskCollection {
+  id: string;
+  title: string;
+  images: GalleryImage[];
+}
+
+function resolveGalleryFolder(galleryRoot: string, expected: string): string | null {
+  if (!fs.existsSync(path.join(galleryRoot, expected))) {
+    const entries = fs.readdirSync(galleryRoot, { withFileTypes: true }).filter((e) => e.isDirectory());
+    const normalized = expected.replace(/\s+/g, ' ').trim().toLowerCase();
+    const match = entries.find((e) => e.name.replace(/\s+/g, ' ').trim().toLowerCase() === normalized);
+    return match?.name ?? null;
+  }
+  return expected;
+}
+
+/** Four gallery sections for side-scroll layout (folders 1–4 on disk). */
+export function loadGalleryCollectionsFromDisk(): GalleryDiskCollection[] {
+  const galleryRoot = path.join(process.cwd(), 'public', 'gallery');
+  if (!fs.existsSync(galleryRoot)) return [];
+
+  return GALLERY_COLLECTION_DIRS.map(({ num, folder, title }) => {
+    const resolved = resolveGalleryFolder(galleryRoot, folder);
+    const results: GalleryImage[] = [];
+    if (resolved) {
+      walkGalleryDir(path.join(galleryRoot, resolved), `/gallery/${resolved}`, results);
+    }
+    return {
+      id: `gallery-${num}`,
+      title,
+      images: results,
+    };
+  }).filter((c) => c.images.length > 0);
+}

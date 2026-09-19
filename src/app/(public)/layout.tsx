@@ -1,6 +1,7 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { Suspense, useState, useEffect } from 'react';
+import { SiteDesignTabs } from '@/components/public/SiteDesignTabs';
 import { usePathname } from 'next/navigation';
 import CinematicIntro from '@/components/animations/CinematicIntro';
 import CustomCursor from '@/components/animations/CustomCursor';
@@ -47,6 +48,11 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
       <CustomCursor />
       {showIntro && <CinematicIntro onComplete={handleIntroComplete} />}
       <Header settings={settings} />
+      {/* Offset for fixed header so tabs + hero are not covered */}
+      <div className="h-[3.25rem] sm:h-14 shrink-0" aria-hidden />
+      <Suspense fallback={null}>
+        <SiteDesignTabs className="sticky top-[3.25rem] sm:top-14 z-40 shadow-sm" />
+      </Suspense>
       <main className="site-main flex-1 relative w-full max-w-full overflow-x-clip">{children}</main>
       <Footer settings={settings} />
     </div>

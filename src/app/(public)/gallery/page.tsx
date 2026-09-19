@@ -1,10 +1,9 @@
 import GalleryPageClient from './GalleryPageClient';
-import { loadGalleryImagesFromDisk } from '@/lib/load-gallery-images';
-import { serverPublicApi } from '@/services/server-public-api';
+import { loadGalleryCollectionsFromDisk, loadGalleryImagesFromDisk } from '@/lib/load-gallery-images';
 
 export default async function GalleryPage() {
-  const page = await serverPublicApi.getPage('gallery').catch(() => null);
+  const collections = loadGalleryCollectionsFromDisk();
   const images = loadGalleryImagesFromDisk();
 
-  return <GalleryPageClient page={page} images={images} />;
+  return <GalleryPageClient collections={collections} allImages={images} />;
 }

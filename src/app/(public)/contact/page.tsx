@@ -33,21 +33,21 @@ export default async function ContactPage() {
         backgroundImage={hero?.backgroundImage}
       />
 
-      <section className="py-24 bg-gallery-black">
+      <section className="py-24 bg-light-canvas border-y border-warm-gray/20">
         <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-16">
           <div>
-            <h2 className="font-display text-3xl text-warm-cream mb-6">Start a Conversation</h2>
-            <Suspense fallback={<div className="text-muted-beige">Loading form...</div>}>
+            <h2 className="font-display text-3xl text-deep-oxblood mb-6">Start a Conversation</h2>
+            <Suspense fallback={<div className="text-gallery-black/70">Loading form...</div>}>
               <ContactForm />
             </Suspense>
           </div>
 
           <div>
-            <h2 className="font-display text-3xl text-warm-cream mb-6">Contact Information</h2>
-            <div className="space-y-6 text-muted-beige">
+            <h2 className="font-display text-3xl text-deep-oxblood mb-6">Contact Information</h2>
+            <div className="space-y-6 text-gallery-black/80">
               <div>
                 <p className="text-aged-gold text-sm mb-1 tracking-wide uppercase">Email</p>
-                <a href={`mailto:${email}`} className="text-lg hover:text-warm-cream transition-colors">
+                <a href={`mailto:${email}`} className="text-lg text-deep-oxblood hover:text-artist-crimson transition-colors">
                   {email}
                 </a>
               </div>
@@ -57,7 +57,7 @@ export default async function ContactPage() {
                   href={artPalUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-lg hover:text-warm-cream transition-colors"
+                  className="text-lg text-deep-oxblood hover:text-artist-crimson transition-colors"
                 >
                   {CONTACT_LINKS.artPalLabel}
                 </a>
@@ -68,7 +68,7 @@ export default async function ContactPage() {
                   href={authorWebsite}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-lg hover:text-warm-cream transition-colors"
+                  className="text-lg text-deep-oxblood hover:text-artist-crimson transition-colors"
                 >
                   {CONTACT_LINKS.mysteryOfTheRoseLabel}
                 </a>
@@ -76,7 +76,7 @@ export default async function ContactPage() {
               {general?.phone && (
                 <div>
                   <p className="text-aged-gold text-sm mb-1 tracking-wide uppercase">Phone</p>
-                  <a href={`tel:${general.phone.replace(/\D/g, '')}`} className="hover:text-warm-cream transition-colors">
+                  <a href={`tel:${general.phone.replace(/\D/g, '')}`} className="text-deep-oxblood hover:text-artist-crimson transition-colors">
                     {general.phone}
                   </a>
                 </div>
@@ -87,9 +87,9 @@ export default async function ContactPage() {
       </section>
 
       {faqs.length > 0 && (
-        <section className="py-24 bg-soft-black">
+        <section className="py-24 bg-warm-cream/40 border-t border-warm-gray/20">
           <div className="max-w-3xl mx-auto px-4">
-            <h2 className="font-display text-3xl text-warm-cream text-center mb-8">Quick Answers</h2>
+            <h2 className="font-display text-3xl text-deep-oxblood text-center mb-8">Quick Answers</h2>
             <FAQAccordion faqs={faqs.slice(0, 5)} />
           </div>
         </section>

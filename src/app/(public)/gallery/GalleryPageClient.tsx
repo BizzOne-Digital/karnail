@@ -1,81 +1,60 @@
 'use client';
 
-import { useState } from 'react';
-import Image from 'next/image';
-import { SectionHero } from '@/components/public/SectionHero';
+import { useMemo, useState } from 'react';
+import { GalleryScrollRows } from '@/components/public/gallery/GalleryScrollRows';
 import { GalleryLightbox } from '@/components/public/GalleryLightbox';
+import { RoseThemeClose } from '@/components/public/RoseThemeClose';
 import { GlowButton } from '@/components/animations/InteractiveElements';
-import { StaggerChildren, StaggerItem } from '@/components/animations/MotionPrimitives';
-import { TiltFrame } from '@/components/animations/InteractiveElements';
-import { getImageUrl } from '@/lib/utils';
-import type { GalleryImage, Page } from '@/types';
+import type { GalleryDiskCollection } from '@/lib/load-gallery-images';
+import type { GalleryImage } from '@/types';
 
 interface GalleryPageClientProps {
-  page: Page | null;
-  images: GalleryImage[];
+  collections: GalleryDiskCollection[];
+  allImages: GalleryImage[];
 }
 
-export default function GalleryPageClient({ page, images }: GalleryPageClientProps) {
+export default function GalleryPageClient({ collections, allImages }: GalleryPageClientProps) {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
-  const hero = page?.sections?.find((s) => s.sectionKey === 'hero');
+  const flatFromCollections = useMemo(
+    () => collections.flatMap((c) => c.images),
+    [collections]
+  );
+
+  const lightboxImages = flatFromCollections.length ? flatFromCollections : allImages;
+
+  const openAt = (collectionIndex: number, imageIndex: number) => {
+    let offset = 0;
+    for (let i = 0; i < collectionIndex; i++) {
+      offset += collections[i]?.images.length ?? 0;
+    }
+    setLightboxIndex(offset + imageIndex);
+  };
 
   return (
     <>
-      <SectionHero
-        eyebrow={hero?.eyebrow || 'Collection'}
-        heading={hero?.heading || 'The Gallery'}
-        description={hero?.description}
-        backgroundImage={hero?.backgroundImage}
-      />
-
-      <section className="py-12 sm:py-16 bg-light-canvas text-gallery-black overflow-hidden w-full max-w-full">
-        <div className="max-w-7xl mx-auto px-4 w-full">
-          <p className="text-center text-gallery-black/70 mb-10">
-            {images.length} artworks in the collection
-          </p>
-
-          <StaggerChildren className="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
-            {images.map((img, i) => (
-              <StaggerItem key={img._id}>
-                <button
-                  type="button"
-                  onClick={() => setLightboxIndex(i)}
-                  className="gallery-frame block w-full break-inside-avoid group"
-                  data-cursor
-                >
-                  <TiltFrame>
-                    <div className="gallery-frame-inner relative aspect-[4/5]">
-                      <Image
-                        src={getImageUrl(img.imageUrl)}
-                        alt={img.altText || img.title}
-                        fill
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                        className="object-cover group-hover:scale-105 transition-transform duration-700"
-                      />
-                    </div>
-                  </TiltFrame>
-                  {img.title && (
-                    <p className="text-deep-oxblood text-sm mt-3 text-left font-display">{img.title}</p>
-                  )}
-                </button>
-              </StaggerItem>
-            ))}
-          </StaggerChildren>
-
-          {images.length === 0 && (
-            <p className="text-center text-muted-beige py-12">No artwork found in the gallery folder yet.</p>
-          )}
-        </div>
+      <section className="bg-light-canvas pt-28 sm:pt-32 pb-8 text-center px-4">
+        <p className="font-dramatic text-artist-crimson text-xs tracking-[0.3em] uppercase mb-3">Collection</p>
+        <h1 className="font-display text-3xl sm:text-4xl md:text-5xl text-deep-oxblood">The Gallery</h1>
+        <p className="text-gallery-black/75 mt-4 max-w-2xl mx-auto text-sm sm:text-base">
+          Mystical paintings, originals, murals, and commissioned work — four scrollable galleries.
+        </p>
       </section>
 
-      <section className="py-32 bg-deep-oxblood text-center relative overflow-hidden">
-        <div className="absolute inset-0 spotlight" />
+      <GalleryScrollRows collections={collections} onImageClick={openAt} />
+
+      <section className="py-12 bg-light-canvas text-center border-t border-warm-gray/20">
         <GlowButton href="https://www.artpal.com/sukh2">Visit ArtPal Collection</GlowButton>
       </section>
 
+      <RoseThemeClose />
+
       {lightboxIndex !== null && (
-        <GalleryLightbox images={images} initialIndex={lightboxIndex} onClose={() => setLightboxIndex(null)} />
+        <GalleryLightbox
+          images={lightboxImages}
+          initialIndex={lightboxIndex}
+          onClose={() => setLightboxIndex(null)}
+        />
       )}
     </>
   );
