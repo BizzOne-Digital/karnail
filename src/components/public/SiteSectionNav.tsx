@@ -20,7 +20,7 @@ export function SiteSectionNav({ className, orientation = 'vertical' }: SiteSect
   return (
     <nav
       className={cn(
-        isVertical ? 'flex flex-col gap-1.5' : 'flex flex-wrap gap-2 justify-center',
+        isVertical ? 'flex flex-col gap-1' : 'flex flex-wrap gap-1.5 justify-center',
         className
       )}
       aria-label="Site sections"
@@ -32,7 +32,7 @@ export function SiteSectionNav({ className, orientation = 'vertical' }: SiteSect
             key={item.href}
             href={item.href}
             className={cn(
-              'px-3 py-2 text-[10px] sm:text-[11px] tracking-[0.12em] uppercase font-semibold transition-colors border text-left',
+              'px-2 py-1.5 text-[9px] sm:text-[10px] tracking-[0.1em] uppercase font-semibold transition-colors border text-left leading-tight',
               active
                 ? 'bg-artist-crimson text-warm-cream border-artist-crimson'
                 : 'text-deep-oxblood border-warm-gray/35 hover:border-artist-crimson/50 hover:text-artist-crimson bg-warm-cream/50'

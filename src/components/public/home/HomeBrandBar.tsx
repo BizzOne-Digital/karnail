@@ -7,9 +7,9 @@ import { BRAND_LOGO } from '@/lib/brand';
 
 export function HomeBrandBar() {
   return (
-    <div className="bg-page-silver border-b border-warm-gray/20 py-4 sm:py-5">
+    <div className="bg-page-silver border-b border-warm-gray/20 py-2 sm:py-2.5">
       <Link href="/" className="flex justify-center" aria-label="Sukh D. H. Khokhar">
-        <div className="relative h-12 sm:h-14 w-[11rem] sm:w-[12.5rem]">
+        <div className="relative h-10 sm:h-11 w-[10rem] sm:w-[11rem]">
           <Image
             src={getImageUrl(BRAND_LOGO)}
             alt="Sukh D. H. Khokhar"
