@@ -7,6 +7,7 @@
   --artist-crimson: #9E2531;
   --warm-cream: #F4E6D0;
   --light-canvas: #FFF8EA;
+  --page-silver: #e3e1dc;
   --muted-beige: #DCC7AA;
   --aged-gold: #7A5524;
   --gold-text: #5C3D18;
@@ -20,6 +21,7 @@
   --color-artist-crimson: var(--artist-crimson);
   --color-warm-cream: var(--warm-cream);
   --color-light-canvas: var(--light-canvas);
+  --color-page-silver: var(--page-silver);
   --color-muted-beige: var(--muted-beige);
   --color-aged-gold: var(--aged-gold);
   --color-gold-text: var(--gold-text);
@@ -58,9 +60,10 @@ html.lenis, html.lenis body {
 }
 
 body {
-  background: var(--light-canvas);
+  background: var(--page-silver);
   color: var(--gallery-black);
   font-family: var(--font-manrope), system-ui, sans-serif;
+  font-weight: 500;
   overflow-x: hidden;
   width: 100%;
   position: relative;
@@ -373,6 +376,18 @@ svg {
 /* Cream public site — bright surfaces, readable bronze/gold text */
 .theme-cream {
   color: var(--gallery-black);
+}
+
+.prose-content-bold,
+.prose-content-bold p,
+.prose-content-bold li {
+  font-weight: 500;
+}
+
+.prose-content-bold h1,
+.prose-content-bold h2,
+.prose-content-bold h3 {
+  font-weight: 600;
 }
 
 .theme-cream .bg-gallery-black,

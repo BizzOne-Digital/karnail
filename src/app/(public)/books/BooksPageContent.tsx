@@ -159,9 +159,9 @@ export default function BooksPageContent() {
 
   return (
     <>
-      <section className="bg-light-canvas pt-28 sm:pt-32 pb-6 text-center px-4">
-        <p className="font-dramatic text-artist-crimson text-xs tracking-[0.3em] uppercase mb-3">Publications</p>
-        <h1 className="font-display text-3xl sm:text-4xl md:text-5xl text-deep-oxblood">Buy the Books</h1>
+      <section className="bg-transparent pb-4 text-center px-2 -mt-2">
+        <p className="font-dramatic text-artist-crimson text-xs tracking-[0.3em] uppercase mb-3 font-semibold">Publications</p>
+        <h1 className="font-display text-2xl sm:text-3xl text-deep-oxblood font-semibold">Books by the Author</h1>
         <p className="text-gallery-black/75 mt-4 max-w-2xl mx-auto text-sm sm:text-base">
           Mystical novels, illustrated poetry, and 2027 editions — covers displayed as in the author&apos;s layout.
         </p>

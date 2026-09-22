@@ -1,9 +1,10 @@
 'use client';
 
-import { useMemo, useState } from 'react';
-import { GalleryScrollRows } from '@/components/public/gallery/GalleryScrollRows';
+import { Suspense, useMemo, useState } from 'react';
+import { useSearchParams } from 'next/navigation';
+import { GalleryCarouselRow } from '@/components/public/gallery/GalleryCarouselRow';
 import { GalleryLightbox } from '@/components/public/GalleryLightbox';
-import { RoseThemeClose } from '@/components/public/RoseThemeClose';
+import { SectionPageShell } from '@/components/public/SectionPageShell';
 import { GlowButton } from '@/components/animations/InteractiveElements';
 import type { GalleryDiskCollection } from '@/lib/load-gallery-images';
 import type { GalleryImage } from '@/types';
@@ -13,8 +14,14 @@ interface GalleryPageClientProps {
   allImages: GalleryImage[];
 }
 
-export default function GalleryPageClient({ collections, allImages }: GalleryPageClientProps) {
+function GalleryBody({ collections, allImages }: GalleryPageClientProps) {
+  const searchParams = useSearchParams();
+  const gParam = searchParams.get('g');
+  const galleryNum = Math.min(4, Math.max(1, parseInt(gParam || '1', 10) || 1));
+
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+
+  const activeCollection = collections.find((c) => c.id === `gallery-${galleryNum}`) ?? collections[0];
 
   const flatFromCollections = useMemo(
     () => collections.flatMap((c) => c.images),
@@ -23,31 +30,37 @@ export default function GalleryPageClient({ collections, allImages }: GalleryPag
 
   const lightboxImages = flatFromCollections.length ? flatFromCollections : allImages;
 
-  const openAt = (collectionIndex: number, imageIndex: number) => {
+  const openAt = (imageIndex: number) => {
+    if (!activeCollection) return;
     let offset = 0;
-    for (let i = 0; i < collectionIndex; i++) {
-      offset += collections[i]?.images.length ?? 0;
+    for (const c of collections) {
+      if (c.id === activeCollection.id) break;
+      offset += c.images.length;
     }
     setLightboxIndex(offset + imageIndex);
   };
 
+  if (!activeCollection?.images.length) {
+    return (
+      <p className="text-center text-gallery-black/70 py-12 font-medium">Gallery images are loading…</p>
+    );
+  }
+
   return (
     <>
-      <section className="bg-light-canvas pt-28 sm:pt-32 pb-8 text-center px-4">
-        <p className="font-dramatic text-artist-crimson text-xs tracking-[0.3em] uppercase mb-3">Collection</p>
-        <h1 className="font-display text-3xl sm:text-4xl md:text-5xl text-deep-oxblood">The Gallery</h1>
-        <p className="text-gallery-black/75 mt-4 max-w-2xl mx-auto text-sm sm:text-base">
-          Mystical paintings, originals, murals, and commissioned work — four scrollable galleries.
+      <header className="text-center mb-6 sm:mb-8">
+        <p className="text-[10px] tracking-[0.25em] uppercase text-artist-crimson font-semibold mb-2">Art Collections</p>
+        <h1 className="font-display text-2xl sm:text-3xl text-deep-oxblood font-semibold">{activeCollection.title}</h1>
+        <p className="text-gallery-black/75 mt-2 text-sm font-medium">
+          {activeCollection.images.length} paintings — use arrows to browse three at a time.
         </p>
-      </section>
+      </header>
 
-      <GalleryScrollRows collections={collections} onImageClick={openAt} />
+      <GalleryCarouselRow images={activeCollection.images} onImageClick={openAt} />
 
-      <section className="py-12 bg-light-canvas text-center border-t border-warm-gray/20">
+      <div className="text-center mt-10">
         <GlowButton href="https://www.artpal.com/sukh2">Visit ArtPal Collection</GlowButton>
-      </section>
-
-      <RoseThemeClose />
+      </div>
 
       {lightboxIndex !== null && (
         <GalleryLightbox
@@ -57,5 +70,15 @@ export default function GalleryPageClient({ collections, allImages }: GalleryPag
         />
       )}
     </>
+  );
+}
+
+export default function GalleryPageClient(props: GalleryPageClientProps) {
+  return (
+    <SectionPageShell showRose>
+      <Suspense fallback={<div className="min-h-[200px]" />}>
+        <GalleryBody {...props} />
+      </Suspense>
+    </SectionPageShell>
   );
 }

@@ -1,6 +1,8 @@
+import { Suspense } from 'react';
 import { serverPublicApi } from '@/services/server-public-api';
 import { HomeAboutAuthor } from '@/components/public/home/HomeAboutAuthor';
 import { HomeHero } from '@/components/public/home/HomeSections';
+import { HomeBrandBar } from '@/components/public/home/HomeBrandBar';
 import type { PageSection } from '@/types';
 
 async function getHomeData() {
@@ -16,7 +18,6 @@ function getSection(sections: PageSection[], key: string) {
   return sections.find((s) => s.sectionKey === key && s.isVisible);
 }
 
-/** Home follows client layout: banner + verse, then about author + photo, rose close — one cohesive page. */
 export default async function HomePage() {
   const { page } = await getHomeData();
   const sections = page?.sections || [];
@@ -25,7 +26,7 @@ export default async function HomePage() {
 
   if (!hero) {
     return (
-      <div className="min-h-[50vh] flex items-center justify-center bg-light-canvas text-deep-oxblood">
+      <div className="min-h-[40vh] flex items-center justify-center bg-page-silver text-deep-oxblood">
         <p>Home content is loading…</p>
       </div>
     );
@@ -34,7 +35,10 @@ export default async function HomePage() {
   return (
     <>
       <HomeHero section={hero} />
-      <HomeAboutAuthor meet={meet} />
+      <HomeBrandBar />
+      <Suspense fallback={null}>
+        <HomeAboutAuthor meet={meet} />
+      </Suspense>
     </>
   );
 }

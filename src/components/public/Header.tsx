@@ -1,12 +1,11 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ShoppingBag } from 'lucide-react';
-import { cn, getImageUrl } from '@/lib/utils';
-import { BRAND_LOGO, DEFAULT_HEADER_NAV } from '@/lib/brand';
+import { cn } from '@/lib/utils';
+import { DEFAULT_HEADER_NAV } from '@/lib/brand';
 import { useCart } from '@/hooks/useCart';
 import type { SiteSettings } from '@/types';
 
@@ -28,7 +27,6 @@ export default function Header({ settings }: HeaderProps) {
   const cmsNav = settings?.header?.navigation?.filter((n) => n.isVisible).sort((a, b) => a.order - b.order) ?? [];
   const nav = cmsNav.length > 0 ? cmsNav : DEFAULT_HEADER_NAV;
   const logoText = settings?.header?.logoText || 'Sukh D. H. Khokhar';
-  const logoImage = settings?.branding?.mainLogo || settings?.branding?.darkLogo || BRAND_LOGO;
   const ctaText = settings?.header?.ctaText || 'Explore Art';
   const ctaUrl = settings?.header?.ctaUrl || '/gallery';
 
@@ -37,26 +35,13 @@ export default function Header({ settings }: HeaderProps) {
       <header
         className={cn(
           'fixed top-0 left-0 right-0 z-50 w-full max-w-full transition-all duration-500 pt-[env(safe-area-inset-top,0px)]',
-          'bg-light-canvas/95 backdrop-blur-md border-b border-warm-gray/25 py-3 shadow-sm',
+          'bg-page-silver/95 backdrop-blur-md border-b border-warm-gray/25 py-2 shadow-sm',
           scrolled && 'shadow-md'
         )}
       >
         <div className="max-w-[1400px] mx-auto px-3 sm:px-6 lg:px-8">
           {/* Desktop: logo | centered nav | CTA */}
-          <div className="hidden lg:grid lg:grid-cols-[auto_1fr_auto] items-center gap-3 xl:gap-5 min-h-[3.25rem]">
-            <Link href="/" className="flex items-center justify-self-start shrink-0" data-cursor aria-label={logoText}>
-              <div className="relative h-11 w-[10.5rem] xl:w-[11.5rem]">
-                <Image
-                  src={getImageUrl(logoImage)}
-                  alt={logoText}
-                  width={280}
-                  height={72}
-                  priority
-                  className="h-11 w-auto max-w-none object-left object-contain"
-                />
-              </div>
-            </Link>
-
+          <div className="hidden lg:grid lg:grid-cols-[1fr_auto] items-center gap-3 xl:gap-5 min-h-[2.75rem]">
             <nav className="flex items-center justify-center gap-3 xl:gap-5 flex-wrap">
               {nav.map((item) => (
                 <Link
@@ -89,18 +74,9 @@ export default function Header({ settings }: HeaderProps) {
           </div>
 
           {/* Mobile — crop wide banner logo to icon + name only */}
-          <div className="flex lg:hidden items-center justify-between gap-2 min-h-[3.25rem]">
-            <Link href="/" className="min-w-0 shrink" aria-label={logoText}>
-              <div className="relative h-10 w-[8.5rem] sm:h-11 sm:w-[9.5rem]">
-                <Image
-                  src={getImageUrl(logoImage)}
-                  alt={logoText}
-                  width={320}
-                  height={80}
-                  priority
-                  className="h-full w-auto max-w-none object-left object-contain"
-                />
-              </div>
+          <div className="flex lg:hidden items-center justify-between gap-2 min-h-[2.75rem]">
+            <Link href="/" className="font-display text-sm text-deep-oxblood font-semibold tracking-wide shrink-0" aria-label={logoText}>
+              Home
             </Link>
             <div className="flex items-center shrink-0 gap-1.5 sm:gap-2">
               <Link href="/cart" className="relative text-deep-oxblood p-2 -mr-0.5" aria-label="Cart">
