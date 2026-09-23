@@ -19,7 +19,7 @@ export function HomeAboutAuthor({ meet }: HomeAboutAuthorProps) {
   return (
     <>
       <section className="bg-page-silver text-gallery-black border-t border-warm-gray/15">
-        <div className="max-w-[960px] mx-auto px-3 sm:px-4 py-3 sm:py-4">
+        <div className="max-w-[1056px] mx-auto px-3 sm:px-4 py-3 sm:py-4">
           <header className="text-center mb-4 lg:hidden">
             <p className="font-display text-base tracking-[0.12em] text-artist-crimson uppercase mb-1 font-semibold">
               Sukh D. H. Khokhar
