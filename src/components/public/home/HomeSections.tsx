@@ -14,16 +14,16 @@ export function HomeHero({ section }: { section: PageSection }) {
   const bannerImage = resolveHomeBannerImage(section.backgroundImage);
 
   return (
-    <section className="relative w-full max-w-full overflow-hidden bg-page-silver pt-2 pb-0">
-      <div className="w-full max-w-[1056px] mx-auto px-3 sm:px-4">
+    <section className="relative w-full max-w-full overflow-hidden bg-page-silver pt-1.5 pb-0">
+      <div className="w-full max-w-[1180px] mx-auto px-1 sm:px-2">
         <div className="relative w-full aspect-[1056/480] shadow-[0_4px_18px_rgba(9,8,7,0.08)] border border-warm-gray/25 bg-[#1a1412]">
           <Image
             src={getImageUrl(bannerImage)}
             alt="Sukh D. H. Khokhar — mystical art banner"
             fill
             priority
-            className="object-contain object-center"
-            sizes="(max-width: 1056px) 100vw, 1056px"
+            className="object-cover object-center"
+            sizes="(max-width: 1180px) 100vw, 1180px"
           />
 
           <div

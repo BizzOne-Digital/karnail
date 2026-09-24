@@ -2,7 +2,6 @@ import { Suspense } from 'react';
 import { serverPublicApi } from '@/services/server-public-api';
 import { HomeAboutAuthor } from '@/components/public/home/HomeAboutAuthor';
 import { HomeHero } from '@/components/public/home/HomeSections';
-import { HomeBrandBar } from '@/components/public/home/HomeBrandBar';
 import type { PageSection } from '@/types';
 
 async function getHomeData() {
@@ -35,7 +34,6 @@ export default async function HomePage() {
   return (
     <>
       <HomeHero section={hero} />
-      <HomeBrandBar />
       <Suspense fallback={null}>
         <HomeAboutAuthor meet={meet} />
       </Suspense>
