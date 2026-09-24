@@ -40,8 +40,8 @@ export function SiteSectionNav({
               'px-2 py-1.5 text-[9px] sm:text-[10px] tracking-[0.08em] uppercase font-semibold transition-colors text-left leading-snug font-display',
               isSidebar
                 ? active
-                  ? 'bg-[#e8c547] text-deep-oxblood'
-                  : 'text-warm-cream hover:bg-black/15'
+                  ? 'sidebar-nav-link sidebar-nav-link--active'
+                  : 'sidebar-nav-link'
                 : active
                   ? 'bg-artist-crimson text-warm-cream border border-artist-crimson'
                   : 'text-deep-oxblood border border-warm-gray/35 hover:border-artist-crimson/50 bg-warm-cream/50'
