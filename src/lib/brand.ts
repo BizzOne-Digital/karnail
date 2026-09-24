@@ -7,6 +7,9 @@ export const BRAND_LOGO = '/logo.png';
 /** Client banner wrapper — two figures on top + expanded verse area (1056×480 design) */
 export const HOME_BANNER_WRAPPER = '/banner/home-banner-wrapper.jpg';
 
+/** Match shipped banner pixels so golden borders are not cropped (1290×698) */
+export const HOME_BANNER_ASPECT = 1290 / 698;
+
 /** @deprecated Old full-bleed hero; use {@link HOME_BANNER_WRAPPER} */
 export const HERO_BACKGROUND = HOME_BANNER_WRAPPER;
 

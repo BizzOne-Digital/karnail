@@ -11,24 +11,24 @@ import { SiteSectionNav } from '@/components/public/SiteSectionNav';
 export function HomeSidebar() {
   return (
     <aside className="home-sidebar-pane text-warm-cream lg:min-h-full">
-      <Link href="/" className="brand-logo-bar block px-2 py-3 sm:py-3.5" aria-label="Sukh D. H. Khokhar">
+      <Link href="/" className="brand-logo-bar block px-1.5 py-2" aria-label="Sukh D. H. Khokhar">
         <Image
           src={getImageUrl(BRAND_LOGO)}
           alt="Sukh D. H. Khokhar"
-          width={420}
-          height={88}
+          width={200}
+          height={40}
           priority
-          className="h-10 sm:h-11 w-full max-w-[220px] mx-auto object-contain object-center"
+          className="h-[22px] sm:h-6 w-full max-w-[148px] mx-auto object-contain object-center"
         />
       </Link>
 
-      <div className="px-2 py-3 sm:py-4">
+      <div className="px-1.5 py-2">
         <Suspense fallback={null}>
           <SiteSectionNav orientation="vertical" variant="sidebar" />
         </Suspense>
       </div>
 
-      <div className="px-3 py-4 mt-auto text-[10px] sm:text-[11px] leading-relaxed text-warm-cream/90 border-t border-warm-cream/15 font-medium space-y-1">
+      <div className="px-2 py-3 mt-auto text-[9px] sm:text-[10px] leading-relaxed text-warm-cream/95 border-t border-warm-cream/15 font-semibold space-y-1">
         <p>
           <a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-aged-gold transition-colors">
             {CONTACT_EMAIL}

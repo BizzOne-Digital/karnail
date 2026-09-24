@@ -9,9 +9,11 @@ import type { GalleryImage } from '@/types';
 interface GalleryCarouselRowProps {
   images: GalleryImage[];
   onImageClick?: (imageIndex: number) => void;
+  /** Gallery 1 uses cover; 2–4 show full artwork */
+  showFullImage?: boolean;
 }
 
-export function GalleryCarouselRow({ images, onImageClick }: GalleryCarouselRowProps) {
+export function GalleryCarouselRow({ images, onImageClick, showFullImage = false }: GalleryCarouselRowProps) {
   const [active, setActive] = useState(0);
   const count = images.length;
 
@@ -71,8 +73,12 @@ export function GalleryCarouselRow({ images, onImageClick }: GalleryCarouselRowP
                   className={cn(
                     'gallery-frame-inner relative overflow-hidden border bg-warm-cream shadow-md transition-all duration-500',
                     isCenter
-                      ? 'aspect-[3/4] border-warm-gray/30 shadow-lg scale-100'
-                      : 'aspect-[3/4] border-warm-gray/20 grayscale-[0.85] brightness-[0.72] scale-[0.92]'
+                      ? showFullImage
+                        ? 'min-h-[240px] sm:min-h-[300px] md:min-h-[360px] border-warm-gray/30 shadow-lg scale-100'
+                        : 'aspect-[3/4] border-warm-gray/30 shadow-lg scale-100'
+                      : showFullImage
+                        ? 'min-h-[160px] sm:min-h-[200px] border-warm-gray/20 grayscale-[0.85] brightness-[0.72] scale-[0.92]'
+                        : 'aspect-[3/4] border-warm-gray/20 grayscale-[0.85] brightness-[0.72] scale-[0.92]'
                   )}
                 >
                   <Image
@@ -81,8 +87,9 @@ export function GalleryCarouselRow({ images, onImageClick }: GalleryCarouselRowP
                     fill
                     unoptimized
                     className={cn(
-                      'object-cover transition-transform duration-700',
-                      isCenter && 'hover:scale-[1.02]'
+                      showFullImage ? 'object-contain p-1' : 'object-cover',
+                      'transition-transform duration-700',
+                      isCenter && !showFullImage && 'hover:scale-[1.02]'
                     )}
                     sizes={isCenter ? '380px' : '200px'}
                   />

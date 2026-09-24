@@ -16,7 +16,8 @@ export const SITE_SECTION_NAV: SiteSectionNavItem[] = [
   {
     label: 'Artist Statement',
     href: '/about?tab=statement',
-    match: (p, s) => p === '/about' && !s.includes('tab=reviews'),
+    match: (p, s) =>
+      p === '/about' && (!s || !s.includes('tab=') || s.includes('tab=statement')),
   },
   { label: 'Gallery 1', href: '/gallery?g=1' },
   { label: 'Gallery 2', href: '/gallery?g=2' },
@@ -28,10 +29,22 @@ export const SITE_SECTION_NAV: SiteSectionNavItem[] = [
     match: (p, s) => p === '/about' && s.includes('tab=reviews'),
   },
   { label: 'About the Books', href: '/about-the-book' },
-  { label: 'Historical Background 1', href: '/historical-background/1' },
-  { label: 'Historical Background 2', href: '/historical-background/2' },
+  {
+    label: 'Historical Background 1',
+    href: '/historical-background/1',
+    match: (p) => p === '/historical-background/1',
+  },
+  {
+    label: 'Historical Background 2',
+    href: '/historical-background/2',
+    match: (p) => p === '/historical-background/2',
+  },
   { label: 'Books by the Author', href: '/books' },
-  { label: 'Author Blogs', href: '/blog' },
+  {
+    label: 'Author Blogs',
+    href: '/blog',
+    match: (p) => p === '/blog' || p.startsWith('/blog/'),
+  },
   { label: 'Contact Us', href: '/contact' },
 ];
 
@@ -45,5 +58,6 @@ export function isNavItemActive(item: SiteSectionNavItem, pathname: string, sear
     return pathname === '/gallery' && current === g;
   }
   const base = item.href.split('?')[0].split('#')[0];
-  return pathname === base || pathname.startsWith(`${base}/`);
+  if (base === '/blog') return pathname === '/blog' || pathname.startsWith('/blog/');
+  return pathname === base;
 }

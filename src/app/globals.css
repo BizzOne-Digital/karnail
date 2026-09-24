@@ -59,14 +59,37 @@ html.lenis, html.lenis body {
   scroll-behavior: auto !important;
 }
 
+html {
+  overflow-y: scroll;
+  scroll-behavior: auto;
+}
+
 body {
   background: var(--page-silver);
   color: var(--gallery-black);
   font-family: var(--font-manrope), system-ui, sans-serif;
-  font-weight: 500;
+  font-weight: 600;
+  font-size: 16px;
   overflow-x: hidden;
   width: 100%;
   position: relative;
+}
+
+.site-content-width {
+  width: 100%;
+  max-width: 68rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Outer letterbox — client mockup (grey margins → black) */
+.bg-site-backdrop {
+  background-color: #090807;
+}
+
+.site-page-canvas {
+  max-width: 68rem;
+  background-color: var(--page-silver);
 }
 
 img,
@@ -382,7 +405,12 @@ svg {
 .prose-content-bold p,
 .prose-content-bold li {
   font-weight: 600;
-  color: #090807;
+  color: #070605;
+}
+
+.prose-content-bold a {
+  color: var(--artist-crimson);
+  font-weight: 700;
 }
 
 .home-sidebar-pane {
