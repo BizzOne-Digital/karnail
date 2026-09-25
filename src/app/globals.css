@@ -88,7 +88,10 @@ body {
 }
 
 .site-page-canvas {
+  width: 100%;
   max-width: 68rem;
+  margin-left: auto;
+  margin-right: auto;
   background-color: var(--page-silver);
 }
 
@@ -115,8 +118,7 @@ svg {
   overflow-x: clip;
 }
 
-.site-main > section,
-.site-main section {
+.site-main > section:not(.site-page-canvas) {
   max-width: 100%;
 }
 
