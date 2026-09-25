@@ -20,12 +20,17 @@ export function HomeAboutAuthor({ meet, hero }: HomeAboutAuthorProps) {
   const bannerImage = hero ? resolveHomeBannerImage(hero.backgroundImage) : null;
 
   return (
-    <div id="about-author" className="w-full max-w-full overflow-x-hidden scroll-mt-2">
-      <SiteBrandBar variant="header" logoAlign="center" logoSize="large" />
+    <div
+      id="about-author"
+      className="w-full max-w-full overflow-x-hidden scroll-mt-2 min-h-full shadow-[0_0_0_1px_rgba(0,0,0,0.4)]"
+    >
+      <div className="site-page-canvas mx-auto w-full bg-[#090807]">
+        <SiteBrandBar variant="header" logoAlign="center" logoSize="large" />
+      </div>
 
       {bannerImage && (
         <div
-          className="relative w-full max-w-full bg-[#0a0a0a]"
+          className="relative w-full bg-[#0a0a0a]"
           style={{ aspectRatio: String(HOME_BANNER_ASPECT) }}
         >
           <Image
@@ -34,12 +39,12 @@ export function HomeAboutAuthor({ meet, hero }: HomeAboutAuthorProps) {
             fill
             priority
             className="object-cover object-center"
-            sizes="(max-width: 68rem) 100vw, 68rem"
+            sizes="100vw"
           />
         </div>
       )}
 
-      <section className="bg-page-silver text-gallery-black">
+      <section className="bg-page-silver text-gallery-black site-page-canvas mx-auto w-full">
         <div className="w-full mx-auto px-0 max-w-full">
         <div className="mobile-sticky-nav sticky top-0 z-30 px-2 py-1.5 bg-page-silver/95 backdrop-blur-sm border-b border-warm-gray/20 lg:hidden">
           <MobileNavStrip />
@@ -95,7 +100,7 @@ export function HomeAboutAuthor({ meet, hero }: HomeAboutAuthorProps) {
                   alt="Sukh D. H. Khokhar"
                   fill
                   sizes="(max-width: 768px) 85vw, 280px"
-                  className="object-cover object-center"
+                  className="object-cover object-top"
                   unoptimized
                 />
               </div>

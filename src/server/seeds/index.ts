@@ -145,7 +145,7 @@ async function seedPages() {
           label: 'Meet the Artist',
           heading: 'Meet the Artist',
           description: 'Sukh D. H. Khokhar is a mystery writer, mural artist, and visual storyteller whose work weaves together narrative intrigue and bold artistic expression. With nearly 200 mystical paintings in her collection, each piece invites viewers into a world of imagination and wonder.',
-          mainImage: '/images/artist-statement-portrait.jpg',
+          mainImage: '/images/about-author-portrait.png',
           buttonText: 'Discover the Artist',
           buttonUrl: '/about',
           layout: 'layered-composition',
