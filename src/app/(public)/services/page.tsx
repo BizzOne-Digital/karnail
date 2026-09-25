@@ -33,8 +33,8 @@ export default async function ServicesPage() {
         backgroundImage={hero?.backgroundImage}
       />
 
-      <section className="py-24 bg-gallery-black">
-        <div className="max-w-7xl mx-auto px-4">
+      <section className="py-10 sm:py-16 md:py-24 bg-gallery-black overflow-x-hidden">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {services.map((service) => (
               <Link

@@ -10,7 +10,7 @@ export default function PrivacyPage() {
   return (
     <>
       <SectionHero eyebrow="Legal" heading="Privacy Policy" description="How we collect, use, and protect your information." />
-      <section className="py-24 bg-gallery-black">
+      <section className="py-10 sm:py-16 md:py-24 bg-gallery-black overflow-x-hidden">
         <div className="max-w-3xl mx-auto px-4 prose-content space-y-6 text-muted-beige">
           <p>Your privacy is important to us. This policy explains how Sukh D. H. Khokhar collects and uses personal information when you visit our website, submit enquiries, or request artwork information.</p>
           <h2 className="font-display text-2xl text-warm-cream">Information We Collect</h2>

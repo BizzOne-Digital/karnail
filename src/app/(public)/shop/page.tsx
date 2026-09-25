@@ -26,9 +26,9 @@ export default async function ShopPage() {
         description={hero?.description}
       />
 
-      <section className="py-24 bg-gallery-black">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+      <section className="py-10 sm:py-16 md:py-24 bg-gallery-black overflow-x-hidden">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8">
             {products.map((product) => (
               <Link key={product._id} href={`/shop/${product.slug}`} className="group">
                 <div className="gallery-frame mb-4">

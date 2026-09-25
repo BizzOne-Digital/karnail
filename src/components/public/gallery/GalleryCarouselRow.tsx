@@ -33,7 +33,7 @@ export function GalleryCarouselRow({ images, onImageClick, showFullImage = false
 
   return (
     <div className="relative w-full max-w-5xl mx-auto px-2 sm:px-4">
-      <div className="flex items-center justify-center gap-3 sm:gap-5 md:gap-8 min-h-[280px] sm:min-h-[340px] md:min-h-[400px]">
+      <div className="flex items-center justify-center gap-2 sm:gap-5 md:gap-8 min-h-[220px] sm:min-h-[340px] md:min-h-[400px]">
         {count > 1 && (
           <button
             type="button"
@@ -62,7 +62,7 @@ export function GalleryCarouselRow({ images, onImageClick, showFullImage = false
                 className={cn(
                   'relative flex-shrink-0 transition-all duration-500 ease-out focus:outline-none focus-visible:ring-2 focus-visible:ring-artist-crimson/50 rounded-sm',
                   isCenter
-                    ? 'w-[min(52vw,320px)] sm:w-[min(42vw,360px)] md:w-[380px] z-10'
+                    ? 'w-[min(88vw,320px)] sm:w-[min(42vw,360px)] md:w-[380px] z-10'
                     : 'w-[min(28vw,140px)] sm:w-[min(22vw,180px)] md:w-[200px] opacity-80 hidden sm:block',
                   count === 2 && isSide && 'sm:block'
                 )}

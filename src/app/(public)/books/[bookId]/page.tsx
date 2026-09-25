@@ -15,7 +15,7 @@ export default async function BookDetailWindowPage({
   if (!catalog || !blurb) notFound();
 
   return (
-    <div className="min-h-screen bg-warm-cream text-gallery-black p-5 sm:p-8 max-w-lg mx-auto">
+    <div className="min-h-screen bg-warm-cream text-gallery-black p-4 sm:p-8 max-w-lg mx-auto overflow-x-hidden prose-mobile-readable">
       <p className="text-right mb-2">
         <Link href="/books?tab=by-author" className="text-artist-crimson font-bold text-sm underline">
           ← Books by the Author

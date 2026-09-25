@@ -25,7 +25,7 @@ export default async function FAQsPage() {
         backgroundImage={hero?.backgroundImage}
       />
 
-      <section className="py-24 bg-gallery-black">
+      <section className="py-10 sm:py-16 md:py-24 bg-gallery-black overflow-x-hidden">
         <div className="max-w-3xl mx-auto px-4">
           <FAQAccordion faqs={faqs} />
         </div>

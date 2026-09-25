@@ -10,7 +10,7 @@ export default function TermsPage() {
   return (
     <>
       <SectionHero eyebrow="Legal" heading="Terms of Use" description="Terms governing use of this website and artwork services." />
-      <section className="py-24 bg-gallery-black">
+      <section className="py-10 sm:py-16 md:py-24 bg-gallery-black overflow-x-hidden">
         <div className="max-w-3xl mx-auto px-4 prose-content space-y-6 text-muted-beige">
           <p>By accessing and using this website, you agree to these terms of use. All artwork, images, and content on this site are the intellectual property of Sukh D. H. Khokhar unless otherwise stated.</p>
           <h2 className="font-display text-2xl text-warm-cream">Artwork & Purchases</h2>

@@ -25,7 +25,11 @@ export function SiteSectionNav({
   return (
     <nav
       className={cn(
-        isVertical ? 'flex flex-col gap-0.5' : 'flex flex-wrap gap-1.5 justify-center',
+        isVertical
+          ? 'flex flex-col gap-0.5'
+          : isSidebar
+            ? 'flex flex-nowrap gap-1.5 overflow-x-auto pb-1 -mx-0.5 px-0.5 snap-x snap-mandatory scrollbar-thin'
+            : 'flex flex-wrap gap-1.5 justify-center',
         className
       )}
       aria-label="Site sections"
@@ -37,7 +41,8 @@ export function SiteSectionNav({
             key={item.href + item.label}
             href={item.href}
             className={cn(
-              'px-2 py-1.5 text-[9px] sm:text-[10px] tracking-[0.08em] uppercase font-semibold transition-colors text-left leading-snug font-display',
+              'px-2 py-2 sm:py-1.5 text-[10px] sm:text-[10px] tracking-[0.06em] uppercase font-semibold transition-colors text-left leading-snug font-display shrink-0 snap-start min-h-[40px] sm:min-h-0 flex items-center',
+              !isVertical && isSidebar && 'max-w-[85vw] sm:max-w-none',
               isSidebar
                 ? active
                   ? 'sidebar-nav-link sidebar-nav-link--active'

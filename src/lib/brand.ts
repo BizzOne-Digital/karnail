@@ -12,6 +12,9 @@ export const HOME_BANNER_ASPECT = 1920 / 910;
 
 export const ARTIST_STATEMENT_PORTRAIT = '/images/artist-statement-portrait.jpg';
 
+/** About the Author / Meet the Artist — client portrait (not legacy screenshot) */
+export const ABOUT_AUTHOR_PORTRAIT = ARTIST_STATEMENT_PORTRAIT;
+
 /** @deprecated Old full-bleed hero; use {@link HOME_BANNER_WRAPPER} */
 export const HERO_BACKGROUND = HOME_BANNER_WRAPPER;
 
@@ -25,8 +28,20 @@ export function resolveHomeBannerImage(cmsImage?: string | null): string {
   return HOME_BANNER_WRAPPER;
 }
 
-/** Default artist portrait for Meet the Artist section */
-export const ARTIST_PORTRAIT = '/artist-portrait.png';
+/** @deprecated Use {@link ABOUT_AUTHOR_PORTRAIT}; kept for imports */
+export const ARTIST_PORTRAIT = ABOUT_AUTHOR_PORTRAIT;
+
+const DEPRECATED_PORTRAIT_IMAGES = new Set(['/artist-portrait.png', 'artist-portrait.png']);
+
+/** Ignore outdated CMS/screenshot portrait paths */
+export function resolveArtistPortrait(cmsImage?: string | null): string {
+  if (!cmsImage?.trim()) return ABOUT_AUTHOR_PORTRAIT;
+  const path = cmsImage.split('?')[0];
+  if (DEPRECATED_PORTRAIT_IMAGES.has(path) || path.endsWith('/artist-portrait.png')) {
+    return ABOUT_AUTHOR_PORTRAIT;
+  }
+  return cmsImage;
+}
 
 /** Fallback header navigation when CMS settings are unavailable */
 export const DEFAULT_HEADER_NAV: NavItem[] = [

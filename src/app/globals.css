@@ -546,3 +546,42 @@ svg {
 .theme-cream .to-gallery-black {
   --tw-gradient-to: var(--light-canvas) var(--tw-gradient-to-position);
 }
+
+/* —— Phone / small viewport —— */
+@media (max-width: 639px) {
+  .prose-mobile-readable {
+    font-size: 15px;
+    line-height: 1.58;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .prose-mobile-readable .text-justify,
+  .text-justify.prose-mobile-readable {
+    text-align: left;
+    hyphens: auto;
+  }
+}
+
+.mobile-nav-strip__scroll {
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
+
+.mobile-nav-strip__scroll::-webkit-scrollbar {
+  height: 4px;
+}
+
+.mobile-nav-strip__scroll::-webkit-scrollbar-thumb {
+  background: rgba(92, 42, 40, 0.35);
+  border-radius: 4px;
+}
+
+.mobile-sticky-nav {
+  padding-top: max(0.375rem, env(safe-area-inset-top, 0px));
+}
+
+.site-page-canvas {
+  padding-left: env(safe-area-inset-left, 0px);
+  padding-right: env(safe-area-inset-right, 0px);
+}

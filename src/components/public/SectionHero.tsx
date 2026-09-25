@@ -28,7 +28,7 @@ export function SectionHero({
   return (
     <section
       className={cn(
-        'relative w-full max-w-full min-h-[50vh] sm:min-h-[60vh] md:min-h-[70vh] flex items-center justify-center overflow-hidden bg-light-canvas',
+        'relative w-full max-w-full min-h-[36vh] sm:min-h-[50vh] md:min-h-[60vh] flex items-center justify-center overflow-hidden bg-light-canvas',
         className
       )}
     >
@@ -49,7 +49,7 @@ export function SectionHero({
 
       <div className="absolute inset-0 bg-gradient-to-b from-light-canvas/30 via-white/5 to-light-canvas/70 pointer-events-none" />
 
-      <div className="relative z-10 w-full max-w-5xl mx-auto px-4 sm:px-6 py-28 sm:py-32 md:py-40 text-center">
+      <div className="relative z-10 w-full max-w-5xl mx-auto px-3 sm:px-6 py-14 sm:py-28 md:py-36 text-center">
         {eyebrow && (
           <RevealOnScroll direction="down" delay={0.1}>
             <p className="font-dramatic text-[10px] sm:text-xs md:text-sm text-artist-crimson tracking-[0.2em] sm:tracking-[0.35em] uppercase mb-4 sm:mb-6 flex flex-wrap items-center justify-center gap-2 sm:gap-4">

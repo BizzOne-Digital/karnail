@@ -32,14 +32,14 @@ export default function BooksPageClient() {
         <h1 className="font-display text-xl sm:text-2xl text-artist-crimson uppercase font-bold">Books</h1>
       </header>
 
-      <div className="flex flex-wrap gap-2 mb-5 border-b border-warm-gray/30 pb-2">
+      <div className="flex flex-col sm:flex-row flex-wrap gap-2 mb-5 border-b border-warm-gray/30 pb-2">
         {TABS.map((t) => (
           <button
             key={t.id}
             type="button"
             onClick={() => setTab(t.id)}
             className={cn(
-              'px-2 py-1.5 text-[9px] sm:text-[10px] uppercase tracking-wide font-bold text-left',
+              'w-full sm:w-auto px-3 py-2.5 sm:py-1.5 text-[10px] sm:text-[10px] uppercase tracking-wide font-bold text-left min-h-[44px] sm:min-h-0 flex items-center',
               tab === t.id
                 ? 'bg-artist-crimson text-warm-cream'
                 : 'text-artist-crimson border border-warm-gray/35 hover:border-artist-crimson/50'
@@ -53,7 +53,7 @@ export default function BooksPageClient() {
       {tab === 'excerpts' ? (
         <div className="space-y-6">
           <section>
-            <h2 className="font-display text-lg text-artist-crimson font-bold text-center mb-3">
+            <h2 className="font-display text-base sm:text-lg text-artist-crimson font-bold text-center mb-3 leading-snug px-1">
               {UPCOMING_LABEL}
             </h2>
             <ul className="space-y-3">

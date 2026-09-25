@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { getImageUrl, formatDate } from '@/lib/utils';
-import { ARTIST_PORTRAIT, resolveHomeBannerImage } from '@/lib/brand';
+import { resolveArtistPortrait, resolveHomeBannerImage } from '@/lib/brand';
 import { BANNER_VERSE } from '@/lib/about-content';
 import { SplitText, RevealOnScroll, StaggerChildren, StaggerItem, PaintStrokeReveal } from '@/components/animations/MotionPrimitives';
 import { TiltFrame, Magnetic, GlowButton } from '@/components/animations/InteractiveElements';
@@ -221,7 +221,7 @@ export function CTASection({ section }: { section: PageSection }) {
 }
 
 export function MeetArtist({ section }: { section: PageSection }) {
-  const portrait = section.mainImage || ARTIST_PORTRAIT;
+  const portrait = resolveArtistPortrait(section.mainImage);
   const extras = section.additionalImages?.map((i) => i.url).filter(Boolean) || [];
   const images = [portrait, ...extras].slice(0, 4);
 

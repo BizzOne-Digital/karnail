@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { getImageUrl } from '@/lib/utils';
-import { ARTIST_PORTRAIT } from '@/lib/brand';
+import { resolveArtistPortrait } from '@/lib/brand';
 import { ABOUT_AUTHOR_PARAGRAPHS } from '@/lib/about-content';
 import type { PageSection } from '@/types';
 
@@ -23,7 +23,7 @@ interface HomeWelcomeTabsProps {
 
 export function HomeWelcomeTabs({ hero, meet }: HomeWelcomeTabsProps) {
   const [activeTab, setActiveTab] = useState<TabId>('welcome');
-  const portrait = meet?.mainImage || ARTIST_PORTRAIT;
+  const portrait = resolveArtistPortrait(meet?.mainImage);
   const shortBio =
     meet?.description ||
     'Sukh D. H. Khokhar is a mystery writer, mural artist, and visual storyteller whose work weaves together narrative intrigue and bold artistic expression.';

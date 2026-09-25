@@ -24,7 +24,7 @@ export default async function PricingPage() {
         backgroundImage={pricing.heroBackgroundImage}
       />
 
-      <section className="py-24 bg-gallery-black">
+      <section className="py-10 sm:py-16 md:py-24 bg-gallery-black overflow-x-hidden">
         <div className="max-w-5xl mx-auto px-4">
           <p className="text-center text-muted-beige text-lg mb-12 max-w-2xl mx-auto">
             {pricing.contactForPricingMessage}
