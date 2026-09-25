@@ -28,7 +28,11 @@ export const SITE_SECTION_NAV: SiteSectionNavItem[] = [
     href: '/about?tab=reviews',
     match: (p, s) => p === '/about' && s.includes('tab=reviews'),
   },
-  { label: 'About the Books', href: '/about-the-book' },
+  {
+    label: 'Excerpts from the Books',
+    href: '/books?tab=excerpts',
+    match: (p, s) => p === '/books' && s.includes('tab=excerpts'),
+  },
   {
     label: 'Historical Background 1',
     href: '/historical-background/1',
@@ -39,7 +43,11 @@ export const SITE_SECTION_NAV: SiteSectionNavItem[] = [
     href: '/historical-background/2',
     match: (p) => p === '/historical-background/2',
   },
-  { label: 'Books by the Author', href: '/books' },
+  {
+    label: 'Books by the Author',
+    href: '/books?tab=by-author',
+    match: (p, s) => p === '/books' && s.includes('tab=by-author'),
+  },
   {
     label: 'Author Blogs',
     href: '/blog',

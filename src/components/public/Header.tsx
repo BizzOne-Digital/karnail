@@ -1,6 +1,7 @@
 'use client';
 
-/** Top navigation removed per client — single sidebar navigation only */
+import { SiteBrandBar } from '@/components/public/SiteBrandBar';
+
 export default function Header() {
-  return null;
+  return <SiteBrandBar variant="header" />;
 }

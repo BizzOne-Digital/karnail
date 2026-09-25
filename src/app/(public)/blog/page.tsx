@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { serverPublicApi } from '@/services/server-public-api';
 import { SectionPageShell } from '@/components/public/SectionPageShell';
+import { GALLERY_PROMO } from '@/lib/about-content';
 import { formatDate, getImageUrl } from '@/lib/utils';
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -20,17 +21,30 @@ export default async function BlogPage() {
 
   return (
     <SectionPageShell>
-      <header className="text-center mb-6">
+      <header className="text-center mb-5">
         <p className="text-[10px] tracking-[0.25em] uppercase text-artist-crimson font-bold mb-2">
-          {hero?.eyebrow || 'Journal'}
+          {hero?.eyebrow || 'Author Blog'}
         </p>
         <h1 className="font-display text-xl sm:text-2xl text-artist-crimson uppercase font-bold">
           {hero?.heading || 'Author Blogs'}
         </h1>
-        {hero?.description && (
-          <p className="text-sm mt-2 font-semibold max-w-xl mx-auto">{hero.description}</p>
-        )}
       </header>
+
+      <article className="mb-8 pb-6 border-b border-warm-gray/30">
+        <h2 className="font-display text-lg text-artist-crimson font-bold text-center mb-1">
+          {GALLERY_PROMO.title}
+        </h2>
+        <p className="text-center text-sm font-bold text-artist-crimson underline mb-4">
+          <a href={GALLERY_PROMO.artPalUrl} target="_blank" rel="noopener noreferrer">
+            {GALLERY_PROMO.subtitle}
+          </a>
+        </p>
+        <div className="space-y-3 text-[15px] leading-relaxed text-justify prose-content-bold">
+          {GALLERY_PROMO.paragraphs.map((p) => (
+            <p key={p.slice(0, 48)}>{p}</p>
+          ))}
+        </div>
+      </article>
 
       <ul className="space-y-6">
         {blogs.map((blog) => (
@@ -60,7 +74,7 @@ export default async function BlogPage() {
       </ul>
 
       {!blogs.length && (
-        <p className="text-center font-semibold py-8">Author blog posts will appear here soon.</p>
+        <p className="text-center font-semibold py-4">Additional blog posts will appear here soon.</p>
       )}
     </SectionPageShell>
   );

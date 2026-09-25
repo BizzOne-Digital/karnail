@@ -1,26 +1,21 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
 import { Suspense } from 'react';
-import { getImageUrl } from '@/lib/utils';
-import { BRAND_LOGO } from '@/lib/brand';
 import { CONTACT_EMAIL } from '@/lib/contact-info';
 import { SiteSectionNav } from '@/components/public/SiteSectionNav';
 
 export function HomeSidebar() {
   return (
     <aside className="home-sidebar-pane text-warm-cream lg:min-h-full">
-      <Link href="/" className="brand-logo-bar block px-1.5 py-2" aria-label="Sukh D. H. Khokhar">
-        <Image
-          src={getImageUrl(BRAND_LOGO)}
-          alt="Sukh D. H. Khokhar"
-          width={200}
-          height={40}
-          priority
-          className="h-[22px] sm:h-6 w-full max-w-[148px] mx-auto object-contain object-center"
-        />
-      </Link>
+      <div className="px-1.5 py-2 border-b border-warm-cream/15">
+        <Link
+          href="/contact"
+          className="block text-center py-2 text-[9px] sm:text-[10px] tracking-[0.14em] uppercase font-bold bg-aged-gold/90 text-deep-oxblood hover:bg-[#e8c547] transition-colors"
+        >
+          Contact
+        </Link>
+      </div>
 
       <div className="px-1.5 py-2">
         <Suspense fallback={null}>

@@ -15,7 +15,7 @@ export function RoseThemeClose({ className }: { className?: string }) {
         alt=""
         width={720}
         height={120}
-        className="w-full max-w-[min(100%,520px)] h-auto object-contain"
+        className="w-full max-w-[min(100%,160px)] h-auto object-contain"
         unoptimized
       />
     </div>
