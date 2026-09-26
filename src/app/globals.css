@@ -436,18 +436,59 @@ svg {
   background-color: #090807 !important;
 }
 
+/* Sidebar nav — client sample: gold labels, bold type, yellow active tab */
+.sidebar-nav-heading {
+  font-family: var(--font-display), Georgia, serif;
+  color: #e8c547;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 11px;
+  line-height: 1.2;
+  margin-bottom: 0.35rem;
+}
+
+.sidebar-nav-heading--mobile {
+  color: #7a3a38;
+  letter-spacing: 0.12em;
+}
+
 .home-sidebar-pane .sidebar-nav-link {
-  color: #f4efe6;
+  color: #f3e4b8;
+  font-weight: 700;
 }
 
 .home-sidebar-pane .sidebar-nav-link:hover {
-  background-color: rgba(0, 0, 0, 0.18);
+  background-color: rgba(0, 0, 0, 0.22);
+  color: #fff8e8;
 }
 
 .home-sidebar-pane .sidebar-nav-link--active {
   background-color: #e8c547;
-  color: #3d1218;
+  color: #2f0f14;
+  font-weight: 800;
+}
+
+/* Mobile horizontal strip — same tab colors on silver background */
+.sidebar-nav-strip .sidebar-nav-link {
+  background-color: #5c2a28;
+  color: #f3e4b8;
   font-weight: 700;
+  border: 1px solid rgba(232, 197, 71, 0.45);
+  border-radius: 2px;
+}
+
+.sidebar-nav-strip .sidebar-nav-link:hover {
+  background-color: #4a2220;
+  color: #fff8e8;
+}
+
+.sidebar-nav-strip .sidebar-nav-link--active {
+  background-color: #e8c547;
+  color: #2f0f14;
+  font-weight: 800;
+  border-color: #e8c547;
 }
 
 .prose-content-bold h1,
@@ -498,11 +539,21 @@ svg {
 .theme-cream section .home-sidebar-pane .sidebar-nav-link,
 .theme-cream section .home-sidebar-pane .text-warm-cream,
 .theme-cream section .home-sidebar-pane a:not(.sidebar-nav-link--active) {
-  color: #f4efe6 !important;
+  color: #f3e4b8 !important;
 }
 
 .theme-cream section .home-sidebar-pane .sidebar-nav-link--active {
-  color: #3d1218 !important;
+  color: #2f0f14 !important;
+  background-color: #e8c547 !important;
+  font-weight: 800 !important;
+}
+
+.theme-cream .sidebar-nav-strip .sidebar-nav-link {
+  color: #f3e4b8 !important;
+}
+
+.theme-cream .sidebar-nav-strip .sidebar-nav-link--active {
+  color: #2f0f14 !important;
   background-color: #e8c547 !important;
 }
 

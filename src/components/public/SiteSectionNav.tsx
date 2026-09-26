@@ -41,7 +41,7 @@ export function SiteSectionNav({
             key={item.href + item.label}
             href={item.href}
             className={cn(
-              'px-2 py-2 sm:py-1.5 text-[10px] sm:text-[10px] tracking-[0.06em] uppercase font-semibold transition-colors text-left leading-snug font-display shrink-0 snap-start min-h-[40px] sm:min-h-0 flex items-center',
+              'px-2 py-2 sm:py-1.5 text-[11px] sm:text-xs tracking-[0.08em] uppercase font-bold transition-colors text-left leading-snug font-display shrink-0 snap-start min-h-[40px] sm:min-h-0 flex items-center',
               !isVertical && isSidebar && 'max-w-[85vw] sm:max-w-none',
               isSidebar
                 ? active
