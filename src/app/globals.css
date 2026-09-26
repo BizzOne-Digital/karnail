@@ -95,12 +95,9 @@ body {
   background-color: var(--page-silver);
 }
 
-/* Home hero only — edge-to-edge; silver content below stays in .site-page-canvas */
-.home-banner-fullbleed {
-  width: 100vw;
-  max-width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
+/* Home banner: full width of the page column (same frame as write-up below) */
+.home-banner-band {
+  width: 100%;
 }
 
 img,

@@ -20,31 +20,32 @@ export function HomeAboutAuthor({ meet, hero }: HomeAboutAuthorProps) {
   const bannerImage = hero ? resolveHomeBannerImage(hero.backgroundImage) : null;
 
   return (
-    <div className="w-full scroll-mt-2">
-      <div className="site-page-canvas bg-[#090807]">
+    <div
+      className="site-page-canvas w-full min-h-full shadow-[0_0_0_1px_rgba(0,0,0,0.4)] overflow-x-hidden scroll-mt-2"
+    >
+      <div className="bg-[#090807]">
         <SiteBrandBar variant="header" logoAlign="center" logoSize="large" />
       </div>
 
       {bannerImage && (
-        <div
-          className="home-banner-fullbleed relative bg-[#0a0a0a]"
-          style={{ aspectRatio: String(HOME_BANNER_ASPECT) }}
-        >
-          <Image
-            src={getImageUrl(bannerImage)}
-            alt="Dark Mystery: Spellbound — illustrated mystical adventure banner"
-            fill
-            priority
-            className="object-cover object-center"
-            sizes="100vw"
-          />
+        <div className="home-banner-band relative w-full bg-[#0a0a0a]">
+          <div
+            className="relative w-full mx-auto"
+            style={{ aspectRatio: String(HOME_BANNER_ASPECT) }}
+          >
+            <Image
+              src={getImageUrl(bannerImage)}
+              alt="Dark Mystery: Spellbound — illustrated mystical adventure banner"
+              fill
+              priority
+              className="object-cover object-center"
+              sizes="(max-width: 68rem) 100vw, 68rem"
+            />
+          </div>
         </div>
       )}
 
-      <section
-        id="about-author"
-        className="bg-page-silver text-gallery-black site-page-canvas min-h-full shadow-[0_0_0_1px_rgba(0,0,0,0.4)] overflow-x-hidden"
-      >
+      <section id="about-author" className="bg-page-silver text-gallery-black">
         <div className="w-full mx-auto px-0 max-w-full">
         <div className="mobile-sticky-nav sticky top-0 z-30 px-2 py-1.5 bg-page-silver/95 backdrop-blur-sm border-b border-warm-gray/20 lg:hidden">
           <MobileNavStrip />
