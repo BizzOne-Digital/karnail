@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import { getImageUrl } from '@/lib/utils';
 import { HOME_BANNER_ASPECT, resolveArtistPortrait, resolveHomeBannerImage } from '@/lib/brand';
-import { ABOUT_AUTHOR_PARAGRAPHS } from '@/lib/about-content';
+import { ABOUT_AUTHOR_PARAGRAPHS, BANNER_VERSE } from '@/lib/about-content';
 import { RoseThemeClose } from '@/components/public/RoseThemeClose';
 import { SiteBrandBar } from '@/components/public/SiteBrandBar';
 import { HomeSidebar } from '@/components/public/home/HomeSidebar';
@@ -41,6 +41,23 @@ export function HomeAboutAuthor({ meet, hero }: HomeAboutAuthorProps) {
               className="object-cover object-center"
               sizes="(max-width: 68rem) 100vw, 68rem"
             />
+
+            <div
+              className="absolute inset-x-[4%] sm:inset-x-[7%] top-[34%] sm:top-[36%] bottom-[16%] sm:bottom-[18%] flex items-center justify-center pointer-events-none z-10 px-1"
+              aria-label="Banner verse"
+            >
+              <div className="max-w-[min(100%,22rem)] sm:max-w-md w-full text-center bg-warm-cream/88 px-2.5 py-2 sm:px-4 sm:py-3 border border-warm-cream/60 shadow-[0_2px_12px_rgba(0,0,0,0.15)]">
+                {BANNER_VERSE.map((line, index) => (
+                  <p
+                    key={line}
+                    className="hero-verse-line font-display text-[9px] sm:text-[11px] md:text-sm text-deep-oxblood italic leading-snug sm:leading-relaxed font-semibold"
+                    style={{ animationDelay: `${index * 0.75}s` }}
+                  >
+                    {line}
+                  </p>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       )}
