@@ -2,7 +2,11 @@
 
 import Image from 'next/image';
 import { getImageUrl } from '@/lib/utils';
-import { HOME_BANNER_ASPECT, resolveArtistPortrait, resolveHomeBannerImage } from '@/lib/brand';
+import {
+  ABOUT_AUTHOR_PORTRAIT,
+  HOME_BANNER_ASPECT,
+  resolveHomeBannerImage,
+} from '@/lib/brand';
 import { ABOUT_AUTHOR_PARAGRAPHS, BANNER_VERSE } from '@/lib/about-content';
 import { RoseThemeClose } from '@/components/public/RoseThemeClose';
 import { SiteBrandMark } from '@/components/public/SiteBrandMark';
@@ -16,7 +20,6 @@ interface HomeAboutAuthorProps {
 }
 
 export function HomeAboutAuthor({ meet, hero }: HomeAboutAuthorProps) {
-  const portrait = resolveArtistPortrait(meet?.mainImage);
   const bannerImage = hero ? resolveHomeBannerImage(hero.backgroundImage) : null;
 
   return (
@@ -108,7 +111,7 @@ export function HomeAboutAuthor({ meet, hero }: HomeAboutAuthorProps) {
 
               <div className="relative aspect-[3/4] w-full max-w-[min(100%,240px)] mx-auto md:mx-0 border border-warm-gray/25 shadow-sm bg-warm-cream overflow-hidden order-1 md:order-2">
                 <Image
-                  src={getImageUrl(portrait)}
+                  src={ABOUT_AUTHOR_PORTRAIT}
                   alt="Sukh D. H. Khokhar"
                   width={480}
                   height={640}

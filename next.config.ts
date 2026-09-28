@@ -8,6 +8,8 @@ const nextConfig: NextConfig = {
       { pathname: '/new-gallery/**' },
       { pathname: '/New gallery/**' },
       { pathname: '/logo.png' },
+      { pathname: '/logo-burgundy.jpg' },
+      { pathname: '/images/**' },
       { pathname: '/hero-background.jpg' },
       { pathname: '/banner/**' },
       { pathname: '/artist-portrait.png' },
