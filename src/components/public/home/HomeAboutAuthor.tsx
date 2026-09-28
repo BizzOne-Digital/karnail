@@ -119,7 +119,7 @@ export function HomeAboutAuthor({ meet, hero }: HomeAboutAuthorProps) {
               </div>
             </div>
 
-            <div className="mt-3 pt-3 pb-2 flex justify-center w-full border-t border-warm-gray/15">
+            <div className="mt-3 pt-3 pb-2 w-full border-t border-warm-gray/15 text-center">
               <SiteBrandMark />
             </div>
           </div>
