@@ -125,15 +125,15 @@ body {
   margin-right: auto;
   width: auto;
   height: auto;
-  max-height: 38px;
-  max-width: min(260px, 92vw);
+  max-height: 44px;
+  max-width: min(300px, 94vw);
   object-fit: contain;
 }
 
 @media (min-width: 640px) {
   .home-brand-mark__img {
-    max-height: 42px;
-    max-width: 300px;
+    max-height: 50px;
+    max-width: 340px;
   }
 }
 
