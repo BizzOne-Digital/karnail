@@ -5,7 +5,7 @@ import { getImageUrl } from '@/lib/utils';
 import { HOME_BANNER_ASPECT, resolveArtistPortrait, resolveHomeBannerImage } from '@/lib/brand';
 import { ABOUT_AUTHOR_PARAGRAPHS, BANNER_VERSE } from '@/lib/about-content';
 import { RoseThemeClose } from '@/components/public/RoseThemeClose';
-import { SiteBrandBar } from '@/components/public/SiteBrandBar';
+import { SiteBrandMark } from '@/components/public/SiteBrandMark';
 import { HomeSidebar } from '@/components/public/home/HomeSidebar';
 import { MobileNavStrip } from '@/components/public/MobileNavStrip';
 import type { PageSection } from '@/types';
@@ -23,10 +23,6 @@ export function HomeAboutAuthor({ meet, hero }: HomeAboutAuthorProps) {
     <div
       className="site-page-canvas w-full min-h-full shadow-[0_0_0_1px_rgba(0,0,0,0.4)] overflow-x-hidden scroll-mt-2"
     >
-      <div className="bg-[#090807]">
-        <SiteBrandBar variant="header" logoAlign="center" logoSize="large" />
-      </div>
-
       {bannerImage && (
         <div className="home-banner-band relative w-full bg-[#0a0a0a]">
           <div
@@ -43,20 +39,18 @@ export function HomeAboutAuthor({ meet, hero }: HomeAboutAuthorProps) {
             />
 
             <div
-              className="absolute inset-x-[4%] sm:inset-x-[7%] top-[34%] sm:top-[36%] bottom-[16%] sm:bottom-[18%] flex items-center justify-center pointer-events-none z-10 px-1"
+              className="absolute left-[5%] sm:left-[7%] top-[15%] sm:top-[17%] w-[min(46%,15rem)] sm:w-[min(40%,17rem)] pointer-events-none z-10 text-left"
               aria-label="Banner verse"
             >
-              <div className="max-w-[min(100%,22rem)] sm:max-w-md w-full text-center bg-warm-cream/88 px-2.5 py-2 sm:px-4 sm:py-3 border border-warm-cream/60 shadow-[0_2px_12px_rgba(0,0,0,0.15)]">
-                {BANNER_VERSE.map((line, index) => (
-                  <p
-                    key={line}
-                    className="hero-verse-line font-display text-[9px] sm:text-[11px] md:text-sm text-deep-oxblood italic leading-snug sm:leading-relaxed font-semibold"
-                    style={{ animationDelay: `${index * 0.75}s` }}
-                  >
-                    {line}
-                  </p>
-                ))}
-              </div>
+              {BANNER_VERSE.map((line, index) => (
+                <p
+                  key={line}
+                  className="hero-verse-line font-display text-[8px] sm:text-[10px] md:text-xs text-warm-cream italic leading-snug sm:leading-relaxed font-semibold drop-shadow-[0_1px_3px_rgba(0,0,0,0.85)]"
+                  style={{ animationDelay: `${index * 0.75}s` }}
+                >
+                  {line}
+                </p>
+              ))}
             </div>
           </div>
         </div>
@@ -112,18 +106,24 @@ export function HomeAboutAuthor({ meet, hero }: HomeAboutAuthorProps) {
                 <RoseThemeClose className="!pt-0 !pb-0 !mt-1" />
               </div>
 
-              <div className="relative aspect-[3/4] w-full max-w-[min(100%,280px)] mx-auto md:mx-0 border border-warm-gray/25 shadow-sm bg-warm-cream overflow-hidden order-1 md:order-2">
+              <div className="relative aspect-[3/4] w-full max-w-[min(100%,240px)] mx-auto md:mx-0 border border-warm-gray/25 shadow-sm bg-warm-cream overflow-hidden order-1 md:order-2">
                 <Image
                   src={getImageUrl(portrait)}
                   alt="Sukh D. H. Khokhar"
-                  fill
-                  sizes="(max-width: 768px) 85vw, 280px"
-                  className="object-cover object-top"
-                  unoptimized
+                  width={480}
+                  height={640}
+                  className="h-full w-full object-cover object-top"
+                  sizes="(max-width: 768px) 240px, 240px"
+                  quality={92}
+                  priority
                 />
               </div>
             </div>
           </div>
+        </div>
+
+        <div className="px-3 pt-4 pb-5 flex justify-center border-t border-warm-gray/20">
+          <SiteBrandMark />
         </div>
         </div>
       </section>

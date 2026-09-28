@@ -71,7 +71,8 @@ export function AboutPageContent() {
                 width={480}
                 height={640}
                 className="w-full h-auto object-cover object-top border border-warm-gray/25"
-                unoptimized
+                sizes="(max-width: 768px) 200px, 240px"
+                quality={92}
               />
             </div>
             <ProseBlock paragraphs={ARTIST_STATEMENT.paragraphs} />

@@ -100,6 +100,12 @@ body {
   width: 100%;
 }
 
+/* Home footer mark — gold logo shifted to burgundy (client sample) */
+.brand-logo-burgundy {
+  filter: brightness(0) saturate(100%) invert(11%) sepia(72%) saturate(3200%) hue-rotate(328deg)
+    brightness(0.42) contrast(1.15);
+}
+
 img,
 video,
 svg {
