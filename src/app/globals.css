@@ -100,6 +100,43 @@ body {
   width: 100%;
 }
 
+/* Home footer logo — compact, centered (avoid intrinsic 640px img size) */
+.home-brand-mark-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.home-brand-mark {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.home-brand-mark__frame {
+  display: inline-block;
+  width: fit-content;
+  max-width: 100%;
+}
+
+.home-brand-mark__img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: auto;
+  height: auto;
+  max-height: 38px;
+  max-width: min(260px, 92vw);
+  object-fit: contain;
+}
+
+@media (min-width: 640px) {
+  .home-brand-mark__img {
+    max-height: 42px;
+    max-width: 300px;
+  }
+}
+
 /* Home footer mark — gold logo shifted to burgundy (client sample) */
 .brand-logo-burgundy {
   filter: brightness(0) saturate(100%) invert(11%) sepia(72%) saturate(3200%) hue-rotate(328deg)
