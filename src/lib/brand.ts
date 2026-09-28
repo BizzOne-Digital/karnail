@@ -17,7 +17,7 @@ export const HOME_BANNER_ASPECT = 1920 / 910;
 export const ARTIST_STATEMENT_PORTRAIT = '/images/artist-statement-portrait.jpg';
 
 /** About the Author — client photo (blue top, mockup SS2) */
-export const ABOUT_AUTHOR_PORTRAIT = '/images/about-author-portrait.png';
+export const ABOUT_AUTHOR_PORTRAIT = '/images/about-author-portrait.jpg';
 
 /** @deprecated Old full-bleed hero; use {@link HOME_BANNER_WRAPPER} */
 export const HERO_BACKGROUND = HOME_BANNER_WRAPPER;

@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
 import {
   ARTIST_STATEMENT,
@@ -65,14 +64,13 @@ export function AboutPageContent() {
 
           <div className="clearfix">
             <div className="float-none md:float-right md:ml-4 md:mb-2 w-full max-w-[200px] md:max-w-[240px] mx-auto md:mx-0 md:mr-0 shrink-0">
-              <Image
+              <img
                 src={ABOUT_AUTHOR_PORTRAIT}
                 alt="Sukh D. H. Khokhar"
                 width={520}
                 height={693}
-                unoptimized
+                decoding="async"
                 className="w-full h-auto object-cover object-top border border-warm-gray/25"
-                sizes="(max-width: 768px) 200px, 240px"
               />
             </div>
             <ProseBlock paragraphs={ARTIST_STATEMENT.paragraphs} />

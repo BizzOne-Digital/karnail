@@ -110,14 +110,11 @@ export function HomeAboutAuthor({ meet, hero }: HomeAboutAuthorProps) {
               </div>
 
               <div className="relative aspect-[3/4] w-full max-w-[min(100%,260px)] mx-auto md:mx-0 border border-warm-gray/25 shadow-sm bg-warm-cream overflow-hidden order-1 md:order-2">
-                <Image
+                <img
                   src={ABOUT_AUTHOR_PORTRAIT}
                   alt="Sukh D. H. Khokhar"
-                  fill
-                  unoptimized
-                  priority
-                  className="object-cover object-top"
-                  sizes="(max-width: 768px) 260px, 260px"
+                  className="absolute inset-0 h-full w-full object-cover object-top"
+                  decoding="async"
                 />
               </div>
             </div>
