@@ -2,7 +2,11 @@ import type { NavItem } from '@/types';
 import { CONTACT_EMAIL, CONTACT_LINKS } from '@/lib/contact-info';
 
 /** Default brand logo shipped with the site */
-export const BRAND_LOGO = '/logo.png';
+/** Client burgundy logo (home footer) */
+export const BRAND_LOGO = '/logo-burgundy.jpg';
+
+/** @deprecated Gold-on-black header asset */
+export const BRAND_LOGO_LEGACY = '/logo.png';
 
 /** Client banner wrapper — two figures on top + expanded verse area (1056×480 design) */
 export const HOME_BANNER_WRAPPER = '/banner/home-banner-1920x910.jpg';
@@ -13,7 +17,7 @@ export const HOME_BANNER_ASPECT = 1920 / 910;
 export const ARTIST_STATEMENT_PORTRAIT = '/images/artist-statement-portrait.jpg';
 
 /** About the Author — client photo (blue top, mockup SS2) */
-export const ABOUT_AUTHOR_PORTRAIT = '/images/about-author-portrait.png';
+export const ABOUT_AUTHOR_PORTRAIT = '/images/about-author-portrait.jpg';
 
 /** @deprecated Old full-bleed hero; use {@link HOME_BANNER_WRAPPER} */
 export const HERO_BACKGROUND = HOME_BANNER_WRAPPER;

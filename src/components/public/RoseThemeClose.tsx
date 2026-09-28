@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
 
-const ROSE_IMAGE = '/images/theme-rose-stem.jpg';
+const ROSE_IMAGE = '/images/theme-rose-stem.png';
 
 /** Decorative rose — small centered motif (client mockup SS2) */
 export function RoseThemeClose({ className }: { className?: string }) {
@@ -18,7 +18,7 @@ export function RoseThemeClose({ className }: { className?: string }) {
         alt=""
         width={240}
         height={40}
-        className="block mx-auto h-auto w-auto max-w-[72px] sm:max-w-[84px] max-h-[22px] sm:max-h-[26px] object-contain object-center"
+        className="block mx-auto h-auto w-auto max-w-[74px] sm:max-w-[86px] max-h-[23px] sm:max-h-[27px] object-contain object-center"
         unoptimized
       />
     </div>
