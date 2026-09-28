@@ -109,16 +109,15 @@ export function HomeAboutAuthor({ meet, hero }: HomeAboutAuthorProps) {
                 <RoseThemeClose className="!pt-0 !pb-0 !mt-1" />
               </div>
 
-              <div className="relative aspect-[3/4] w-full max-w-[min(100%,240px)] mx-auto md:mx-0 border border-warm-gray/25 shadow-sm bg-warm-cream overflow-hidden order-1 md:order-2">
+              <div className="relative aspect-[3/4] w-full max-w-[min(100%,260px)] mx-auto md:mx-0 border border-warm-gray/25 shadow-sm bg-warm-cream overflow-hidden order-1 md:order-2">
                 <Image
                   src={ABOUT_AUTHOR_PORTRAIT}
                   alt="Sukh D. H. Khokhar"
-                  width={480}
-                  height={640}
-                  className="h-full w-full object-cover object-top"
-                  sizes="(max-width: 768px) 240px, 240px"
-                  quality={92}
+                  fill
+                  unoptimized
                   priority
+                  className="object-cover object-top"
+                  sizes="(max-width: 768px) 260px, 260px"
                 />
               </div>
             </div>

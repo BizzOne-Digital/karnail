@@ -68,11 +68,11 @@ export function AboutPageContent() {
               <Image
                 src={ABOUT_AUTHOR_PORTRAIT}
                 alt="Sukh D. H. Khokhar"
-                width={480}
-                height={640}
+                width={520}
+                height={693}
+                unoptimized
                 className="w-full h-auto object-cover object-top border border-warm-gray/25"
                 sizes="(max-width: 768px) 200px, 240px"
-                quality={92}
               />
             </div>
             <ProseBlock paragraphs={ARTIST_STATEMENT.paragraphs} />
