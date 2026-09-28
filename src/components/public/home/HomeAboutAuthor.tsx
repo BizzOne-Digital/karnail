@@ -118,11 +118,11 @@ export function HomeAboutAuthor({ meet, hero }: HomeAboutAuthorProps) {
                 />
               </div>
             </div>
-          </div>
-        </div>
 
-        <div className="px-3 pt-4 pb-5 flex justify-center border-t border-warm-gray/20">
-          <SiteBrandMark />
+            <div className="mt-3 pt-3 pb-2 flex justify-center w-full border-t border-warm-gray/15">
+              <SiteBrandMark />
+            </div>
+          </div>
         </div>
         </div>
       </section>

@@ -3,7 +3,6 @@
 import Link from 'next/link';
 import { Suspense, useState } from 'react';
 import { ChevronDown } from 'lucide-react';
-import { CONTACT_EMAIL } from '@/lib/contact-info';
 import { SiteSectionNav } from '@/components/public/SiteSectionNav';
 import { cn } from '@/lib/utils';
 
@@ -36,24 +35,6 @@ export function HomeSidebar() {
         <Suspense fallback={null}>
           <SiteSectionNav orientation="vertical" variant="sidebar" />
         </Suspense>
-      </div>
-
-      <div className="px-2 py-3 mt-auto text-[10px] sm:text-[11px] leading-relaxed text-warm-cream/95 border-t border-warm-cream/15 font-semibold space-y-1 break-all sm:break-normal">
-        <p>
-          <a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-aged-gold transition-colors">
-            {CONTACT_EMAIL}
-          </a>
-        </p>
-        <p>
-          <a href="https://www.mysteryoftherose.com" target="_blank" rel="noopener noreferrer" className="hover:text-aged-gold transition-colors">
-            www.mysteryoftherose.com
-          </a>
-        </p>
-        <p>
-          <a href="https://www.artpal.com/sukh2" target="_blank" rel="noopener noreferrer" className="hover:text-aged-gold transition-colors">
-            www.artpal.com/sukh2
-          </a>
-        </p>
       </div>
     </aside>
   );
