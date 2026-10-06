@@ -1,4 +1,5 @@
-import mongoose, { Document, Schema } from 'mongoose';
+import { Document, Schema } from 'mongoose';
+import { registerModel } from './registerModel';
 
 export interface IPricingCard {
   title: string;
@@ -60,4 +61,4 @@ const pricingContentSchema = new Schema<IPricingContent>(
   { timestamps: true }
 );
 
-export const PricingContent = mongoose.model<IPricingContent>('PricingContent', pricingContentSchema);
+export const PricingContent = registerModel<IPricingContent>('PricingContent', pricingContentSchema);

@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface CinematicIntroProps {
@@ -10,13 +10,16 @@ interface CinematicIntroProps {
 export default function CinematicIntro({ onComplete }: CinematicIntroProps) {
   const [phase, setPhase] = useState(0);
   const [skipped, setSkipped] = useState(false);
-  const reducedMotion = useRef(false);
+  const [reduceMotion] = useState(
+    () =>
+      typeof window !== 'undefined' &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  );
 
   useEffect(() => {
-    reducedMotion.current = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     document.body.style.overflow = 'hidden';
 
-    if (reducedMotion.current) {
+    if (reduceMotion) {
       const timer = setTimeout(onComplete, 500);
       return () => {
         clearTimeout(timer);
@@ -46,7 +49,7 @@ export default function CinematicIntro({ onComplete }: CinematicIntroProps) {
       clearInterval(interval);
       document.body.style.overflow = '';
     };
-  }, [onComplete]);
+  }, [onComplete, reduceMotion]);
 
   const handleSkip = () => {
     setSkipped(true);
@@ -56,7 +59,7 @@ export default function CinematicIntro({ onComplete }: CinematicIntroProps) {
 
   if (skipped) return null;
 
-  if (reducedMotion.current) {
+  if (reduceMotion) {
     return (
       <div className="fixed inset-0 z-[10000] bg-gallery-black flex items-center justify-center">
         <p className="font-display text-2xl text-warm-cream">Sukh D. H. Khokhar</p>

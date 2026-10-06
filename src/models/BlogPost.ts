@@ -1,4 +1,5 @@
-import mongoose, { Document, Schema } from 'mongoose';
+import { Document, Schema } from 'mongoose';
+import { registerModel } from './registerModel';
 
 export interface IBlogPost extends Document {
   title: string;
@@ -39,7 +40,6 @@ const blogPostSchema = new Schema<IBlogPost>(
   { timestamps: true }
 );
 
-blogPostSchema.index({ slug: 1 });
 blogPostSchema.index({ isPublished: 1, publishDate: -1 });
 
-export const BlogPost = mongoose.model<IBlogPost>('BlogPost', blogPostSchema);
+export const BlogPost = registerModel<IBlogPost>('BlogPost', blogPostSchema);

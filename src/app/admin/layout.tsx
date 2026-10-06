@@ -16,7 +16,6 @@ import {
   Settings,
   LogOut,
   Menu,
-  X,
 } from 'lucide-react';
 import { useState } from 'react';
 import { cn } from '@/lib/utils';

@@ -19,7 +19,7 @@ interface HomeAboutAuthorProps {
   hero?: PageSection | null;
 }
 
-export function HomeAboutAuthor({ meet, hero }: HomeAboutAuthorProps) {
+export function HomeAboutAuthor({ hero }: HomeAboutAuthorProps) {
   const bannerImage = hero ? resolveHomeBannerImage(hero.backgroundImage) : null;
 
   return (
@@ -27,9 +27,9 @@ export function HomeAboutAuthor({ meet, hero }: HomeAboutAuthorProps) {
       className="site-page-canvas w-full min-h-full shadow-[0_0_0_1px_rgba(0,0,0,0.4)] overflow-x-hidden scroll-mt-2"
     >
       {bannerImage && (
-        <div className="home-banner-band relative w-full bg-[#0a0a0a]">
+        <div className="home-banner-band relative w-full">
           <div
-            className="relative w-full mx-auto"
+            className="home-banner-frame relative w-full mx-auto overflow-hidden"
             style={{ aspectRatio: String(HOME_BANNER_ASPECT) }}
           >
             <Image
@@ -37,7 +37,7 @@ export function HomeAboutAuthor({ meet, hero }: HomeAboutAuthorProps) {
               alt="Dark Mystery: Spellbound — illustrated mystical adventure banner"
               fill
               priority
-              className="object-cover object-center"
+              className="home-banner-image object-cover object-center"
               sizes="(max-width: 68rem) 100vw, 68rem"
             />
 
@@ -72,16 +72,27 @@ export function HomeAboutAuthor({ meet, hero }: HomeAboutAuthorProps) {
 
           <div className="order-1 lg:order-2 min-w-0 w-full px-3 sm:px-3 pt-2 pb-3">
             <header className="text-center mb-3">
-              <p className="font-display text-base tracking-[0.1em] text-artist-crimson uppercase mb-0.5 font-bold">
+              <p className="home-about-author__name font-display text-[calc(1rem*1.113)] tracking-[0.1em] text-artist-crimson uppercase mb-0.5">
                 Sukh D. H. Khokhar
               </p>
-              <h1 className="font-display text-lg sm:text-xl text-artist-crimson uppercase font-bold">
+              <h1 className="home-about-author__section-title font-display text-[calc(1.125rem*1.113)] sm:text-[calc(1.25rem*1.113)] text-artist-crimson uppercase">
                 About the Author
               </h1>
             </header>
 
-            <div className="flex flex-col md:grid md:grid-cols-[minmax(0,1fr)_minmax(180px,280px)] gap-4 items-start">
-              <div className="font-body text-[15px] leading-[1.58] space-y-2.5 prose-content-bold prose-mobile-readable order-2 md:order-1">
+            <div className="clearfix">
+              <div className="float-none md:float-right md:ml-4 md:mb-2 w-full max-w-[220px] md:max-w-[260px] mx-auto md:mx-0 shrink-0 border border-warm-gray/25 shadow-sm bg-warm-cream overflow-hidden">
+                {/* eslint-disable-next-line @next/next/no-img-element -- client portrait; native img for reliable CDN loading */}
+                <img
+                  src={ABOUT_AUTHOR_PORTRAIT}
+                  alt="Sukh D. H. Khokhar"
+                  width={520}
+                  height={693}
+                  decoding="async"
+                  className="w-full h-auto object-cover object-top"
+                />
+              </div>
+              <div className="font-body text-[15px] leading-[1.58] space-y-2.5 text-justify prose-content-bold prose-mobile-readable">
                 {ABOUT_AUTHOR_PARAGRAPHS.map((p) => (
                   <p key={p.slice(0, 48)}>{p}</p>
                 ))}
@@ -106,16 +117,9 @@ export function HomeAboutAuthor({ meet, hero }: HomeAboutAuthorProps) {
                   </a>
                   .
                 </p>
-                <RoseThemeClose className="!pt-0 !pb-0 !mt-1" />
               </div>
-
-              <div className="relative aspect-[3/4] w-full max-w-[min(100%,260px)] mx-auto md:mx-0 border border-warm-gray/25 shadow-sm bg-warm-cream overflow-hidden order-1 md:order-2">
-                <img
-                  src={ABOUT_AUTHOR_PORTRAIT}
-                  alt="Sukh D. H. Khokhar"
-                  className="absolute inset-0 h-full w-full object-cover object-top"
-                  decoding="async"
-                />
+              <div className="clear-both pt-1">
+                <RoseThemeClose className="!pt-0 !pb-0 !mt-1" />
               </div>
             </div>
           </div>

@@ -85,6 +85,13 @@ export const BOOK_REVIEWS: BookReview[] = [
   },
 ];
 
+/** Closing line + link on Book Reviews tab (client mockup) */
+export const BOOK_REVIEWS_FOOTER = {
+  line: 'Exploring Dark Mysteries with Sukh D. H. Khokhar . . .',
+  href: 'https://www.google.com/search?q=Sukh+D.+H.+Khokhar+artwork',
+  label: 'https://www.google.com/search?q=Sukh+D.+H.+Khokhar+artwork',
+} as const;
+
 export interface FamilyBackgroundInsert {
   heading: string;
   intro?: string;
@@ -163,16 +170,16 @@ export const GALLERY_PROMO = {
 export const UPCOMING_2027_EDITIONS = [
   {
     slug: 'dark-mystery-2027-spellbound',
-    title: 'Dark Mystery 2027 Edition: Spellbound — Arose from the Ashes',
+    title: 'Dark Mystery: Spellbound — Arose from the Ashes (2027 Edition eBook)',
     excerpt:
-      'An illustrated mystical adventure across 67 episodes, 6 poetic chapters, and 181 pages — an angel prince transformed into a ghost, seeking reunion with Princessa through darkness into light.',
+      'Dark Mystery: Spellbound is mystical adventure of an angel (disguised as Prince) who is transformed into a ghost by a jealous demon and trapped in time. His remorse, perseverance and faith help him reconnect with a higher source and empower him with the strength to transcend the barriers of time and space and reunite with true love, Princessa.',
     year: '2027',
   },
   {
     slug: 'mystery-of-the-rose-2027-edition',
-    title: 'The Mystery of the Rose — 2027 Edition',
+    title: 'The Mystery of the Rose: The Return of the Rose (2027 Edition)',
     excerpt:
-      'A mystical adventure of a British family under the spell of India from 1880–1945 — the magical love story of Pearly Ruby Princessa and the rebirth of a nation.',
+      'Witness the rebirth of India in an unforgettable love story of Pearly Ruby Princessa, spun around the fascinating background of the Coronation of King Edward VII in 1902; his spectacular State Durbar and the reign of maharajas, nawabs, and aristocrats in the Indian princely states. The 2013 Edition of the paperback was nominated Crossword Book Award.',
     year: '2027',
   },
 ];

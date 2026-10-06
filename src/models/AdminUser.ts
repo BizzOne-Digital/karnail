@@ -1,4 +1,5 @@
-import mongoose, { Document, Schema } from 'mongoose';
+import { Document, Schema } from 'mongoose';
+import { registerModel } from './registerModel';
 
 export interface IAdminUser extends Document {
   email: string;
@@ -23,6 +24,4 @@ const adminUserSchema = new Schema<IAdminUser>(
   { timestamps: true }
 );
 
-adminUserSchema.index({ email: 1 });
-
-export const AdminUser = mongoose.models.AdminUser || mongoose.model<IAdminUser>('AdminUser', adminUserSchema);
+export const AdminUser = registerModel<IAdminUser>('AdminUser', adminUserSchema);

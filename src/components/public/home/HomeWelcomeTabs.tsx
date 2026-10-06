@@ -30,7 +30,7 @@ export function HomeWelcomeTabs({ hero, meet }: HomeWelcomeTabsProps) {
   const welcomeIntro = ABOUT_AUTHOR_PARAGRAPHS[0];
 
   return (
-    <section className="bg-light-canvas text-gallery-black border-b border-warm-gray/20">
+    <section className="bg-page-silver text-gallery-black border-b border-warm-gray/20">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 py-10 sm:py-14">
         <div className="flex flex-wrap gap-2 sm:gap-3 justify-center mb-10">
           {TABS.map((tab) => (

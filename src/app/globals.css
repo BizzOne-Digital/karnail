@@ -5,9 +5,11 @@
   --soft-black: #15110F;
   --deep-oxblood: #681923;
   --artist-crimson: #9E2531;
-  --warm-cream: #F4E6D0;
-  --light-canvas: #FFF8EA;
-  --page-silver: #e3e1dc;
+  /* Client mockup — warm parchment page (book reviews / inner pages) */
+  --page-cream: #fceed1;
+  --warm-cream: #fceed1;
+  --light-canvas: var(--page-cream);
+  --page-silver: var(--page-cream);
   --muted-beige: #DCC7AA;
   --aged-gold: #7A5524;
   --gold-text: #5C3D18;
@@ -19,6 +21,7 @@
   --color-soft-black: var(--soft-black);
   --color-deep-oxblood: var(--deep-oxblood);
   --color-artist-crimson: var(--artist-crimson);
+  --color-page-cream: var(--page-cream);
   --color-warm-cream: var(--warm-cream);
   --color-light-canvas: var(--light-canvas);
   --color-page-silver: var(--page-silver);
@@ -65,7 +68,7 @@ html {
 }
 
 body {
-  background: var(--page-silver);
+  background: var(--gallery-black);
   color: var(--gallery-black);
   font-family: var(--font-manrope), system-ui, sans-serif;
   font-weight: 600;
@@ -84,7 +87,7 @@ body {
 
 /* Outer letterbox — client mockup (grey margins → black) */
 .bg-site-backdrop {
-  background-color: #090807;
+  background-color: var(--gallery-black);
 }
 
 .site-page-canvas {
@@ -98,6 +101,45 @@ body {
 /* Home banner: full width of the page column (same frame as write-up below) */
 .home-banner-band {
   width: 100%;
+  background-color: #0a0a0a;
+}
+
+/* Top/bottom gold frame — +2% visible strip (image scaled to 98%); flat gold matches banner art */
+.home-banner-frame {
+  --home-banner-gold: #c4a436;
+  background-color: var(--home-banner-gold);
+}
+
+.home-banner-frame .home-banner-image {
+  transform: scaleY(0.98);
+  transform-origin: center center;
+}
+
+/* Gallery carousel — avoid .gallery-frame-inner (dark SSR bg); matches Gallery 1 crop */
+.gallery-carousel-cell {
+  background-color: var(--warm-cream);
+}
+
+/* Home About the Author — Cormorant max weight is 700; light stroke for ~3% heavier look */
+.home-about-author__name,
+.home-about-author__section-title {
+  font-weight: 700;
+  -webkit-text-stroke: 0.07em currentColor;
+  paint-order: stroke fill;
+}
+
+/* Artist Statement page titles — ~3% heavier stroke */
+.artist-statement-heading__name,
+.artist-statement-heading__title {
+  font-weight: 700;
+  -webkit-text-stroke: 0.03em currentColor;
+  paint-order: stroke fill;
+}
+
+.artist-statement-heading__lead {
+  font-weight: 700;
+  -webkit-text-stroke: 0.02em currentColor;
+  paint-order: stroke fill;
 }
 
 /* Home footer logo — compact, centered (avoid intrinsic 640px img size) */
@@ -125,15 +167,15 @@ body {
   margin-right: auto;
   width: auto;
   height: auto;
-  max-height: 44px;
-  max-width: min(300px, 94vw);
+  max-height: calc(64px * 1.07);
+  max-width: min(calc(540px * 1.07), 98vw);
   object-fit: contain;
 }
 
 @media (min-width: 640px) {
   .home-brand-mark__img {
-    max-height: 50px;
-    max-width: 340px;
+    max-height: calc(74px * 1.07);
+    max-width: min(calc(580px * 1.07), 96vw);
   }
 }
 
@@ -300,6 +342,8 @@ svg {
   line-height: 1.8;
   margin-bottom: 1rem;
   color: var(--muted-beige);
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 .prose-content a {
@@ -330,6 +374,8 @@ svg {
 .prose-content li {
   margin-bottom: 0.5rem;
   color: var(--muted-beige);
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 /* Admin styles */
@@ -451,16 +497,87 @@ svg {
   }
 }
 
-/* Cream public site — bright surfaces, readable bronze/gold text */
+/* Cream public site — bright surfaces, readable bronze/gold text (letterbox stays black via .bg-site-backdrop) */
 .theme-cream {
   color: var(--gallery-black);
 }
 
-.prose-content-bold,
-.prose-content-bold p,
-.prose-content-bold li {
+.prose-content-bold {
   font-weight: 600;
   color: #070605;
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+}
+
+.prose-content-bold p,
+.prose-content-bold li,
+.prose-content-bold blockquote {
+  font-weight: 600;
+  color: #070605;
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+}
+
+.prose-content-bold header,
+.prose-content-bold h1,
+.prose-content-bold h2,
+.prose-content-bold h3,
+.prose-content-bold .text-center {
+  text-align: center;
+  hyphens: manual;
+}
+
+/* Public page headings — bold + ~3% heavier (Cormorant max weight 700) */
+.prose-content-bold :is(h1, h2, h3, h4):not(.home-about-author__name):not(.home-about-author__section-title):not(
+    .artist-statement-heading__name
+  ):not(.artist-statement-heading__title):not(.artist-statement-heading__lead) {
+  font-weight: 700;
+  -webkit-text-stroke: 0.03em currentColor;
+  paint-order: stroke fill;
+}
+
+/* Book Reviews tab — client mockup: black body, crimson attribution, blue link */
+.prose-content-bold p.book-review-quote,
+.prose-content-bold .book-review-quote {
+  font-family: var(--font-display), Georgia, 'Times New Roman', serif;
+  font-size: 15px;
+  line-height: 1.45;
+  font-weight: 600;
+  font-style: normal;
+  color: #090807;
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+}
+
+.prose-content-bold p.book-review-attribution,
+.prose-content-bold .book-review-attribution {
+  font-family: var(--font-display), Georgia, 'Times New Roman', serif;
+  font-size: 15px;
+  line-height: 1.35;
+  font-weight: 700;
+  font-style: normal;
+  color: var(--artist-crimson);
+  text-decoration: underline;
+  text-align: right;
+  text-justify: auto;
+  hyphens: manual;
+}
+
+.book-review-footer-line {
+  font-family: var(--font-display), Georgia, 'Times New Roman', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--artist-crimson);
+}
+
+.book-review-footer-link {
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: 15px;
+  color: #0000ee;
+  text-decoration: underline;
 }
 
 .prose-content-bold a {
@@ -539,11 +656,6 @@ svg {
   border-color: #e8c547;
 }
 
-.prose-content-bold h1,
-.prose-content-bold h2,
-.prose-content-bold h3 {
-  font-weight: 600;
-}
 
 .theme-cream .bg-gallery-black,
 .theme-cream .bg-soft-black,
@@ -662,11 +774,6 @@ svg {
     word-break: break-word;
   }
 
-  .prose-mobile-readable .text-justify,
-  .text-justify.prose-mobile-readable {
-    text-align: left;
-    hyphens: auto;
-  }
 }
 
 .mobile-nav-strip__scroll {

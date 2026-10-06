@@ -58,7 +58,7 @@ export function BookBlurbModal({ book, onClose }: BookBlurbModalProps) {
           <p className="text-center text-sm font-semibold text-gallery-black/80 mb-4">{book.subtitle}</p>
         )}
 
-        <div className="space-y-3 text-[15px] leading-relaxed prose-content-bold">
+        <div className="space-y-3 text-[15px] leading-relaxed text-justify prose-content-bold">
           {book.paragraphs.map((p) => (
             <p key={p.slice(0, 40)}>{p}</p>
           ))}

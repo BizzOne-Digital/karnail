@@ -1,4 +1,5 @@
-import mongoose, { Document, Schema } from 'mongoose';
+import { Document, Schema } from 'mongoose';
+import { registerModel } from './registerModel';
 
 export interface INavItem {
   label: string;
@@ -205,4 +206,4 @@ const siteSettingsSchema = new Schema<ISiteSettings>(
   { timestamps: true }
 );
 
-export const SiteSettings = mongoose.model<ISiteSettings>('SiteSettings', siteSettingsSchema);
+export const SiteSettings = registerModel<ISiteSettings>('SiteSettings', siteSettingsSchema);

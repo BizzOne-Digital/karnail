@@ -18,6 +18,8 @@ export interface BookCatalogEntry {
   pdfUrl?: string;
   status: 'available' | 'upcoming';
   award?: string;
+  /** Crops print margins in cover scans (1 = none) */
+  coverZoom?: number;
 }
 
 export const BOOK_CATALOG: BookCatalogEntry[] = [
@@ -29,55 +31,66 @@ export const BOOK_CATALOG: BookCatalogEntry[] = [
     tagline: 'Story of a Ghost Prince Trapped in Time',
     coverImage: '/books/dark-mystery-spellbound-2027.jpg',
     coverAlt: 'Dark Mystery Spellbound 2027 edition book cover',
+    additionalCovers: [
+      {
+        src: '/books/dark-mystery-spellbound-2027-double.jpg',
+        alt: 'Dark Mystery Spellbound 2027 full cover spread',
+        label: 'Full Cover Spread',
+      },
+    ],
     status: 'upcoming',
+    coverZoom: 1.22,
   },
   {
     id: 'mystery-rose-2027',
-    title: 'The Mystery of the Rose: Return of the Prince',
+    title: 'The Mystery of the Rose: The Return of the Rose',
     subtitle: 'A Magical Love Story from India under British Rule',
     edition: '2027 Edition',
     coverImage: '/books/mystery-rose-return-prince-2027.jpg',
     coverAlt: 'The Mystery of the Rose Return of the Prince 2027 edition cover',
     additionalCovers: [
       {
-        src: '/books/mystery-rose-return-prince-2027-alt.jpg',
-        alt: 'The Mystery of the Rose 2027 alternate cover',
-        label: 'Alternate Cover',
-      },
-      {
-        src: '/books/mystery-rose-return-prince-2027-wrap.jpg',
-        alt: 'The Mystery of the Rose 2027 wraparound cover',
-        label: 'Wraparound Cover',
-      },
-      {
         src: '/books/mystery-rose-double-cover-2027.jpg',
         alt: 'The Mystery of the Rose 2027 double cover spread',
         label: 'Full Cover Spread',
       },
+      {
+        src: '/books/mystery-rose-return-prince-2027-mockup.jpg',
+        alt: 'The Mystery of the Rose 2027 edition mockup',
+        label: 'Edition Mockup',
+      },
+      {
+        src: '/books/mystery-rose-return-prince-2027-alt.jpg',
+        alt: 'The Mystery of the Rose 2027 alternate cover',
+        label: 'Alternate Cover',
+      },
     ],
     award: 'Nominated for the 2013 Crossword Book Award',
     status: 'upcoming',
+    coverZoom: 1.22,
   },
   {
     id: 'mystery-rose-2013',
     title: 'The Mystery of the Rose: The Return of the Prince',
     subtitle: 'Debut Historical Novel',
-    edition: '2013 Edition',
+    edition: '2013 Edition (sold out — 2027 Edition forthcoming)',
     tagline: 'Witness the Rebirth of India in a Magical Love Story of Princessa',
     coverImage: '/books/mystery-rose-2013-edition.jpg',
     coverAlt: 'The Mystery of the Rose 2013 edition book cover',
     award: 'Nominated for the 2013 Crossword Book Award',
-    status: 'available',
+    status: 'upcoming',
+    coverZoom: 1.14,
   },
   {
     id: 'dark-mystery-demon',
-    title: 'Dark Mystery: I am a Demon, I\'m a Ghost',
+    title: "Dark Mystery: I'm a Demon. I'm a Ghost",
     subtitle: 'Poetry eBook with Illustrations',
     edition: '2013 Edition',
     tagline: 'I\'m a demon. I\'m a ghost…',
-    coverImage: '/books/dark-mystery-i-am-a-demon-2013.jpg',
-    coverAlt: 'Dark Mystery I am a Demon I am a Ghost book cover',
+    coverImage: '/books/dark-mystery-i-am-a-demon-2013.png',
+    coverAlt: "Dark Mystery I'm a Demon I'm a Ghost book cover",
     status: 'available',
+    coverZoom: 1.08,
   },
 ];
 
@@ -86,7 +99,7 @@ export const DARK_MYSTERY_SPELLBOUND = {
   title: 'Dark Mystery: Spellbound—Arose from the Ashes',
   edition: '2027 Edition',
   paragraphs: [
-    'Dark Mystery: Spellbound—Arose from the Ashes (2027 Edition) is an illustrated mystical adventure of an angel (disguised as a prince) who is transformed into a ghost by a jealous demon and trapped in time. His remorse, perseverance, and faith help him reconnect with a higher source and empower him with the strength to transcend the barriers of time and space and reunite with his true love, Princessa.',
+    'Dark Mystery: Spellbound is mystical adventure of an angel (disguised as Prince) who is transformed into a ghost by a jealous demon and trapped in time. His remorse, perseverance and faith help him reconnect with a higher source and empower him with the strength to transcend the barriers of time and space and reunite with true love, Princessa.',
     'The book offers a captivating journey through the eyes of a trapped ghost, revealing profound insights and experiences across 67 dramatic episodes, bound in 6 poetic chapters and 181 pages. The book takes readers into a realm of fantasy—a magical world of angels, demons, and ghosts (all disguised as humans and desperately seeking redemption)—and traces their spiritual journey through the dark side into the light. The verses define the concepts of darkness and light with subtle and profound messages.',
     'The book is a sequel to her debut historical novel, The Mystery of the Rose—The Return of the Prince, nominated for the 2013 Crossword Book Award. This book unlocks the hidden story of the demon—how he tries to seek redemption by using unscrupulous means. It examines the relentless pursuit of the prince and his Princessa, and shows how he, the demon, despite his sinister and sinful character, is able to land himself in paradise.',
     'Blended with vivid imagery and poetic narrative, Dark Mystery: Spellbound is a powerful compilation of tales of mystery, intrigue, passion and obsession, exploring the magical connection between the boundaries of physical and metaphysical, matter and spirit; good and evil, demon and divine and ultimately, the undeniably compelling connection between the power of forgiveness and the gift of deliverance—the deliverance from the cycle of life and death, leading to the state of NIRVANA… The Ultimate Peace.',
@@ -98,13 +111,11 @@ export const DARK_MYSTERY_SPELLBOUND = {
 };
 
 export const RETURN_OF_THE_PRINCE = {
-  title: 'The Mystery of the Rose: The Return of the Prince',
+  title: 'The Mystery of the Rose: The Return of the Rose',
   points: [
-    'A mystical adventure of a British family under the spell of India from 1880–1945; their struggle and joy in the rebirth of India.',
-    'A magical love story of Pearly Ruby Princessa.',
-    'A tale of two nations entering an era of new beginnings, coinciding with the love story of Princessa.',
+    'Witness the rebirth of India in an unforgettable love story of Pearly Ruby Princessa, spun around the fascinating background of the Coronation of King Edward VII in 1902; his spectacular State Durbar and the reign of maharajas, nawabs, and aristocrats in the Indian princely states.',
   ],
-  note: 'Nominated for the 2013 Crossword Book Award.',
+  note: 'The 2013 Edition of the paperback was nominated for the Crossword Book Award.',
 };
 
 export const MYSTERIES_OF_MY_LIFE = {

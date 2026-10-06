@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import { adminApi } from '@/services/api';
 import type { GalleryImage } from '@/types';
@@ -11,8 +11,13 @@ export default function AdminGalleryCategoryPage() {
   const [images, setImages] = useState<GalleryImage[]>([]);
   const [form, setForm] = useState({ title: '', description: '', medium: '', dimensions: '', availability: 'contact' });
 
-  const load = () => adminApi.getGalleryImages(categoryId).then(setImages).catch(() => {});
-  useEffect(() => { load(); }, [categoryId]);
+  const load = useCallback(
+    () => adminApi.getGalleryImages(categoryId).then(setImages).catch(() => {}),
+    [categoryId]
+  );
+  useEffect(() => {
+    load();
+  }, [load]);
 
   const handleAdd = async () => {
     if (!form.title.trim()) return;

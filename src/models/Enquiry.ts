@@ -1,4 +1,5 @@
-import mongoose, { Document, Schema } from 'mongoose';
+import { Document, Schema } from 'mongoose';
+import { registerModel } from './registerModel';
 
 export type EnquiryType =
   | 'general'
@@ -47,8 +48,7 @@ const enquirySchema = new Schema<IEnquiry>(
   { timestamps: true }
 );
 
-enquirySchema.index({ referenceNumber: 1 });
 enquirySchema.index({ status: 1, createdAt: -1 });
 enquirySchema.index({ enquiryType: 1 });
 
-export const Enquiry = mongoose.model<IEnquiry>('Enquiry', enquirySchema);
+export const Enquiry = registerModel<IEnquiry>('Enquiry', enquirySchema);

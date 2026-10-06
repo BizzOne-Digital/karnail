@@ -42,8 +42,10 @@ export const errorHandler = (
   err: Error | AppError,
   _req: Request,
   res: Response,
+  // Express requires the fourth argument so this handler is treated as an error middleware.
   _next: NextFunction
 ) => {
+  void _next;
   if (err instanceof AppError) {
     return res.status(err.statusCode).json({
       success: false,

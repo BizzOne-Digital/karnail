@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { serverPublicApi } from '@/services/server-public-api';
 import { SectionHero } from '@/components/public/SectionHero';
-import { getImageUrl, getAvailabilityLabel, getPurchaseModeLabel } from '@/lib/utils';
+import { getImageUrl, getPurchaseModeLabel } from '@/lib/utils';
 
 export async function generateMetadata(): Promise<Metadata> {
   return { title: 'Shop' };

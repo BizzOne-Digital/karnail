@@ -8,6 +8,7 @@ export function SiteBrandMark() {
   return (
     <Link href="/" className="home-brand-mark mx-auto block w-fit max-w-full">
       <div className="home-brand-mark__frame bg-[#090807] px-2.5 py-1.5 border border-black/30">
+        {/* eslint-disable-next-line @next/next/no-img-element -- static logo; native img loads reliably on Vercel */}
         <img
           src={BRAND_LOGO}
           alt="Sukh D. H. Khokhar — Mystery Writer | Mural Artist"

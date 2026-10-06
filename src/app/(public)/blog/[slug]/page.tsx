@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import { serverPublicApi } from '@/services/server-public-api';
+import { resolveBlogHeroImage } from '@/lib/blog-heroes';
 import { formatDate, getImageUrl } from '@/lib/utils';
 
 interface Props {
@@ -28,11 +29,13 @@ export default async function BlogDetailPage({ params }: Props) {
     notFound();
   }
 
+  const heroSrc = resolveBlogHeroImage(blog.slug, blog.heroImage);
+
   return (
     <article>
       <div className="relative h-[50vh] min-h-[400px]">
-        {blog.heroImage && (
-          <Image src={getImageUrl(blog.heroImage)} alt={blog.title} fill className="object-cover" priority />
+        {heroSrc && (
+          <Image src={getImageUrl(heroSrc)} alt={blog.title} fill className="object-cover" priority />
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-gallery-black via-gallery-black/50 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 p-8 max-w-4xl mx-auto">

@@ -1,12 +1,13 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { BOOK_CATALOG } from '@/lib/book-content';
 import { BOOK_EXCERPT_SECTIONS } from '@/lib/book-blurbs';
-import { UPCOMING_2027_EDITIONS } from '@/lib/about-content';
+import { MulticulturalBooksGrid } from '@/components/public/books/MulticulturalBooksGrid';
+import { BookCoverImage } from '@/components/public/books/BookCoverImage';
+import { ComingAttractionsSections } from '@/components/public/books/ComingAttractionsSections';
 
 const TABS = [
   { id: 'excerpts', label: 'Excerpts from the Books' },
@@ -14,8 +15,6 @@ const TABS = [
 ] as const;
 
 type TabId = (typeof TABS)[number]['id'];
-
-const UPCOMING_LABEL = 'In Process — Upcoming Attractions · 2027–28 Fiscal Year';
 
 export default function BooksPageClient() {
   const searchParams = useSearchParams();
@@ -52,21 +51,13 @@ export default function BooksPageClient() {
 
       {tab === 'excerpts' ? (
         <div className="space-y-6">
-          <section>
-            <h2 className="font-display text-base sm:text-lg text-artist-crimson font-bold text-center mb-3 leading-snug px-1">
-              {UPCOMING_LABEL}
-            </h2>
-            <ul className="space-y-3">
-              {UPCOMING_2027_EDITIONS.map((book) => (
-                <li key={book.slug} className="text-[15px] leading-relaxed">
-                  <Link href={`/blog/${book.slug}`} className="text-artist-crimson font-bold underline">
-                    {book.title}
-                  </Link>
-                  <p className="mt-1">{book.excerpt}</p>
-                </li>
-              ))}
-            </ul>
-          </section>
+          <ComingAttractionsSections />
+
+          <hr className="border-warm-gray/35" />
+
+          <h2 className="font-display text-base sm:text-lg text-artist-crimson font-bold text-center mb-4">
+            Extended excerpts &amp; author narrative
+          </h2>
 
           {BOOK_EXCERPT_SECTIONS.map((section) => (
             <section key={section.id}>
@@ -97,6 +88,9 @@ export default function BooksPageClient() {
         </div>
       ) : (
         <div>
+          <h2 className="font-display text-base sm:text-lg text-artist-crimson font-bold text-center mb-3">
+            Illustrated Mystical Adventures &amp; Fiction
+          </h2>
           <p className="text-center text-[15px] font-semibold mb-4">
             Select a cover to open the book description in a new window.
           </p>
@@ -109,21 +103,20 @@ export default function BooksPageClient() {
                 rel="noopener noreferrer"
                 className="text-left group"
               >
-                <div className="relative aspect-[2/3] border border-warm-gray/30 bg-warm-cream overflow-hidden shadow-sm group-hover:border-artist-crimson/50 transition-colors">
-                  <Image
-                    src={book.coverImage}
-                    alt={book.coverAlt}
-                    fill
-                    sizes="(max-width: 640px) 40vw, 200px"
-                    className="object-cover"
-                  />
-                </div>
+                <BookCoverImage
+                  src={book.coverImage}
+                  alt={book.coverAlt}
+                  zoom={book.coverZoom}
+                  frameClassName="border border-warm-gray/30 shadow-sm group-hover:border-artist-crimson/50 transition-colors"
+                />
                 <p className="mt-2 text-[11px] sm:text-xs font-bold text-artist-crimson leading-snug text-center px-1">
                   {book.title}
                 </p>
               </Link>
             ))}
           </div>
+
+          <MulticulturalBooksGrid />
         </div>
       )}
     </>

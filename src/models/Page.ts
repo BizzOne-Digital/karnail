@@ -1,4 +1,5 @@
-import mongoose, { Document, Schema } from 'mongoose';
+import { Document, Schema } from 'mongoose';
+import { registerModel } from './registerModel';
 
 export interface IPageImage {
   url: string;
@@ -85,7 +86,6 @@ const pageSchema = new Schema<IPage>(
   { timestamps: true }
 );
 
-pageSchema.index({ pageKey: 1 });
 pageSchema.index({ slug: 1 });
 
-export const Page = mongoose.model<IPage>('Page', pageSchema);
+export const Page = registerModel<IPage>('Page', pageSchema);

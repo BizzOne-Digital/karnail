@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
+import { resolveBlogHeroImage } from '@/lib/blog-heroes';
 import { getImageUrl, formatDate } from '@/lib/utils';
 import { resolveArtistPortrait, resolveHomeBannerImage } from '@/lib/brand';
 import { BANNER_VERSE } from '@/lib/about-content';
@@ -50,7 +51,7 @@ export function HomeHero({ section }: { section: PageSection }) {
 
 export function CollectionStatement({ section }: { section: PageSection }) {
   return (
-    <section className="relative py-16 sm:py-24 md:py-48 bg-light-canvas overflow-hidden w-full max-w-full border-y border-warm-gray/20">
+    <section className="relative py-16 sm:py-24 md:py-48 bg-page-silver overflow-hidden w-full max-w-full border-y border-warm-gray/20">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(158,37,49,0.06)_0%,transparent_70%)]" />
       <PinnedStatement heading={section.heading} />
     </section>
@@ -69,14 +70,14 @@ function PinnedStatement({ heading }: { heading: string }) {
 export function FeaturedArtwork({ products }: { products: Product[] }) {
   if (!products.length) return null;
   return (
-    <section className="py-16 sm:py-24 md:py-32 bg-light-canvas relative overflow-hidden w-full max-w-full border-y border-warm-gray/20">
+    <section className="py-16 sm:py-24 md:py-32 bg-page-silver relative overflow-hidden w-full max-w-full border-y border-warm-gray/20">
       <div className="max-w-7xl mx-auto px-4 relative">
         <RevealOnScroll className="text-center mb-16">
           <p className="font-dramatic text-aged-gold text-xs tracking-[0.3em] uppercase mb-4">Curated Selection</p>
           <h2 className="font-display text-4xl md:text-6xl text-warm-cream">Featured Artwork</h2>
         </RevealOnScroll>
         <StaggerChildren className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-          {products.slice(0, 6).map((product, i) => (
+          {products.slice(0, 6).map((product) => (
             <StaggerItem key={product._id}>
               <Link href={`/shop/${product.slug}`} className="group block" data-cursor>
                 <TiltFrame>
@@ -101,7 +102,7 @@ export function FeaturedArtwork({ products }: { products: Product[] }) {
 
 export function ServicesPreview({ services }: { services: Service[] }) {
   return (
-    <section className="py-16 sm:py-24 md:py-32 bg-warm-cream/40 overflow-hidden w-full max-w-full border-y border-warm-gray/15">
+    <section className="py-16 sm:py-24 md:py-32 bg-page-silver overflow-hidden w-full max-w-full border-y border-warm-gray/15">
       <div className="max-w-7xl mx-auto px-4">
         <RevealOnScroll className="text-center mb-16">
           <h2 className="font-display text-4xl md:text-6xl text-warm-cream">Creative Services</h2>
@@ -156,7 +157,7 @@ export function TestimonialSlider({ testimonials }: { testimonials: Testimonial[
   ));
 
   return (
-    <section className="py-16 sm:py-24 md:py-32 bg-light-canvas relative overflow-hidden w-full max-w-full border-y border-warm-gray/20">
+    <section className="py-16 sm:py-24 md:py-32 bg-page-silver relative overflow-hidden w-full max-w-full border-y border-warm-gray/20">
       <div className="absolute inset-0 spotlight" />
       <RevealOnScroll className="max-w-7xl mx-auto px-4 mb-12 md:mb-16 relative text-center">
         <h2 className="font-display text-4xl md:text-6xl text-warm-cream">What Collectors Say</h2>
@@ -176,25 +177,35 @@ export function TestimonialSlider({ testimonials }: { testimonials: Testimonial[
 export function JournalPreview({ blogs }: { blogs: BlogPost[] }) {
   if (!blogs.length) return null;
   return (
-    <section className="py-16 sm:py-24 md:py-32 bg-light-canvas text-gallery-black overflow-hidden w-full max-w-full">
+    <section className="py-16 sm:py-24 md:py-32 bg-page-silver text-gallery-black overflow-hidden w-full max-w-full">
       <div className="max-w-7xl mx-auto px-4">
         <RevealOnScroll className="text-center mb-16">
           <p className="font-dramatic text-artist-crimson text-xs tracking-[0.3em] uppercase mb-4">Stories from the Studio</p>
           <h2 className="font-display text-4xl md:text-6xl">The Artist&apos;s Journal</h2>
         </RevealOnScroll>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-          {blogs.slice(0, 3).map((blog, i) => (
+          {blogs.slice(0, 3).map((blog, i) => {
+            const heroSrc = resolveBlogHeroImage(blog.slug, blog.heroImage);
+            return (
             <RevealOnScroll key={blog._id} delay={i * 0.15}>
               <Link href={`/blog/${blog.slug}`} className="group block" data-cursor>
                 <div className="aspect-[16/10] relative mb-5 overflow-hidden bg-muted-beige">
-                  {blog.heroImage && <Image src={getImageUrl(blog.heroImage)} alt={blog.title} fill className="object-cover group-hover:scale-105 transition-transform duration-700" />}
+                  {heroSrc && (
+                    <Image
+                      src={getImageUrl(heroSrc)}
+                      alt={blog.title}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-700"
+                    />
+                  )}
                 </div>
                 <p className="text-warm-gray text-xs tracking-wider mb-2">{formatDate(blog.publishDate)}</p>
                 <h3 className="font-display text-2xl group-hover:text-artist-crimson transition-colors">{blog.title}</h3>
                 <p className="text-warm-gray text-sm mt-3 line-clamp-2">{blog.excerpt}</p>
               </Link>
             </RevealOnScroll>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
@@ -202,9 +213,8 @@ export function JournalPreview({ blogs }: { blogs: BlogPost[] }) {
 }
 
 export function CTASection({ section }: { section: PageSection }) {
-  const isRed = section.theme === 'red-accent';
   return (
-    <section className={`py-16 sm:py-24 md:py-32 relative overflow-hidden w-full max-w-full border-y border-warm-gray/20 ${isRed ? 'bg-warm-cream/60' : 'bg-light-canvas'}`}>
+    <section className="py-16 sm:py-24 md:py-32 relative overflow-hidden w-full max-w-full border-y border-warm-gray/20 bg-page-silver">
       <div className="absolute inset-0 spotlight" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(183,138,77,0.1)_0%,transparent_60%)]" />
       <RevealOnScroll className="relative z-10 max-w-3xl mx-auto px-4 text-center">
@@ -226,7 +236,7 @@ export function MeetArtist({ section }: { section: PageSection }) {
   const images = [portrait, ...extras].slice(0, 4);
 
   return (
-    <section className="py-16 sm:py-24 md:py-32 bg-warm-cream/30 overflow-hidden w-full max-w-full border-y border-warm-gray/15">
+    <section className="py-16 sm:py-24 md:py-32 bg-page-silver overflow-hidden w-full max-w-full border-y border-warm-gray/15">
       <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-16 items-center">
         <RevealOnScroll direction="up">
           {images.length === 1 ? (
@@ -264,7 +274,7 @@ export function MeetArtist({ section }: { section: PageSection }) {
 
 export function GalleryPreview({ images }: { images: GalleryImage[] }) {
   return (
-    <section className="py-16 sm:py-24 md:py-32 bg-warm-cream/40 overflow-hidden w-full max-w-full border-y border-warm-gray/15">
+    <section className="py-16 sm:py-24 md:py-32 bg-page-silver overflow-hidden w-full max-w-full border-y border-warm-gray/15">
       <RevealOnScroll className="max-w-7xl mx-auto px-4 mb-8 sm:mb-12 text-center">
         <h2 className="font-display text-3xl sm:text-4xl md:text-6xl text-warm-cream">Immersive Gallery</h2>
       </RevealOnScroll>

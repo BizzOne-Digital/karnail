@@ -1,7 +1,8 @@
-import mongoose, { Schema, type Model } from 'mongoose';
+import { Document, Schema } from 'mongoose';
+import { registerModel } from './registerModel';
 import type { UploadFolder } from '@/lib/upload-constants';
 
-export interface IStoredUpload {
+export interface IStoredUpload extends Document {
   folder: UploadFolder;
   filename: string;
   mimeType: string;
@@ -24,5 +25,4 @@ const storedUploadSchema = new Schema<IStoredUpload>(
 
 storedUploadSchema.index({ folder: 1, filename: 1 }, { unique: true });
 
-export const StoredUpload: Model<IStoredUpload> =
-  mongoose.models.StoredUpload || mongoose.model<IStoredUpload>('StoredUpload', storedUploadSchema);
+export const StoredUpload = registerModel<IStoredUpload>('StoredUpload', storedUploadSchema);

@@ -26,7 +26,7 @@ export function GalleryScrollRows({ collections, onImageClick }: GalleryScrollRo
 
   return (
 
-    <section className="py-10 sm:py-14 bg-light-canvas overflow-hidden w-full max-w-full text-gallery-black">
+    <section className="py-10 sm:py-14 bg-page-silver overflow-hidden w-full max-w-full text-gallery-black">
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 mb-8 sm:mb-10 text-center">
 

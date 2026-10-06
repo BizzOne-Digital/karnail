@@ -7,7 +7,6 @@ export type SiteSectionNavItem = {
 };
 
 export const SITE_SECTION_NAV: SiteSectionNavItem[] = [
-  { label: 'Home', href: '/' },
   {
     label: 'About the Author',
     href: '/#about-author',
@@ -57,9 +56,7 @@ export const SITE_SECTION_NAV: SiteSectionNavItem[] = [
 ];
 
 export function isNavItemActive(item: SiteSectionNavItem, pathname: string, search: string): boolean {
-  if (item.label === 'Home' && pathname === '/') return false;
   if (item.match) return item.match(pathname, search);
-  if (item.href === '/') return pathname === '/' && item.label === 'Home';
   if (item.href.startsWith('/gallery?')) {
     const g = item.href.split('g=')[1];
     const current = search.match(/(?:^|&)g=(\d)/)?.[1] || '1';

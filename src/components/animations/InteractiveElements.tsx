@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState } from 'react';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
 import { cn } from '@/lib/utils';
 
@@ -54,11 +54,11 @@ interface TiltFrameProps {
 export function TiltFrame({ children, className }: TiltFrameProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [transform, setTransform] = useState('perspective(1000px) rotateX(0deg) rotateY(0deg)');
-  const [enabled, setEnabled] = useState(false);
-
-  useEffect(() => {
-    setEnabled(window.matchMedia('(min-width: 1024px) and (pointer: fine)').matches);
-  }, []);
+  const [enabled] = useState(
+    () =>
+      typeof window !== 'undefined' &&
+      window.matchMedia('(min-width: 1024px) and (pointer: fine)').matches
+  );
 
   const handleMove = (e: React.MouseEvent) => {
     if (!enabled || !ref.current) return;

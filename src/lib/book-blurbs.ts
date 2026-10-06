@@ -27,11 +27,11 @@ export function getBookBlurbs(): BookBlurbEntry[] {
       paragraphs = [...RETURN_OF_THE_PRINCE.points, RETURN_OF_THE_PRINCE.note];
     } else if (book.id === 'mystery-rose-2013') {
       paragraphs = [
-        'Critically acclaimed debut novel longlisted for the 2013 Crossword Book Award. A mesmerizing tale of romance set in India under British rule—the love story of Pearly Ruby Princessa woven with the fate of a nation.',
+        '2013 Edition (sold out — unavailable pending 2027 Edition). Nominated for the 2013 Crossword Book Award.',
       ];
     } else if (book.id === 'dark-mystery-demon') {
       paragraphs = [
-        'A mystical adventure in poetry featuring full-color illustrations. Takes readers into the realm of angels, demons, and ghosts—a deeply spiritual journey from darkness into light.',
+        '2013 Edition available on Amazon. Illustrated mystical adventure in poetry with full-color illustrations.',
       ];
     }
 

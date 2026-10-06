@@ -1,4 +1,5 @@
 import mongoose, { Document, Schema } from 'mongoose';
+import { registerModel } from './registerModel';
 
 export interface ITestimonial extends Document {
   customerName: string;
@@ -33,4 +34,4 @@ const testimonialSchema = new Schema<ITestimonial>(
 
 testimonialSchema.index({ isPublished: 1, displayOrder: 1 });
 
-export const Testimonial = mongoose.model<ITestimonial>('Testimonial', testimonialSchema);
+export const Testimonial = registerModel<ITestimonial>('Testimonial', testimonialSchema);

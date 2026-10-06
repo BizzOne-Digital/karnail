@@ -1,4 +1,5 @@
-import mongoose, { Document, Schema } from 'mongoose';
+import { Document, Schema } from 'mongoose';
+import { registerModel } from './registerModel';
 
 export interface IServiceSection {
   heading: string;
@@ -78,7 +79,6 @@ const serviceSchema = new Schema<IService>(
   { timestamps: true }
 );
 
-serviceSchema.index({ slug: 1 });
 serviceSchema.index({ isPublished: 1, displayOrder: 1 });
 
-export const Service = mongoose.model<IService>('Service', serviceSchema);
+export const Service = registerModel<IService>('Service', serviceSchema);

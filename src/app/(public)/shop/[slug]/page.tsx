@@ -1,9 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { notFound } from 'next/navigation';
 import Image from 'next/image';
-import Link from 'next/link';
 import { publicApi } from '@/services/api';
 import { Button } from '@/components/ui/Button';
 import { useCart } from '@/hooks/useCart';

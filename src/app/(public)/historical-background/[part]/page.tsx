@@ -31,13 +31,14 @@ export default async function HistoricalBackgroundPage({
           </header>
 
           {insert.portraitStrip && (
-            <div className="mb-3 relative w-full max-w-sm mx-auto aspect-[16/10] border border-warm-gray/25 bg-warm-cream">
+            <div className="mb-3 w-full border border-warm-gray/25 overflow-hidden">
               <Image
                 src={insert.portraitStrip.image}
                 alt={insert.portraitStrip.alt}
-                fill
-                className="object-contain object-center p-1"
-                sizes="384px"
+                width={960}
+                height={540}
+                className="w-full h-auto block"
+                sizes="(max-width: 448px) 100vw, 448px"
               />
             </div>
           )}
@@ -47,13 +48,14 @@ export default async function HistoricalBackgroundPage({
           )}
 
           {insert.portrait && (
-            <div className="mb-3 w-full max-w-[200px] mx-auto relative aspect-[3/4] border border-warm-gray/25">
+            <div className="mb-3 w-full border border-warm-gray/25 overflow-hidden">
               <Image
                 src={insert.portrait.image}
                 alt={insert.portrait.alt}
-                fill
-                className="object-contain p-1"
-                sizes="200px"
+                width={600}
+                height={800}
+                className="w-full h-auto block"
+                sizes="(max-width: 448px) 100vw, 448px"
               />
             </div>
           )}

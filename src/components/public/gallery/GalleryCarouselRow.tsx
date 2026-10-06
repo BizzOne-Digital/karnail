@@ -9,11 +9,12 @@ import type { GalleryImage } from '@/types';
 interface GalleryCarouselRowProps {
   images: GalleryImage[];
   onImageClick?: (imageIndex: number) => void;
-  /** Gallery 1 uses cover; 2–4 show full artwork */
-  showFullImage?: boolean;
 }
 
-export function GalleryCarouselRow({ images, onImageClick, showFullImage = false }: GalleryCarouselRowProps) {
+const arrowBtnClass =
+  'z-20 flex shrink-0 w-10 h-10 sm:w-11 sm:h-11 items-center justify-center rounded-full border border-warm-gray/35 bg-warm-cream/95 text-deep-oxblood hover:border-artist-crimson hover:text-artist-crimson transition-colors shadow-md';
+
+export function GalleryCarouselRow({ images, onImageClick }: GalleryCarouselRowProps) {
   const [active, setActive] = useState(0);
   const count = images.length;
 
@@ -32,24 +33,36 @@ export function GalleryCarouselRow({ images, onImageClick, showFullImage = false
   const slots = count === 1 ? [active] : count === 2 ? [prevIndex, active] : [prevIndex, active, nextIndex];
 
   return (
-    <div className="relative w-full max-w-5xl mx-auto px-2 sm:px-4">
-      <div className="flex items-center justify-center gap-2 sm:gap-5 md:gap-8 min-h-[220px] sm:min-h-[340px] md:min-h-[400px]">
+    <div className="relative w-full max-w-full mx-auto px-1 sm:px-2 lg:px-3">
+      <div
+        className={cn(
+          'flex min-h-[220px] sm:min-h-[340px] md:min-h-[400px] w-full max-w-full',
+          count > 1 ? 'items-center justify-between' : 'items-center justify-center'
+        )}
+      >
         {count > 1 && (
           <button
             type="button"
             onClick={() => go(-1)}
-            className="hidden sm:flex shrink-0 w-11 h-11 items-center justify-center rounded-full border border-warm-gray/35 bg-warm-cream/90 text-deep-oxblood hover:border-artist-crimson hover:text-artist-crimson transition-colors shadow-sm"
+            className={cn(
+              arrowBtnClass,
+              'hidden sm:flex self-center shrink-0 -translate-y-4 sm:mr-1 md:mr-0'
+            )}
             aria-label="Previous artwork"
           >
             <ChevronLeft size={22} />
           </button>
         )}
 
-        <div className="flex flex-1 items-center justify-center gap-2 sm:gap-4 md:gap-6 max-w-full">
+        <div
+          className={cn(
+            'flex items-center justify-center gap-2 sm:gap-4 md:gap-6 min-w-0 max-w-[min(100%,920px)]',
+            count > 1 && 'mx-5 sm:mx-8 md:mx-12 lg:mx-14'
+          )}
+        >
           {slots.map((imageIndex, slot) => {
             const img = images[imageIndex];
             const isCenter = imageIndex === active;
-            const isSide = !isCenter;
 
             return (
               <button
@@ -62,23 +75,19 @@ export function GalleryCarouselRow({ images, onImageClick, showFullImage = false
                 className={cn(
                   'relative flex-shrink-0 transition-all duration-500 ease-out focus:outline-none focus-visible:ring-2 focus-visible:ring-artist-crimson/50 rounded-sm',
                   isCenter
-                    ? 'w-[min(88vw,320px)] sm:w-[min(42vw,360px)] md:w-[380px] z-10'
-                    : 'w-[min(28vw,140px)] sm:w-[min(22vw,180px)] md:w-[200px] opacity-80 hidden sm:block',
-                  count === 2 && isSide && 'sm:block'
+                    ? 'w-[min(78vw,300px)] sm:w-[min(38vw,340px)] md:w-[360px] z-10'
+                    : 'w-[min(26vw,120px)] sm:w-[min(20vw,160px)] md:w-[180px] opacity-80 hidden sm:block',
+                  count === 2 && !isCenter && 'sm:block'
                 )}
                 data-cursor
                 aria-label={isCenter ? `View ${img.title}` : `Show ${img.title}`}
               >
                 <div
                   className={cn(
-                    'gallery-frame-inner relative overflow-hidden border bg-warm-cream shadow-md transition-all duration-500',
+                    'gallery-carousel-cell relative overflow-hidden border border-warm-gray/25 bg-warm-cream shadow-md transition-all duration-500 aspect-[3/4]',
                     isCenter
-                      ? showFullImage
-                        ? 'min-h-[240px] sm:min-h-[300px] md:min-h-[360px] border-warm-gray/30 shadow-lg scale-100'
-                        : 'aspect-[3/4] border-warm-gray/30 shadow-lg scale-100'
-                      : showFullImage
-                        ? 'min-h-[160px] sm:min-h-[200px] border-warm-gray/20 grayscale-[0.85] brightness-[0.72] scale-[0.92]'
-                        : 'aspect-[3/4] border-warm-gray/20 grayscale-[0.85] brightness-[0.72] scale-[0.92]'
+                      ? 'border-warm-gray/30 shadow-lg scale-100'
+                      : 'border-warm-gray/20 grayscale-[0.85] brightness-[0.72] scale-[0.92]'
                   )}
                 >
                   <Image
@@ -87,11 +96,10 @@ export function GalleryCarouselRow({ images, onImageClick, showFullImage = false
                     fill
                     unoptimized
                     className={cn(
-                      showFullImage ? 'object-contain p-1' : 'object-cover',
-                      'transition-transform duration-700',
-                      isCenter && !showFullImage && 'hover:scale-[1.02]'
+                      'object-cover object-center transition-transform duration-700',
+                      isCenter && 'hover:scale-[1.02]'
                     )}
-                    sizes={isCenter ? '380px' : '200px'}
+                    sizes={isCenter ? '360px' : '180px'}
                   />
                 </div>
                 {isCenter && img.title && (
@@ -108,7 +116,10 @@ export function GalleryCarouselRow({ images, onImageClick, showFullImage = false
           <button
             type="button"
             onClick={() => go(1)}
-            className="hidden sm:flex shrink-0 w-11 h-11 items-center justify-center rounded-full border border-warm-gray/35 bg-warm-cream/90 text-deep-oxblood hover:border-artist-crimson hover:text-artist-crimson transition-colors shadow-sm"
+            className={cn(
+              arrowBtnClass,
+              'hidden sm:flex self-center shrink-0 -translate-y-4 sm:ml-1 md:ml-0'
+            )}
             aria-label="Next artwork"
           >
             <ChevronRight size={22} />
@@ -118,23 +129,13 @@ export function GalleryCarouselRow({ images, onImageClick, showFullImage = false
 
       {count > 1 && (
         <div className="flex sm:hidden justify-center gap-4 mt-4">
-          <button
-            type="button"
-            onClick={() => go(-1)}
-            className="w-10 h-10 flex items-center justify-center rounded-full border border-warm-gray/35 bg-warm-cream text-deep-oxblood"
-            aria-label="Previous"
-          >
+          <button type="button" onClick={() => go(-1)} className={arrowBtnClass} aria-label="Previous">
             <ChevronLeft size={20} />
           </button>
           <span className="text-sm text-gallery-black/60 self-center font-body">
             {active + 1} / {count}
           </span>
-          <button
-            type="button"
-            onClick={() => go(1)}
-            className="w-10 h-10 flex items-center justify-center rounded-full border border-warm-gray/35 bg-warm-cream text-deep-oxblood"
-            aria-label="Next"
-          >
+          <button type="button" onClick={() => go(1)} className={arrowBtnClass} aria-label="Next">
             <ChevronRight size={20} />
           </button>
         </div>

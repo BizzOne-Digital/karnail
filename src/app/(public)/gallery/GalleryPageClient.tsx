@@ -56,11 +56,7 @@ function GalleryBody({ collections, allImages }: GalleryPageClientProps) {
         </p>
       </header>
 
-      <GalleryCarouselRow
-        images={activeCollection.images}
-        onImageClick={openAt}
-        showFullImage={galleryNum !== 1}
-      />
+      <GalleryCarouselRow images={activeCollection.images} onImageClick={openAt} />
 
       <div className="text-center mt-10">
         <GlowButton href="https://www.artpal.com/sukh2">Visit ArtPal Collection</GlowButton>

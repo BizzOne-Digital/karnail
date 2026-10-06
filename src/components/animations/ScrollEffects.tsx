@@ -74,7 +74,7 @@ export function AutoScrollMarquee({
       >
         <div className="flex shrink-0">{children}</div>
         <div className="flex shrink-0" aria-hidden>
-          {Children.map(children, (child, index) =>
+          {Children.map(children, (child) =>
             isValidElement(child) ? cloneElement(child, { key: `${String(child.key)}-dup` }) : child
           )}
         </div>

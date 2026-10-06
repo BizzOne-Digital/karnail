@@ -18,7 +18,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default function AboutPage() {
   return (
-    <Suspense fallback={<div className="min-h-[40vh] bg-light-canvas" />}>
+    <Suspense fallback={<div className="min-h-[40vh] bg-page-silver" />}>
       <AboutPageContent />
     </Suspense>
   );

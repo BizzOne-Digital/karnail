@@ -26,7 +26,7 @@ export default function CrosswordNomineesPage() {
             src={CROSSWORD_BOOK_AWARD_2013.imageUrl}
             alt={CROSSWORD_BOOK_AWARD_2013.imageAlt}
             fill
-            className="object-contain p-1"
+            className="object-contain object-center"
             sizes="400px"
           />
         </div>

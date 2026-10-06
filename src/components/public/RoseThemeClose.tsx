@@ -18,7 +18,7 @@ export function RoseThemeClose({ className }: { className?: string }) {
         alt=""
         width={240}
         height={40}
-        className="block mx-auto h-auto w-auto max-w-[74px] sm:max-w-[86px] max-h-[23px] sm:max-h-[27px] object-contain object-center"
+        className="block mx-auto h-auto w-auto max-w-[calc(74px*1.1)] sm:max-w-[calc(86px*1.1)] max-h-[calc(23px*1.1)] sm:max-h-[calc(27px*1.1)] object-contain object-center"
         unoptimized
       />
     </div>

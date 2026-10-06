@@ -7,18 +7,20 @@ export default function CustomCursor() {
   const cursorRef = useRef<HTMLDivElement>(null);
   const ringRef = useRef<HTMLDivElement>(null);
   const [isHovering, setIsHovering] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible] = useState(() => {
+    if (typeof window === 'undefined') return false;
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    return !reducedMotion && !isTouch && window.innerWidth >= 1024;
+  });
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
   const springX = useSpring(mouseX, { stiffness: 150, damping: 15 });
   const springY = useSpring(mouseY, { stiffness: 150, damping: 15 });
 
   useEffect(() => {
-    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-    if (reducedMotion || isTouch || window.innerWidth < 1024) return;
+    if (!isVisible) return;
 
-    setIsVisible(true);
     document.body.classList.add('custom-cursor-active');
 
     const move = (e: MouseEvent) => {
@@ -43,7 +45,7 @@ export default function CustomCursor() {
         el.removeEventListener('mouseleave', handleLeave);
       });
     };
-  }, [mouseX, mouseY]);
+  }, [isVisible, mouseX, mouseY]);
 
   if (!isVisible) return null;
 

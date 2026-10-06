@@ -15,7 +15,7 @@ export default async function BookDetailWindowPage({
   if (!catalog || !blurb) notFound();
 
   return (
-    <div className="min-h-screen bg-warm-cream text-gallery-black p-4 sm:p-8 max-w-lg mx-auto overflow-x-hidden prose-mobile-readable">
+    <div className="min-h-screen bg-page-silver text-gallery-black p-4 sm:p-8 max-w-lg mx-auto overflow-x-hidden prose-mobile-readable">
       <p className="text-right mb-2">
         <Link href="/books?tab=by-author" className="text-artist-crimson font-bold text-sm underline">
           ← Books by the Author
@@ -29,7 +29,7 @@ export default async function BookDetailWindowPage({
       <h1 className="font-display text-lg text-artist-crimson font-bold text-center mb-1">{blurb.title}</h1>
       {blurb.subtitle && <p className="text-center text-sm font-semibold mb-4">{blurb.subtitle}</p>}
 
-      <div className="space-y-3 text-[15px] leading-relaxed prose-content-bold">
+      <div className="space-y-3 text-[15px] leading-relaxed text-justify prose-content-bold">
         {blurb.paragraphs.map((p) => (
           <p key={p.slice(0, 40)}>{p}</p>
         ))}

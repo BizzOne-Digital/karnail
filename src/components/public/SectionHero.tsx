@@ -28,7 +28,7 @@ export function SectionHero({
   return (
     <section
       className={cn(
-        'relative w-full max-w-full min-h-[36vh] sm:min-h-[50vh] md:min-h-[60vh] flex items-center justify-center overflow-hidden bg-light-canvas',
+        'relative w-full max-w-full min-h-[36vh] sm:min-h-[50vh] md:min-h-[60vh] flex items-center justify-center overflow-hidden bg-page-silver',
         className
       )}
     >

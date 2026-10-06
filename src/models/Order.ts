@@ -1,4 +1,5 @@
 import mongoose, { Document, Schema } from 'mongoose';
+import { registerModel } from './registerModel';
 
 export type OrderStatus = 'new' | 'contacted' | 'in_discussion' | 'confirmed' | 'completed' | 'cancelled';
 
@@ -67,7 +68,6 @@ const orderSchema = new Schema<IOrder>(
   { timestamps: true }
 );
 
-orderSchema.index({ referenceNumber: 1 });
 orderSchema.index({ status: 1, createdAt: -1 });
 
-export const Order = mongoose.model<IOrder>('Order', orderSchema);
+export const Order = registerModel<IOrder>('Order', orderSchema);

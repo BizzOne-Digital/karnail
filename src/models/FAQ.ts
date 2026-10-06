@@ -1,4 +1,5 @@
-import mongoose, { Document, Schema } from 'mongoose';
+import { Document, Schema } from 'mongoose';
+import { registerModel } from './registerModel';
 
 export interface IFAQ extends Document {
   question: string;
@@ -23,4 +24,4 @@ const faqSchema = new Schema<IFAQ>(
 
 faqSchema.index({ category: 1, displayOrder: 1 });
 
-export const FAQ = mongoose.model<IFAQ>('FAQ', faqSchema);
+export const FAQ = registerModel<IFAQ>('FAQ', faqSchema);

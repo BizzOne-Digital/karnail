@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -20,7 +19,6 @@ type FormData = z.infer<typeof schema>;
 
 export default function CheckoutPage() {
   const { items, clearCart, totalItems } = useCart();
-  const router = useRouter();
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [refNumber, setRefNumber] = useState('');
 

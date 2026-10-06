@@ -3,7 +3,7 @@ import { CONTACT_EMAIL, CONTACT_LINKS } from '@/lib/contact-info';
 
 /** Default brand logo shipped with the site */
 /** Client burgundy logo (home footer) */
-export const BRAND_LOGO = '/logo-burgundy.jpg';
+export const BRAND_LOGO = '/logo-burgundy.png';
 
 /** @deprecated Gold-on-black header asset */
 export const BRAND_LOGO_LEGACY = '/logo.png';
@@ -17,7 +17,7 @@ export const HOME_BANNER_ASPECT = 1920 / 910;
 export const ARTIST_STATEMENT_PORTRAIT = '/images/artist-statement-portrait.jpg';
 
 /** About the Author — client photo (blue top, mockup SS2) */
-export const ABOUT_AUTHOR_PORTRAIT = '/images/about-author-portrait.jpg';
+export const ABOUT_AUTHOR_PORTRAIT = '/images/about-author-portrait.png';
 
 /** @deprecated Old full-bleed hero; use {@link HOME_BANNER_WRAPPER} */
 export const HERO_BACKGROUND = HOME_BANNER_WRAPPER;
@@ -37,6 +37,7 @@ export const ARTIST_PORTRAIT = ABOUT_AUTHOR_PORTRAIT;
 
 /** Home About the Author always uses the client photo from mockup */
 export function resolveArtistPortrait(_cmsImage?: string | null): string {
+  void _cmsImage;
   return ABOUT_AUTHOR_PORTRAIT;
 }
 

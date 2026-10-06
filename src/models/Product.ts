@@ -1,4 +1,5 @@
-import mongoose, { Document, Schema } from 'mongoose';
+import { Document, Schema } from 'mongoose';
+import { registerModel } from './registerModel';
 
 export type PurchaseMode = 'contact_for_price' | 'artpal' | 'direct_order' | 'sold' | 'not_available';
 export type ProductAvailability = 'available' | 'sold' | 'not_available' | 'contact';
@@ -66,8 +67,7 @@ const productSchema = new Schema<IProduct>(
   { timestamps: true }
 );
 
-productSchema.index({ slug: 1 });
 productSchema.index({ isPublished: 1, displayOrder: 1 });
 productSchema.index({ category: 1 });
 
-export const Product = mongoose.model<IProduct>('Product', productSchema);
+export const Product = registerModel<IProduct>('Product', productSchema);

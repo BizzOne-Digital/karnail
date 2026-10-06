@@ -1,4 +1,5 @@
 import mongoose, { Document, Schema } from 'mongoose';
+import { registerModel } from './registerModel';
 
 export interface IGalleryCategory extends Document {
   name: string;
@@ -23,9 +24,10 @@ const galleryCategorySchema = new Schema<IGalleryCategory>(
   { timestamps: true }
 );
 
-galleryCategorySchema.index({ slug: 1 });
-
-export const GalleryCategory = mongoose.model<IGalleryCategory>('GalleryCategory', galleryCategorySchema);
+export const GalleryCategory = registerModel<IGalleryCategory>(
+  'GalleryCategory',
+  galleryCategorySchema
+);
 
 export interface IGalleryImage extends Document {
   categoryId: mongoose.Types.ObjectId;
@@ -73,4 +75,4 @@ const galleryImageSchema = new Schema<IGalleryImage>(
 galleryImageSchema.index({ categoryId: 1, displayOrder: 1 });
 galleryImageSchema.index({ isFeatured: 1 });
 
-export const GalleryImage = mongoose.model<IGalleryImage>('GalleryImage', galleryImageSchema);
+export const GalleryImage = registerModel<IGalleryImage>('GalleryImage', galleryImageSchema);

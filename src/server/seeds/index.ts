@@ -1,6 +1,7 @@
 import 'dotenv/config';
 import bcrypt from 'bcryptjs';
 import mongoose from 'mongoose';
+import { BLOG_HERO_BY_SLUG } from '@/lib/blog-heroes';
 import { connectDB } from '@/lib/mongodb';
 import { config } from '@/server/config';
 import { createSection } from '../utils/sectionBuilder';
@@ -145,7 +146,7 @@ async function seedPages() {
           label: 'Meet the Artist',
           heading: 'Meet the Artist',
           description: 'Sukh D. H. Khokhar is a mystery writer, mural artist, and visual storyteller whose work weaves together narrative intrigue and bold artistic expression. With nearly 200 mystical paintings in her collection, each piece invites viewers into a world of imagination and wonder.',
-          mainImage: '/images/about-author-portrait.jpg',
+          mainImage: '/images/about-author-portrait.png',
           buttonText: 'Discover the Artist',
           buttonUrl: '/about',
           layout: 'layered-composition',
@@ -710,7 +711,18 @@ async function seedPricing() {
   console.log('Pricing seeded');
 }
 
+async function patchBlogHeroImages() {
+  for (const [slug, heroImage] of Object.entries(BLOG_HERO_BY_SLUG)) {
+    await BlogPost.updateMany(
+      { slug, $or: [{ heroImage: '' }, { heroImage: { $exists: false } }] },
+      { $set: { heroImage } }
+    );
+  }
+}
+
 async function seedBlogs() {
+  await patchBlogHeroImages();
+
   const count = await BlogPost.countDocuments();
   if (count > 0) return;
 
@@ -718,6 +730,7 @@ async function seedBlogs() {
     {
       title: 'Dark Mystery 2027 Edition: Spellbound — Arose from the Ashes',
       slug: 'dark-mystery-2027-spellbound',
+      heroImage: BLOG_HERO_BY_SLUG['dark-mystery-2027-spellbound'],
       excerpt:
         'An illustrated mystical adventure eBook featuring 84 full-color paintings — the story of an angel prince transformed into a ghost, trapped in time until faith reunites him with Princessa.',
       content: `<p><strong>Dark Mystery: Spellbound—Arose from the Ashes</strong> tells the story of an angel, disguised as a prince, who is transformed into a ghost by a jealous demon and trapped in time. His remorse, perseverance and faith help him reconnect with the higher source and empower him to transcend the barriers of time and space to reunite with his true love, Princessa.</p><p>The book is a poetic rendition of a story from the author's debut historical novel, <em>The Mystery of the Rose—The Return of the Prince</em>, which was nominated for the 2013 Crossword Book Award.</p><p>This 2027 Edition features 84 full-color mystical paintings originating from Sukh D. H. Khokhar's Dark Mystery Series — exploring angels, demons, and ghosts on their spiritual journey from darkness into light.</p><p>Her metaphors and imagery are diverse, overwhelming, and extraordinary—deeply meaningful and relevant, especially in today's world where people's interests are shifting toward content that explores the unknown and challenges the norms of conventional thinking.</p>`,
@@ -731,6 +744,7 @@ async function seedBlogs() {
     {
       title: 'The Mystery of the Rose — 2027 Edition',
       slug: 'mystery-of-the-rose-2027-edition',
+      heroImage: BLOG_HERO_BY_SLUG['mystery-of-the-rose-2027-edition'],
       excerpt:
         'The return of the critically acclaimed debut novel—longlisted for the 2013 Crossword Book Award—reimagined with enhanced illustrations, poetry, and mystical adventure.',
       content: `<p><em>The Mystery of the Rose—The Return of the Prince</em> returns in a bold 2027 Edition, bringing renewed life to Sukh D. H. Khokhar's debut historical novel.</p><p>Between the pages lies the love story of Pearly Ruby Boone, woven together with the fate of a nation under British rule. Drawing from historical contexts, the novel paints a perfect picture of India circa 1880 all the way to the 1940s as it explores the life of a British family caught up in the deep political intrigue and turmoil of the era.</p><p>Coupled with vibrant illustrations and sprinkled with beautiful verses of poetry, this edition creates a true marvel of magical realism—a harmony of the physical and the spiritual.</p><p>As Madhumati, Bollywood Film Actress, wrote: "A mesmerizing tale of romance from India under the British rule, depicted with powerful characters and fascinating backdrop of the rise of the Indian independence movement."</p>`,
@@ -744,6 +758,7 @@ async function seedBlogs() {
     {
       title: 'The Mystery Behind the Canvas',
       slug: 'the-mystery-behind-the-canvas',
+      heroImage: BLOG_HERO_BY_SLUG['the-mystery-behind-the-canvas'],
       excerpt: 'Exploring how narrative intrigue shapes every brushstroke in the mystical art collection.',
       content: '<p>Every painting begins with a question — a mystery waiting to be unravelled on canvas. In this journal entry, I share how my work as a mystery writer influences the visual narratives I create.</p><p>The interplay between words and images has always fascinated me. When I sit before a blank canvas, I am not merely applying paint; I am constructing a scene, developing characters, and weaving tension into colour and form.</p><p>This dual practice of writing and painting creates a rich creative ecosystem where each discipline feeds the other. A story might inspire a painting, and a painting might spark a new narrative.</p>',
       categories: ['Creative Process', 'Mystery', 'Author Blog'],
@@ -756,6 +771,7 @@ async function seedBlogs() {
     {
       title: 'Murals: Bringing Art to Life on a Grand Scale',
       slug: 'murals-bringing-art-to-life',
+      heroImage: BLOG_HERO_BY_SLUG['murals-bringing-art-to-life'],
       excerpt: 'The journey of transforming walls into immersive artistic experiences through custom mural work.',
       content: '<p>There is something profoundly satisfying about creating art on the scale of a wall. Murals demand a different kind of thinking — spatial awareness, architectural harmony, and the ability to envision how a piece will live within an environment.</p><p>Each mural project begins with understanding the space: its purpose, its light, its audience. From restaurants to private residences, the context shapes every creative decision.</p>',
       categories: ['Murals', 'Studio', 'Author Blog'],
