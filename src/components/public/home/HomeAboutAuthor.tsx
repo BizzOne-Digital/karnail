@@ -42,13 +42,13 @@ export function HomeAboutAuthor({ meet, hero }: HomeAboutAuthorProps) {
             />
 
             <div
-              className="absolute left-[5%] sm:left-[7%] top-[15%] sm:top-[17%] w-[min(46%,15rem)] sm:w-[min(40%,17rem)] pointer-events-none z-10 text-left"
+              className="home-banner-verse absolute left-[5%] sm:left-[7%] top-[15%] sm:top-[17%] w-[min(46%,15rem)] sm:w-[min(40%,17rem)] pointer-events-none z-10 text-left"
               aria-label="Banner verse"
             >
               {BANNER_VERSE.map((line, index) => (
                 <p
                   key={line}
-                  className="hero-verse-line font-display text-[8px] sm:text-[10px] md:text-xs text-warm-cream italic leading-snug sm:leading-relaxed font-semibold drop-shadow-[0_1px_3px_rgba(0,0,0,0.85)]"
+                  className="hero-verse-line font-display text-[8px] sm:text-[10px] md:text-xs italic leading-snug sm:leading-relaxed font-semibold drop-shadow-[0_1px_4px_rgba(0,0,0,0.9)]"
                   style={{ animationDelay: `${index * 0.75}s` }}
                 >
                   {line}

@@ -409,6 +409,11 @@ svg {
   animation: verse-blink 4s ease-in-out infinite;
 }
 
+/* Banner verse under moon — always white (theme-cream overrides cream text) */
+.home-banner-verse .hero-verse-line {
+  color: #ffffff !important;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .hero-verse-line {
     animation: none;
