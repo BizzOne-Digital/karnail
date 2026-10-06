@@ -46,7 +46,7 @@ export function GalleryCarouselRow({ images, onImageClick }: GalleryCarouselRowP
             onClick={() => go(-1)}
             className={cn(
               arrowBtnClass,
-              'hidden sm:flex self-center shrink-0 -translate-y-4 sm:mr-1 md:mr-0'
+              'hidden sm:flex self-center shrink-0 -translate-y-4 sm:-translate-x-2 md:-translate-x-4 sm:mr-3 md:mr-5'
             )}
             aria-label="Previous artwork"
           >
@@ -56,8 +56,8 @@ export function GalleryCarouselRow({ images, onImageClick }: GalleryCarouselRowP
 
         <div
           className={cn(
-            'flex items-center justify-center gap-2 sm:gap-4 md:gap-6 min-w-0 max-w-[min(100%,920px)]',
-            count > 1 && 'mx-5 sm:mx-8 md:mx-12 lg:mx-14'
+            'flex items-center justify-center gap-2 sm:gap-4 md:gap-6 min-w-0 max-w-[min(100%,980px)]',
+            count > 1 && 'mx-4 sm:mx-6 md:mx-8 lg:mx-10'
           )}
         >
           {slots.map((imageIndex, slot) => {
@@ -75,8 +75,8 @@ export function GalleryCarouselRow({ images, onImageClick }: GalleryCarouselRowP
                 className={cn(
                   'relative flex-shrink-0 transition-all duration-500 ease-out focus:outline-none focus-visible:ring-2 focus-visible:ring-artist-crimson/50 rounded-sm',
                   isCenter
-                    ? 'w-[min(78vw,300px)] sm:w-[min(38vw,340px)] md:w-[360px] z-10'
-                    : 'w-[min(26vw,120px)] sm:w-[min(20vw,160px)] md:w-[180px] opacity-80 hidden sm:block',
+                    ? 'w-[min(92vw,380px)] sm:w-[min(48vw,430px)] md:w-[455px] z-10'
+                    : 'w-[min(23vw,108px)] sm:w-[min(18vw,144px)] md:w-[162px] opacity-80 hidden sm:block',
                   count === 2 && !isCenter && 'sm:block'
                 )}
                 data-cursor
@@ -99,7 +99,7 @@ export function GalleryCarouselRow({ images, onImageClick }: GalleryCarouselRowP
                       'object-cover object-center transition-transform duration-700',
                       isCenter && 'hover:scale-[1.02]'
                     )}
-                    sizes={isCenter ? '360px' : '180px'}
+                    sizes={isCenter ? '455px' : '162px'}
                   />
                 </div>
                 {isCenter && img.title && (
@@ -118,7 +118,7 @@ export function GalleryCarouselRow({ images, onImageClick }: GalleryCarouselRowP
             onClick={() => go(1)}
             className={cn(
               arrowBtnClass,
-              'hidden sm:flex self-center shrink-0 -translate-y-4 sm:ml-1 md:ml-0'
+              'hidden sm:flex self-center shrink-0 -translate-y-4 sm:translate-x-2 md:translate-x-4 sm:ml-3 md:ml-5'
             )}
             aria-label="Next artwork"
           >
