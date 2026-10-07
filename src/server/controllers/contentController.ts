@@ -17,6 +17,13 @@ import { asyncHandler, sendSuccess, sendPaginated, AppError } from '../utils/api
 import { AuthRequest } from '../middleware/auth';
 import { slugify, parsePagination, generateReferenceNumber } from '../utils/helpers';
 import { sendContactEmails, sendOrderEmails } from '../services/emailService';
+import type { EnquiryType } from '@/models/Enquiry';
+
+function parseEnquiryType(value?: string): EnquiryType {
+  const allowed: EnquiryType[] = ['general', 'artwork', 'mural', 'commission', 'product', 'newsletter'];
+  if (value && allowed.includes(value as EnquiryType)) return value as EnquiryType;
+  return 'general';
+}
 
 // Testimonials
 export const getTestimonials = asyncHandler(async (req: AuthRequest, res: Response) => {
@@ -261,8 +268,29 @@ export const getEnquiries = asyncHandler(async (req: AuthRequest, res: Response)
 });
 
 export const createEnquiry = asyncHandler(async (req: AuthRequest, res: Response) => {
+  const { name, phone, message, email, enquiryType, artworkOrService } = req.body as {
+    name?: string;
+    phone?: string;
+    message?: string;
+    email?: string;
+    enquiryType?: string;
+    artworkOrService?: string;
+  };
+
+  if (!name?.trim() || !phone?.trim() || !message?.trim()) {
+    throw new AppError('Name, phone, and message are required', 400);
+  }
+
   const referenceNumber = generateReferenceNumber();
-  const enquiry = await Enquiry.create({ ...req.body, referenceNumber });
+  const enquiry = await Enquiry.create({
+    name: name.trim(),
+    phone: phone.trim(),
+    message: message.trim(),
+    email: (email || '').trim(),
+    enquiryType: parseEnquiryType(enquiryType),
+    artworkOrService: (artworkOrService || '').trim(),
+    referenceNumber,
+  });
 
   try {
     await sendContactEmails({

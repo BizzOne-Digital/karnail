@@ -172,6 +172,17 @@ body {
   object-fit: contain;
 }
 
+/* Sidebar — logo fills pane width (lengthwise along nav column) */
+.home-brand-mark__img--sidebar {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  max-height: none;
+  object-fit: contain;
+  object-position: center;
+}
+
 @media (min-width: 640px) {
   .home-brand-mark__img {
     max-height: calc(74px * 1.07);

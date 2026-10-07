@@ -9,7 +9,6 @@ import {
 } from '@/lib/brand';
 import { ABOUT_AUTHOR_PARAGRAPHS, BANNER_VERSE } from '@/lib/about-content';
 import { RoseThemeClose } from '@/components/public/RoseThemeClose';
-import { SiteBrandMark } from '@/components/public/SiteBrandMark';
 import { HomeSidebar } from '@/components/public/home/HomeSidebar';
 import { MobileNavStrip } from '@/components/public/MobileNavStrip';
 import type { PageSection } from '@/types';
@@ -125,9 +124,6 @@ export function HomeAboutAuthor({ hero }: HomeAboutAuthorProps) {
           </div>
         </div>
 
-        <div className="home-brand-mark-row flex justify-center items-center w-full border-t border-warm-gray/15 py-3 px-3">
-          <SiteBrandMark />
-        </div>
         </div>
       </section>
     </div>

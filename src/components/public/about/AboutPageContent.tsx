@@ -6,7 +6,7 @@ import {
   BOOK_REVIEWS,
   BOOK_REVIEWS_FOOTER,
 } from '@/lib/about-content';
-import { ABOUT_AUTHOR_PORTRAIT } from '@/lib/brand';
+import { ARTIST_STATEMENT_PORTRAIT } from '@/lib/brand';
 import { SectionPageShell } from '@/components/public/SectionPageShell';
 
 function ProseBlock({ paragraphs }: { paragraphs: string[] }) {
@@ -77,12 +77,12 @@ export function AboutPageContent() {
             <div className="float-none md:float-right md:ml-4 md:mb-2 w-full max-w-[200px] md:max-w-[240px] mx-auto md:mx-0 md:mr-0 shrink-0">
               {/* eslint-disable-next-line @next/next/no-img-element -- client portrait; native img for reliable CDN loading */}
               <img
-                src={ABOUT_AUTHOR_PORTRAIT}
+                src={ARTIST_STATEMENT_PORTRAIT}
                 alt="Sukh D. H. Khokhar"
                 width={520}
                 height={693}
                 decoding="async"
-                className="w-full h-auto object-cover object-top border border-warm-gray/25"
+                className="w-full h-auto object-cover object-center border border-warm-gray/25"
               />
             </div>
             <ProseBlock paragraphs={ARTIST_STATEMENT.paragraphs} />

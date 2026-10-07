@@ -14,13 +14,16 @@ export default function PrivacyPage() {
         <div className="max-w-3xl mx-auto px-4 prose-content space-y-6 text-muted-beige">
           <p>Your privacy is important to us. This policy explains how Sukh D. H. Khokhar collects and uses personal information when you visit our website, submit enquiries, or request artwork information.</p>
           <h2 className="font-display text-2xl text-warm-cream">Information We Collect</h2>
-          <p>We may collect your name, email address, phone number, and any message you submit through our contact forms, checkout, or enquiry forms.</p>
+          <p>We may collect your name, phone number, and message when you use our contact form, and any details you choose to provide through other forms on this site.</p>
           <h2 className="font-display text-2xl text-warm-cream">How We Use Your Information</h2>
           <p>We use your information to respond to enquiries, process order requests, provide artwork information, and communicate about commissions or mural projects.</p>
           <h2 className="font-display text-2xl text-warm-cream">Data Security</h2>
           <p>We take reasonable measures to protect your personal information. We do not sell or share your data with third parties for marketing purposes.</p>
           <h2 className="font-display text-2xl text-warm-cream">Contact</h2>
-          <p>For privacy-related questions, contact us at khokharsukh@gmail.com.</p>
+          <p>
+            For privacy-related questions, please use the{' '}
+            <a href="/contact" className="text-aged-gold underline">contact form</a> on this website.
+          </p>
         </div>
       </section>
     </>

@@ -8,7 +8,12 @@ export type SiteSectionNavItem = {
 
 export const SITE_SECTION_NAV: SiteSectionNavItem[] = [
   {
-    label: 'About the Author',
+    label: 'Media Coverage',
+    href: '/media-coverage',
+    match: (p) => p === '/media-coverage',
+  },
+  {
+    label: 'Home Tab',
     href: '/#about-author',
     match: (p) => p === '/',
   },
@@ -52,7 +57,7 @@ export const SITE_SECTION_NAV: SiteSectionNavItem[] = [
     href: '/blog',
     match: (p) => p === '/blog' || p.startsWith('/blog/'),
   },
-  { label: 'Contact Us', href: '/contact' },
+  { label: 'Contact Us', href: '/contact', match: (p) => p === '/contact' },
 ];
 
 export function isNavItemActive(item: SiteSectionNavItem, pathname: string, search: string): boolean {

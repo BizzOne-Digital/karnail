@@ -5,7 +5,8 @@ import { usePathname, useSearchParams } from 'next/navigation';
 import { cn } from '@/lib/utils';
 
 const TABS = [
-  { label: 'About the Author', href: '/' },
+  { label: 'Home Tab', href: '/' },
+  { label: 'Media Coverage', href: '/media-coverage' },
   { label: 'Artist Statement', href: '/about?tab=statement' },
   { label: 'Book Reviews', href: '/about?tab=reviews' },
   { label: 'Gallery', href: '/gallery' },

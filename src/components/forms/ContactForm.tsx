@@ -10,10 +10,7 @@ import { publicApi } from '@/services/api';
 
 const schema = z.object({
   name: z.string().min(2, 'Name is required'),
-  email: z.string().email('Valid email required'),
-  phone: z.string().optional(),
-  enquiryType: z.string().min(1, 'Please select an enquiry type'),
-  artworkOrService: z.string().optional(),
+  phone: z.string().min(7, 'Phone number is required'),
   message: z.string().min(10, 'Message must be at least 10 characters'),
 });
 
@@ -33,26 +30,29 @@ export function ContactForm() {
     formState: { errors },
   } = useForm<FormData>({
     resolver: zodResolver(schema),
-    defaultValues: {
-      enquiryType: subjectParam ? 'book' : 'general',
-      artworkOrService: subjectParam || '',
-    },
+    defaultValues: { message: '' },
   });
 
   useEffect(() => {
     if (subjectParam) {
-      setValue('enquiryType', 'book');
-      setValue('artworkOrService', subjectParam);
+      setValue('message', `Regarding: ${subjectParam}\n\n`);
     }
   }, [subjectParam, setValue]);
 
   const onSubmit = async (data: FormData) => {
     setStatus('loading');
     try {
-      const result = await publicApi.createEnquiry(data);
+      const result = await publicApi.createEnquiry({
+        name: data.name,
+        phone: data.phone,
+        message: data.message,
+        email: '',
+        enquiryType: 'general',
+        artworkOrService: '',
+      });
       setRefNumber(result.referenceNumber);
       setStatus('success');
-      reset();
+      reset({ name: '', phone: '', message: subjectParam ? `Regarding: ${subjectParam}\n\n` : '' });
     } catch {
       setStatus('error');
     }
@@ -62,10 +62,10 @@ export function ContactForm() {
     return (
       <div className="bg-warm-cream/60 border border-warm-gray/30 p-8 text-center">
         <h3 className="font-display text-2xl text-deep-oxblood mb-4">Thank You</h3>
-        <p className="text-gallery-black/75 mb-2">Your enquiry has been received.</p>
+        <p className="text-gallery-black/75 mb-2">Your message has been received.</p>
         {refNumber && <p className="text-gold-text font-medium">Reference: {refNumber}</p>}
         <Button onClick={() => setStatus('idle')} variant="outline" className="mt-6">
-          Send Another Enquiry
+          Send Another Message
         </Button>
       </div>
     );
@@ -73,56 +73,24 @@ export function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div>
-          <label className="block text-sm text-gallery-black/80 mb-2">Name *</label>
-          <input
-            {...register('name')}
-            className="w-full bg-light-canvas border border-warm-gray/40 text-gallery-black px-4 py-3 focus:outline-none focus:border-artist-crimson"
-          />
-          {errors.name && <p className="text-artist-crimson text-xs mt-1">{errors.name.message}</p>}
-        </div>
-        <div>
-          <label className="block text-sm text-gallery-black/80 mb-2">Email *</label>
-          <input
-            {...register('email')}
-            type="email"
-            className="w-full bg-light-canvas border border-warm-gray/40 text-gallery-black px-4 py-3 focus:outline-none focus:border-aged-gold"
-          />
-          {errors.email && <p className="text-artist-crimson text-xs mt-1">{errors.email.message}</p>}
-        </div>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div>
-          <label className="block text-sm text-gallery-black/80 mb-2">Phone</label>
-          <input
-            {...register('phone')}
-            className="w-full bg-light-canvas border border-warm-gray/40 text-gallery-black px-4 py-3 focus:outline-none focus:border-aged-gold"
-          />
-        </div>
-        <div>
-          <label className="block text-sm text-gallery-black/80 mb-2">Enquiry Type *</label>
-          <select
-            {...register('enquiryType')}
-            className="w-full bg-light-canvas border border-warm-gray/40 text-gallery-black px-4 py-3 focus:outline-none focus:border-aged-gold"
-          >
-            <option value="general">General Enquiry</option>
-            <option value="book">Book Enquiry</option>
-            <option value="artwork">Artwork Enquiry</option>
-            <option value="mural">Mural Enquiry</option>
-            <option value="commission">Commission Enquiry</option>
-          </select>
-        </div>
+      <div>
+        <label className="block text-sm text-gallery-black/80 mb-2">Name *</label>
+        <input
+          {...register('name')}
+          className="w-full bg-light-canvas border border-warm-gray/40 text-gallery-black px-4 py-3 focus:outline-none focus:border-artist-crimson"
+        />
+        {errors.name && <p className="text-artist-crimson text-xs mt-1">{errors.name.message}</p>}
       </div>
 
       <div>
-        <label className="block text-sm text-gallery-black/80 mb-2">Artwork or Service</label>
+        <label className="block text-sm text-gallery-black/80 mb-2">Phone Number *</label>
         <input
-          {...register('artworkOrService')}
-          placeholder="e.g. The Mystery of the Rose"
+          {...register('phone')}
+          type="tel"
+          autoComplete="tel"
           className="w-full bg-light-canvas border border-warm-gray/40 text-gallery-black px-4 py-3 focus:outline-none focus:border-aged-gold"
         />
+        {errors.phone && <p className="text-artist-crimson text-xs mt-1">{errors.phone.message}</p>}
       </div>
 
       <div>
@@ -140,7 +108,7 @@ export function ContactForm() {
       )}
 
       <Button type="submit" disabled={status === 'loading'} size="lg">
-        {status === 'loading' ? 'Sending...' : 'Send Enquiry'}
+        {status === 'loading' ? 'Sending...' : 'Submit Message'}
       </Button>
     </form>
   );

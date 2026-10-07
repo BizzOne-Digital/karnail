@@ -17,6 +17,7 @@ const nextConfig: NextConfig = {
       { pathname: '/family/**' },
       { pathname: '/books/**' },
       { pathname: '/blog/**' },
+      { pathname: '/media-coverage/**' },
       { pathname: '/favicon.png' },
       { pathname: '/placeholder-artwork.svg' },
     ],

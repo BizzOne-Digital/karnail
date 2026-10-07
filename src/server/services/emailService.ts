@@ -37,8 +37,8 @@ function wrapEmail(content: string, title: string): string {
         <div class="header"><h1>${title}</h1></div>
         <div class="content">${content}</div>
         <div class="footer">
-          <p>Sukh D. H. Khokhar | Mystery Art & Visual Storytelling</p>
-          <p><a href="mailto:Sukh2@live.com" style="color:#B78A4D">Sukh2@live.com</a></p>
+          <p>Sukh D. H. Khokhar | Mystery Art &amp; Visual Storytelling</p>
+          <p><a href="https://www.artpal.com/sukh2" style="color:#B78A4D">www.artpal.com/sukh2</a></p>
         </div>
       </div>
     </body>
@@ -48,7 +48,7 @@ function wrapEmail(content: string, title: string): string {
 
 export interface ContactEmailData {
   name: string;
-  email: string;
+  email?: string;
   phone?: string;
   enquiryType: string;
   artworkOrService?: string;
@@ -66,9 +66,9 @@ export async function sendContactEmails(data: ContactEmailData): Promise<void> {
     <p>A new enquiry has been received:</p>
     ${data.referenceNumber ? `<div class="field"><div class="field-label">Reference</div><div class="field-value">${data.referenceNumber}</div></div>` : ''}
     <div class="field"><div class="field-label">Name</div><div class="field-value">${data.name}</div></div>
-    <div class="field"><div class="field-label">Email</div><div class="field-value">${data.email}</div></div>
     ${data.phone ? `<div class="field"><div class="field-label">Phone</div><div class="field-value">${data.phone}</div></div>` : ''}
-    <div class="field"><div class="field-label">Enquiry Type</div><div class="field-value">${data.enquiryType}</div></div>
+    ${data.email ? `<div class="field"><div class="field-label">Email</div><div class="field-value">${data.email}</div></div>` : ''}
+    ${data.enquiryType && data.enquiryType !== 'general' ? `<div class="field"><div class="field-label">Enquiry Type</div><div class="field-value">${data.enquiryType}</div></div>` : ''}
     ${data.artworkOrService ? `<div class="field"><div class="field-label">Artwork/Service</div><div class="field-value">${data.artworkOrService}</div></div>` : ''}
     <div class="field"><div class="field-label">Message</div><div class="field-value">${data.message}</div></div>
   `;
@@ -81,20 +81,27 @@ export async function sendContactEmails(data: ContactEmailData): Promise<void> {
     <p>With warm regards,<br/>Sukh D. H. Khokhar</p>
   `;
 
-  await Promise.all([
+  const mailTasks = [
     transporter.sendMail({
       from: `"${config.smtp.user}" <${config.smtp.user}>`,
       to: config.adminNotificationEmail,
-      subject: `New Enquiry: ${data.enquiryType} - ${data.name}`,
-      html: wrapEmail(adminContent, 'New Enquiry Received'),
+      subject: `New message from ${data.name}`,
+      html: wrapEmail(adminContent, 'New Contact Message'),
     }),
-    transporter.sendMail({
-      from: `"Sukh D. H. Khokhar" <${config.smtp.user}>`,
-      to: data.email,
-      subject: 'Thank you for your enquiry - Sukh D. H. Khokhar',
-      html: wrapEmail(customerContent, 'Enquiry Received'),
-    }),
-  ]);
+  ];
+
+  if (data.email?.includes('@')) {
+    mailTasks.push(
+      transporter.sendMail({
+        from: `"Sukh D. H. Khokhar" <${config.smtp.user}>`,
+        to: data.email,
+        subject: 'Thank you for your message - Sukh D. H. Khokhar',
+        html: wrapEmail(customerContent, 'Message Received'),
+      })
+    );
+  }
+
+  await Promise.all(mailTasks);
 }
 
 export async function sendOrderEmails(data: {

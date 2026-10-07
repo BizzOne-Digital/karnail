@@ -4,7 +4,7 @@ import { serverPublicApi } from '@/services/server-public-api';
 import { SectionPageShell } from '@/components/public/SectionPageShell';
 import { ContactForm } from '@/components/forms/ContactForm';
 import { FAQAccordion } from '@/components/public/FAQAccordion';
-import { CONTACT_EMAIL, CONTACT_LINKS } from '@/lib/contact-info';
+import { CONTACT_LINKS } from '@/lib/contact-info';
 
 export async function generateMetadata(): Promise<Metadata> {
   return { title: 'Contact' };
@@ -18,10 +18,7 @@ export default async function ContactPage() {
   ]);
 
   const hero = page?.sections?.find((s) => s.sectionKey === 'hero');
-  const general = settings?.general;
-
-  const email = general?.email || CONTACT_EMAIL;
-  const artPalUrl = general?.artPalUrl || CONTACT_LINKS.artPal;
+  const artPalUrl = settings?.general?.artPalUrl || CONTACT_LINKS.artPal;
   const authorWebsite = CONTACT_LINKS.mysteryOfTheRose;
 
   return (
@@ -33,35 +30,34 @@ export default async function ContactPage() {
         <h1 className="font-display text-xl sm:text-2xl text-artist-crimson uppercase font-bold">
           {hero?.heading || 'Get in Touch'}
         </h1>
-        {hero?.description && (
-          <p className="text-[15px] mt-2 font-semibold max-w-xl mx-auto">{hero.description}</p>
-        )}
+        <p className="text-[15px] mt-2 font-semibold max-w-xl mx-auto">
+          {hero?.description ||
+            'Send your name, phone number, and message using the form below. Original paintings are viewed and collected through the online gallery — not sold on this site.'}
+        </p>
       </header>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 max-w-4xl mx-auto">
         <div className="min-w-0">
-          <h2 className="font-display text-lg text-artist-crimson font-bold mb-4">Start a Conversation</h2>
+          <h2 className="font-display text-lg text-artist-crimson font-bold mb-4">Send a Message</h2>
           <Suspense fallback={<div className="text-gallery-black/70">Loading form...</div>}>
             <ContactForm />
           </Suspense>
         </div>
 
         <div className="min-w-0">
-          <h2 className="font-display text-lg text-artist-crimson font-bold mb-4">Contact Information</h2>
-          <div className="space-y-4 text-[15px]">
+          <h2 className="font-display text-lg text-artist-crimson font-bold mb-4">Art &amp; Books Online</h2>
+          <div className="space-y-4 text-[15px] font-semibold">
+            <p className="text-gallery-black/85 leading-relaxed">
+              Paintings are not purchased on this website. Please visit the online art gallery for available work,
+              pricing, and collecting.
+            </p>
             <div>
-              <p className="text-artist-crimson text-xs mb-1 tracking-wide uppercase font-bold">Email</p>
-              <a href={`mailto:${email}`} className="text-gallery-black font-semibold break-all hover:text-artist-crimson">
-                {email}
-              </a>
-            </div>
-            <div>
-              <p className="text-artist-crimson text-xs mb-1 tracking-wide uppercase font-bold">Art Gallery</p>
+              <p className="text-artist-crimson text-xs mb-1 tracking-wide uppercase font-bold">Online Art Gallery</p>
               <a
                 href={artPalUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gallery-black font-semibold break-all hover:text-artist-crimson"
+                className="text-gallery-black break-all hover:text-artist-crimson underline"
               >
                 {CONTACT_LINKS.artPalLabel}
               </a>
@@ -72,19 +68,11 @@ export default async function ContactPage() {
                 href={authorWebsite}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gallery-black font-semibold break-all hover:text-artist-crimson"
+                className="text-gallery-black break-all hover:text-artist-crimson underline"
               >
                 {CONTACT_LINKS.mysteryOfTheRoseLabel}
               </a>
             </div>
-            {general?.phone && (
-              <div>
-                <p className="text-artist-crimson text-xs mb-1 tracking-wide uppercase font-bold">Phone</p>
-                <a href={`tel:${general.phone.replace(/\D/g, '')}`} className="font-semibold hover:text-artist-crimson">
-                  {general.phone}
-                </a>
-              </div>
-            )}
           </div>
         </div>
       </div>

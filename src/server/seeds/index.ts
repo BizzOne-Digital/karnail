@@ -685,7 +685,7 @@ async function seedFAQs() {
   if (count > 0) return;
 
   await FAQ.insertMany([
-    { question: 'How do I purchase an artwork?', answer: 'You can browse available works in our gallery and shop, enquire directly through our contact form, or visit our ArtPal profile for current listings with pricing.', category: 'general', displayOrder: 0 },
+    { question: 'How do I purchase an artwork?', answer: 'Paintings are not sold on this website. Browse the on-site galleries for inspiration, then visit the ArtPal online gallery for available work, pricing, and collecting.', category: 'general', displayOrder: 0 },
     { question: 'Do you offer custom commissions?', answer: 'Yes, custom commissions are welcomed. Contact us with your vision, preferred size, and medium, and we will discuss timeline and pricing.', category: 'commission', displayOrder: 1 },
     { question: 'How is artwork priced?', answer: 'Artwork pricing depends on the piece, size, medium, availability, and delivery requirements. Contact us for specific pricing or visit ArtPal for current listings.', category: 'pricing', displayOrder: 2 },
     { question: 'Do you ship internationally?', answer: 'Yes, we work with trusted carriers to ship artwork worldwide. Shipping costs and arrangements vary by piece size and destination.', category: 'shipping', displayOrder: 3 },

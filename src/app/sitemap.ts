@@ -5,7 +5,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const staticPages = [
     '', '/about', '/gallery', '/books', '/shop', '/testimonials',
-    '/faqs', '/pricing', '/blog', '/contact', '/cart',
+    '/faqs', '/pricing', '/blog', '/contact', '/media-coverage', '/cart',
   ];
 
   return staticPages.map((path) => ({
