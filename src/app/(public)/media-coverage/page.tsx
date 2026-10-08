@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import Image from 'next/image';
+import { MediaCoverageFigure } from '@/components/public/MediaCoverageFigure';
 import { SectionPageShell } from '@/components/public/SectionPageShell';
 import { MEDIA_COVERAGE_INSERTS } from '@/lib/media-coverage';
 
@@ -29,16 +29,7 @@ export default function MediaCoveragePage() {
       ) : (
         <div className="space-y-6 max-w-2xl mx-auto">
           {inserts.map((item) => (
-            <figure key={item.id} className="w-full border border-warm-gray/25 bg-warm-cream overflow-hidden shadow-sm">
-              <Image
-                src={item.image}
-                alt={item.alt}
-                width={1200}
-                height={1600}
-                className="w-full h-auto block"
-                unoptimized
-              />
-            </figure>
+            <MediaCoverageFigure key={item.id} item={item} />
           ))}
         </div>
       )}

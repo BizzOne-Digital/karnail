@@ -101,7 +101,7 @@ async function seedPages() {
           description: 'Enter a world where mystery, imagination, colour, and storytelling meet across canvas, murals, and the written word.',
           buttonText: 'Explore the Collection',
           buttonUrl: '/gallery',
-          backgroundImage: '/banner/home-banner-wrapper.jpg',
+          backgroundImage: '/banner/home-banner-spellbound.jpg',
           layout: 'cinematic-fullbleed',
           theme: 'dark',
           order: 0,

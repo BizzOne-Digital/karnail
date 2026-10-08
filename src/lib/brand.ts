@@ -8,11 +8,11 @@ export const BRAND_LOGO = '/logo-burgundy.png';
 /** @deprecated Gold-on-black header asset */
 export const BRAND_LOGO_LEGACY = '/logo.png';
 
-/** Client banner wrapper — two figures on top + expanded verse area (1056×480 design) */
-export const HOME_BANNER_WRAPPER = '/banner/home-banner-1920x910.jpg';
+/** Home banner — Spellbound scene with gold frame (client SS, verse overlaid in UI) */
+export const HOME_BANNER_WRAPPER = '/banner/home-banner-spellbound.jpg';
 
-/** Wider client banner (1920×910) — margin to margin */
-export const HOME_BANNER_ASPECT = 1920 / 910;
+/** Native asset 1024×476 */
+export const HOME_BANNER_ASPECT = 1024 / 476;
 
 export const ARTIST_STATEMENT_PORTRAIT = '/images/artist-statement-portrait.jpg';
 
@@ -22,13 +22,9 @@ export const ABOUT_AUTHOR_PORTRAIT = '/images/about-author-portrait.png';
 /** @deprecated Old full-bleed hero; use {@link HOME_BANNER_WRAPPER} */
 export const HERO_BACKGROUND = HOME_BANNER_WRAPPER;
 
-const DEPRECATED_HERO_IMAGES = new Set(['/hero-background.jpg']);
-
-/** Prefer client banner; ignore outdated CMS hero paths */
-export function resolveHomeBannerImage(cmsImage?: string | null): string {
-  if (cmsImage && !DEPRECATED_HERO_IMAGES.has(cmsImage) && !cmsImage.includes('home-banner-wrapper')) {
-    return cmsImage;
-  }
+/** Home always uses the client banner asset (verse is rendered separately). */
+export function resolveHomeBannerImage(_cmsImage?: string | null): string {
+  void _cmsImage;
   return HOME_BANNER_WRAPPER;
 }
 

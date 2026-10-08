@@ -4,6 +4,7 @@ import { Suspense, useMemo, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { GalleryCarouselRow } from '@/components/public/gallery/GalleryCarouselRow';
 import { GalleryLightbox } from '@/components/public/GalleryLightbox';
+import { GalleryTwoPageClose } from '@/components/public/gallery/GalleryTwoPageClose';
 import { SectionPageShell } from '@/components/public/SectionPageShell';
 import { GlowButton } from '@/components/animations/InteractiveElements';
 import type { GalleryDiskCollection } from '@/lib/load-gallery-images';
@@ -73,12 +74,24 @@ function GalleryBody({ collections, allImages }: GalleryPageClientProps) {
   );
 }
 
+function GalleryPageWithShell(props: GalleryPageClientProps) {
+  const searchParams = useSearchParams();
+  const gParam = searchParams.get('g');
+  const galleryNum = Math.min(4, Math.max(1, parseInt(gParam || '1', 10) || 1));
+  const isGalleryTwo = galleryNum === 2;
+
+  return (
+    <SectionPageShell showRose={!isGalleryTwo}>
+      <GalleryBody {...props} />
+      {isGalleryTwo && <GalleryTwoPageClose />}
+    </SectionPageShell>
+  );
+}
+
 export default function GalleryPageClient(props: GalleryPageClientProps) {
   return (
-    <SectionPageShell showRose>
-      <Suspense fallback={<div className="min-h-[200px]" />}>
-        <GalleryBody {...props} />
-      </Suspense>
-    </SectionPageShell>
+    <Suspense fallback={<SectionPageShell showRose><div className="min-h-[200px]" /></SectionPageShell>}>
+      <GalleryPageWithShell {...props} />
+    </Suspense>
   );
 }
