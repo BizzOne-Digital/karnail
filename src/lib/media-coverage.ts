@@ -23,8 +23,8 @@ export const MEDIA_COVERAGE_INSERTS: MediaCoverageInsert[] = [
     image: '/media-coverage/crossword-book-awards-2013.jpg',
     alt: 'Crossword Book Awards 2013 — eligible fiction titles (original scan)',
     nativeWidth: true,
-    imageWidth: 1024,
-    imageHeight: 685,
+    imageWidth: 395,
+    imageHeight: 574,
   },
   {
     id: 'rcmp-commemorative-medal-1993',
