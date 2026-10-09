@@ -93,13 +93,29 @@ export default function BooksPageClient() {
                     </p>
                   </div>
                 )}
+                {section.closingQuote && section.closingQuote.length > 0 && (
+                  <div className="pt-3 max-w-xl mx-auto text-center space-y-0.5">
+                    {section.closingQuote.map((line) => (
+                      <p
+                        key={line}
+                        className="font-display italic text-artist-crimson text-[15px] sm:text-base leading-relaxed"
+                      >
+                        {line}
+                      </p>
+                    ))}
+                  </div>
+                )}
                 {section.signature && (
-                  <p className="pt-2 text-center font-display italic text-artist-crimson">
-                    {section.signature.name}
-                    <br />
-                    <span className="text-gallery-black not-italic font-semibold text-[15px]">
-                      {section.signature.date}
-                    </span>
+                  <p className="pt-4 text-center font-display text-artist-crimson">
+                    {section.signature.preface && (
+                      <span className="block italic text-[15px] mb-1">{section.signature.preface}</span>
+                    )}
+                    <span className="block font-semibold text-[15px] not-italic">{section.signature.name}</span>
+                    {section.signature.date && (
+                      <span className="block text-gallery-black font-semibold text-[15px] mt-1">
+                        {section.signature.date}
+                      </span>
+                    )}
                   </p>
                 )}
               </div>

@@ -126,6 +126,28 @@ export const RETURN_OF_THE_PRINCE = {
   note: 'The 2013 Edition of the paperback was nominated for the Crossword Book Award.',
 };
 
+export const MYSTERY_ROSE_ACKNOWLEDGEMENTS = {
+  title: 'Acknowledgements',
+  subheading: 'The Mystery of the Rose: The Return of the Prince',
+  paragraphs: [
+    'Someone once told me that there is a book in all of us; some of us delve deeper into our thoughts and bring it out.',
+    'Even though I believe this book was conceived in my mind and written from a higher source, it would never have seen the light of the day without the intellectual support of a remarkable person named Marcia Carroll, who came into my life like a breath of fresh air, became my mentor, and helped me deliver it. She owned the Precambrian Art Centre in Thompson, Manitoba—a sanctuary and impressive gallery for northern artists from the east and west. She was the first to see the potential in my paintings and display them in her gallery. She helped me synthesize my images, concepts, and thoughts, which came to me as multiple pieces of a puzzle—much like forgotten memories from another lifetime.',
+    'Marcia, who once worked for the U.S. President Lyndon B. Johnson at the White House, introduced me to a gifted graphic artist named Ryan Lynds, who worked at the local newspaper next door. His patience in going through the various drafts was amazing. Ryan photographed many of my illustrations, which appeared in my illustrated eBook, Dark Mystery: I\'m a Demon, I\'m a Ghost.',
+    'The encouragement from my brother, Jag Deepak—the custodian of our family history and archives, and from my former colleague at the Manitoba Human Rights Commission, Liz Bennett, was phenomenal. Two special people in the background have always been my husband and my son.',
+    'This book is a tribute to the memory of my mother, a great storyteller, and my father, G. S. Deepak, a gifted singer, songwriter, and dancer, who traveled across the world and met with world leaders to promote cross-cultural understanding through music and dance. He was a pioneer of the popular Bhangra dance in Punjab and formed the first Folk Dancers of Punjab Cultural Group in 1955. Accompanied by his movie-star brother, Manohar Deepak—who later married the famous Indian screen dancer—Madhumati (my aunt)—my father performed on the world stage with his two brothers as the backup singers, dancers, and musicians.',
+    'He performed for Chairman Mao Zedong, Premier Zhou Enlai in China, Ho Chi Minh in Vietnam, Emperor Haile Selassie in Ethiopia, Senator Robert Kennedy in the U.S., Prime Minister Jawaharlal Nehru, President Rajendra Prasad, and the Nawabs and Maharajas of the princely states in India.',
+    'Robert Kennedy, who was campaigning in 1967, was so impressed with my father\'s ability to hold the audience captive with his voice, energy, and movements that he offered him a job after the performance. My dad accepted the offer but was killed in a car accident in 1968 before getting back to the U.S. Robert Kennedy was one of the world leaders who sent a touching letter of condolence upon his demise. Though he died young, his opening words at the concerts still echo in my ears and help me carry the flame.',
+  ],
+  closingQuote: [
+    '"Ladies and gentlemen, let us build bridges through music and dance, because the graceful movements of music',
+    'and dance make the soul graceful."',
+  ],
+  signature: {
+    preface: 'Sincerely,',
+    name: 'Sukh D. H. Khokhar',
+  },
+};
+
 export const MYSTERIES_OF_MY_LIFE = {
   title: 'About the Mysteries of My Life…',
   openingVerse: [
