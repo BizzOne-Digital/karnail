@@ -8,6 +8,8 @@ export interface MulticulturalResourceBook {
   coverImage?: string;
   coverZoom?: number;
   coverFit?: 'cover' | 'contain';
+  /** Short author note (e.g. award context) */
+  note?: string;
 }
 
 export const MULTICULTURAL_RESOURCE_BOOKS = {
@@ -58,8 +60,19 @@ export const MULTICULTURAL_RESOURCE_BOOKS = {
       title: "Newcomers' Guide to Thompson",
       year: 2008,
       coverImage: '/books/multicultural/newcomers-guide-thompson.png',
-      coverAlt: "Newcomers' Guide to Thompson — cover scan",
+      coverAlt: "Newcomers' Guide to Thompson — series cover",
       coverFit: 'contain',
+    },
+    {
+      id: 'newcomers-guide-one-souvenir',
+      title: "Newcomers' Guide One — Souvenir Book",
+      year: 2008,
+      coverImage: '/books/multicultural/newcomers-guide-souvenir-book.jpg',
+      coverAlt:
+        'TCC commendation for Sukh D. H. Khokhar and Newcomers’ Guide to Thompson — Souvenir Book',
+      coverFit: 'contain',
+      note:
+        'Awarded the Souvenir Book by the President of TCC Inc., Surinder Pal, in the presence of the general membership and the provincial Minister of Culture, Heritage and Recreation, Doris Mae Oulton, who funded the project.',
     },
     {
       id: 'walking-in-dreams',
@@ -73,36 +86,7 @@ export const MULTICULTURAL_RESOURCE_BOOKS = {
 } as const;
 
 export const CROSSWORD_BOOK_AWARD_2013 = {
-  title: 'Crossword Book Awards 2013 — Eligible Titles',
-  source: 'IBNLive.com',
-  date: 'June 26, 2013',
-  pdfUrl: '/books/pdfs/crossword-book-awards-2013.pdf',
-  imageUrl: '/books/crossword-book-award-2013.png',
-  imageAlt: 'Books display — Crossword Book Awards 2013 feature',
-  intro:
-    "Here's a list of all the eligible books for the Crossword Book Awards 2013. Fiction (266 titles).",
-  highlight: {
-    title: 'The Mystery of the Rose: The Return of the Prince',
-    author: 'Sukh Khokhar',
-    publisher: 'Leadstart Publishing',
-    category: 'Fiction',
-  },
-  excerpt: [
-    'A Life That You Knew, by Saptarshi Basu, Srishti Publishers',
-    'Cracked Pots, by Suresh Kumar, Power Publishers',
-    'Em and The Big Hoom, by Jerry Pinto, Aleph',
-    'The Taliban Cricket Club, by Timeri N Murari, Aleph',
-    'Chronicle of a Corpse Bearer, by Cyrus Mistry, Aleph',
-    'Mr J Has left Us, by Sanjiv Bhatia, Crabwise Press',
-    'The Revolt of the Fish Eaters, by Lopa Ghosh, Harper Collins India',
-    'Inside The Boundary Lines, by Atul Kumar, Leadstart Publishing',
-    'The Mystery of the Rose The Return of the Prince, by Sukh Khokhar, Leadstart Publishing',
-    'A Maverick Heart Between love and life, by Ravindra Shukla, Leadstart Publishing',
-    'Maut: The Birth of Death, by Behram Ardeshir, Leadstart Publishing',
-    'The Morning After, by Kamini Patel, Penguin Books India',
-    'The Gangster\'s Muse, by Supriya Parulekar, Leadstart Publishing',
-    'Collision of Dimensions, by Ravi Shankar, Leadstart Publishing',
-    'In a Heartbeat, by Asbah Shams, Penguin Books India',
-    'Above The Rice Fields of Pilarno, by Marianne Furtado de Nazareth, Leadstart Publishing',
-  ],
+  imageUrl: '/media-coverage/crossword-book-awards-2013.jpg',
+  imageAlt: 'Crossword Book Awards 2013 — eligible fiction titles (original scan)',
+  mediaCoverageAnchor: 'crossword-book-awards-2013',
 } as const;

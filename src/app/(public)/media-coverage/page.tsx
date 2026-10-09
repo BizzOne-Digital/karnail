@@ -27,7 +27,7 @@ export default function MediaCoveragePage() {
           Media coverage features will appear here shortly.
         </p>
       ) : (
-        <div className="space-y-6 max-w-2xl mx-auto">
+        <div className="space-y-6 max-w-[min(100%,64rem)] mx-auto">
           {inserts.map((item) => (
             <MediaCoverageFigure key={item.id} item={item} />
           ))}

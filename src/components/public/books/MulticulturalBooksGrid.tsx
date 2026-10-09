@@ -43,10 +43,17 @@ export function MulticulturalBooksGrid() {
                   </p>
                 </div>
               )}
-              <p className="mt-3 text-[11px] sm:text-xs font-bold text-artist-crimson leading-snug text-center px-1 min-h-[2.75rem] sm:min-h-[3rem]">
-                {book.title}
-                <span className="block text-gallery-black/75 font-semibold">({book.year})</span>
-              </p>
+              <div className="mt-3 text-center px-1 min-h-[2.75rem] sm:min-h-[3rem]">
+                <p className="text-[11px] sm:text-xs font-bold text-artist-crimson leading-snug">
+                  {book.title}
+                  <span className="block text-gallery-black/75 font-semibold">({book.year})</span>
+                </p>
+                {book.note && (
+                  <p className="mt-2 text-[10px] sm:text-[11px] leading-relaxed text-justify font-semibold text-gallery-black/85">
+                    {book.note}
+                  </p>
+                )}
+              </div>
             </Link>
           );
         })}

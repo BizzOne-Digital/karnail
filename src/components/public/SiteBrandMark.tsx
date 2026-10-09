@@ -24,7 +24,7 @@ export function SiteBrandMark({ variant = 'footer' }: SiteBrandMarkProps) {
         className={cn(
           'bg-[#090807] border-black/30',
           isSidebar
-            ? 'w-full px-1.5 py-2 border-b border-warm-cream/10'
+            ? 'w-full px-2 py-2.5 border-b border-warm-cream/10 flex justify-center items-center'
             : 'home-brand-mark__frame px-2.5 py-1.5 border border-black/30'
         )}
       >

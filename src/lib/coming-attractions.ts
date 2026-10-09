@@ -25,12 +25,13 @@ export const COMING_ATTRACTIONS_2027 = [
     title: 'THE MYSTERY OF THE ROSE: THE RETURN OF THE ROSE',
     subtitle: null,
     edition: '2027 Edition Paperback & eBook',
-    coverImage: '/books/mystery-rose-return-prince-2027.jpg',
-    coverAlt: 'The Mystery of the Rose — 2027 Edition cover',
+    coverImage: '/books/mystery-rose-return-prince-2027-ebook-cover.jpg',
+    coverAlt: 'The Mystery of the Rose — Return of the Prince — 2027 Edition eBook cover',
     blurb:
       'Witness the rebirth of India in an unforgettable love story of Pearly Ruby Princessa, spun around the fascinating background of the Coronation of King Edward VII in 1902; his spectacular State Durbar and the reign of maharajas, nawabs, and aristocrats in the Indian princely states. The 2013 Edition of the paperback was nominated Crossword Book Award.',
     bookHref: '/books/mystery-rose-2027',
-    coverZoom: 1.2,
+    coverFit: 'contain' as const,
+    coverZoom: 1,
   },
 ];
 

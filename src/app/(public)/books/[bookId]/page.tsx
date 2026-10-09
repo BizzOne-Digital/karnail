@@ -22,8 +22,20 @@ export default async function BookDetailWindowPage({
         </Link>
       </p>
 
-      <div className="relative aspect-[2/3] w-[160px] mx-auto mb-4 border border-warm-gray/30">
-        <Image src={catalog.coverImage} alt={catalog.coverAlt} fill className="object-cover" sizes="160px" />
+      <div
+        className={
+          catalog.coverFit === 'contain'
+            ? 'relative w-full max-w-[min(100%,20rem)] aspect-[4/3] mx-auto mb-4 border border-warm-gray/30 bg-gallery-black'
+            : 'relative aspect-[2/3] w-[160px] mx-auto mb-4 border border-warm-gray/30'
+        }
+      >
+        <Image
+          src={catalog.coverImage}
+          alt={catalog.coverAlt}
+          fill
+          className={catalog.coverFit === 'contain' ? 'object-contain object-center' : 'object-cover'}
+          sizes="320px"
+        />
       </div>
 
       <h1 className="font-display text-lg text-artist-crimson font-bold text-center mb-1">{blurb.title}</h1>

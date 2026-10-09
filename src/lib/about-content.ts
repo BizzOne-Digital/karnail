@@ -5,6 +5,12 @@ export const BANNER_VERSE = [
   'You will find my soul surrounding you.',
 ];
 
+/** Home banner mural — top right (client artwork) */
+export const HOME_BANNER_MURAL_TITLE = {
+  primary: 'Dark Mystery Spellbound',
+  subtitle: 'Arose from the Ashes',
+};
+
 export const ABOUT_AUTHOR_PARAGRAPHS = [
   'Sukh D. H. Khokhar is a Canadian mystery writer, poet, multimedia mural artist, illustrator, and educator based in Calgary, Alberta.',
   'As Executive Director of the Thompson Citizenship Council Inc. (1985–2008), she pioneered the race relations movement in northern Manitoba in 1990 and promoted it to the national level, raising awareness of minority issues and human rights by delivering successful interactive workshops to schools, businesses, and community groups, and coordinating "Thompson from Many Lands" multicultural radio programs for twenty-four years into the millennium.',
@@ -148,12 +154,14 @@ export const MULTICULTURAL_PUBLICATIONS = {
     { title: 'A Study of East Indian and Aboriginal Cultures', year: 2004 },
     { title: 'Removing Barriers to Equal Opportunities', year: 2005 },
     { title: "Newcomers' Guide to Thompson", year: 2008 },
+    { title: "Newcomers' Guide One — Souvenir Book", year: 2008 },
     { title: 'Walking in Dreams — Anthology of Lyrics', year: 1984 },
   ],
 } as const;
 
 export const GALLERY_PROMO = {
   title: 'Discover the Captivating Art of Sukh D. H. Khokhar',
+  author: 'Gagandeep Mann',
   subtitle: 'On Her Online Art Gallery: www.ArtPal.com/sukh2',
   artPalUrl: 'https://www.artpal.com/sukh2',
   paragraphs: [

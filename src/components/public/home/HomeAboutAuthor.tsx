@@ -7,7 +7,7 @@ import {
   HOME_BANNER_ASPECT,
   resolveHomeBannerImage,
 } from '@/lib/brand';
-import { ABOUT_AUTHOR_PARAGRAPHS, BANNER_VERSE } from '@/lib/about-content';
+import { ABOUT_AUTHOR_PARAGRAPHS, BANNER_VERSE, HOME_BANNER_MURAL_TITLE } from '@/lib/about-content';
 import { RoseThemeClose } from '@/components/public/RoseThemeClose';
 import { HomeSidebar } from '@/components/public/home/HomeSidebar';
 import { MobileNavStrip } from '@/components/public/MobileNavStrip';
@@ -53,6 +53,18 @@ export function HomeAboutAuthor({ hero }: HomeAboutAuthorProps) {
                   {line}
                 </p>
               ))}
+            </div>
+
+            <div
+              className="home-banner-mural-title absolute right-[4%] sm:right-[6%] top-[10%] sm:top-[12%] w-[min(52%,14rem)] sm:w-[min(44%,16rem)] pointer-events-none z-10 text-right"
+              aria-label={`${HOME_BANNER_MURAL_TITLE.primary} — ${HOME_BANNER_MURAL_TITLE.subtitle}`}
+            >
+              <p className="home-banner-mural-title__primary font-display text-[9px] sm:text-[11px] md:text-sm leading-tight font-bold uppercase tracking-[0.06em] drop-shadow-[0_1px_4px_rgba(0,0,0,0.85)]">
+                {HOME_BANNER_MURAL_TITLE.primary}
+              </p>
+              <p className="home-banner-mural-title__subtitle mt-0.5 sm:mt-1 font-display text-[8px] sm:text-[10px] md:text-xs leading-snug font-semibold italic drop-shadow-[0_1px_4px_rgba(0,0,0,0.85)]">
+                {HOME_BANNER_MURAL_TITLE.subtitle}
+              </p>
             </div>
           </div>
         </div>

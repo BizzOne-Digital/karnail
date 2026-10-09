@@ -20,6 +20,7 @@ function AttractionBlock({ item }: { item: AttractionItem }) {
   const href = 'externalUrl' in item && item.externalUrl ? item.externalUrl : item.bookHref;
   const zoom = item.coverZoom ?? 1.1;
   const inset = coverInsetPercent(zoom);
+  const fit = 'coverFit' in item && item.coverFit === 'contain' ? 'contain' : 'cover';
 
   return (
     <div className="sm:flex sm:gap-6 sm:items-start">
@@ -30,18 +31,28 @@ function AttractionBlock({ item }: { item: AttractionItem }) {
         className="block w-full max-w-[280px] mx-auto sm:mx-0 shrink-0"
       >
         <div className={COVER_FRAME_CLASS}>
-          <div
-            className="absolute"
-            style={{ top: `-${inset}`, right: `-${inset}`, bottom: `-${inset}`, left: `-${inset}` }}
-          >
+          {fit === 'contain' ? (
             <Image
               src={item.coverImage}
               alt={item.coverAlt}
               fill
               sizes="(max-width: 640px) 88vw, 280px"
-              className="object-cover object-center"
+              className="object-contain object-center"
             />
-          </div>
+          ) : (
+            <div
+              className="absolute"
+              style={{ top: `-${inset}`, right: `-${inset}`, bottom: `-${inset}`, left: `-${inset}` }}
+            >
+              <Image
+                src={item.coverImage}
+                alt={item.coverAlt}
+                fill
+                sizes="(max-width: 640px) 88vw, 280px"
+                className="object-cover object-center"
+              />
+            </div>
+          )}
         </div>
       </Link>
 

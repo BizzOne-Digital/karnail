@@ -172,15 +172,24 @@ body {
   object-fit: contain;
 }
 
-/* Sidebar — logo fills pane width (lengthwise along nav column) */
+/* Sidebar — narrower mark (full-width bar was flattening the logo into a skinny strip) */
 .home-brand-mark__img--sidebar {
   display: block;
-  width: 100%;
+  width: auto;
   height: auto;
-  max-width: 100%;
-  max-height: none;
+  max-width: min(72%, 9.75rem);
+  max-height: 2.65rem;
+  margin-left: auto;
+  margin-right: auto;
   object-fit: contain;
   object-position: center;
+}
+
+@media (min-width: 1024px) {
+  .home-brand-mark__img--sidebar {
+    max-width: min(68%, 8.75rem);
+    max-height: 2.45rem;
+  }
 }
 
 @media (min-width: 640px) {
@@ -469,6 +478,15 @@ svg {
 /* Banner verse under moon — always white (theme-cream overrides cream text) */
 .home-banner-verse .hero-verse-line {
   color: #ffffff !important;
+}
+
+/* Banner mural title — top right (Spellbound artwork) */
+.home-banner-mural-title__primary {
+  color: #f97316 !important;
+}
+
+.home-banner-mural-title__subtitle {
+  color: #facc15 !important;
 }
 
 @media (prefers-reduced-motion: reduce) {

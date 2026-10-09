@@ -1,25 +1,40 @@
 import Image from 'next/image';
 import type { MediaCoverageInsert } from '@/lib/media-coverage';
 
+/** Slight zoom on embedded PDFs to hide scanner/page margins in the viewer. */
+const PDF_VIEWER_CROP_SCALE = 1.08;
+
 export function MediaCoverageFigure({ item }: { item: MediaCoverageInsert }) {
+  const imgW = item.imageWidth ?? 1200;
+  const imgH = item.imageHeight ?? 1600;
+  const imgClass = item.nativeWidth
+    ? 'w-auto max-w-full h-auto block mx-auto'
+    : 'w-full h-auto block';
+
   return (
-    <figure className="w-full">
-      <div className="border border-warm-gray/25 bg-warm-cream overflow-hidden shadow-sm">
+    <figure id={item.id} className="w-full scroll-mt-4">
+      <div className="border border-warm-gray/30 bg-white overflow-hidden shadow-sm">
         {item.image ? (
           <Image
             src={item.image}
             alt={item.alt}
-            width={1200}
-            height={1600}
-            className="w-full h-auto block"
+            width={imgW}
+            height={imgH}
+            className={imgClass}
             unoptimized
           />
         ) : item.pdf ? (
-          <div className="bg-gallery-black/5">
+          <div className="bg-white overflow-hidden min-h-[min(72vh,42rem)]">
             <object
               data={item.pdf}
               type="application/pdf"
-              className="w-full block min-h-[min(72vh,42rem)]"
+              className="block min-h-[min(72vh,42rem)] origin-top-left"
+              style={{
+                width: `${PDF_VIEWER_CROP_SCALE * 100}%`,
+                height: `${PDF_VIEWER_CROP_SCALE * 100}%`,
+                marginLeft: `${-((PDF_VIEWER_CROP_SCALE - 1) / 2) * 100}%`,
+                marginTop: `${-((PDF_VIEWER_CROP_SCALE - 1) / 2) * 100}%`,
+              }}
               aria-label={item.alt}
             >
               <p className="p-4 text-[15px] font-semibold text-gallery-black/80">

@@ -47,7 +47,17 @@ export function getBookBlurbs(): BookBlurbEntry[] {
   });
 }
 
-export const BOOK_EXCERPT_SECTIONS = [
+export type BookExcerptSection = {
+  id: string;
+  heading: string;
+  subheading?: string;
+  openingVerse?: readonly string[];
+  paragraphs: readonly string[];
+  urduTranslation?: { label: string; text: string };
+  signature?: { name: string; date: string };
+};
+
+export const BOOK_EXCERPT_SECTIONS: BookExcerptSection[] = [
   {
     id: 'spellbound-preface',
     heading: DARK_MYSTERY_SPELLBOUND.title,
@@ -62,6 +72,9 @@ export const BOOK_EXCERPT_SECTIONS = [
   {
     id: 'mysteries-life',
     heading: MYSTERIES_OF_MY_LIFE.title,
-    paragraphs: MYSTERIES_OF_MY_LIFE.paragraphs.slice(0, 4),
+    openingVerse: MYSTERIES_OF_MY_LIFE.openingVerse,
+    paragraphs: MYSTERIES_OF_MY_LIFE.paragraphs,
+    urduTranslation: MYSTERIES_OF_MY_LIFE.urduTranslation,
+    signature: MYSTERIES_OF_MY_LIFE.signature,
   },
-] as const;
+];

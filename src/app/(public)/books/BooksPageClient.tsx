@@ -68,21 +68,50 @@ export default function BooksPageClient() {
                 <p className="text-center text-[15px] font-semibold mb-3">{section.subheading}</p>
               )}
               <div className="space-y-3 text-[15px] leading-relaxed text-justify">
+                {section.openingVerse && section.openingVerse.length > 0 && (
+                  <div className="mb-4 max-w-xl mx-auto text-center space-y-1.5 sm:space-y-2">
+                    {section.openingVerse.map((line) => (
+                      <p
+                        key={line}
+                        className="font-display italic text-artist-crimson text-[15px] sm:text-base leading-relaxed"
+                      >
+                        {line}
+                      </p>
+                    ))}
+                  </div>
+                )}
                 {section.paragraphs.map((p) => (
                   <p key={p.slice(0, 48)}>{p}</p>
                 ))}
+                {section.urduTranslation && (
+                  <div className="pt-2 text-center">
+                    <p className="font-bold text-artist-crimson text-sm mb-1">
+                      {section.urduTranslation.label}
+                    </p>
+                    <p className="font-display italic text-[15px] leading-relaxed">
+                      {section.urduTranslation.text}
+                    </p>
+                  </div>
+                )}
+                {section.signature && (
+                  <p className="pt-2 text-center font-display italic text-artist-crimson">
+                    {section.signature.name}
+                    <br />
+                    <span className="text-gallery-black not-italic font-semibold text-[15px]">
+                      {section.signature.date}
+                    </span>
+                  </p>
+                )}
               </div>
             </section>
           ))}
 
           <p className="text-center pt-2">
             <Link
-              href="/books/crossword-nominees"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/media-coverage#crossword-book-awards-2013"
               className="text-artist-crimson font-bold underline text-sm uppercase tracking-wide"
             >
-              Crossword Book Award 2013 — Nominees List
+              Crossword Book Award 2013 — Nominees List (Media Coverage)
             </Link>
           </p>
         </div>
@@ -107,6 +136,7 @@ export default function BooksPageClient() {
                   src={book.coverImage}
                   alt={book.coverAlt}
                   zoom={book.coverZoom}
+                  fit={book.coverFit}
                   frameClassName="border border-warm-gray/30 shadow-sm group-hover:border-artist-crimson/50 transition-colors"
                 />
                 <p className="mt-2 text-[11px] sm:text-xs font-bold text-artist-crimson leading-snug text-center px-1">

@@ -5,16 +5,33 @@ export type MediaCoverageInsert = {
   caption?: string;
   image?: string;
   pdf?: string;
+  /** Render at native pixel width (up to column), not stretched to full column width */
+  nativeWidth?: boolean;
+  imageWidth?: number;
+  imageHeight?: number;
 };
 
-/** Curated from client folder `public/media-coverage/fwdsukhmediacoverage` (+ prior email inserts). */
+/**
+ * Display order (client request):
+ * 1. Crossword Award nominees list — original scan
+ * 2. Medal clipping
+ * 3. Picture clippings, then PDF clippings
+ */
 export const MEDIA_COVERAGE_INSERTS: MediaCoverageInsert[] = [
   {
-    id: 'newcomers-guide-souvenir',
-    image: '/media-coverage/newcomers-guide-souvenir-book.jpg',
-    alt: 'Commendation to Sukh D. H. Khokhar and Newcomers’ Guide to Thompson — TCC Inc. Souvenir Book',
+    id: 'crossword-book-awards-2013',
+    image: '/media-coverage/crossword-book-awards-2013.jpg',
+    alt: 'Crossword Book Awards 2013 — eligible fiction titles (original scan)',
+    nativeWidth: true,
+    imageWidth: 1024,
+    imageHeight: 685,
+  },
+  {
+    id: 'rcmp-commemorative-medal-1993',
+    image: '/media-coverage/rcmp-commemorative-medal-1993.jpg',
+    alt: 'Manitoba newspaper — Sukh Khokhar awarded the Canada 125 commemorative medal by RCMP Commissioner Norman Inkster, November 1993',
     caption:
-      'The Newcomers’ Guide means a great deal to me. I was awarded the Souvenir Book by the President of Thompson Citizenship Council Inc., Surinder Pal, in the presence of the general membership and the provincial Minister of Culture, Heritage and Recreation, Doris Mae Oulton, who funded the project.',
+      'Award presentation in Toronto for service on the RCMP Commissioner’s Advisory Committee on Visible Minorities.',
   },
   {
     id: 'rcmp-commissioner-visit-1992',
@@ -29,24 +46,11 @@ export const MEDIA_COVERAGE_INSERTS: MediaCoverageInsert[] = [
     alt: 'City of Thompson Award of Merit for promotion of racial harmony — letter from the Office of the Mayor, March 1993',
   },
   {
-    id: 'rcmp-commemorative-medal-1993',
-    image: '/media-coverage/rcmp-commemorative-medal-1993.jpg',
-    alt: 'Manitoba newspaper — Sukh Khokhar awarded the Canada 125 commemorative medal by RCMP Commissioner Norman Inkster, November 1993',
-    caption:
-      'Award presentation in Toronto for service on the RCMP Commissioner’s Advisory Committee on Visible Minorities.',
-  },
-  {
     id: 'citizen-of-the-world-2008',
     image: '/media-coverage/citizen-of-the-world-2008.jpg',
     alt: 'Thompson Citizen — “Sukh Khokhar has been a citizen of the world,” October 2008',
     caption:
       'Profile of community leadership, multiculturalism, and the Multi Culture Centre in Thompson.',
-  },
-  {
-    id: 'mystery-rose-2027-edition',
-    image: '/media-coverage/mystery-of-the-rose-2027-edition.jpg',
-    alt: 'The Mystery of the Rose — 2027 Edition (nominated for the 2013 Crossword Book Award)',
-    caption: 'The 2027 eBook edition of The Mystery of the Rose: The Return of the Prince.',
   },
   {
     id: 'press-clipping-05',

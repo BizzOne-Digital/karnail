@@ -7,6 +7,7 @@
     "build": "next build --webpack",
     "start": "next start",
     "seed": "tsx src/server/seeds/index.ts",
+    "crop-media-coverage": "node scripts/crop-media-coverage.mjs",
     "lint": "eslint ."
   },
   "dependencies": {
@@ -59,6 +60,7 @@
     "@types/uuid": "^10.0.0",
     "eslint": "^9",
     "eslint-config-next": "16.3.3",
+    "sharp": "^0.35.5",
     "tsx": "^4.19.2"
   },
   "optionalDependencies": {

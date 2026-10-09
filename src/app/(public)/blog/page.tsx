@@ -33,6 +33,9 @@ export default async function BlogPage() {
         <h2 className="font-display text-lg text-artist-crimson font-bold text-center mb-1">
           {GALLERY_PROMO.title}
         </h2>
+        <p className="text-center text-sm font-semibold text-gallery-black/85 mb-2">
+          By {GALLERY_PROMO.author}
+        </p>
         <p className="text-center text-sm font-bold text-artist-crimson underline mb-4">
           <a href={GALLERY_PROMO.artPalUrl} target="_blank" rel="noopener noreferrer">
             {GALLERY_PROMO.subtitle}
