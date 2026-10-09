@@ -61,6 +61,14 @@ export type BookExcerptSection = {
 
 export const BOOK_EXCERPT_SECTIONS: BookExcerptSection[] = [
   {
+    id: 'mystery-rose-acknowledgements',
+    heading: MYSTERY_ROSE_ACKNOWLEDGEMENTS.title,
+    subheading: MYSTERY_ROSE_ACKNOWLEDGEMENTS.subheading,
+    paragraphs: MYSTERY_ROSE_ACKNOWLEDGEMENTS.paragraphs,
+    closingQuote: MYSTERY_ROSE_ACKNOWLEDGEMENTS.closingQuote,
+    signature: MYSTERY_ROSE_ACKNOWLEDGEMENTS.signature,
+  },
+  {
     id: 'spellbound-preface',
     heading: DARK_MYSTERY_SPELLBOUND.title,
     subheading: DARK_MYSTERY_SPELLBOUND.edition,
@@ -70,14 +78,6 @@ export const BOOK_EXCERPT_SECTIONS: BookExcerptSection[] = [
     id: 'return-prince',
     heading: RETURN_OF_THE_PRINCE.title,
     paragraphs: [...RETURN_OF_THE_PRINCE.points, RETURN_OF_THE_PRINCE.note],
-  },
-  {
-    id: 'mystery-rose-acknowledgements',
-    heading: MYSTERY_ROSE_ACKNOWLEDGEMENTS.title,
-    subheading: MYSTERY_ROSE_ACKNOWLEDGEMENTS.subheading,
-    paragraphs: MYSTERY_ROSE_ACKNOWLEDGEMENTS.paragraphs,
-    closingQuote: MYSTERY_ROSE_ACKNOWLEDGEMENTS.closingQuote,
-    signature: MYSTERY_ROSE_ACKNOWLEDGEMENTS.signature,
   },
   {
     id: 'mysteries-life',

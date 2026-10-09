@@ -34,6 +34,15 @@ export const MEDIA_COVERAGE_INSERTS: MediaCoverageInsert[] = [
       'Award presentation in Toronto for service on the RCMP Commissioner’s Advisory Committee on Visible Minorities.',
   },
   {
+    id: 'retirement-art-exhibit-northroots-2008',
+    image: '/media-coverage/retirement-art-exhibit-northroots-2008.jpg',
+    alt: 'northroots — Art exhibit is community leader’s parting gift; Head of Multi Culture Centre retires, October/November 2008',
+    caption:
+      'On retiring as executive director of the Thompson Citizenship Council (Multi Culture Centre), Sukh Khokhar’s artwork was exhibited at the Precambrian Art Centre—prints from her novel and pencil portraits of former students. By Lars Miranda, northroots magazine.',
+    imageWidth: 754,
+    imageHeight: 980,
+  },
+  {
     id: 'rcmp-commissioner-visit-1992',
     image: '/media-coverage/rcmp-commissioner-visit-1992.jpg',
     alt: 'Newspaper feature — RCMP Commissioner Murray visits Multi-Culture Centre, May 1992',
@@ -51,13 +60,6 @@ export const MEDIA_COVERAGE_INSERTS: MediaCoverageInsert[] = [
     alt: 'Thompson Citizen — “Sukh Khokhar has been a citizen of the world,” October 2008',
     caption:
       'Profile of community leadership, multiculturalism, and the Multi Culture Centre in Thompson.',
-  },
-  {
-    id: 'retirement-art-exhibit-northroots-2008',
-    image: '/media-coverage/retirement-art-exhibit-northroots-2008.png',
-    alt: 'northroots — Art exhibit is community leader’s parting gift; Head of Multi Culture Centre retires, October/November 2008',
-    caption:
-      'On retiring as executive director of the Thompson Citizenship Council (Multi Culture Centre), Sukh Khokhar’s artwork was exhibited at the Precambrian Art Centre—prints from her novel and pencil portraits of former students. By Lars Miranda, northroots magazine.',
   },
   {
     id: 'press-clipping-05',

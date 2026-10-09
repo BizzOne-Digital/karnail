@@ -11,24 +11,37 @@ export const COMING_ATTRACTIONS_2027 = [
     subtitle: 'Arose from the Ashes',
     edition: '2027 Edition eBook',
     coverImage: '/books/dark-mystery-spellbound-2027.jpg',
-    coverAlt: 'Dark Mystery Spellbound — 2027 Edition cover',
+    coverAlt: 'Dark Mystery: Spellbound — 2027 Edition eBook cover',
     blurb:
       'Dark Mystery: Spellbound is mystical adventure of an angel (disguised as Prince) who is transformed into a ghost by a jealous demon and trapped in time. His remorse, perseverance and faith help him reconnect with a higher source and empower him with the strength to transcend the barriers of time and space and reunite with true love, Princessa.',
     bookHref: '/books/spellbound-2027',
-    /** Zoom past print margins baked into scan */
     coverZoom: 1.2,
   },
   {
-    id: 'mystery-rose-2027',
+    id: 'mystery-rose-2027-paperback',
     kind: 'coming' as const,
     category: null,
-    title: 'THE MYSTERY OF THE ROSE: THE RETURN OF THE ROSE',
+    title: 'THE MYSTERY OF THE ROSE: THE RETURN OF THE PRINCE',
     subtitle: null,
-    edition: '2027 Edition Paperback & eBook',
+    edition: '2027 Edition Paperback',
+    coverImage: '/books/mystery-rose-return-prince-2027.jpg',
+    coverAlt: 'The Mystery of the Rose: The Return of the Prince — 2027 Edition paperback cover',
+    blurb:
+      'Witness the rebirth of India in an unforgettable love story of Pearly Ruby Princessa, spun around the fascinating background of the Coronation of King Edward VII in 1902; his spectacular State Durbar and the reign of maharajas, nawabs, and aristocrats in the Indian princely states. The 2013 Edition of the paperback was nominated for the Crossword Book Award.',
+    bookHref: '/books/mystery-rose-2027',
+    coverZoom: 1.2,
+  },
+  {
+    id: 'mystery-rose-2027-ebook',
+    kind: 'coming' as const,
+    category: null,
+    title: 'THE MYSTERY OF THE ROSE: THE RETURN OF THE PRINCE',
+    subtitle: null,
+    edition: '2027 Edition eBook',
     coverImage: '/books/mystery-rose-return-prince-2027-ebook-cover.jpg',
     coverAlt: 'The Mystery of the Rose — Return of the Prince — 2027 Edition eBook cover',
     blurb:
-      'Witness the rebirth of India in an unforgettable love story of Pearly Ruby Princessa, spun around the fascinating background of the Coronation of King Edward VII in 1902; his spectacular State Durbar and the reign of maharajas, nawabs, and aristocrats in the Indian princely states. The 2013 Edition of the paperback was nominated Crossword Book Award.',
+      'The illustrated 2027 eBook edition of the debut historical novel—magical love story, poetry, and full-color artwork from the world of Princessa.',
     bookHref: '/books/mystery-rose-2027',
     coverFit: 'contain' as const,
     coverZoom: 1,
@@ -64,3 +77,6 @@ export const PREVIOUS_PUBLICATIONS = [
     coverZoom: 1.1,
   },
 ];
+
+/** First index number for “Previous Publications” list (after Coming Attractions count). */
+export const PREVIOUS_PUBLICATIONS_START_INDEX = COMING_ATTRACTIONS_2027.length + 1;

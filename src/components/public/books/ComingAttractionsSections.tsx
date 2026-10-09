@@ -4,6 +4,7 @@ import {
   COMING_ATTRACTIONS_2027,
   COMING_ATTRACTIONS_FISCAL_LABEL,
   PREVIOUS_PUBLICATIONS,
+  PREVIOUS_PUBLICATIONS_START_INDEX,
 } from '@/lib/coming-attractions';
 
 type AttractionItem = (typeof COMING_ATTRACTIONS_2027)[number] | (typeof PREVIOUS_PUBLICATIONS)[number];
@@ -105,7 +106,7 @@ export function ComingAttractionsSections() {
         <div className="space-y-8">
           {PREVIOUS_PUBLICATIONS.map((item, index) => (
             <div key={item.id}>
-              <p className="text-artist-crimson font-bold text-sm mb-3">{index + 3}.</p>
+              <p className="text-artist-crimson font-bold text-sm mb-3">{index + PREVIOUS_PUBLICATIONS_START_INDEX}.</p>
               <AttractionBlock item={item} />
             </div>
           ))}

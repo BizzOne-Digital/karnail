@@ -55,12 +55,19 @@ export default function BooksPageClient() {
 
           <hr className="border-warm-gray/35" />
 
-          <h2 className="font-display text-base sm:text-lg text-artist-crimson font-bold text-center mb-4">
+          <h2 className="font-display text-base sm:text-lg text-artist-crimson font-bold text-center mb-2">
             Extended excerpts &amp; author narrative
           </h2>
+          <nav className="mb-6 text-center text-[13px] font-bold text-artist-crimson flex flex-wrap justify-center gap-x-3 gap-y-1">
+            {BOOK_EXCERPT_SECTIONS.map((section) => (
+              <a key={section.id} href={`#${section.id}`} className="underline underline-offset-2 hover:opacity-80">
+                {section.heading}
+              </a>
+            ))}
+          </nav>
 
           {BOOK_EXCERPT_SECTIONS.map((section) => (
-            <section key={section.id}>
+            <section key={section.id} id={section.id} className="scroll-mt-6">
               <h2 className="font-display text-lg text-artist-crimson font-bold text-center mb-1">
                 {section.heading}
               </h2>

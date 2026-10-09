@@ -48,15 +48,14 @@ export const BOOK_CATALOG: BookCatalogEntry[] = [
     title: 'The Mystery of the Rose: The Return of the Rose',
     subtitle: 'A Magical Love Story from India under British Rule',
     edition: '2027 Edition',
-    coverImage: '/books/mystery-rose-return-prince-2027-ebook-cover.jpg',
-    coverAlt: 'The Mystery of the Rose — Return of the Prince — 2027 Edition eBook cover',
-    coverFit: 'contain',
-    coverZoom: 1,
+    coverImage: '/books/mystery-rose-return-prince-2027.jpg',
+    coverAlt: 'The Mystery of the Rose: The Return of the Prince — 2027 Edition cover',
+    coverZoom: 1.14,
     additionalCovers: [
       {
-        src: '/books/mystery-rose-return-prince-2027.jpg',
-        alt: 'The Mystery of the Rose 2027 edition front cover',
-        label: 'Front Cover',
+        src: '/books/mystery-rose-return-prince-2027-ebook-cover.jpg',
+        alt: 'The Mystery of the Rose — Return of the Prince — 2027 Edition eBook wrap',
+        label: '2027 Edition eBook Cover',
       },
       {
         src: '/books/mystery-rose-double-cover-2027.jpg',
@@ -127,7 +126,7 @@ export const RETURN_OF_THE_PRINCE = {
 };
 
 export const MYSTERY_ROSE_ACKNOWLEDGEMENTS = {
-  title: 'Acknowledgements',
+  title: 'Acknowledgements — Mystery of the Rose',
   subheading: 'The Mystery of the Rose: The Return of the Prince',
   paragraphs: [
     'Someone once told me that there is a book in all of us; some of us delve deeper into our thoughts and bring it out.',
