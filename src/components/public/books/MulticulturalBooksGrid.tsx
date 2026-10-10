@@ -3,7 +3,7 @@ import { MULTICULTURAL_RESOURCE_BOOKS } from '@/lib/book-resources';
 import { BookCoverImage } from '@/components/public/books/BookCoverImage';
 
 export function MulticulturalBooksGrid() {
-  const { title, organization, pdfUrl, works } = MULTICULTURAL_RESOURCE_BOOKS;
+  const { title, organization, works } = MULTICULTURAL_RESOURCE_BOOKS;
 
   return (
     <section className="mt-10 pt-8 border-t border-warm-gray/30">
@@ -16,16 +16,8 @@ export function MulticulturalBooksGrid() {
 
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-4 gap-y-6 sm:gap-x-6 sm:gap-y-8 items-start">
         {works.map((book) => {
-          const href = book.coverImage ?? pdfUrl;
-
-          return (
-            <Link
-              key={book.id}
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-left group flex flex-col h-full"
-            >
+          const inner = (
+            <>
               {book.coverImage ? (
                 <BookCoverImage
                   src={book.coverImage}
@@ -54,21 +46,32 @@ export function MulticulturalBooksGrid() {
                   </p>
                 )}
               </div>
-            </Link>
+            </>
+          );
+
+          const className = 'text-left group flex flex-col h-full';
+
+          if (book.coverImage) {
+            return (
+              <Link
+                key={book.id}
+                href={book.coverImage}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={className}
+              >
+                {inner}
+              </Link>
+            );
+          }
+
+          return (
+            <div key={book.id} className={className}>
+              {inner}
+            </div>
           );
         })}
       </div>
-
-      <p className="text-center mt-6">
-        <Link
-          href={pdfUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-artist-crimson font-bold underline text-sm"
-        >
-          View multicultural resource books (PDF)
-        </Link>
-      </p>
     </section>
   );
 }

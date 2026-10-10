@@ -3,7 +3,7 @@
 import { Suspense, useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { SiteSectionNav } from '@/components/public/SiteSectionNav';
-import { SiteBrandMark } from '@/components/public/SiteBrandMark';
+import { SidebarBrandCredits } from '@/components/public/SidebarBrandCredits';
 import { cn } from '@/lib/utils';
 
 export function HomeSidebar() {
@@ -11,7 +11,7 @@ export function HomeSidebar() {
 
   return (
     <aside className="home-sidebar-pane text-warm-cream lg:min-h-full">
-      <SiteBrandMark variant="sidebar" />
+      <SidebarBrandCredits />
 
       <button
         type="button"

@@ -76,7 +76,13 @@ export default function BooksPageClient() {
               )}
               <div className="space-y-3 text-[15px] leading-relaxed text-justify">
                 {section.openingVerse && section.openingVerse.length > 0 && (
-                  <div className="mb-4 max-w-xl mx-auto text-center space-y-1.5 sm:space-y-2">
+                  <div
+                    className={
+                      section.id === 'mysteries-life'
+                        ? 'mb-3 space-y-0.5 text-justify'
+                        : 'mb-4 max-w-xl mx-auto text-center space-y-1.5 sm:space-y-2'
+                    }
+                  >
                     {section.openingVerse.map((line) => (
                       <p
                         key={line}
@@ -115,7 +121,13 @@ export default function BooksPageClient() {
                   </div>
                 )}
                 {section.closingQuote && section.closingQuote.length > 0 && (
-                  <div className="pt-3 max-w-xl mx-auto text-center space-y-0.5">
+                  <div
+                    className={
+                      section.signature?.align === 'left'
+                        ? 'pt-2 space-y-0.5 text-left'
+                        : 'pt-3 max-w-xl mx-auto text-center space-y-0.5'
+                    }
+                  >
                     {section.closingQuote.map((line) => (
                       <p
                         key={line}
@@ -130,7 +142,7 @@ export default function BooksPageClient() {
                   <p
                     className={
                       section.signature.align === 'left'
-                        ? 'pt-4 text-left font-display text-artist-crimson'
+                        ? 'pt-1 text-left font-display text-artist-crimson leading-snug'
                         : 'pt-4 text-center font-display text-artist-crimson'
                     }
                   >

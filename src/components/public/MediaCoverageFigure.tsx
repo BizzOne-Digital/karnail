@@ -1,9 +1,6 @@
 import Image from 'next/image';
 import type { MediaCoverageInsert } from '@/lib/media-coverage';
 
-/** Slight zoom on embedded PDFs to hide scanner/page margins in the viewer. */
-const PDF_VIEWER_CROP_SCALE = 1.08;
-
 export function MediaCoverageFigure({ item }: { item: MediaCoverageInsert }) {
   const imgW = item.imageWidth ?? 1200;
   const imgH = item.imageHeight ?? 1600;
@@ -24,41 +21,37 @@ export function MediaCoverageFigure({ item }: { item: MediaCoverageInsert }) {
             unoptimized
           />
         ) : item.pdf ? (
-          <div className="bg-white overflow-hidden min-h-[min(72vh,42rem)]">
-            <object
-              data={item.pdf}
-              type="application/pdf"
-              className="block min-h-[min(72vh,42rem)] origin-top-left"
-              style={{
-                width: `${PDF_VIEWER_CROP_SCALE * 100}%`,
-                height: `${PDF_VIEWER_CROP_SCALE * 100}%`,
-                marginLeft: `${-((PDF_VIEWER_CROP_SCALE - 1) / 2) * 100}%`,
-                marginTop: `${-((PDF_VIEWER_CROP_SCALE - 1) / 2) * 100}%`,
-              }}
-              aria-label={item.alt}
+          <details className="group">
+            <summary
+              className="flex min-h-[6.5rem] cursor-pointer list-none items-center justify-center bg-warm-cream px-4 py-5 text-center text-sm font-bold text-artist-crimson hover:bg-warm-cream/80 [&::-webkit-details-marker]:hidden"
             >
-              <p className="p-4 text-[15px] font-semibold text-gallery-black/80">
+              Press clipping (PDF) — click to expand
+            </summary>
+            <div className="border-t border-warm-gray/25 bg-gallery-black/5">
+              <object
+                data={`${item.pdf}#view=FitH`}
+                type="application/pdf"
+                title={item.alt}
+                className="block h-[min(70vh,36rem)] w-full"
+              >
+                <iframe
+                  src={`${item.pdf}#view=FitH`}
+                  title={item.alt}
+                  className="block h-[min(70vh,36rem)] w-full border-0"
+                />
+              </object>
+              <p className="border-t border-warm-gray/20 bg-warm-cream px-3 py-2 text-center">
                 <a
                   href={item.pdf}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-artist-crimson underline underline-offset-2"
+                  className="text-[13px] font-bold text-artist-crimson underline underline-offset-2"
                 >
-                  Open this press clipping (PDF)
+                  Open full-size PDF in new tab
                 </a>
               </p>
-            </object>
-            <p className="px-3 py-2 text-center border-t border-warm-gray/20 bg-warm-cream">
-              <a
-                href={item.pdf}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[13px] font-bold text-artist-crimson underline underline-offset-2"
-              >
-                Open full-size PDF
-              </a>
-            </p>
-          </div>
+            </div>
+          </details>
         ) : null}
       </div>
       {item.caption && (

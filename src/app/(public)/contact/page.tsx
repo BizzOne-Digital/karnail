@@ -3,7 +3,6 @@ import { Suspense } from 'react';
 import { serverPublicApi } from '@/services/server-public-api';
 import { SectionPageShell } from '@/components/public/SectionPageShell';
 import { ContactForm } from '@/components/forms/ContactForm';
-import { FAQAccordion } from '@/components/public/FAQAccordion';
 import { CONTACT_LINKS } from '@/lib/contact-info';
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -11,10 +10,9 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function ContactPage() {
-  const [page, settings, faqs] = await Promise.all([
+  const [page, settings] = await Promise.all([
     serverPublicApi.getPage('contact').catch(() => null),
     serverPublicApi.getSettings().catch(() => null),
-    serverPublicApi.getFAQs().catch(() => []),
   ]);
 
   const hero = page?.sections?.find((s) => s.sectionKey === 'hero');
@@ -77,12 +75,6 @@ export default async function ContactPage() {
         </div>
       </div>
 
-      {faqs.length > 0 && (
-        <div className="mt-10 pt-8 border-t border-warm-gray/25 max-w-2xl mx-auto">
-          <h2 className="font-display text-lg text-artist-crimson font-bold text-center mb-5">Quick Answers</h2>
-          <FAQAccordion faqs={faqs.slice(0, 5)} />
-        </div>
-      )}
     </SectionPageShell>
   );
 }

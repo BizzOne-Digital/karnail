@@ -144,6 +144,7 @@ export const MYSTERY_ROSE_ACKNOWLEDGEMENTS = {
   signature: {
     preface: 'Sincerely,',
     name: 'Sukh D. H. Khokhar',
+    align: 'left' as const,
   },
 };
 
