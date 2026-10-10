@@ -54,9 +54,9 @@ export type BookExcerptSection = {
   subheading?: string;
   openingVerse?: readonly string[];
   paragraphs: readonly string[];
-  urduTranslation?: { label: string; text: string };
+  urduTranslation?: { label: string; text?: string; lines?: readonly string[] };
   closingQuote?: readonly string[];
-  signature?: { name: string; date?: string; preface?: string };
+  signature?: { name: string; date?: string; preface?: string; align?: 'left' | 'center' };
 };
 
 export const BOOK_EXCERPT_SECTIONS: BookExcerptSection[] = [

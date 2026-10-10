@@ -152,11 +152,9 @@ export const MYSTERIES_OF_MY_LIFE = {
   openingVerse: [
     'My life\'s going to last as long as lasts my book, its pages.',
     'A part of me will die forever; a part of me will live for ages.',
-    'Like petals, the book unfolds my story, steeped in mystery.',
-    'Everything meaningful in my life has always begun and ended in mystery.',
   ],
   paragraphs: [
-    'Early in my life, I became aware of the sixth sense I had about people, places, and things. An invisible third eye made me visualize images beyond sight and guided me.',
+    'Like petals, the book unfolds my story, steeped in mystery. Everything meaningful in my life has always begun and ended in mystery. Early in my life, I became aware of the sixth sense I had about people, places, and things. An invisible third eye made me visualize images beyond sight and guided me.',
     'I grew up with a recurring dream, that haunted my days and nights. Someone whispered in my dream prophesying that my life\'s path would be filled with demons, because I was born of a powerful union between a soft-hearted angel and a cold-hearted demon. No wonder I tiptoed through every walk of life followed by a demon—running straight into the arms of an angel, waiting to rescue me at the end of every road.',
     'All my life I was mystified deeply by a strange pattern of curses woven into every blessing of my life. It was hard to differentiate when a blessing revolved into a curse or when a curse evolved into a blessing. I always found myself at the center of a fierce battle between the two powerful forces surrounding me and fighting to take control of me.',
     'Looking back, I realize that no one could have prepared me for the events of my life, which culminated in a saga of a million nightmares. I could not comprehend the strength of a higher power, until one day, right before my eyes, the entire physical phenomenon turned metaphysical; matter became spirit and my deadly demon turned divine. The very demon that had relentlessly pursued me since my conception had turned divine—melting all my regrets into thin air.',
@@ -167,10 +165,15 @@ export const MYSTERIES_OF_MY_LIFE = {
   ],
   urduTranslation: {
     label: 'Urdu Translation',
-    text: 'Ma Sodaii Hu; Mamnoon Hu Us Bandaparvar ka, Jis Mohsan Ne, Is Muflis Ko Yeh Jannat Atta Kar Dee.',
+    lines: [
+      'Ma Sodai Hu; Mamnoon Hu',
+      'Us Bandaparvar ka, Jis Mohsan Ne,',
+      'Is Muflis Ko Yeh Jannat Atta Kar Dee.',
+    ],
   },
   signature: {
     name: 'Pearly Ruby Princessa',
     date: '08/08/1950',
+    align: 'left' as const,
   },
 };

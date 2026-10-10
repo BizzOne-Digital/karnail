@@ -91,13 +91,27 @@ export default function BooksPageClient() {
                   <p key={p.slice(0, 48)}>{p}</p>
                 ))}
                 {section.urduTranslation && (
-                  <div className="pt-2 text-center">
+                  <div
+                    className={
+                      section.signature?.align === 'left'
+                        ? 'pt-2 text-left'
+                        : 'pt-2 text-center'
+                    }
+                  >
                     <p className="font-bold text-artist-crimson text-sm mb-1">
                       {section.urduTranslation.label}
                     </p>
-                    <p className="font-display italic text-[15px] leading-relaxed">
-                      {section.urduTranslation.text}
-                    </p>
+                    {section.urduTranslation.lines?.length ? (
+                      <div className="font-display italic text-[15px] leading-relaxed space-y-0.5">
+                        {section.urduTranslation.lines.map((line) => (
+                          <p key={line}>{line}</p>
+                        ))}
+                      </div>
+                    ) : (
+                      <p className="font-display italic text-[15px] leading-relaxed">
+                        {section.urduTranslation.text}
+                      </p>
+                    )}
                   </div>
                 )}
                 {section.closingQuote && section.closingQuote.length > 0 && (
@@ -113,7 +127,13 @@ export default function BooksPageClient() {
                   </div>
                 )}
                 {section.signature && (
-                  <p className="pt-4 text-center font-display text-artist-crimson">
+                  <p
+                    className={
+                      section.signature.align === 'left'
+                        ? 'pt-4 text-left font-display text-artist-crimson'
+                        : 'pt-4 text-center font-display text-artist-crimson'
+                    }
+                  >
                     {section.signature.preface && (
                       <span className="block italic text-[15px] mb-1">{section.signature.preface}</span>
                     )}

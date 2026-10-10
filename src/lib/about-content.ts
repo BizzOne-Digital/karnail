@@ -5,7 +5,7 @@ export const BANNER_VERSE = [
   'You will find my soul surrounding you.',
 ];
 
-/** Home banner mural — top right (client artwork) */
+/** Home banner mural title — left sky area (client artwork) */
 export const HOME_BANNER_MURAL_TITLE = {
   primary: 'Dark Mystery Spellbound',
   subtitle: 'Arose from the Ashes',

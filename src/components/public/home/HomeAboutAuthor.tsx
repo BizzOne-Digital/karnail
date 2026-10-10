@@ -36,7 +36,7 @@ export function HomeAboutAuthor({ hero }: HomeAboutAuthorProps) {
               alt="Dark Mystery: Spellbound — illustrated mystical adventure banner"
               fill
               priority
-              className="home-banner-image object-cover object-center"
+              className="home-banner-image object-cover object-[58%_center]"
               sizes="(max-width: 68rem) 100vw, 68rem"
             />
 
@@ -56,7 +56,7 @@ export function HomeAboutAuthor({ hero }: HomeAboutAuthorProps) {
             </div>
 
             <div
-              className="home-banner-mural-title absolute right-[4%] sm:right-[6%] top-[10%] sm:top-[12%] w-[min(52%,14rem)] sm:w-[min(44%,16rem)] pointer-events-none z-10 text-right"
+              className="home-banner-mural-title absolute left-[5%] sm:left-[7%] top-[38%] sm:top-[40%] w-[min(48%,14rem)] sm:w-[min(42%,16rem)] pointer-events-none z-10 text-left"
               aria-label={`${HOME_BANNER_MURAL_TITLE.primary} — ${HOME_BANNER_MURAL_TITLE.subtitle}`}
             >
               <p className="home-banner-mural-title__primary font-display text-[9px] sm:text-[11px] md:text-sm leading-tight font-bold uppercase tracking-[0.06em] drop-shadow-[0_1px_4px_rgba(0,0,0,0.85)]">
