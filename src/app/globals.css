@@ -481,16 +481,20 @@ svg {
 
 @keyframes verse-blink {
   0%, 100% { opacity: 1; }
-  50% { opacity: 0.3; }
+  45%, 55% { opacity: 0.22; }
 }
 
 .hero-verse-line {
-  animation: verse-blink 4s ease-in-out infinite;
+  animation: verse-blink 3.5s ease-in-out infinite;
+  animation-fill-mode: both;
 }
 
 /* Banner verse under moon — always white (theme-cream overrides cream text) */
 .home-banner-verse .hero-verse-line {
   color: #ffffff !important;
+  animation: verse-blink 3.5s ease-in-out infinite !important;
+  animation-fill-mode: both;
+  will-change: opacity;
 }
 
 /* Banner mural title — top right (Spellbound artwork) */

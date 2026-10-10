@@ -77,7 +77,7 @@ export function HomeAboutAuthor({ hero }: HomeAboutAuthorProps) {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-[minmax(148px,176px)_1fr] gap-3 lg:gap-2 items-start px-0 sm:px-0">
-          <div className="order-2 lg:order-1 lg:sticky lg:top-2 self-start w-full min-w-0">
+          <div className="order-2 lg:order-1 lg:sticky lg:top-2 self-start w-full min-w-0 hidden lg:block">
             <HomeSidebar />
           </div>
 
