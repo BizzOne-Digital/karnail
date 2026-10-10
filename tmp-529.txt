@@ -1,0 +1,50 @@
+[Image]
+[Image]
+<image_files>
+The following images were provided by the user and saved to disk for future use:
+1. C:\Users\admin\.cursor\projects\e-2sri-nokri-karnail-main-karnail-main/assets/c__Users_admin_AppData_Roaming_Cursor_User_workspaceStorage_d44ca1a24bc0cc7f8378e888c2af0858_images_image-21d48d19-92c9-4b4a-970f-eb86641ab21d.jpg
+2. C:\Users\admin\.cursor\projects\e-2sri-nokri-karnail-main-karnail-main/assets/c__Users_admin_AppData_Roaming_Cursor_User_workspaceStorage_d44ca1a24bc0cc7f8378e888c2af0858_images_image-e1ae3a6c-6964-4f1c-a464-b6f9399c0608.png
+
+These files can be read with tools, copied to other locations, or attached to subagents using the file_attachments parameter.
+</image_files>
+<timestamp>Thursday, Sep 24, 2026, 6:51 PM (UTC+5)</timestamp>
+<user_query>
+I was pleased to see Galleries featured correctly and the display view is excellent! There should be
+only one Navigation Tab. The three navigation tabs are confusing. Get rid of other two: on the top and
+
+bottom. The navigation tab on the side should open correctly like one on the top. It opens incorrectly
+
+now by showing historical background under another tab.
+
+Author Blogs tab is missing. Kindly add that.
+I will resend the restructured visual image of: “Books by The Author”
+Kindly insert the attached picture in the Artist statement because there is a lot of space there to fit in.
+Gallery 2, 3, 4, images need to be adjusted to show full view.  Gallery 1, is fine.
+ 
+
+Major Home Page Structure and layout Problems/Corrections:
+
+ 
+
+The page is too big in size. There should be a scroll bar on the side, instead of “up and down button”.
+Pages should be structured to the size of the content. The entire content should be readable without
+having to use the scroll bar or zoom; like the visual images I sent you.
+
+If I zoom to 100, the content is dim and unreadable. If I zoom down, I can only see a part of it.
+The Banner needs to be expanded from Margin to Margin,  by cutting and pasting pieces from the sides.
+Banner is bigger and bolder in size than the bio and the photo. If you name the size, I can recreate a bigger
+
+And wider Banner that fits in without adjusting.
+
+Size of the logo should be reduced to the size of text in the Navigation tab and moved over the Navigation Tab.
+The bio will have to be moved up sitting snug under the Banner.
+
+ 
+
+Rose goes right under the ending line of the content. Kindly use the Rose shown below: see ss Shorten the space used for SUBSCRIBE --by getting rid of extra navigation tabs and newsletter. The bottom part
+should only have the logo and subscribe form.  Kindly add your website for reference as an inspiration site.
+
+Use a bigger size of the font, or bold the content . Right now, it is too dim to be readable.
+Book reviews: the name and designation of the commentator should in bold red. For example:  see ss 2
+
+</user_query>

@@ -1,0 +1,24 @@
+[Image]
+[Image]
+<image_files>
+The following images were provided by the user and saved to disk for future use:
+1. C:\Users\admin\.cursor\projects\e-2sri-nokri-karnail-main-karnail-main/assets/c__Users_admin_AppData_Roaming_Cursor_User_workspaceStorage_d44ca1a24bc0cc7f8378e888c2af0858_images_6-Newcomers__Guide-One-f2d53710-5c05-4402-a65c-881e428e3ded.jpg
+2. C:\Users\admin\.cursor\projects\e-2sri-nokri-karnail-main-karnail-main/assets/c__Users_admin_AppData_Roaming_Cursor_User_workspaceStorage_d44ca1a24bc0cc7f8378e888c2af0858_images_5-Upcoming_Attraction-2027_Edition-241c6a08-3662-4046-b9df-679d47dbe141.jpg
+
+These files can be read with tools, copied to other locations, or attached to subagents using the file_attachments parameter.
+</image_files>
+<timestamp>Thursday, Oct 8, 2026, 2:38 AM (UTC+5)</timestamp>
+<user_query>
+she has shared emails
+
+Sukh-Two books accidently left out
+The Picture is Fine as it is.
+The Newcomers ‘Guide One’ means a lot to me because I was awarded the Souvenir Book in
+By the President of TCC Inc. in the presence of General Membership and the provincial Minister
+
+of Culture. Heritage and Recreation, Doris Mae Oulton, who funded it.
+
+The 2027 eBook edition of the Mystery of the Rose….
+ 
+
+</user_query>
