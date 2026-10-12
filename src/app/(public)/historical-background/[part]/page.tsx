@@ -48,14 +48,19 @@ export default async function HistoricalBackgroundPage({
           )}
 
           {insert.portrait && (
-            <div className="mb-3 w-full border border-warm-gray/25 overflow-hidden">
+            <div
+              className="mb-3 mx-auto w-full border border-warm-gray/25 overflow-hidden bg-warm-cream/40"
+              style={{ maxWidth: insert.portrait.displayMaxWidth ?? 448 }}
+            >
               <Image
                 src={insert.portrait.image}
                 alt={insert.portrait.alt}
-                width={600}
-                height={800}
+                width={insert.portrait.width}
+                height={insert.portrait.height}
                 className="w-full h-auto block"
-                sizes="(max-width: 448px) 100vw, 448px"
+                sizes={`(max-width: ${insert.portrait.displayMaxWidth ?? 448}px) 92vw, ${insert.portrait.displayMaxWidth ?? 448}px`}
+                quality={92}
+                unoptimized
               />
             </div>
           )}

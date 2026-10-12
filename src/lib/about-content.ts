@@ -112,6 +112,10 @@ export interface FamilyBackgroundInsert {
   portrait?: {
     image: string;
     alt: string;
+    width: number;
+    height: number;
+    /** Max CSS width (px) — avoids upscaling low-res art on wide layouts */
+    displayMaxWidth?: number;
   };
 }
 
@@ -138,6 +142,9 @@ export const FAMILY_BACKGROUND_INSERTS: FamilyBackgroundInsert[] = [
     portrait: {
       image: '/family/natha-singh.png',
       alt: 'Sardar Natha Singh — digital archival portrait by Sukh D. H. Khokhar',
+      width: 786,
+      height: 852,
+      displayMaxWidth: 320,
     },
     paragraphs: [
       'Sardar Natha Singh served as an ADC to Prince Nau Nihal Singh at the Court of Maharaja Ranjit Singh; later, as Killadar of Shahpur Kandi Fort, he fulfilled the tough assignment of safekeeping and ferrying the famous Koh-i-Noor Diamond to Bombay en route to London with his four confidants. According to the family archives, the Koh-i-Noor Diamond was stored in our ancestral mansion in Sunam for one week for safekeeping before its planned departure to London.',
