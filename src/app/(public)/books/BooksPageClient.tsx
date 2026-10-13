@@ -8,6 +8,7 @@ import { BOOK_EXCERPT_SECTIONS } from '@/lib/book-blurbs';
 import { MulticulturalBooksGrid } from '@/components/public/books/MulticulturalBooksGrid';
 import { BookCoverImage } from '@/components/public/books/BookCoverImage';
 import { ComingAttractionsSections } from '@/components/public/books/ComingAttractionsSections';
+import { CenteredTabContent } from '@/components/public/CenteredTabContent';
 
 const TABS = [
   { id: 'excerpts', label: 'Excerpts from the Books' },
@@ -50,7 +51,7 @@ export default function BooksPageClient() {
       </div>
 
       {tab === 'excerpts' ? (
-        <div className="space-y-6">
+        <CenteredTabContent className="space-y-6">
           <ComingAttractionsSections />
 
           <hr className="border-warm-gray/35" />
@@ -169,7 +170,7 @@ export default function BooksPageClient() {
               Crossword Book Award 2013 — Nominees List (Media Coverage)
             </Link>
           </p>
-        </div>
+        </CenteredTabContent>
       ) : (
         <div>
           <h2 className="font-display text-base sm:text-lg text-artist-crimson font-bold text-center mb-3">

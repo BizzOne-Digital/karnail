@@ -722,6 +722,38 @@ svg {
   border-color: #e8c547;
 }
 
+/* Homepage — nav below banner (no side panel at any zoom) */
+.home-below-banner-nav__links {
+  max-width: 100%;
+}
+
+.home-below-banner-nav__links a {
+  flex: 0 1 auto;
+  max-width: 100%;
+  text-align: center;
+  justify-content: center;
+}
+
+/* Homepage — skinny strip under rose */
+.home-credits-skinny-strip {
+  padding-top: 0.2rem;
+  padding-bottom: 0.25rem;
+}
+
+.home-credits-skinny-strip__sukh {
+  display: block;
+  width: auto;
+  height: auto;
+  max-height: 1.85rem;
+  max-width: min(88%, 10.5rem);
+  object-fit: contain;
+}
+
+.home-credits-skinny-strip__bizzone {
+  max-height: 0.95rem !important;
+  max-width: min(28%, 2.15rem) !important;
+}
+
 
 .theme-cream .bg-gallery-black,
 .theme-cream .bg-soft-black,
