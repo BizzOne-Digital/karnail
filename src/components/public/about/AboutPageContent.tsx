@@ -7,7 +7,6 @@ import {
   BOOK_REVIEWS_FOOTER,
 } from '@/lib/about-content';
 import { ARTIST_STATEMENT_PORTRAIT } from '@/lib/brand';
-import { CenteredTabContent } from '@/components/public/CenteredTabContent';
 import { SectionPageShell } from '@/components/public/SectionPageShell';
 
 function ProseBlock({ paragraphs }: { paragraphs: string[] }) {
@@ -26,7 +25,6 @@ export function AboutPageContent() {
 
   return (
     <SectionPageShell>
-      <CenteredTabContent>
       {tab === 'reviews' ? (
         <div>
           <header className="text-center mb-4">
@@ -99,7 +97,6 @@ export function AboutPageContent() {
           </p>
         </div>
       )}
-      </CenteredTabContent>
     </SectionPageShell>
   );
 }
