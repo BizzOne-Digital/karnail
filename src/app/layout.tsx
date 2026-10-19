@@ -1,7 +1,15 @@
 import type { Metadata } from 'next';
 import { Cormorant_Garamond, Cinzel, Manrope, Caveat } from 'next/font/google';
 import { Providers } from '@/components/Providers';
+import { HOME_BANNER_ASPECT, HOME_BANNER_WRAPPER } from '@/lib/brand';
+import { getSiteUrl } from '@/lib/site-url';
 import './globals.css';
+
+const siteDescription =
+  'Discover captivating mystical paintings, murals, and creative services by Sukh D. H. Khokhar — mystery writer, mural artist, and visual storyteller.';
+
+const ogImageWidth = 1024;
+const ogImageHeight = Math.round(ogImageWidth / HOME_BANNER_ASPECT);
 
 const cormorant = Cormorant_Garamond({
   subsets: ['latin'],
@@ -28,13 +36,35 @@ const caveat = Caveat({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(getSiteUrl()),
   title: {
     default: 'Sukh D. H. Khokhar | Captivating Mystery Art',
     template: '%s | Sukh D. H. Khokhar',
   },
-  description:
-    'Discover captivating mystical paintings, murals, and creative services by Sukh D. H. Khokhar — mystery writer, mural artist, and visual storyteller.',
+  description: siteDescription,
   keywords: ['mystery art', 'mural artist', 'paintings', 'Sukh Khokhar', 'visual artist'],
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: '/',
+    siteName: 'Sukh D. H. Khokhar',
+    title: 'Sukh D. H. Khokhar | Captivating Mystery Art',
+    description: siteDescription,
+    images: [
+      {
+        url: HOME_BANNER_WRAPPER,
+        width: ogImageWidth,
+        height: ogImageHeight,
+        alt: 'Dark Mystery: Spellbound — mystical art banner by Sukh D. H. Khokhar',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Sukh D. H. Khokhar | Captivating Mystery Art',
+    description: siteDescription,
+    images: [HOME_BANNER_WRAPPER],
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
