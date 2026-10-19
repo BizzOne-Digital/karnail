@@ -1,6 +1,16 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
+  async redirects() {
+    return [
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'sukhkhokhar.com' }],
+        destination: 'https://www.sukhkhokhar.com/:path*',
+        permanent: true,
+      },
+    ];
+  },
   images: {
     localPatterns: [
       { pathname: '/api/uploads/**' },

@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { Cormorant_Garamond, Cinzel, Manrope, Caveat } from 'next/font/google';
 import { Providers } from '@/components/Providers';
 import { HOME_BANNER_ASPECT, HOME_BANNER_WRAPPER } from '@/lib/brand';
-import { getSiteUrl } from '@/lib/site-url';
+import { absolutePublicUrl, getSiteUrl } from '@/lib/site-url';
 import './globals.css';
 
 const siteDescription =
@@ -10,6 +10,8 @@ const siteDescription =
 
 const ogImageWidth = 1024;
 const ogImageHeight = Math.round(ogImageWidth / HOME_BANNER_ASPECT);
+const siteUrl = getSiteUrl();
+const ogImageUrl = absolutePublicUrl(HOME_BANNER_WRAPPER);
 
 const cormorant = Cormorant_Garamond({
   subsets: ['latin'],
@@ -36,7 +38,8 @@ const caveat = Caveat({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(getSiteUrl()),
+  metadataBase: new URL(siteUrl),
+  alternates: { canonical: '/' },
   title: {
     default: 'Sukh D. H. Khokhar | Captivating Mystery Art',
     template: '%s | Sukh D. H. Khokhar',
@@ -52,9 +55,11 @@ export const metadata: Metadata = {
     description: siteDescription,
     images: [
       {
-        url: HOME_BANNER_WRAPPER,
+        url: ogImageUrl,
+        secureUrl: ogImageUrl,
         width: ogImageWidth,
         height: ogImageHeight,
+        type: 'image/jpeg',
         alt: 'Dark Mystery: Spellbound — mystical art banner by Sukh D. H. Khokhar',
       },
     ],
@@ -63,7 +68,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Sukh D. H. Khokhar | Captivating Mystery Art',
     description: siteDescription,
-    images: [HOME_BANNER_WRAPPER],
+    images: [ogImageUrl],
   },
 };
 
