@@ -1,7 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { serverPublicApi } from '@/services/server-public-api';
-import { CenteredTabContent } from '@/components/public/CenteredTabContent';
 import { SectionPageShell } from '@/components/public/SectionPageShell';
 import { GALLERY_PROMO } from '@/lib/about-content';
 import { formatDate } from '@/lib/utils';
@@ -16,7 +15,6 @@ export default async function BlogPage() {
 
   return (
     <SectionPageShell>
-      <CenteredTabContent>
       <header className="text-center mb-6">
         <h1 className="font-display text-lg sm:text-xl text-artist-crimson font-bold leading-snug px-1">
           {GALLERY_PROMO.title}
@@ -62,7 +60,6 @@ export default async function BlogPage() {
           <p className="text-center font-semibold py-4">Additional blog posts will appear here soon.</p>
         )}
       </section>
-      </CenteredTabContent>
     </SectionPageShell>
   );
 }
