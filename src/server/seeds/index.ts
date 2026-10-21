@@ -50,7 +50,7 @@ async function seedSettings() {
   const contactDefaults = {
     email: 'khokharsukh@gmail.com',
     phone: '(403) 991-5694',
-    website: 'www.mysteryoftherose.com',
+    website: 'www.sukhkhokhar.com',
     artPalUrl: 'https://www.artpal.com/sukh2',
   };
 

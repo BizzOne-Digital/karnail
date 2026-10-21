@@ -5,8 +5,8 @@ export const CONTACT_LINKS = {
   email: CONTACT_EMAIL,
   artPal: 'https://www.artpal.com/sukh2',
   artPalLabel: 'www.artpal.com/sukh2',
-  mysteryOfTheRose: 'https://www.mysteryoftherose.com',
-  mysteryOfTheRoseLabel: 'www.mysteryoftherose.com',
+  mysteryOfTheRose: 'https://www.sukhkhokhar.com',
+  mysteryOfTheRoseLabel: 'www.sukhkhokhar.com',
 } as const;
 
 export interface BookListing {

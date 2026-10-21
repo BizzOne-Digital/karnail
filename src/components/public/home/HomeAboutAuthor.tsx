@@ -8,6 +8,7 @@ import {
   resolveHomeBannerImage,
 } from '@/lib/brand';
 import { ABOUT_AUTHOR_PARAGRAPHS, BANNER_VERSE, HOME_BANNER_MURAL_TITLE } from '@/lib/about-content';
+import { CONTACT_LINKS } from '@/lib/contact-info';
 import { RoseThemeClose } from '@/components/public/RoseThemeClose';
 import { HomeSidebar } from '@/components/public/home/HomeSidebar';
 import { MobileNavStrip } from '@/components/public/MobileNavStrip';
@@ -110,21 +111,21 @@ export function HomeAboutAuthor({ hero }: HomeAboutAuthorProps) {
                 <p className="!mt-2">
                   Her artwork can be viewed at her Art Gallery:{' '}
                   <a
-                    href="https://www.artpal.com/sukh2"
+                    href={CONTACT_LINKS.artPal}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-artist-crimson underline underline-offset-2 font-bold break-all sm:break-normal"
                   >
-                    www.artpal.com/sukh2
+                    {CONTACT_LINKS.artPalLabel}
                   </a>{' '}
                   and on her website{' '}
                   <a
-                    href="https://www.mysteryoftherose.com"
+                    href={CONTACT_LINKS.mysteryOfTheRose}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-artist-crimson underline underline-offset-2 font-bold break-all sm:break-normal"
                   >
-                    www.mysteryoftherose.com
+                    {CONTACT_LINKS.mysteryOfTheRoseLabel}
                   </a>
                   .
                 </p>

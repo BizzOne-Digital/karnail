@@ -102,7 +102,7 @@ const siteSettingsSchema = new Schema<ISiteSettings>(
       },
       email: { type: String, default: 'khokharsukh@gmail.com' },
       phone: { type: String, default: '(403) 991-5694' },
-      website: { type: String, default: 'www.mysteryoftherose.com' },
+      website: { type: String, default: 'www.sukhkhokhar.com' },
       address: { type: String, default: '' },
       socialLinks: [socialLinkSchema],
       artPalUrl: { type: String, default: 'https://www.artpal.com/sukh2' },
@@ -158,7 +158,7 @@ const siteSettingsSchema = new Schema<ISiteSettings>(
       contactInfo: {
         email: { type: String, default: 'khokharsukh@gmail.com' },
         phone: { type: String, default: '(403) 991-5694' },
-        website: { type: String, default: 'www.mysteryoftherose.com' },
+        website: { type: String, default: 'www.sukhkhokhar.com' },
       },
       socialLinks: [socialLinkSchema],
       copyright: {
