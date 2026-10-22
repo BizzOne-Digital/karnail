@@ -3,7 +3,7 @@ import { CONTACT_EMAIL, CONTACT_LINKS } from '@/lib/contact-info';
 
 /** Default brand logo shipped with the site */
 /** Client burgundy logo (home footer) */
-export const BRAND_LOGO = '/logo-burgundy.png';
+export const BRAND_LOGO = '/logo-burgundy.jpg';
 
 /** @deprecated Gold-on-black header asset */
 export const BRAND_LOGO_LEGACY = '/logo.png';

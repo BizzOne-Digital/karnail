@@ -10,7 +10,6 @@ import {
 import { ABOUT_AUTHOR_PARAGRAPHS, BANNER_VERSE, HOME_BANNER_MURAL_TITLE } from '@/lib/about-content';
 import { CONTACT_LINKS } from '@/lib/contact-info';
 import { RoseThemeClose } from '@/components/public/RoseThemeClose';
-import { HomeSidebar } from '@/components/public/home/HomeSidebar';
 import { MobileNavStrip } from '@/components/public/MobileNavStrip';
 import type { PageSection } from '@/types';
 
@@ -73,16 +72,11 @@ export function HomeAboutAuthor({ hero }: HomeAboutAuthorProps) {
 
       <section id="about-author" className="bg-page-silver text-gallery-black">
         <div className="w-full mx-auto px-0 max-w-full">
-        <div className="mobile-sticky-nav sticky top-0 z-30 px-2 py-1.5 bg-page-silver/95 backdrop-blur-sm border-b border-warm-gray/20 lg:hidden">
+        <div className="mobile-sticky-nav sticky top-0 z-30 px-2 py-1.5 bg-page-silver/95 backdrop-blur-sm border-b border-warm-gray/20">
           <MobileNavStrip />
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-[minmax(148px,176px)_1fr] gap-3 lg:gap-2 items-start px-0 sm:px-0">
-          <div className="order-2 lg:order-1 lg:sticky lg:top-2 self-start w-full min-w-0 hidden lg:block">
-            <HomeSidebar />
-          </div>
-
-          <div className="order-1 lg:order-2 min-w-0 w-full px-3 sm:px-3 pt-2 pb-3">
+        <div className="min-w-0 w-full px-3 sm:px-3 pt-2 pb-3">
             <header className="text-center mb-3">
               <p className="home-about-author__name font-display text-[calc(1rem*1.113)] tracking-[0.1em] text-artist-crimson uppercase mb-0.5">
                 Sukh D. H. Khokhar
@@ -134,7 +128,6 @@ export function HomeAboutAuthor({ hero }: HomeAboutAuthorProps) {
                 <RoseThemeClose className="!pt-0 !pb-0 !mt-1" />
               </div>
             </div>
-          </div>
         </div>
 
         </div>

@@ -28,7 +28,7 @@ export function SiteSectionNav({
         isVertical
           ? 'flex flex-col gap-0.5'
           : isSidebar
-            ? 'flex flex-nowrap gap-1.5 overflow-x-auto pb-1 -mx-0.5 px-0.5 snap-x snap-mandatory scrollbar-thin'
+            ? 'flex flex-nowrap gap-1.5 overflow-x-auto pb-1 -mx-0.5 px-0.5 snap-x snap-mandatory scrollbar-hide'
             : 'flex flex-wrap gap-1.5 justify-center',
         className
       )}

@@ -167,8 +167,8 @@ body {
   margin-right: auto;
   width: auto;
   height: auto;
-  max-height: calc(64px * 1.07);
-  max-width: min(calc(540px * 1.07), 98vw);
+  max-height: calc(92px * 1.07);
+  max-width: min(calc(640px * 1.07), 98vw);
   object-fit: contain;
 }
 
@@ -194,21 +194,21 @@ body {
 
 /* Sidebar strip — larger author mark (client) */
 .home-brand-mark__img--sidebar-wide {
-  max-width: min(98%, 15.75rem) !important;
-  max-height: 3.35rem !important;
+  max-width: min(98%, 21.5rem) !important;
+  max-height: 4.25rem !important;
 }
 
 @media (min-width: 1024px) {
   .home-brand-mark__img--sidebar-wide {
-    max-width: min(96%, 14.75rem) !important;
-    max-height: 3.15rem !important;
+    max-width: min(96%, 20rem) !important;
+    max-height: 4rem !important;
   }
 }
 
 @media (min-width: 640px) {
   .home-brand-mark__img {
-    max-height: calc(74px * 1.07);
-    max-width: min(calc(580px * 1.07), 96vw);
+    max-height: calc(100px * 1.07);
+    max-width: min(calc(680px * 1.07), 96vw);
   }
 }
 
@@ -844,16 +844,14 @@ svg {
 
 .mobile-nav-strip__scroll {
   -webkit-overflow-scrolling: touch;
-  scrollbar-width: thin;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 .mobile-nav-strip__scroll::-webkit-scrollbar {
-  height: 4px;
-}
-
-.mobile-nav-strip__scroll::-webkit-scrollbar-thumb {
-  background: rgba(92, 42, 40, 0.35);
-  border-radius: 4px;
+  display: none;
+  width: 0;
+  height: 0;
 }
 
 .mobile-sticky-nav {
