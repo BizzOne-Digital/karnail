@@ -37,7 +37,7 @@ export const BOOK_CATALOG: BookCatalogEntry[] = [
       {
         src: '/books/dark-mystery-spellbound-2027-double.jpg',
         alt: 'Dark Mystery Spellbound 2027 full cover spread',
-        label: 'Full Cover Spread',
+        label: 'Double Cover — 2027 Edition',
       },
     ],
     status: 'upcoming',
@@ -53,24 +53,9 @@ export const BOOK_CATALOG: BookCatalogEntry[] = [
     coverZoom: 1.14,
     additionalCovers: [
       {
-        src: '/books/mystery-rose-return-prince-2027-ebook-cover.jpg',
-        alt: 'The Mystery of the Rose — Return of the Prince — 2027 Edition eBook wrap',
-        label: '2027 Edition eBook Cover',
-      },
-      {
         src: '/books/mystery-rose-double-cover-2027.jpg',
-        alt: 'The Mystery of the Rose 2027 double cover spread',
-        label: 'Full Cover Spread',
-      },
-      {
-        src: '/books/mystery-rose-return-prince-2027-mockup.jpg',
-        alt: 'The Mystery of the Rose 2027 edition mockup',
-        label: 'Edition Mockup',
-      },
-      {
-        src: '/books/mystery-rose-return-prince-2027-alt.jpg',
-        alt: 'The Mystery of the Rose 2027 alternate cover',
-        label: 'Alternate Cover',
+        alt: 'The Mystery of the Rose: Return of the Prince — 2027 Edition full cover spread (front, spine, back)',
+        label: 'Double Cover — 2027 Edition',
       },
     ],
     award: 'Nominated for the 2013 Crossword Book Award',
@@ -84,6 +69,13 @@ export const BOOK_CATALOG: BookCatalogEntry[] = [
     tagline: 'Witness the Rebirth of India in a Magical Love Story of Princessa',
     coverImage: '/books/mystery-rose-2013-edition.jpg',
     coverAlt: 'The Mystery of the Rose 2013 edition book cover',
+    additionalCovers: [
+      {
+        src: '/books/mystery-rose-2013-double-cover.jpg',
+        alt: 'The Mystery of the Rose: Return of the Prince — 2013 Edition full cover spread',
+        label: 'Double Cover — 2013 Edition',
+      },
+    ],
     award: 'Nominated for the 2013 Crossword Book Award',
     status: 'upcoming',
     coverZoom: 1.14,

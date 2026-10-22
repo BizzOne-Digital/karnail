@@ -5,8 +5,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = getSiteUrl();
 
   const staticPages = [
-    '', '/about', '/gallery', '/books', '/shop', '/testimonials',
-    '/faqs', '/pricing', '/blog', '/contact', '/media-coverage', '/cart',
+    '',
+    '/about',
+    '/about?tab=statement',
+    '/about?tab=reviews',
+    '/gallery',
+    '/books',
+    '/books?tab=excerpts',
+    '/books?tab=by-author',
+    '/historical-background/1',
+    '/historical-background/2',
+    '/blog',
+    '/contact',
+    '/media-coverage',
+    '/testimonials',
+    '/faqs',
+    '/pricing',
   ];
 
   return staticPages.map((path) => ({

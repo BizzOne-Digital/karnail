@@ -2,8 +2,11 @@ import type { Metadata } from 'next';
 import { Cormorant_Garamond, Cinzel, Manrope, Caveat } from 'next/font/google';
 import { Providers } from '@/components/Providers';
 import { HOME_BANNER_ASPECT, HOME_BANNER_WRAPPER } from '@/lib/brand';
-import { absolutePublicUrl, getSiteUrl } from '@/lib/site-url';
+import { SiteJsonLd } from '@/components/public/SiteJsonLd';
+import { absolutePublicUrl, CANONICAL_SITE_URL, getSiteUrl } from '@/lib/site-url';
 import './globals.css';
+
+const googleSiteVerification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION;
 
 const siteDescription =
   'Discover captivating mystical paintings, murals, and creative services by Sukh D. H. Khokhar — mystery writer, mural artist, and visual storyteller.';
@@ -46,10 +49,18 @@ export const metadata: Metadata = {
   },
   description: siteDescription,
   keywords: ['mystery art', 'mural artist', 'paintings', 'Sukh Khokhar', 'visual artist'],
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, 'max-image-preview': 'large' },
+  },
+  ...(googleSiteVerification
+    ? { verification: { google: googleSiteVerification } }
+    : {}),
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: '/',
+    url: CANONICAL_SITE_URL,
     siteName: 'Sukh D. H. Khokhar',
     title: 'Sukh D. H. Khokhar | Captivating Mystery Art',
     description: siteDescription,
@@ -79,6 +90,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={`${cormorant.variable} ${cinzel.variable} ${manrope.variable} ${caveat.variable} overflow-x-hidden`}
     >
       <body className="font-body antialiased film-grain">
+        <SiteJsonLd />
         <Providers>{children}</Providers>
       </body>
     </html>

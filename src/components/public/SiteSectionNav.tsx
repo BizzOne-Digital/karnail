@@ -1,5 +1,6 @@
 'use client';
 
+import { forwardRef } from 'react';
 import Link from 'next/link';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { cn } from '@/lib/utils';
@@ -11,11 +12,10 @@ interface SiteSectionNavProps {
   variant?: 'default' | 'sidebar';
 }
 
-export function SiteSectionNav({
-  className,
-  orientation = 'vertical',
-  variant = 'default',
-}: SiteSectionNavProps) {
+export const SiteSectionNav = forwardRef<HTMLElement, SiteSectionNavProps>(function SiteSectionNav(
+  { className, orientation = 'vertical', variant = 'default' },
+  ref
+) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const search = searchParams.toString();
@@ -24,6 +24,7 @@ export function SiteSectionNav({
 
   return (
     <nav
+      ref={ref}
       className={cn(
         isVertical
           ? 'flex flex-col gap-0.5'
@@ -58,4 +59,4 @@ export function SiteSectionNav({
       })}
     </nav>
   );
-}
+});

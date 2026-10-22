@@ -62,6 +62,20 @@ export const MEDIA_COVERAGE_INSERTS: MediaCoverageInsert[] = [
       'Profile of community leadership, multiculturalism, and the Multi Culture Centre in Thompson.',
   },
   {
+    id: 'walking-in-dreams-book-launch',
+    image: '/media-coverage/walking-in-dreams-book-launch.jpg',
+    alt: 'Walking in Dreams book launch — International Women’s Day, Gandhi Bhawan, Punjab University, Chandigarh',
+    caption:
+      '8 March — International Women’s Day book launch of Walking in Dreams by Sukhdeepak Khokhar at Gandhi Bhawan, Punjab University, Chandigarh. Sukh Khokhar being introduced to the Head of the English Department and other professors (Mell’s Publications).',
+  },
+  {
+    id: 'book-launch-walking-in-dreams',
+    image: '/media-coverage/book-launch-walking-in-dreams.jpg',
+    alt: 'Book launch — Walking in Dreams by Sukhdeepak Khokhar, Mell’s Publications',
+    caption:
+      'Sukh Khokhar with Professor Madan Verma, his son Victor Verma, and professors of the French and English departments, University of Punjab, Chandigarh.',
+  },
+  {
     id: 'press-clipping-05',
     pdf: '/media-coverage/pdfs/press-clipping-05.pdf',
     alt: 'Press clipping scan (PDF)',

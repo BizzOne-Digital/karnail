@@ -842,6 +842,29 @@ svg {
 
 }
 
+.nav-strip-scroll-arrow {
+  align-items: center;
+  justify-content: center;
+  width: 1.65rem;
+  height: 1.65rem;
+  border-radius: 2px;
+  border: 1px solid rgba(232, 197, 71, 0.45);
+  background-color: #5c2a28;
+  color: #f3e4b8;
+  cursor: pointer;
+  transition: background-color 0.15s ease, opacity 0.15s ease;
+}
+
+.nav-strip-scroll-arrow:hover:not(:disabled) {
+  background-color: #4a2220;
+  color: #fff8e8;
+}
+
+.nav-strip-scroll-arrow:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
 .mobile-nav-strip__scroll {
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;

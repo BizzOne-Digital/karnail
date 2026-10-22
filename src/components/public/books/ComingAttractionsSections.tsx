@@ -18,7 +18,8 @@ function coverInsetPercent(zoom: number) {
 }
 
 function AttractionBlock({ item }: { item: AttractionItem }) {
-  const href = 'externalUrl' in item && item.externalUrl ? item.externalUrl : item.bookHref;
+  const isExternal = Boolean('externalUrl' in item && item.externalUrl);
+  const href = isExternal ? (item as { externalUrl: string }).externalUrl : item.bookHref;
   const zoom = item.coverZoom ?? 1.1;
   const inset = coverInsetPercent(zoom);
   const fit = 'coverFit' in item && item.coverFit === 'contain' ? 'contain' : 'cover';
@@ -27,8 +28,8 @@ function AttractionBlock({ item }: { item: AttractionItem }) {
     <div className="sm:flex sm:gap-6 sm:items-start">
       <Link
         href={href}
-        target="_blank"
-        rel="noopener noreferrer"
+        target={isExternal ? '_blank' : undefined}
+        rel={isExternal ? 'noopener noreferrer' : undefined}
         className="block w-full max-w-[280px] mx-auto sm:mx-0 shrink-0"
       >
         <div className={COVER_FRAME_CLASS}>
@@ -66,8 +67,8 @@ function AttractionBlock({ item }: { item: AttractionItem }) {
         <p className="mt-3 text-center sm:text-left">
           <Link
             href={href}
-            target="_blank"
-            rel="noopener noreferrer"
+            target={isExternal ? '_blank' : undefined}
+            rel={isExternal ? 'noopener noreferrer' : undefined}
             className="text-artist-crimson font-bold underline text-sm"
           >
             View details

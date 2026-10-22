@@ -9,6 +9,12 @@ const nextConfig: NextConfig = {
         destination: 'https://www.sukhkhokhar.com/:path*',
         permanent: true,
       },
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'sukhkhokharmysteryart.vercel.app' }],
+        destination: 'https://www.sukhkhokhar.com/:path*',
+        permanent: true,
+      },
     ];
   },
   images: {
