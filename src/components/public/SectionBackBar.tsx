@@ -1,7 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-import { ArrowLeft } from 'lucide-react';
 
 /** Non-home pages: return to homepage (full nav lives on home only). */
 export function SectionBackBar() {
@@ -12,9 +11,8 @@ export function SectionBackBar() {
       <div className="site-content-width mx-auto px-3 sm:px-4 py-2.5">
         <Link
           href="/"
-          className="inline-flex items-center gap-2 font-display text-xs sm:text-sm font-bold uppercase tracking-[0.14em] text-artist-crimson hover:text-deep-oxblood transition-colors"
+          className="inline-flex items-center justify-center border border-[#f5c518] bg-[#e8192c] px-5 py-1.5 font-sans text-base sm:text-lg font-extrabold uppercase tracking-wide text-[#f5c518] transition-colors hover:bg-[#c8101f]"
         >
-          <ArrowLeft size={18} strokeWidth={2.5} aria-hidden />
           Back
         </Link>
       </div>
