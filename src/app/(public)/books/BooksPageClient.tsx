@@ -8,6 +8,7 @@ import { BOOK_EXCERPT_SECTIONS } from '@/lib/book-blurbs';
 import { MulticulturalBooksGrid } from '@/components/public/books/MulticulturalBooksGrid';
 import { BookCoverImage } from '@/components/public/books/BookCoverImage';
 import { ComingAttractionsSections } from '@/components/public/books/ComingAttractionsSections';
+import { PoetryExcerpts } from '@/components/public/books/PoetryExcerpts';
 
 const TABS = [
   { id: 'excerpts', label: 'Excerpts from the Books' },
@@ -64,6 +65,9 @@ export default function BooksPageClient() {
                 {section.heading}
               </a>
             ))}
+            <a href="#poetry-excerpts" className="underline underline-offset-2 hover:opacity-80">
+              Poetry Excerpts
+            </a>
           </nav>
 
           {BOOK_EXCERPT_SECTIONS.map((section) => (
@@ -160,6 +164,8 @@ export default function BooksPageClient() {
               </div>
             </section>
           ))}
+
+          <PoetryExcerpts />
 
           <p className="text-center pt-2">
             <Link

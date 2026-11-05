@@ -885,3 +885,23 @@ svg {
   padding-left: env(safe-area-inset-left, 0px);
   padding-right: env(safe-area-inset-right, 0px);
 }
+
+/* Poetry Excerpts — red headings left-aligned, red bold chapter labels, black italic verses */
+.poetry-excerpts h2,
+.poetry-excerpts p {
+  text-align: left !important;
+  margin: 0;
+}
+.poetry-excerpts h2,
+.poetry-excerpts .poetry-red {
+  color: var(--artist-crimson) !important;
+}
+.poetry-excerpts .poetry-label {
+  font-weight: 700 !important;
+}
+.poetry-excerpts .poetry-verse p {
+  color: #111 !important;
+}
+.poetry-excerpts .poetry-intro {
+  margin: 0.25rem 0 1.5rem !important;
+}
