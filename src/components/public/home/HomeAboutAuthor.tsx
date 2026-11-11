@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { getImageUrl } from '@/lib/utils';
 import {
   ABOUT_AUTHOR_PORTRAIT,
@@ -130,6 +131,87 @@ export function HomeAboutAuthor({ hero }: HomeAboutAuthorProps) {
               <div className="clear-both pt-1">
                 <RoseThemeClose className="!pt-0 !pb-0 !mt-1" />
               </div>
+            </div>
+
+            <div className="mt-4 space-y-4 font-body text-[15px] leading-[1.58] text-gallery-black">
+              <section aria-labelledby="home-books">
+                <h2 id="home-books" className="font-display text-base text-artist-crimson uppercase font-bold mb-1">
+                  Books
+                </h2>
+                <h3 className="font-display font-bold">The Mystery of the Rose: The Return of the Prince</h3>
+                <p>
+                  A debut historical novel set in India under British rule, longlisted for the 2013
+                  Crossword Book Award.{' '}
+                  <Link href="/books" className="text-artist-crimson underline underline-offset-2 font-bold">
+                    Explore books by Sukh Khokhar
+                  </Link>
+                  .
+                </p>
+                <h3 className="font-display font-bold mt-2">Dark Mystery: I am a Demon, I&apos;m a Ghost</h3>
+                <p>
+                  An illustrated poetry eBook, a spiritual journey from darkness into light.{' '}
+                  <Link href="/books?tab=excerpts" className="text-artist-crimson underline underline-offset-2 font-bold">
+                    Read excerpts from the books
+                  </Link>
+                  .
+                </p>
+                <h3 className="font-display font-bold mt-2">Dark Mystery: Spellbound</h3>
+                <p>
+                  A 2027 edition illustrated mystical adventure eBook featuring 84 full-color paintings.
+                </p>
+                <h3 className="font-display font-bold mt-2">Arose from the Ashes</h3>
+                <p>
+                  The poetic rendition from The Mystery of the Rose universe, coming in the 2027 edition.
+                </p>
+              </section>
+
+              <section aria-labelledby="home-artwork">
+                <h2 id="home-artwork" className="font-display text-base text-artist-crimson uppercase font-bold mb-1">
+                  Artwork &amp; Murals
+                </h2>
+                <p>
+                  Original paintings and mural work by Calgary artist Sukh D. H. Khokhar.{' '}
+                  <Link href="/gallery" className="text-artist-crimson underline underline-offset-2 font-bold">
+                    Explore the artwork gallery
+                  </Link>{' '}
+                  or{' '}
+                  <a
+                    href={CONTACT_LINKS.artPal}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-artist-crimson underline underline-offset-2 font-bold"
+                  >
+                    view original paintings on ArtPal
+                  </a>
+                  .
+                </p>
+              </section>
+
+              <section aria-labelledby="home-awards">
+                <h2 id="home-awards" className="font-display text-base text-artist-crimson uppercase font-bold mb-1">
+                  Awards &amp; Recognition
+                </h2>
+                <p>
+                  Governor General&apos;s Commemorative Medal and a 2013 Crossword Book Award longlisting.{' '}
+                  <Link href="/media-coverage" className="text-artist-crimson underline underline-offset-2 font-bold">
+                    Read the media coverage
+                  </Link>
+                  .
+                </p>
+              </section>
+
+              <section aria-labelledby="home-contact">
+                <h2 id="home-contact" className="font-display text-base text-artist-crimson uppercase font-bold mb-1">
+                  Contact
+                </h2>
+                <p>
+                  For books, murals and events,{' '}
+                  <Link href="/contact" className="text-artist-crimson underline underline-offset-2 font-bold">
+                    contact Sukh Khokhar in Calgary
+                  </Link>
+                  .
+                </p>
+              </section>
             </div>
         </div>
 
