@@ -83,6 +83,9 @@ export function HomeAboutAuthor({ hero }: HomeAboutAuthorProps) {
               </p>
               <h1 className="home-about-author__section-title font-display text-[calc(1.125rem*1.113)] sm:text-[calc(1.25rem*1.113)] text-artist-crimson uppercase">
                 About the Author
+                <span className="sr-only">
+                  {' '}— Sukh D. H. Khokhar, Mystery Writer, Poet &amp; Mural Artist in Calgary
+                </span>
               </h1>
             </header>
 
@@ -91,7 +94,7 @@ export function HomeAboutAuthor({ hero }: HomeAboutAuthorProps) {
                 {/* eslint-disable-next-line @next/next/no-img-element -- client portrait; native img for reliable CDN loading */}
                 <img
                   src={ABOUT_AUTHOR_PORTRAIT}
-                  alt="Sukh D. H. Khokhar"
+                  alt="Sukh D. H. Khokhar, Calgary mystery writer, poet and mural artist"
                   width={520}
                   height={693}
                   decoding="async"

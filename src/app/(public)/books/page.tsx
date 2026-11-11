@@ -4,9 +4,10 @@ import BooksPageClient from './BooksPageClient';
 import { SectionPageShell } from '@/components/public/SectionPageShell';
 
 export const metadata: Metadata = {
-  title: 'Books by the Author | Sukh D. H. Khokhar',
+  title: { absolute: 'Books by Sukh Khokhar | Calgary Mystery Author' },
   description:
-    'Book excerpts, 2027–28 coming attractions, and publications by Sukh D. H. Khokhar.',
+    'Mystery novel The Mystery of the Rose and the Dark Mystery poetry eBook by Calgary author Sukh D. H. Khokhar. Find where to buy.',
+  alternates: { canonical: '/books' },
 };
 
 export default function BooksPage() {

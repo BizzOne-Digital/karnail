@@ -6,7 +6,12 @@ import { ContactForm } from '@/components/forms/ContactForm';
 import { CONTACT_LINKS } from '@/lib/contact-info';
 
 export async function generateMetadata(): Promise<Metadata> {
-  return { title: 'Contact' };
+  return {
+    title: { absolute: 'Contact Sukh Khokhar | Calgary Writer & Mural Artist' },
+    description:
+      'Get in touch with Calgary mystery writer and mural artist Sukh D. H. Khokhar about books, murals and events.',
+    alternates: { canonical: '/contact' },
+  };
 }
 
 export default async function ContactPage() {

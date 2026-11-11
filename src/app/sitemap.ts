@@ -7,12 +7,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages = [
     '',
     '/about',
-    '/about?tab=statement',
-    '/about?tab=reviews',
     '/gallery',
     '/books',
-    '/books?tab=excerpts',
-    '/books?tab=by-author',
     '/historical-background/1',
     '/historical-background/2',
     '/blog',

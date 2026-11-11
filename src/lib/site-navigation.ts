@@ -8,7 +8,7 @@ export type SiteSectionNavItem = {
 
 export const SITE_SECTION_NAV: SiteSectionNavItem[] = [
   {
-    label: 'Home Tab',
+    label: 'Home: About the Author',
     href: '/#about-author',
     match: (p) => p === '/',
   },
@@ -18,7 +18,7 @@ export const SITE_SECTION_NAV: SiteSectionNavItem[] = [
     match: (p, s) =>
       p === '/about' && (!s || !s.includes('tab=') || s.includes('tab=statement')),
   },
-  { label: 'Gallery 1', href: '/gallery?g=1' },
+  { label: 'Gallery 1: Paintings & Murals', href: '/gallery?g=1' },
   { label: 'Gallery 2', href: '/gallery?g=2' },
   { label: 'Gallery 3', href: '/gallery?g=3' },
   { label: 'Gallery 4', href: '/gallery?g=4' },
@@ -43,7 +43,7 @@ export const SITE_SECTION_NAV: SiteSectionNavItem[] = [
     match: (p) => p === '/historical-background/2',
   },
   {
-    label: 'Books by the Author',
+    label: 'Books by Sukh Khokhar',
     href: '/books?tab=by-author',
     match: (p, s) => p === '/books' && s.includes('tab=by-author'),
   },

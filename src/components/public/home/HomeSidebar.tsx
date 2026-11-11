@@ -24,7 +24,7 @@ export function HomeSidebar() {
       </button>
 
       <div className={cn('px-1.5 py-2', !open && 'hidden lg:block')}>
-        <p className="sidebar-nav-heading hidden lg:block">Navigate Here</p>
+        <p className="sidebar-nav-heading hidden lg:block">Explore the Site</p>
         <Suspense fallback={null}>
           <SiteSectionNav orientation="vertical" variant="sidebar" />
         </Suspense>

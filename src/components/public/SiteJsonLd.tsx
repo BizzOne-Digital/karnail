@@ -1,8 +1,8 @@
-import { BRAND_LOGO } from '@/lib/brand';
+import { ABOUT_AUTHOR_PORTRAIT, BRAND_LOGO } from '@/lib/brand';
 import { absolutePublicUrl, getSiteUrl } from '@/lib/site-url';
 
 const siteDescription =
-  'Discover captivating mystical paintings, murals, and creative services by Sukh D. H. Khokhar — mystery writer, mural artist, and visual storyteller.';
+  'Calgary mystery writer, poet and mural artist Sukh D. H. Khokhar. Explore The Mystery of the Rose, the Dark Mystery poetry eBook and original paintings.';
 
 export function SiteJsonLd() {
   const siteUrl = getSiteUrl();
@@ -35,8 +35,39 @@ export function SiteJsonLd() {
         '@id': `${siteUrl}/#person`,
         name: 'Sukh D. H. Khokhar',
         url: siteUrl,
-        jobTitle: 'Mystery Writer and Mural Artist',
-        image: logoUrl,
+        alternateName: 'Sukh Khokhar',
+        jobTitle: 'Mystery writer, poet and mural artist',
+        description:
+          'Calgary-based Canadian mystery writer, poet, multimedia mural artist, illustrator and educator.',
+        image: absolutePublicUrl(ABOUT_AUTHOR_PORTRAIT),
+        homeLocation: {
+          '@type': 'Place',
+          address: {
+            '@type': 'PostalAddress',
+            addressLocality: 'Calgary',
+            addressRegion: 'AB',
+            addressCountry: 'CA',
+          },
+        },
+        award: [
+          "Governor General's Commemorative Medal",
+          'Longlisted, 2013 Crossword Book Award',
+        ],
+        sameAs: ['https://www.artpal.com/sukh2'],
+      },
+      {
+        '@type': 'Book',
+        name: 'The Mystery of the Rose: The Return of the Prince',
+        author: { '@id': `${siteUrl}/#person` },
+        url: `${siteUrl}/books`,
+      },
+      {
+        '@type': 'Book',
+        name: "Dark Mystery: I am a Demon, I'm a Ghost",
+        author: { '@id': `${siteUrl}/#person` },
+        datePublished: '2013',
+        bookFormat: 'https://schema.org/EBook',
+        url: `${siteUrl}/books`,
       },
     ],
   };

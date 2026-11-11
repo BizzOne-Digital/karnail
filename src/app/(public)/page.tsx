@@ -1,7 +1,12 @@
 import { Suspense } from 'react';
+import type { Metadata } from 'next';
 import { serverPublicApi } from '@/services/server-public-api';
 import { HomeAboutAuthor } from '@/components/public/home/HomeAboutAuthor';
 import type { PageSection } from '@/types';
+
+export const metadata: Metadata = {
+  alternates: { canonical: '/' },
+};
 
 async function getHomeData() {
   try {
